@@ -19,17 +19,18 @@ class UserController extends BaseController
 	
     public function index()
     {
-        
+        echo view('admin/template/template');
     }
 	
 	public function group_list()
     {
-		$data['group_list'] = $this->GroupModel->get_list_groups();
+		//$data['group_list'] = $this->GroupModel->get_list_groups();
 		
-		echo view('admin/template/header');
-		echo view('admin/template/sidebar');
-        echo view('admin/pages/group/index', $data);
-        echo view('admin/template/footer');
+		$data = [
+            'title'=>'title here',
+            'content'=>'admin/pages/group/index'
+        ];
+        echo view('admin/template/template',$data);
     }
 	
 	public function getGroup(){
@@ -153,12 +154,13 @@ class UserController extends BaseController
 	
 	public function user_list()
     {
-		$data['user_list'] = $this->UserModel->get_list_user();
-		
-		echo view('admin/template/header');
-		echo view('admin/template/sidebar');
-        echo view('admin/pages/user/index', $data);
-        echo view('admin/template/footer');
+
+		$data = [
+            'title'=>'title here',
+            'content'=>'admin/pages/user/index',
+            'group_list'=> $this->GroupModel->get_list_groups()
+        ];
+        echo view('admin/template/template',$data);
     }
 	
 	public function getUsers(){
@@ -225,5 +227,74 @@ class UserController extends BaseController
         );
        return $this->response->setJSON($response);
     }
+
+    public function onAddUser(){
+		if (! $this->validate([
+			'name' => 'required',
+			'is_active' => 'required',
+			'email' => 'required',
+			'password' => 'required',
+			'id_group' => 'required',
+		])) {
+			throw new \Exception("Error lohh ini :(");
+		}else{
+			try {
+				$data = [
+						'name' => $this->request->getPost('name'),
+						'email' => $this->request->getPost('email'),
+						'password' => md5($this->request->getPost('password')),
+						'id_group' => $this->request->getPost('id_group'),
+						'is_active' => $this->request->getPost('is_active'),
+						];
+				$this->UserModel->insert($data);
+					
+				echo json_encode(array("status" => TRUE));
+			}catch (\Exception $e) {
+				
+			}
+		}
+    }
+
+    public function onDetailUser($id) {
+		$data = $this->UserModel->get_user($id);
+		
+		echo json_encode($data);
+	}
+
+    public function onEditUser($id){
+		if (! $this->validate([
+			'name' => 'required',
+			'is_active' => 'required',
+		])) {
+			throw new \Exception("Some message goes here");
+		}else{
+			try {
+				$data = [
+						'name' => $this->request->getPost('name'),
+						'email' => $this->request->getPost('email'),
+						'password' => md5($this->request->getPost('password')),
+						'id_group' => $this->request->getPost('id_group'),
+						'is_active' => $this->request->getPost('is_active'),
+						];
+				$this->UserModel->update($id, $data);
+					
+				echo json_encode(array("status" => TRUE));
+			}catch (\Exception $e) {
+				
+			}
+		}
+
+    }
+
+    public function onDeleteUser($id){
+		try {
+			$this->UserModel->delete($id);
+				
+			echo json_encode(array("status" => TRUE));
+		}catch (\Exception $e) {
+			
+		}
+    }
+	
 	
 }

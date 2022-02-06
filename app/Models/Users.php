@@ -53,14 +53,11 @@ class Users extends Model
 	public function groups()
     {
         return $this->belongsToMany('groups', 'App\Models\Groups');
-		
-		//return $this->belongsTo('user', 'App\Models\User');
-   
     }
 	
 	public function login($email,$password)
     {
-        $result = $this->db->query("SELECT * FROM users WHERE email = '$email' AND password = '$password'");
+        $result = $this->db->query("SELECT * FROM users WHERE email = '$email' AND password = '$password' AND is_active = '1'");
         $count =  count($result->getResultArray());
 		
         if ($count > 0) {
@@ -83,5 +80,10 @@ class Users extends Model
 								, alamat
 								, users.is_active
 								FROM users JOIN groups on users.id_group = groups.id")->getResultArray();
+    }
+    
+    public function get_user($id)
+    {	
+		return $this->db->query("SELECT * FROM users WHERE id ='".$id."'")->getRow();
     }
 }

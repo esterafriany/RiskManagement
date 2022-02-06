@@ -29,23 +29,23 @@
 <!-- font awesome -->
 <script src="https://kit.fontawesome.com/0de6e278ef.js" crossorigin="anonymous"></script>
 
-<script>
+<script type="text/javascript">
 	$(document).ready(function() {
-		var $btn_add_group = $("#btn-add-group");
-		var $btn_edit_group = $("#btn-edit-group");
-		
-		$('#groupTable').DataTable({
+        var $btn_add_user = $("#btn-add-user");
+		var $btn_edit_user = $("#btn-edit-user");
+
+		$('#userTable').DataTable({
 			'processing': true,
 			'serverSide': true,
 			'serverMethod': 'post',
 			lengthMenu: [5, 10, 20, 50, 100],
 			"iDisplayLength": 5,
 			language: {
-				emptyTable: "Belum ada Data Group.",
-				zeroRecords: "Tidak ada Data Group ditemukan.",
+				emptyTable: "Belum ada Data User.",
+				zeroRecords: "Tidak ada Data User ditemukan.",
 			},
 			'ajax': {
-				'url': "<?=site_url('UserController/getGroup')?>",
+				'url': "<?=site_url('UserController/getUsers')?>",
 				'data': function(data) {
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
@@ -66,7 +66,13 @@
 				}
 			},
 			'columns': [{
-					data: 'name'
+					data: 'user_name'
+				},
+				{
+					data: 'email'
+				},
+				{
+					data: 'group_name'
 				},
 				{
 					data:  'is_active',
@@ -84,7 +90,7 @@
 					data: 'is_active',
 					render: function (data, type, item) {
 						return '<div class="flex align-items-center list-user-action">'+
-                                 '<button class="btn btn-sm btn-icon btn-warning" onclick="edit_group('+item.id+')" title="" data-original-title="Edit" href="#">'+
+                                 '<button class="btn btn-sm btn-icon btn-warning" onclick="edit_user('+item.id+')" title="" data-original-title="Edit" href="#">'+
                                     '<span class="btn-inner">'+
                                        '<svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'+
                                           '<path d="M11.4925 2.78906H7.75349C4.67849 2.78906 2.75049 4.96606 2.75049 8.04806V16.3621C2.75049 19.4441 4.66949 21.6211 7.75349 21.6211H16.5775C19.6625 21.6211 21.5815 19.4441 21.5815 16.3621V12.3341" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>'+
@@ -93,7 +99,7 @@
                                        '</svg>'+
                                     '</span>'+
                                  '</button>&nbsp;'+
-                                 '<button class="btn btn-sm btn-icon btn-danger" onclick="delete_group('+item.id+')" title="" data-original-title="Delete" href="#">'+
+                                 '<button class="btn btn-sm btn-icon btn-danger" onclick="delete_user('+item.id+')" title="" data-original-title="Delete" href="#">'+
                                     '<span class="btn-inner">'+
                                        '<svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">'+
                                           '<path d="M19.3248 9.46826C19.3248 9.46826 18.7818 16.2033 18.4668 19.0403C18.3168 20.3953 17.4798 21.1893 16.1088 21.2143C13.4998 21.2613 10.8878 21.2643 8.27979 21.2093C6.96079 21.1823 6.13779 20.3783 5.99079 19.0473C5.67379 16.1853 5.13379 9.46826 5.13379 9.46826" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>'+
@@ -108,14 +114,14 @@
 				},
 			]
 		});
-	
-	// add group
-    $btn_add_group.on("click", function (e) {
-		var table = $('#groupTable').DataTable();
+
+        // add group
+    $btn_add_user.on("click", function (e) {
+		var table = $('#userTable').DataTable();
         $.ajax({
-				url : "<?php echo base_url('admin/UserController/onAddGroup')?>",
+				url : "<?php echo base_url('admin/UserController/onAddUser')?>",
 				type: "POST",
-				data: $('#form-add-group').serialize(),
+				data: $('#form-add-user').serialize(),
 				dataType: "JSON",
 
 				success: function(response)
@@ -134,7 +140,6 @@
 					},
 					function(isConfirm){
 					  if (isConfirm) {
-						// location.reload();
 						table.ajax.reload(null, false);
 					  }
 					});
@@ -142,20 +147,18 @@
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 				{
-					swal("Gagal","Gagal menambah / menghapus data.","error");
+					swal("Gagal","Gagal menambah data.","error");
 				}
 			});
-		
-		
 		});
-		
-	// edit group
-    $btn_edit_group.on("click", function (e) {
-		var table = $('#groupTable').DataTable();
+
+        // edit group
+    $btn_edit_user.on("click", function (e) {
+		var table = $('#userTable').DataTable();
         $.ajax({
-				url : "<?=site_url('UserController/onEditGroup')?>/" + document.getElementById('id').value,
+				url : "<?=site_url('UserController/onEditUser')?>/" + document.getElementById('id').value,
 				type: "POST",
-				data: $('#form-edit-group').serialize(),
+				data: $('#form-edit-user').serialize(),
 				dataType: "JSON",
 
 				success: function(response)
@@ -174,7 +177,6 @@
 					},
 					function(isConfirm){
 					  if (isConfirm) {
-						// location.reload();
 						table.ajax.reload(null, false);
 					  }
 					});
@@ -188,33 +190,38 @@
 		});
 	});
 	
-	function edit_group(id){
+	
+
+
+    function edit_user(id){
 		// $('#form')[0].reset(); // reset form on modals
  
 	  //Ajax Load data from ajax
 	  $.ajax({
-		url : "<?=site_url('UserController/onDetailGroup')?>/" + id,
+		url : "<?=site_url('UserController/onDetailUser')?>/" + id,
 		type: "GET",
 		dataType: "JSON",
 		success: function(data)
 		{
 			$('[name="id"]').val(data.id);
 			$('[name="name"]').val(data.name);
+			$('[name="email"]').val(data.email);
 			$('[name="is_active"]').val(data.is_active);
-			$('[name="is_root"]').val(data.is_root);
+			$('[name="id_group"]').val(data.id_group);
  
-			$('#modal-edit-group').modal('show');
-			$('.modal-title').text('Edit Group'); 
+			$('#modal-edit-user').modal('show');
+			$('.modal-title').text('Edit User'); 
 		},
 		error: function (jqXHR, textStatus, errorThrown)
 		{
-			swal('Error get data from ajax');
+			swal('Data user gagal ditemukan.');
 		}
 	  });
 	}
-	
-	function delete_group(id){
-		var table = $('#groupTable').DataTable();
+
+    function delete_user(id){
+		var table = $('#userTable').DataTable();
+        
 		swal({
 			title: "Apakah anda yakin ingin hapus?",
 			text: "Data akan dihapus tidak dapat di-recover!",
@@ -227,7 +234,7 @@
 		function () {
 			// ajax delete data from database
 			  $.ajax({
-				url : "<?=site_url('UserController/onDeleteGroup')?>/" + id,
+				url : "<?=site_url('UserController/onDeleteUser')?>/" + id,
 				type: "POST",
 				dataType: "JSON",
 				success: function(data)
@@ -243,7 +250,6 @@
 						table.ajax.reload(null, false);
 					  }
 					});
-				   
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 				{

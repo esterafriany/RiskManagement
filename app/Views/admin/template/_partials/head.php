@@ -1,6 +1,4 @@
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Hope UI | Responsive Bootstrap 5 Admin Dashboard Template</title>
       
@@ -24,15 +22,13 @@
       
       <!-- RTL Css -->
       <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/rtl.min.css"/>
-      
+  
+
       <!-- Customizer Css -->
       <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/customizer.min.css" />
 	  
-	  <!--sweetalert-->
-	  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/sweet-alert.css">
-	 <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/animate.css" type="text/css">
-	  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/animate.min.css" type="text/css">
-	  <script src="<?php echo base_url(); ?>/assets/js/sweet-alert.min.js"></script>
-	  
-	  
-  </head>
+	<!--sweetalert-->
+	<link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/sweet-alert.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/animate.css" type="text/css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/animate.min.css" type="text/css">
+	<script src="<?php echo base_url(); ?>/assets/js/sweet-alert.min.js"></script>

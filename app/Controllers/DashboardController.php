@@ -8,8 +8,10 @@ class DashboardController extends BaseController
 {
     public function index()
     {
-		echo view('admin/template/header');
-		echo view('admin/template/sidebar');
-        echo view('admin/pages/dashboard/index');
+        $data = [
+            'title'=>'title here',
+            'content'=>'admin/pages/dashboard/dashboard'
+        ];
+        echo view('admin/template/dashboard_template',$data);
     }
 }

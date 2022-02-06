@@ -20,7 +20,7 @@ class AuthenticationController extends BaseController
 			echo view('admin/pages/authentication/login');
 			echo view('admin/template/login_footer');
         } else {
-            return redirect()->to(base_url('/'));
+            return redirect('get-dashboards');
         }
     }
 	

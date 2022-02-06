@@ -41,9 +41,14 @@ $routes->get('/process-logout', 'AuthenticationController::logout', ['filter'=>'
 
 $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('dashboard', 'DashboardController::index', ['as' => 'get-dashboards']);
+	
+	//Group
 	$routes->add('group', 'UserController::group_list', ['as' => 'get-groups']);
-	$routes->add('user', 'UserController::user_list', ['as' => 'get-users']);
 	$routes->add('UserController/onAddGroup', 'UserController::onAddGroup', ['as' => 'add-groups']);
+
+	// User
+	$routes->add('user', 'UserController::user_list', ['as' => 'get-users']);
+	$routes->add('UserController/onAddUser', 'UserController::onAddUser', ['as' => 'add-users']);
 	
 });
 

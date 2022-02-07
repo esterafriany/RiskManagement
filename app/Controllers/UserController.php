@@ -4,26 +4,23 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use Illuminate\Http\Request;
 
-
+//Model
 use App\Models\Users;
 use App\Models\Groups;
 
 class UserController extends BaseController
 {
-	
-	 function __construct(){
+	function __construct(){
 		helper(['form', 'url']);
 		$this->GroupModel = new Groups();
 		$this->UserModel = new Users();
-    }
+  }
 	
-    public function index()
-    {
+  public function index(){
         echo view('admin/template/template');
-    }
+  }
 	
-	public function group_list()
-    {
+	public function group_list(){
 		//$data['group_list'] = $this->GroupModel->get_list_groups();
 		
 		$data = [
@@ -31,7 +28,7 @@ class UserController extends BaseController
             'content'=>'admin/pages/group/index'
         ];
         echo view('admin/template/template',$data);
-    }
+  }
 	
 	public function getGroup(){
 
@@ -89,7 +86,7 @@ class UserController extends BaseController
            "token" => csrf_hash() // New token hash
         );
        return $this->response->setJSON($response);
-    }
+  }
 	
 	public function onDetailGroup($id) {
 		$data = $this->GroupModel->get_group($id);
@@ -117,7 +114,7 @@ class UserController extends BaseController
 				
 			}
 		}
-    }
+  }
 	
 	public function onEditGroup($id){
 		if (! $this->validate([

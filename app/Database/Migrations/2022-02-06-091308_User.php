@@ -19,6 +19,11 @@ class User extends Migration
 				'type'           => 'INT',
 				'constraint'     => 5
 			],
+            
+			'id_division'       => [
+				'type'           => 'INT',
+				'constraint'     => 5
+			],
 			'email'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '255'
@@ -61,11 +66,11 @@ class User extends Migration
             ]
         ]);
         $this->forge->addPrimaryKey('id');
-		$this->forge->addForeignKey('id_group', 'groups', 'id');
+		//$this->forge->addForeignKey('id_group', 'groups', 'id');
+		//$this->forge->addForeignKey('id_division', 'divisions', 'id');
         $this->forge->createTable('users');
-		
     }
-    
+
 	public function down()
     {
         $this->forge->dropTable('users');

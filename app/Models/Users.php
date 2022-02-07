@@ -16,6 +16,7 @@ class Users extends Model
     protected $protectFields        = true;
     protected $allowedFields        = [
 		"id_group",
+        "id_division",
 		"email",
 		"password",
 		"username",
@@ -54,7 +55,12 @@ class Users extends Model
     {
         return $this->belongsToMany('groups', 'App\Models\Groups');
     }
-	
+
+    public function divisions()
+    {
+        return $this->belongsToMany('divisions', 'App\Models\Divisions');
+    } 
+
 	public function login($email,$password)
     {
         $result = $this->db->query("SELECT * FROM users WHERE email = '$email' AND password = '$password' AND is_active = '1'");
@@ -67,7 +73,6 @@ class Users extends Model
 	
 	public function get_list_user()
     {
-		
         return $this->db->query("SELECT users.id as id_user
 								, groups.id as id_group
 								, users.name as user_name

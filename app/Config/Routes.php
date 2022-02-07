@@ -49,6 +49,11 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	// User
 	$routes->add('user', 'UserController::user_list', ['as' => 'get-users']);
 	$routes->add('UserController/onAddUser', 'UserController::onAddUser', ['as' => 'add-users']);
+
+	
+	//Risk Categories
+	$routes->add('risk_category', 'RiskMasterController::index', ['as' => 'get-risk-category']);
+	$routes->add('RiskMasterController/onAddRiskCategory', 'RiskMasterController::onAddRiskCategory', ['as' => 'add-risk-category']);
 	
 });
 

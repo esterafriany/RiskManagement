@@ -7,7 +7,7 @@
 		</div>
 		<div class="modal-body">
 			<div class="form-group row">
-				<label class="control-label col-sm-3 align-self-center mb-0" for="email1">Group:</label>
+				<label class="control-label col-sm-3 align-self-center mb-0" for="email1">Risk Category:</label>
 				<div class="col-sm-9">
 				<input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama Group">
 				</div>
@@ -16,6 +16,7 @@
 				<label class="control-label col-sm-3 align-self-center mb-0" for="email1">Description:</label>
 				<div class="col-sm-9">
 				<textarea class="form-control" id="description" name="description"  rows="4"></textarea>
+				</div>
 			</div>
 			<div class="form-group row">
 				<label class="control-label col-sm-3 align-self-center mb-0" for="pwd2">Status:</label>

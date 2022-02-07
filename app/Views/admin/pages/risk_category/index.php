@@ -4,7 +4,7 @@
          <div class="card">
             <div class="card-header d-flex justify-content-between">
                <div class="header-title">
-                  <h4 class="card-title">Data Risk category</h4>
+                  <h4 class="card-title">Data Risk Category</h4>
                </div>
 			      <a type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal-add-risk-category">Tambah</a>
 			   </div>

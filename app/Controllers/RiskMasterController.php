@@ -102,8 +102,40 @@ class RiskMasterController extends BaseController
     }
 
     public function onDetailRiskCategory($id) {
-		$data = $this->RiskCategoriesModel->get_user($id);
+		$data = $this->RiskCategoriesModel->get_risk_category($id);
 		
 		echo json_encode($data);
 	}
+
+    public function onEditRiskCategory($id){
+		if (! $this->validate([
+			'name' => 'required',
+			'description' => 'required',
+			'is_active' => 'required',
+		])) {
+			throw new \Exception("Some message goes here");
+		}else{
+			try {
+				$data = [
+						'name' => $this->request->getPost('name'),
+						'description' => $this->request->getPost('description'),
+						'is_active' => $this->request->getPost('is_active'),
+						];
+				$this->RiskCategoriesModel->update($id, $data);
+					
+				echo json_encode(array("status" => TRUE));
+			}catch (\Exception $e) {
+				
+			}
+		}
+    }
+
+    public function onDeleteRiskCategory($id){
+		try {
+			$this->RiskCategoriesModel->delete($id);
+			echo json_encode(array("status" => TRUE));
+		}catch (\Exception $e) {
+			
+		}
+    }
 }

@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class RiskCategories extends Model
+class KPIs extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'risk_categories';
+    protected $table            = 'kpis';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -16,6 +16,7 @@ class RiskCategories extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         "name",
+		"year",
 		"description",
 		"is_active"
     ];
@@ -43,9 +44,4 @@ class RiskCategories extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function get_risk_category($id)
-    {	
-		return $this->db->query("SELECT * FROM risk_categories WHERE id ='".$id."'")->getRow();
-    }
 }

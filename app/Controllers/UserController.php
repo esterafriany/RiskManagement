@@ -137,7 +137,7 @@ class UserController extends BaseController
 			}
 		}
 
-    }
+  }
 	
 	public function onDeleteGroup($id){
 		try {
@@ -147,7 +147,7 @@ class UserController extends BaseController
 		}catch (\Exception $e) {
 			
 		}
-    }
+  }
 	
 	public function user_list()
     {

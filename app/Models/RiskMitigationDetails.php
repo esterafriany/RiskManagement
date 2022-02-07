@@ -4,22 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class KPIs extends Model
+class RiskMitigationDetails extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'kpis';
+    protected $table            = 'riskmitigationdetails';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [
-        "name",
-		"year",
-		"description",
-		"is_active"
-    ];
+    protected $allowedFields    = [];
 
     // Dates
     protected $useTimestamps = false;
@@ -44,9 +39,4 @@ class KPIs extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function get_kpi($id)
-    {	
-		return $this->db->query("SELECT * FROM kpis WHERE id ='".$id."'")->getRow();
-    }
 }

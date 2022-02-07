@@ -54,6 +54,10 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	//Risk Categories
 	$routes->add('risk_category', 'RiskMasterController::index', ['as' => 'get-risk-category']);
 	$routes->add('RiskMasterController/onAddRiskCategory', 'RiskMasterController::onAddRiskCategory', ['as' => 'add-risk-category']);
+
+	//KPI
+	$routes->add('kpi', 'KPIController::index', ['as' => 'get-kpi']);
+	//$routes->add('RiskMasterController/onAddRiskCategory', 'RiskMasterController::onAddRiskCategory', ['as' => 'add-risk-category']);
 	
 });
 

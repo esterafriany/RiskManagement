@@ -37,7 +37,7 @@ class Division extends Migration
             ]
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('divisions');
+        $this->forge->createTable('divisions', true);
     }
 
     public function down()

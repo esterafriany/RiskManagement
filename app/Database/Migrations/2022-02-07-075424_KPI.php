@@ -41,7 +41,7 @@ class KPI extends Migration
             ]
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('kpis');
+        $this->forge->createTable('kpis', true);
     }
 
     public function down()

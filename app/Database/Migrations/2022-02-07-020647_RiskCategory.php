@@ -37,7 +37,7 @@ class RiskCategory extends Migration
             ]
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('risk_categories');
+        $this->forge->createTable('risk_categories', true);
     }
 
     public function down()

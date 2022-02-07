@@ -252,7 +252,7 @@ class UserController extends BaseController
 		}
     }
 
-    public function onDetailUser($id) {
+  public function onDetailUser($id) {
 		$data = $this->UserModel->get_user($id);
 		
 		echo json_encode($data);

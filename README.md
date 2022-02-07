@@ -10,15 +10,19 @@ There are many great README templates available on GitHub, however, I didn't fin
 ### Installation
 
 1. Clone the repo
+   sh
    git clone https://github.com/Perum-PPD/Risk-Register.git
    
 2. Switch to the repo folder
+   sh
    cd root folder (Risk-Register)
 
 3. Migrate DB and Seeder
+   sh
    php spark migrate
 
 4. Run local server
+   sh
    php spark serve
 
    

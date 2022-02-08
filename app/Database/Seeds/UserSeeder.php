@@ -13,7 +13,8 @@ class UserSeeder extends Seeder
 
 		$user_object->insertBatch([
 			[
-				"id_group" => 1,
+				"id_group" => "1",
+				"id_division" => "0",
 				"email" => "ester@gmail.com",
 				"password" =>md5("password"),
 				"username" => "tes",
@@ -21,11 +22,11 @@ class UserSeeder extends Seeder
 				"gender" => "wanita",
 				"no_telp" => "7899654125",
 				"alamat" => "jakarta",
-				"is_active" => 1
-				
+				"is_active" => "1"
 			],
 			[
-				"id_group" => 1,
+				"id_group" => "1",
+				"id_division" => "1",
 				"email" => "afriany@gmail.com",
 				"password" =>md5("password"),
 				"username" => "tes",
@@ -33,8 +34,11 @@ class UserSeeder extends Seeder
 				"gender" => "pria",
 				"no_telp" => "7899654125",
 				"alamat" => "jakarta",
-				"is_active" => 1
+				"is_active" => "1"
 			]
 		]);
+
+		
+		
 	}
 }

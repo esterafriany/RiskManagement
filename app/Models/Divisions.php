@@ -53,4 +53,9 @@ class Divisions extends Model
     {	
 		return $this->db->query("SELECT * FROM divisions WHERE id ='".$id."'")->getRow();
     }
+
+    public function get_list_divisions()
+    {
+        return $this->db->query("SELECT * FROM divisions")->getResultArray();
+    }
 }

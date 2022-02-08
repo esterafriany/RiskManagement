@@ -19,11 +19,9 @@
 					   <th>Group</th>
 					   <th>Status</th>
 					   <th>Aksi</th>
-					
 					</tr>
 				 </thead>
 				</table>
-				 
                 </div>
             </div>
          </div>

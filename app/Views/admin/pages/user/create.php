@@ -11,7 +11,6 @@
 				<input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama User">
 				</div>
 			</div>
-			
 			<div class="form-group row">
 				<label class="control-label col-sm-3 align-self-center mb-0" >Email:</label>
 				<div class="col-sm-9">
@@ -25,7 +24,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-sm-3 align-self-center mb-0" for="pwd2">Group:</label>
+				<label class="control-label col-sm-3 align-self-center mb-0">Group:</label>
 				<div class="col-sm-9">
 				<select class="form-control form-select" name="id_group">
 					<option value="" disabled selected hidden >Pilihan</option>
@@ -38,11 +37,26 @@
 							}	
 						}
 					?>
-					
 				</select>
 				</div>
 			</div>
-			
+			<div class="form-group row">
+				<label class="control-label col-sm-3 align-self-center mb-0">Divisi:</label>
+				<div class="col-sm-9">
+					<select class="form-control form-select" name="id_division">
+						<option value="" disabled selected hidden >Pilihan</option>
+						<?php
+							if($division_list){
+								foreach($division_list as $division){
+									?>
+										<option value="<?=$division['id']?>"><?=$division['name']?></option>
+									<?php
+								}	
+							}
+						?>
+					</select>
+				</div>
+			</div>
 			<div class="form-group row">
 				<label class="control-label col-sm-3 align-self-center mb-0" for="pwd2">Status:</label>
 				<div class="col-sm-9">
@@ -53,7 +67,6 @@
 				</select>
 				</div>
 			</div>
-			
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

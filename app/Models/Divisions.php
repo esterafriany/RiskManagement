@@ -48,4 +48,9 @@ class Divisions extends Model
     {
         return $this->hasMany('users', 'App\Models\Users');
     }
+
+    public function get_division($id)
+    {	
+		return $this->db->query("SELECT * FROM divisions WHERE id ='".$id."'")->getRow();
+    }
 }

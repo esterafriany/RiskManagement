@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 //Model
 use App\Models\Users;
 use App\Models\Groups;
+use App\Models\Divisions;
 
 class UserController extends BaseController
 {
@@ -14,15 +15,14 @@ class UserController extends BaseController
 		helper(['form', 'url']);
 		$this->GroupModel = new Groups();
 		$this->UserModel = new Users();
+		$this->DivisionModel = new Divisions();
   }
 	
   public function index(){
-        echo view('admin/template/template');
+    echo view('admin/template/template');
   }
 	
 	public function group_list(){
-		//$data['group_list'] = $this->GroupModel->get_list_groups();
-		
 		$data = [
             'title'=>'title here',
             'content'=>'admin/pages/group/index'
@@ -284,14 +284,141 @@ class UserController extends BaseController
     }
 
     public function onDeleteUser($id){
-		try {
-			$this->UserModel->delete($id);
-				
-			echo json_encode(array("status" => TRUE));
-		}catch (\Exception $e) {
-			
-		}
+      try {
+        $this->UserModel->delete($id);
+          
+        echo json_encode(array("status" => TRUE));
+      }catch (\Exception $e) {
+        
+      }
     }
 	
+    public function division_list(){
+      $data = [
+              'title'=>'title here',
+              'content'=>'admin/pages/division/index'
+          ];
+          echo view('admin/template/template',$data);
+    }
+
+    public function getDivision(){
+      $request = service('request');
+      $postData = $request->getPost();
+      $dtpostData = $postData['data'];
+      $response = array();
+ 
+      ## Read value
+      $draw = $dtpostData['draw'];
+      $start = $dtpostData['start'];
+      $rowperpage = $dtpostData['length']; // Rows display per page
+      $columnIndex = $dtpostData['order'][0]['column']; // Column index
+      $columnName = $dtpostData['columns'][$columnIndex]['data']; // Column name
+      $columnSortOrder = $dtpostData['order'][0]['dir']; // asc or desc
+      $searchValue = $dtpostData['search']['value']; // Search value
+ 
+      ## Total number of records without filtering
+      $totalRecords = $this->DivisionModel->select('id')->countAllResults();
+ 
+      ## Total number of records with filtering
+      $totalRecordwithFilter = $this->DivisionModel->select('id')
+                ->orLike('name', $searchValue)
+                ->orLike('is_active', $searchValue)
+                ->countAllResults();
+  
+      ## Fetch records
+      $records = $this->DivisionModel
+              ->select('*')
+              ->orLike('name', $searchValue)
+              ->orLike('is_active', $searchValue)
+              ->orderBy($columnName,$columnSortOrder)
+              ->findAll($rowperpage, $start);
+
+		$data = array();
+ 
+    foreach($records as $record ){
+        $data[] = array( 
+          "id"=>$record['id'],
+          "name"=>$record['name'],
+          "division_code"=>$record['division_code'],
+          "is_active"=>$record['is_active']
+        ); 
+    }
+        
+    ## Response
+    $response = array(
+        "draw" => intval($draw),
+        "iTotalRecords" => $totalRecords,
+        "iTotalDisplayRecords" => $totalRecordwithFilter,
+        "aaData" => $data,
+        "token" => csrf_hash() // New token hash
+    );
+    
+    return $this->response->setJSON($response);
+
+  }
+    
+    public function onAddDivision(){
+      if (! $this->validate([
+        'name' => 'required',
+        'division_code' => 'required',
+        'is_active' => 'required',
+      ])) {
+        throw new \Exception("Some message goes here");
+      }else{
+        try {
+          $data = [
+              'name' => $this->request->getPost('name'),
+              'division_code' => $this->request->getPost('division_code'),
+              'is_active' => $this->request->getPost('is_active'),
+              ];
+          $this->DivisionModel->insert($data);
+            
+          echo json_encode(array("status" => TRUE));
+        }catch (\Exception $e) {
+          
+        }
+      }
+    }
+
+    public function onDetailDivision($id) {
+      $data = $this->DivisionModel->get_division($id);
+      
+      echo json_encode($data);
+    }
+
+    public function onDeleteDivision($id){
+      try {
+        $this->DivisionModel->delete($id);
+          
+        echo json_encode(array("status" => TRUE));
+      }catch (\Exception $e) {
+        
+      }
+    }
+
+    public function onEditDivision($id){
+      if (! $this->validate([
+        'name' => 'required',
+        'division_code' => 'required',
+        'is_active' => 'required',
+      ])) {
+        throw new \Exception("Some message goes here");
+      }else{
+        try {
+          $data = [
+              'name' => $this->request->getPost('name'),
+              'division_code' => $this->request->getPost('is_root'),
+              'is_active' => $this->request->getPost('is_active'),
+              ];
+          $this->DivisionModel->update($id, $data);
+            
+          echo json_encode(array("status" => TRUE));
+        }catch (\Exception $e) {
+          
+        }
+      }
+  
+    }
+    
 	
 }

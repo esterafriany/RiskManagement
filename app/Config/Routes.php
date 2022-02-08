@@ -50,6 +50,10 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('user', 'UserController::user_list', ['as' => 'get-users']);
 	$routes->add('UserController/onAddUser', 'UserController::onAddUser', ['as' => 'add-users']);
 
+	// Division
+	$routes->add('division', 'UserController::division_list', ['as' => 'get-divisions']);
+	$routes->add('UserController/onAddDivision', 'UserController::onAddDivision', ['as' => 'add-divisions']);
+
 	
 	//Risk Categories
 	$routes->add('risk_category', 'RiskMasterController::index', ['as' => 'get-risk-category']);

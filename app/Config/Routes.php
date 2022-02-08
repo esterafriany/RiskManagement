@@ -3,6 +3,11 @@
 namespace Config;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RiskMasterController;
+use App\Http\Controllers\KPIController;
+use App\Http\Controllers\DashboardsController;
+
+
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
@@ -65,6 +70,9 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	
 });
 
+$routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
+    $routes->add('dashboards', 'RiskOwner/DashboardController::index', ['as' => 'get-dashboard']);
+});
 
 
 

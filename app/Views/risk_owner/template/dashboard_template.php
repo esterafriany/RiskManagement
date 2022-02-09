@@ -4,11 +4,11 @@
   <head>
       <?= $this->include('risk_owner/template/_partials/head')?>
   </head>
-  <body class="  ">
+  <body class="">
   <?= $this->include('risk_owner/template/_partials/loader')?>
     
     <aside class="sidebar sidebar-default navs-rounded-all ">
-    <?= $this->include('risk_owner/template/_partials/aside')?>
+      <?= $this->include('risk_owner/template/_partials/aside')?>
     </aside>
     <main class="main-content">
       <div class="position-relative">

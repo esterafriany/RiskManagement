@@ -67,11 +67,19 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	//KPI
 	$routes->add('kpi', 'KPIController::index', ['as' => 'get-kpi']);
 	$routes->add('KPIController/onAddKPI', 'KPIController::onAddKPI', ['as' => 'add-kpi']);
+
+	//Risk Event
+	$routes->add('risk-event', 'RiskEventController::index', ['as' => 'get-risk-events']);
 	
 });
 
 $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
+	//dashboard
     $routes->add('dashboards', 'RiskOwner/DashboardController::index', ['as' => 'get-dashboard']);
+
+	//Risk Event
+	$routes->add('risk-events', 'RiskOwner/RiskEventController::index', ['as' => 'get-risk-event']);
+
 });
 
 

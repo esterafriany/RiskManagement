@@ -1,13 +1,8 @@
 <div class="sidebar-header d-flex align-items-center justify-content-start">
     <a href="<?=base_url();?>" class="navbar-brand">
-        <!--Logo start-->
-        <svg width="30" class="" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="-0.757324" y="19.2427" width="28" height="4" rx="2" transform="rotate(-45 -0.757324 19.2427)" fill="currentColor"/>
-            <rect x="7.72803" y="27.728" width="28" height="4" rx="2" transform="rotate(-45 7.72803 27.728)" fill="currentColor"/>
-            <rect x="10.5366" y="16.3945" width="16" height="4" rx="2" transform="rotate(45 10.5366 16.3945)" fill="currentColor"/>
-            <rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor"/>
-        </svg>
-        <!--logo End-->            <h5 class="logo-title">Risk Monitoring</h5>
+         <!--Logo start-->
+         <img src="../assets/images/Flag/icon_ppd.jpg" style="height: 65px; min-width: 50px; width: 50px;">        
+                    <h4 class="logo-title">Risk <br/>Monitoring</h4>
     </a>
     <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
         <i class="icon">
@@ -53,7 +48,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="<?=base_url('admin/dashboard');?>">
+                <a class="nav-link" aria-current="page" href="<?=base_url('risk_owner/risk-events');?>">
                     <i class="icon">
                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.4" d="M16.0756 2H19.4616C20.8639 2 22.0001 3.14585 22.0001 4.55996V7.97452C22.0001 9.38864 20.8639 10.5345 19.4616 10.5345H16.0756C14.6734 10.5345 13.5371 9.38864 13.5371 7.97452V4.55996C13.5371 3.14585 14.6734 2 16.0756 2Z" fill="currentColor"></path>

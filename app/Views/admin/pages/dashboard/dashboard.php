@@ -4,7 +4,7 @@
                       <div class="col-md-12">
                           <div class="flex-wrap d-flex justify-content-between align-items-center">
                               <div>
-                                  <h1>Hello, User!</h1>
+                                  <h1>Hello, <?=session()->get('name')?>!</h1>
                                   <p>Welcome to Risk Register Apps !</p>
                               </div>
                               <div>

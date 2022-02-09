@@ -14,7 +14,13 @@ class RiskEvents extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        "id_kpi",
+        "risk_number",
+        "risk_event",
+        "year",
+        "is_active"
+    ];
 
     // Dates
     protected $useTimestamps = false;

@@ -15,9 +15,9 @@ class RiskCategories extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        "name",
-		"description",
-		"is_active"
+      "name",
+      "description",
+      "is_active"
     ];
 
     // Dates

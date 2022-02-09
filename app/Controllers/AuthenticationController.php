@@ -40,6 +40,7 @@ class AuthenticationController extends BaseController
 				'name'      => $data['name'],
 				'email'       => $data['email'],
 				'id_group'       => $data['id_group'],
+				'division_name'       => $data['division_name'],
 				'isLoggedIn'      => TRUE
 			];
 			$session->set($ses_data);

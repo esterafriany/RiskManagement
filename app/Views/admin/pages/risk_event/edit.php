@@ -11,7 +11,6 @@
 				<div class="table-responsive">
                 <form id="form-edit-risk-event" action="" class="form-horizontal" method="POST">
                     <input type="hidden" class="form-control" id="id" name="id">
-
                         <table width="100%">
                             <tr>
                                 <td width="20%">KPI:</td>
@@ -21,9 +20,15 @@
                                     <?php
                                         if($kpi_list){
                                             foreach($kpi_list as $kpi){
+                                                if($detail_risk_event->id_kpi == $kpi['id']){ 
                                                 ?>
-                                                    <option value="<?=$kpi['id']?>"><?=$kpi['name']?></option>
+                                                    <option value="<?php echo $kpi['id'];?>" selected><?php echo $kpi['name'];?></option>
                                                 <?php
+                                                }else{?>
+                                                    <option value="<?php echo $kpi['id'];?>"><?php echo $kpi['name'];?></option>
+                                                
+                                                <?php
+                                                }
                                             }	
                                         }
                                     ?>
@@ -33,13 +38,15 @@
                             <tr>
                                 <td width="20%">No Risiko:</td>
                                 <td>
-                                    <input type="text" class="form-control" id="risk_number" name="risk_number">
+                                    <input type="text" class="form-control" id="risk_number" name="risk_number" value="<?php echo $detail_risk_event->risk_number;?>">
                                 </td>
                             </tr>
                             <tr>
                                 <td width="20%">Risiko Utama:</td>
                                 <td>
-                                    <textarea class="form-control" id="risk_event" name="risk_event"  rows="2"></textarea>
+                                    <textarea class="form-control" id="risk_event" name="risk_event"  rows="2">
+                                        <?php echo $detail_risk_event->risk_event;?>
+                                    </textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -47,21 +54,20 @@
                                 <td>
                                 <select class="form-control form-select" name="year">
                                     <option value="" disabled selected hidden >Pilihan</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
+                                    <?php
+                                        for($i=2020;$i<2023;$i++){ 
+                                            if($detail_risk_event->year == $kpi['year']){ ?>
+                                                <option value="<?=$i?>"selected><?php echo $i;?></option>
+                                            <?php 
+                                            }else{?>
+                                                <option value="<?=$i?>"><?php echo $i;?></option>
+                                            <?php }
+                                        }
+                                    ?>
                                 </select>
                                 </td>
                             </tr>
-                            <tr>
-                                <td width="20%">Status:</td>
-                                <td>
-                                <select class="form-control form-select" name="is_active">
-                                    <option value="" disabled selected hidden >Pilihan</option>
-                                    <option value="1">Aktif</option>
-                                    <option value="0">Tidak Aktif</option>
-                                </select>
-                                </td>
-                            </tr>
+                          
                         </table>
                         
                 </form>

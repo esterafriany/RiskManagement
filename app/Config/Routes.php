@@ -70,7 +70,9 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 
 	//Risk Event
 	$routes->add('risk-event', 'RiskEventController::index', ['as' => 'get-risk-events']);
-	
+	$routes->add('RiskEventController/onAddRiskEvent', 'RiskEventController::onAddRiskEvent', ['as' => 'add-risk-event']);
+	$routes->add('detail-risk-event/(:num)', 'RiskEventController::getDetailRiskEvent/$1', ['as' => 'detail-risk-event']);
+
 });
 
 $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){

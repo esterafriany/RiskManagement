@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class RiskEvents extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'riskevents';
+    protected $table            = 'risk_events';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -45,4 +45,9 @@ class RiskEvents extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function get_risk_event($id)
+    {	
+		return $this->db->query("SELECT * FROM risk_events WHERE id ='".$id."'")->getRow();
+    }
 }

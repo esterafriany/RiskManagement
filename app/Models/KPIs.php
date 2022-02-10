@@ -47,6 +47,11 @@ class KPIs extends Model
 
     public function get_kpi($id)
     {	
-		return $this->db->query("SELECT * FROM kpis WHERE id ='".$id."'")->getRow();
+		  return $this->db->query("SELECT * FROM kpis WHERE id ='".$id."'")->getRow();
+    }
+
+    public function get_list_kpis()
+    {
+        return $this->db->query("SELECT * FROM kpis WHERE is_active='1'")->getResultArray();
     }
 }

@@ -14,10 +14,11 @@
                   <table id="riskEventTable" class="table table-striped" width="100%">
                      <thead>
                         <tr>
-                           <th>KPI</th>
                            <th>Nomor Risiko</th>
+                           <th>KPI</th>
                            <th>Risiko Utama</th>
                            <th>Tahun</th>
+                           <th>Status</th>
                            <th>Aksi</th>
                         </tr>
                      </thead> 
@@ -31,10 +32,6 @@
 
 <div class="modal fade" id="modal-add-risk-event" name="modal-add-risk-event" tabindex="-1" aria-labelledby="addGroupModal" style="display: none;" aria-hidden="true">
 	<div class="modal-dialog"><?= $this->include("admin/pages/risk_event/create")?></div>
-</div>
-
-<div class="modal fade" id="modal-edit-risk-event" name="modal-add-risk-event" tabindex="-1" aria-labelledby="addGroupModal" style="display: none;" aria-hidden="true">
-	<div class="modal-dialog"><?= $this->include("admin/pages/risk_event/edit")?></div>
 </div>
 
 <?= $this->include("js/risk_event")?>

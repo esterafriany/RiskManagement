@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
 			[
 				"id_group" => "1",
 				"id_division" => "0",
-				"email" => "ester@gmail.com",
+				"email" => "psmr@perumppd.co.id",
 				"password" =>md5("password"),
 				"username" => "tes",
 				"name" => "Rahul Sharma",
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
 			[
 				"id_group" => "1",
 				"id_division" => "1",
-				"email" => "afriany@gmail.com",
+				"email" => "pic@perumppd.co.id",
 				"password" =>md5("password"),
 				"username" => "tes",
 				"name" => "Sharma",

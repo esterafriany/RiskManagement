@@ -78,7 +78,7 @@ class RiskMasterController extends BaseController
     return $this->response->setJSON($response);
   }
 
-    public function onAddRiskCategory(){
+  public function onAddRiskCategory(){
 		if (! $this->validate([
 			'name' => 'required',
 			'description' => 'required',
@@ -108,7 +108,7 @@ class RiskMasterController extends BaseController
 		echo json_encode($data);
 	}
 
-    public function onEditRiskCategory($id){
+  public function onEditRiskCategory($id){
 		if (! $this->validate([
 			'name' => 'required',
 			'description' => 'required',
@@ -129,14 +129,14 @@ class RiskMasterController extends BaseController
 				
 			}
 		}
-    }
+  }
 
-    public function onDeleteRiskCategory($id){
-		try {
-			$this->RiskCategoriesModel->delete($id);
-			echo json_encode(array("status" => TRUE));
-		}catch (\Exception $e) {
-			
-		}
-    }
+  public function onDeleteRiskCategory($id){
+      try {
+        $this->RiskCategoriesModel->delete($id);
+        echo json_encode(array("status" => TRUE));
+      }catch (\Exception $e) {
+        
+      }
+  }
 }

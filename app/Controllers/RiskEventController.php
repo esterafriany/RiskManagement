@@ -16,8 +16,7 @@ class RiskEventController extends BaseController
         $this->KPIModel = new KPIs();
     }
     
-    public function index()
-    {
+    public function index(){
         $data = [
             'title'=>'Risk Events',
             'content'=>'admin/pages/risk_event/index',
@@ -87,7 +86,7 @@ class RiskEventController extends BaseController
             "token" => csrf_hash() // New token hash
         );
         
-    return $this->response->setJSON($response);
+        return $this->response->setJSON($response);
     }
 
     public function onAddRiskEvent(){

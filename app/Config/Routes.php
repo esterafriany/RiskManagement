@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RiskMasterController;
 use App\Http\Controllers\KPIController;
 use App\Http\Controllers\DashboardsController;
+use App\Http\Controllers\RiskCauseController;
 
 
 
@@ -73,6 +74,7 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('RiskEventController/onAddRiskEvent', 'RiskEventController::onAddRiskEvent', ['as' => 'add-risk-event']);
 	$routes->add('detail-risk-event/(:num)', 'RiskEventController::getDetailRiskEvent/$1', ['as' => 'detail-risk-event']);
 
+	//Risk Event Detail
 });
 
 $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){

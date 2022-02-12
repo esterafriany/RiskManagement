@@ -25,3 +25,7 @@
     
     <!-- App Script -->
     <script src="<?php echo base_url();?>/assets/js/hope-ui.js" defer></script>
+
+    
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/0de6e278ef.js" crossorigin="anonymous"></script>

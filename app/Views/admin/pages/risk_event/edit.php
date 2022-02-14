@@ -10,7 +10,7 @@
             <div class="card-body">
             <form id="form-edit-risk-event" action="" class="form-horizontal" method="POST">
                 
-            <input type="hidden" class="form-control" id="id" name="id">
+            <input type="hidden" class="form-control" id="id" name="id" value="">
                 <div class="row">
                     <div class="col">
                     <ul class="list-group">
@@ -76,11 +76,9 @@
                                     Penyebab Risiko
                                 </li>
                                 <li class="list-group-item">
-
-                                <div id="riskCauseList">
-                                    
-                                </div><br/>
-
+                                    <div id="riskCauseList">
+                    
+                                    </div><br/>
                                 <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-cause"><i class="fas fa-plus-circle"></i> Tambah Risiko</button>
                                 
                                 </li>
@@ -97,14 +95,10 @@
                                     Rencana Mitigasi:
                                 </li>
                                 <li class="list-group-item">
-                                <table id="riskEventTable" class="table table-striped" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th>No.</th>
-                                            <th>Rencana Mitigasi</th>
-                                        </tr>
-                                    </thead> 
-                                </table>
+                                    <div id="riskMitigationList">
+                    
+                                    </div><br/>
+                                <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-mitigation"><i class="fas fa-plus-circle"></i> Tambah Mitigasi</button>
                                 </li>
                             </ul>
                         </div>
@@ -112,7 +106,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary">Batal</button>
                 <button type="button" id="btn-edit-risk-event"  class="btn btn-primary">Simpan</button>
             </div>
          </div>

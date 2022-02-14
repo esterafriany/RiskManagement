@@ -7,14 +7,18 @@ use CodeIgniter\Model;
 class RiskMitigations extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'riskmitigations';
+    protected $table            = 'risk_mitigations';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        "id_risk_event",
+        "risk_mitigation",
+        "is_active"
+    ];
 
     // Dates
     protected $useTimestamps = false;
@@ -39,4 +43,9 @@ class RiskMitigations extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function get_list_risk_mitigation()
+    {	
+		return $this->db->query("SELECT * FROM risk_mitigations")->getResultArray();
+    }
 }

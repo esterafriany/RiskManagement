@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 //Model
 use App\Models\RiskEvents;
+use App\Models\RiskCauses;
+use App\Models\RiskMitigations;
 use App\Models\KPIs;
 
 class RiskEventController extends BaseController
@@ -13,6 +15,8 @@ class RiskEventController extends BaseController
     function __construct(){
         helper(['form', 'url']);
         $this->RiskEventModel = new RiskEvents();
+        $this->RiskMitigationModel = new RiskMitigations();
+        $this->RiskCauseModel = new RiskCauses();
         $this->KPIModel = new KPIs();
     }
     
@@ -109,6 +113,47 @@ class RiskEventController extends BaseController
                         ];
 
                 $this->RiskEventModel->insert($data);
+                    
+                echo json_encode(array("status" => TRUE));
+            }catch (\Exception $e) {
+                
+            }
+        }
+    }
+
+    public function onAddRiskWithDetail(){
+        if (! $this->validate([
+            'id_kpi' => 'required',
+            'risk_number' => 'required',
+            'risk_event' => 'required',
+            'year' => 'required',
+            'is_active' => 'required',
+        ])) {
+            throw new \Exception("Some message goes here");
+        }else{
+            try {
+                $data = [
+                        'id_kpi' => $this->request->getPost('id_kpi'),
+                        'risk_number' => $this->request->getPost('risk_number'),
+                        'risk_event' => $this->request->getPost('risk_event'),
+                        'year' => $this->request->getPost('year'),
+                        'is_active' => $this->request->getPost('is_active'),
+                        ];
+                
+                // foreach ($this->request->post('risk_cause') as $points) {
+                //     echo $points;
+                // }
+
+                // $risk_causes = $this->request->getPost('risk_cause');
+                // for($i = 0; $i < sizeof($risk_causes); $i++)
+                // {
+                    
+                // }
+
+                // $this->RiskEventModel->insert($data);
+                // $this->RiskMitigationModel->insert($data);
+                // $this->RiskCauseModel->insert($data);
+                
                     
                 echo json_encode(array("status" => TRUE));
             }catch (\Exception $e) {

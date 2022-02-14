@@ -44,8 +44,6 @@ class RiskCauses extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    
-
     public function get_list_risk_cause()
     {	
 		return $this->db->query("SELECT * FROM risk_causes")->getResultArray();

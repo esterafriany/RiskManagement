@@ -83,24 +83,40 @@
 		});
 
 		// edit risk event
+		//$("#form-edit-risk-event").submit(function(e) {
 		$btn_edit_risk_event.on("click", function (e) {
-			
+			//risk cause
 			var input = document.getElementsByName('risk_cause[]');
-			var k ="";
+			var risk_cause = [];
 
 			for (var i = 0; i < input.length; i++) {
                 var a = input[i];
-                k = k + "array[" + i + "].value= "
-                                   + a.value + " ";
+				risk_cause[i] = a.value;
+								
             }
 
+			//risk mitigation
+			var input1 = document.getElementsByName('risk_mitigation[]');
+			var risk_mitigation = [];
+
+			for (var i = 0; i < input1.length; i++) {
+                var b = input1[i];
+				risk_mitigation[i] = b.value;
+								
+            }
+			//console.log(risk_cause);
+
+			var id_risk = document.getElementById('id_risk_event').value;
+		
 			$.ajax({
-				url : "<?php echo base_url('admin/RiskEventController/onAddRiskWithDetail')?>",
+				url : "<?php echo base_url('admin/RiskEventController/onAddDetailRisk')?>",
 				type: "POST",
+				data: {'id_risk_event':id_risk,'risk_cause':JSON.stringify(risk_cause),'risk_mitigation':JSON.stringify(risk_mitigation)},
 				dataType: "JSON",
 
 				success: function(response)
 				{
+					console.log(response);
 					swal({
 					  title: "Sukses!",
 					  text: "Data sukses ditambah/diubah!",
@@ -116,7 +132,7 @@
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 				{
-					swal("Gagal","Gagal mengubah data.","error");
+					//swal("Gagal","Gagal mengubah data.","error");
 				}
 			});
 

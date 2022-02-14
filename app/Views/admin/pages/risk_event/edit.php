@@ -10,7 +10,7 @@
             <div class="card-body">
             <form id="form-edit-risk-event" action="" class="form-horizontal" method="POST">
                 
-            <input type="hidden" class="form-control" id="id" name="id" value="">
+            <input type="hidden" class="form-control" id="id_risk_event" name="id_risk_event" value="<?php echo $detail_risk_event->id;?>">
                 <div class="row">
                     <div class="col">
                     <ul class="list-group">
@@ -47,7 +47,7 @@
                                     
                                     <div class="form-group">
                                         <label class="control-label col-sm-3 align-self-center mb-0" >Risiko Utama:</label>
-                                        <textarea class="form-control" id="risk_event" name="risk_event"  rows="4"></textarea>
+                                        <textarea class="form-control" id="risk_event" name="risk_event"  rows="4"><?php echo $detail_risk_event->risk_event;?></textarea>
                                     </div>
 
                                     <div class="form-group">

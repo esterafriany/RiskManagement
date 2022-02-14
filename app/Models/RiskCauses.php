@@ -46,6 +46,16 @@ class RiskCauses extends Model
 
     public function get_list_risk_cause()
     {	
-		return $this->db->query("SELECT * FROM risk_causes")->getResultArray();
+		  return $this->db->query("SELECT * FROM risk_causes")->getResultArray();
     }
+
+    public function delete_by_id_risk($id_risk_event)
+    {	
+      $sql = "DELETE FROM risk_causes WHERE id_risk_event='".$id_risk_event."'";
+      $result = $this->db->query($sql);
+    }
+
+    
+
+    
 }

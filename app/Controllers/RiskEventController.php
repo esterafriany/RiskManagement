@@ -121,44 +121,48 @@ class RiskEventController extends BaseController
         }
     }
 
-    public function onAddRiskWithDetail(){
-        if (! $this->validate([
-            'id_kpi' => 'required',
-            'risk_number' => 'required',
-            'risk_event' => 'required',
-            'year' => 'required',
-            'is_active' => 'required',
-        ])) {
-            throw new \Exception("Some message goes here");
-        }else{
-            try {
-                $data = [
-                        'id_kpi' => $this->request->getPost('id_kpi'),
-                        'risk_number' => $this->request->getPost('risk_number'),
-                        'risk_event' => $this->request->getPost('risk_event'),
-                        'year' => $this->request->getPost('year'),
-                        'is_active' => $this->request->getPost('is_active'),
-                        ];
-                
-                // foreach ($this->request->post('risk_cause') as $points) {
-                //     echo $points;
-                // }
+    public function onAddDetailRisk(){
+        try {
+           
+            $risk_causes = json_decode($_POST['risk_cause']);
+            $id_risk_event = json_decode($_POST['id_risk_event']);
+            $risk_mitigations = json_decode($_POST['risk_mitigation']);
 
-                // $risk_causes = $this->request->getPost('risk_cause');
-                // for($i = 0; $i < sizeof($risk_causes); $i++)
-                // {
-                    
-                // }
-
-                // $this->RiskEventModel->insert($data);
-                // $this->RiskMitigationModel->insert($data);
-                // $this->RiskCauseModel->insert($data);
-                
-                    
-                echo json_encode(array("status" => TRUE));
-            }catch (\Exception $e) {
-                
+            
+            $risk_cause_num = count($risk_causes);
+            if($risk_cause_num > 0){
+                //delete risk cause
+                $this->RiskCauseModel->delete_by_id_risk($id_risk_event);
+                 //re-add risk cause
+                for($i = 0; $i < $risk_cause_num; $i++){
+                    $data = [
+                        'id_risk_event' => $id_risk_event,
+                        'risk_cause' =>$risk_causes[$i],
+                        'is_active' => "1",
+                    ];
+                    $this->RiskCauseModel->insert($data);
+                }
             }
+            
+            $risk_mitigation_num = count($risk_mitigations);
+            if($risk_mitigation_num > 0){
+                //delete risk mit
+                //$this->RiskMitigationModel->delete_by_id_risk($id_risk_event);
+                //re-add risk mit
+                for($j = 0; $j < $risk_mitigation_num; $j++){
+                    $data = [
+                        'id_risk_event' => $id_risk_event,
+                        'risk_mitigation' =>$risk_mitigations[$j],
+                        'is_active' => "1",
+                    ];
+                    $this->RiskMitigationModel->insert($data);
+                }
+            }
+           
+            echo json_encode(array("status" => TRUE));
+            //echo json_encode(array("status" => $risk_cause_num));
+        }catch (\Exception $e) {
+            
         }
     }
 

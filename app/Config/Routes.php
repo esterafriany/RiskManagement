@@ -73,7 +73,7 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('risk-event', 'RiskEventController::index', ['as' => 'get-risk-events']);
 	$routes->add('RiskEventController/onAddRiskEvent', 'RiskEventController::onAddRiskEvent', ['as' => 'add-risk-event']);
 	$routes->add('detail-risk-event/(:num)', 'RiskEventController::getDetailRiskEvent/$1', ['as' => 'detail-risk-event']);
-	$routes->add('RiskEventController/onAddRiskWithDetail', 'RiskEventController::onAddRiskWithDetail', ['as' => 'add-risk-event-detail']);
+	$routes->add('RiskEventController/onAddDetailRisk', 'RiskEventController::onAddDetailRisk', ['as' => 'add-risk-event-detail']);
 	
 	//Risk Event Detail
 });

@@ -57,6 +57,38 @@
 				alert('Error get data from ajax');
 			}
 		});
+		
+
+		var site_url = window.location.pathname;
+        var arr = site_url.split("/");
+        var id_risk_event = arr[arr.length - 1];
+		
+		$.ajax({
+			url : "<?=site_url('RiskCategoryController/getRiskCategoryByRiskEvent')?>/" + id_risk_event,
+			type: "GET",
+			dataType: "JSON",
+			success: function(result)
+			{
+				
+				var penampung = "";
+				var count = result.length;
+				
+				for(i = 0; i < count; i++){
+					console.log(count);
+					penampung += `<table width="100%"><tr><td><input type="text" name="risk_category[]" value="${result[i]['name']}" class="form-control" placeholder="Masukkan Kategori Risiko">
+						</td><td>
+						<button type="button" id="" class="btn btn-outline-danger btn-sm remove1" 
+						name="remove1" ><i class="fas fa-trash-alt"></i></button></td></tr></table>`;
+				}
+				
+				document.getElementById("riskCategoryList").innerHTML = penampung;
+			},
+			error: function (jqXHR, textStatus, errorThrown)
+			{
+				console.log(jqXHR);
+				alert('Error get data from ajax');
+			}
+		});
 
 		$("#add-more-cause").click(function () {
 			$("#riskCauseList").last().append(
@@ -70,6 +102,14 @@
 			$("#riskMitigationList").last().append(
 				'<table width="100%" id="riskMitigationTable"><tr><td><input type="text" name="risk_mitigation[]" value="" class="form-control" placeholder="Masukkan Mitgasi Risiko">' +
 				'</td><td><button type="button" name="removes" id="" class="btn btn-outline-primary btn-sm removes" ><i class="fas fa-trash-alt"></i></button></td></tr></table>'+
+				''
+			);
+		});
+
+		$("#add-more-risk_category").click(function () {
+			$("#riskCategoryList").last().append(
+				'<table width="100%" id="riskMitigationTable"><tr><td><input type="text" name="risk_category[]" value="" class="form-control" placeholder="Masukkan Mitgasi Risiko">' +
+				'</td><td><button type="button" name="remove1" id="" class="btn btn-outline-primary btn-sm remove1" ><i class="fas fa-trash-alt"></i></button></td></tr></table>'+
 				''
 			);
 		});
@@ -104,8 +144,7 @@
 				risk_mitigation[i] = b.value;
 								
             }
-			//console.log(risk_cause);
-
+			
 			var id_risk = document.getElementById('id_risk_event').value;
 		
 			$.ajax({

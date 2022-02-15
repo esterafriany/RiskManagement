@@ -4,8 +4,8 @@
 	$(document).ready(function() {
 		var $btn_add_risk_event = $("#btn-add-risk-event");
 		var $btn_edit_risk_event = $("#btn-edit-risk-event");
-		
-		$('#riskEventTable').DataTable({
+
+		var table = $('#riskEventTable').DataTable({
 			'processing': true,
 			'serverSide': true,
 			'serverMethod': 'post',
@@ -38,10 +38,13 @@
 			},
 			'columns': [
 				{
-					data: 'risk_number'
+					data: 'objective'
 				},
 				{
 					data: 'kpi_name'
+				},
+				{
+					data: 'risk_number'
 				},
 				{
 					data: 'risk_event'
@@ -49,18 +52,6 @@
 				
 				{
 					data: 'year'
-				},
-				{
-					data:  'is_active',
-					render: function (data, type, item) {
-						if (item.is_active == "0") {
-							return '<span class="badge bg-danger">Tidak Aktif</span>';
-						} else if (item.is_active == "1") {
-							return '<span class="badge bg-primary">Active</span>';
-						} else {
-							return '<span class="badge bg-info">-</span>';
-						}
-					},					
 				},
 				{
 					data: 'is_active',
@@ -89,6 +80,16 @@
 					},
 				},
 			]
+		});
+
+		$('.toggle-vis').on( 'change', function (e) {
+			e.preventDefault();
+	
+			// Get the column API object
+			var column = table.column( $(this).attr('data-column') );
+	
+			// Toggle the visibility
+			column.visible( ! column.visible() );
 		});
 	
 		// add risk event

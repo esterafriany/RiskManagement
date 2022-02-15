@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 //Model
 use App\Models\RiskEvents;
 use App\Models\RiskCauses;
+use App\Models\RiskCategories;
 use App\Models\RiskMitigations;
 use App\Models\KPIs;
 
@@ -18,6 +19,7 @@ class RiskEventController extends BaseController
         $this->RiskMitigationModel = new RiskMitigations();
         $this->RiskCauseModel = new RiskCauses();
         $this->KPIModel = new KPIs();
+        $this->RiskCategoryModel = new RiskCategories();
     }
     
     public function index(){
@@ -63,7 +65,7 @@ class RiskEventController extends BaseController
 
         $records = $this->RiskEventModel
                 ->join('kpis', 'kpis.id = risk_events.id_kpi')
-                ->select('risk_events.id as id, kpis.name as kpi_name, risk_number, risk_event, risk_events.is_active, risk_events.year')
+                ->select('risk_events.id as id, risk_events.objective, kpis.name as kpi_name, risk_number, risk_event, risk_events.is_active, risk_events.year')
                 ->orLike('risk_events.risk_event', $searchValue)
                 //->orderBy($columnName,$columnSortOrder)
                 ->findAll($rowperpage, $start);
@@ -73,6 +75,7 @@ class RiskEventController extends BaseController
         foreach($records as $record ){
             $data[] = array( 
                 "id"=>$record['id'],
+                "objective"=>$record['objective'],
                 "kpi_name"=>$record['kpi_name'],
                 "risk_number"=>$record['risk_number'],
                 "risk_event"=>$record['risk_event'],
@@ -171,6 +174,7 @@ class RiskEventController extends BaseController
             'title'=>'Risk Events',
             'content'=>'admin/pages/risk_event/edit',
             'kpi_list'=> $this->KPIModel->get_list_kpis(),
+            'risk_category_list'=> $this->RiskCategoryModel->get_list_risk_category(),
             'detail_risk_event' => $this->RiskEventModel->get_risk_event($id)
         ];
         echo view('admin/template/template',$data);

@@ -31,7 +31,63 @@ class RiskEvent extends Migration
                 'type'              => 'VARCHAR',
                 'constraint'        => '4',
             ],
-			'is_active'       => [
+            'objective'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '500',
+            ],
+            'existing_control_1'       => [
+                'type'              => 'ENUM',
+                'constraint'        => "'Ada','Tidak Ada'",
+            ],
+            'existing_control_2'       => [
+                'type'              => 'ENUM',
+                'constraint'        => "'Memadai','Tidak Memadai'",
+            ],
+            'existing_control_1'       => [
+                'type'              => 'ENUM',
+                'constraint'        => "'Dijalankan','Belum Dijalankan'",
+            ],
+            'probability_level'       => [
+                'type'              => 'ENUM',
+                'constraint'        => "'1','2','3','4','5'",
+            ],
+            'impact_level'       => [
+                'type'              => 'ENUM',
+                'constraint'        => "'1','2','3','4','5'",
+            ],
+            'final_level'       => [
+                'type'              => 'INT',
+                'constraint'        => '10',
+            ],
+			'risk_analysis'       => [
+                'type'              => 'ENUM',
+                'constraint'        => "'R','M','T','E'",
+            ],
+            'probability_level_residual'       => [
+                'type'              => 'ENUM',
+                'constraint'        => "'1','2','3','4','5'",
+            ],
+            'impact_level_residual'       => [
+                'type'              => 'ENUM',
+                'constraint'        => "'1','2','3','4','5'",
+            ],
+            'final_level_residual'       => [
+                'type'              => 'INT',
+                'constraint'        => '10',
+            ],
+			'risk_analysis_residual'       => [
+                'type'              => 'ENUM',
+                'constraint'        => "'R','M','T','E'",
+            ],
+            'risk_impact_quantitative'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '500',
+            ],
+            'description'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '500',
+            ],
+            'is_active'       => [
                 'type'              => 'ENUM',
                 'constraint'        => "'0','1'",
             ],

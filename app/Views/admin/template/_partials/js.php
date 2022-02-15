@@ -29,3 +29,6 @@
     
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/0de6e278ef.js" crossorigin="anonymous"></script>
+
+    <!--datatable select -->
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" ></script>

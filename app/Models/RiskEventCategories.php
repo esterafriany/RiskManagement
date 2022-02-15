@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class RiskEvents extends Model
+class RiskEventCategories extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'risk_events';
+    protected $table            = 'risk_event_categories';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -15,26 +15,11 @@ class RiskEvents extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        "id_kpi",
-        "risk_number",
-        "risk_event",
-        "year",
-        "objective",
-        "existing_control_1",
-        "existing_control_2",
-        "existing_control_1",
-        "probability_level",
-        "impact_level",
-        "final_level",
-        "risk_analysis",
-        "probability_level_residual",
-        "impact_level_residual",
-        "final_level_residual",
-        "risk_analysis_residual",
-        "risk_impact_quantitative",
-        "description",
+        "id_risk_category",
+        "id_risk_event",
         "is_active"
     ];
+
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
@@ -59,8 +44,8 @@ class RiskEvents extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function get_risk_event($id)
+    public function get_list_risk_event_categories()
     {	
-		return $this->db->query("SELECT * FROM risk_events WHERE id ='".$id."'")->getRow();
+		  return $this->db->query("SELECT * FROM risk_event_categories")->getResultArray();
     }
 }

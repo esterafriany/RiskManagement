@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class RiskMitigation extends Migration
+class RiskEventCategory extends Migration
 {
     public function up()
     {
@@ -19,13 +19,9 @@ class RiskMitigation extends Migration
                 'type'              => 'INT',
                 'constraint'        => '11',
             ],
-            'risk_mitigation'       => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '500',
-            ],
-            'id_pic'       => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '200',
+            'id_risk_category'       => [
+                'type'              => 'INT',
+                'constraint'        => '11',
             ],
 			'is_active'       => [
                 'type'              => 'ENUM',
@@ -41,11 +37,11 @@ class RiskMitigation extends Migration
             ]
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('risk_mitigations', true);
+        $this->forge->createTable('risk_event_categories', true);
     }
 
     public function down()
     {
-        $this->forge->dropTable('risk_mitigations');
+        $this->forge->dropTable('risk_event_categories');
     }
 }

@@ -22,6 +22,11 @@ class RiskCategoryController extends BaseController
 
     public function getRiskCategoryByRiskEvent($id_risk){
         $data = $this->RiskCategoryModel->get_list_risk_category_by_risk_id($id_risk);
+
+        $data = [
+            'risk_event_category_list'=> $this->RiskCategoryModel->get_list_risk_category_by_risk_id($id_risk),
+            'risk_category_list'=> $this->RiskCategoryModel->get_list_risk_category()
+        ];
 		
 		echo json_encode($data);
     }

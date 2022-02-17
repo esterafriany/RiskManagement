@@ -418,6 +418,13 @@ class UserController extends BaseController
       }
   
     }
+
+    public function getListDivision(){
+        
+      $data = $this->DivisionModel->get_list_division();
+
+      echo json_encode($data);
+  }
     
 	
 }

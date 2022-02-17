@@ -76,6 +76,7 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('RiskEventController/onAddDetailRisk', 'RiskEventController::onAddDetailRisk', ['as' => 'add-risk-event-detail']);
 	
 	//Risk Event Detail
+	
 });
 
 $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){

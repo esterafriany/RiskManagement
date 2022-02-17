@@ -61,6 +61,6 @@ class RiskEvents extends Model
 
     public function get_risk_event($id)
     {	
-		return $this->db->query("SELECT * FROM risk_events WHERE id ='".$id."'")->getRow();
+		  return $this->db->query("SELECT * FROM risk_events WHERE id ='".$id."'")->getRow();
     }
 }

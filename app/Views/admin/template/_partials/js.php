@@ -32,3 +32,9 @@
 
     <!--datatable select -->
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" ></script>
+
+      <!--dropdown select -->
+      <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+
+
+    

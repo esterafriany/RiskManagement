@@ -159,8 +159,7 @@
 	});
 	
 	function edit_division(id){
-		// $('#form')[0].reset(); // reset form on modals
- 
+
 	  //Ajax Load data from ajax
 	  $.ajax({
 		url : "<?=site_url('UserController/onDetailDivision')?>/" + id,

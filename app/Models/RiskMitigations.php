@@ -45,9 +45,9 @@ class RiskMitigations extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function get_list_risk_mitigation()
+    public function get_list_risk_mitigation($id_risk)
     {	
-		return $this->db->query("SELECT * FROM risk_mitigations")->getResultArray();
+		  return $this->db->query("SELECT * FROM risk_mitigations WHERE id_risk_event='".$id_risk."'")->getResultArray();
     }
     public function delete_by_id_risk($id_risk_event)
     {	

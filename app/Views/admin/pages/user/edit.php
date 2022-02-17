@@ -42,6 +42,25 @@
 				</select>
 				</div>
 			</div>
+
+			<div class="form-group row">
+				<label class="control-label col-sm-3 align-self-center mb-0" for="pwd2">Divisi:</label>
+				<div class="col-sm-9">
+
+				<select class="form-control form-select" name="id_division">
+					<option value="" disabled selected hidden >Pilihan</option>
+					<?php
+						if($division_list){
+							foreach($division_list as $division){
+								?>
+									<option value="<?=$division['id']?>"><?=$division['name']?></option>
+								<?php
+							}	
+						}
+					?>
+				</select>
+				</div>
+			</div>
 			
 			<div class="form-group row">
 				<label class="control-label col-sm-3 align-self-center mb-0" for="pwd2">Status:</label>

@@ -40,11 +40,17 @@ class AuthenticationController extends BaseController
 				'name'      => $data['name'],
 				'email'       => $data['email'],
 				'id_group'       => $data['id_group'],
+				'division_name'       => $data['division_name'],
 				'isLoggedIn'      => TRUE
 			];
 			$session->set($ses_data);
-			
-			return redirect('get-dashboards');
+            
+            if(session()->get('id_group') == "1"){
+                return redirect('get-dashboards');
+            }else{
+                return redirect('get-dashboard');
+            }
+            
 			
         }else{
             $session->setFlashdata('msg', 'User not Found');

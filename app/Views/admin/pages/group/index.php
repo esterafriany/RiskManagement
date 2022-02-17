@@ -18,7 +18,7 @@
                            <tr>
                            <th>Nama Group</th>
                            <th>Status</th>
-                           <th>Aksi <i class="fas fa-user"></i></th>
+                           <th>Aksi </th>
                         </tr>
                         </tr>
                      </thead>

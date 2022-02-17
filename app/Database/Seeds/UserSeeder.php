@@ -13,28 +13,32 @@ class UserSeeder extends Seeder
 
 		$user_object->insertBatch([
 			[
-				"id_group" => 1,
-				"email" => "ester@gmail.com",
+				"id_group" => "1",
+				"id_division" => "0",
+				"email" => "psmr@perumppd.co.id",
 				"password" =>md5("password"),
 				"username" => "tes",
 				"name" => "Rahul Sharma",
 				"gender" => "wanita",
 				"no_telp" => "7899654125",
 				"alamat" => "jakarta",
-				"is_active" => 1
-				
+				"is_active" => "1"
 			],
 			[
-				"id_group" => 1,
-				"email" => "afriany@gmail.com",
+				"id_group" => "1",
+				"id_division" => "1",
+				"email" => "pic@perumppd.co.id",
 				"password" =>md5("password"),
 				"username" => "tes",
 				"name" => "Sharma",
 				"gender" => "pria",
 				"no_telp" => "7899654125",
 				"alamat" => "jakarta",
-				"is_active" => 1
+				"is_active" => "1"
 			]
 		]);
+
+		
+		
 	}
 }

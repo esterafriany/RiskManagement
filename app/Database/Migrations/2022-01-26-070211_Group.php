@@ -45,7 +45,7 @@ class Group extends Migration
             ]
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('groups');
+        $this->forge->createTable('groups', true);
     }
 
     public function down()

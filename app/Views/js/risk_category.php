@@ -1,33 +1,4 @@
-<!-- Library Bundle Script -->
-<script src="../assets/js/core/libs.min.js"></script>
-
-<!-- External Library Bundle Script -->
-<script src="../assets/js/core/external.min.js"></script>
-
-<!-- Widgetchart Script -->
-<script src="../assets/js/charts/widgetcharts.js"></script>
-
-<!-- mapchart Script -->
-<script src="../assets/js/charts/vectore-chart.js"></script>
-<script src="../assets/js/charts/dashboard.js" ></script>
-
-<!-- fslightbox Script -->
-<script src="../assets/js/plugins/fslightbox.js"></script>
-
-<!-- Settings Script -->
-<script src="../assets/js/plugins/setting.js"></script>
-
-<!-- Form Wizard Script -->
-<script src="../assets/js/plugins/form-wizard.js"></script>
-
-<!-- AOS Animation Plugin-->
-<script src="../assets/vendor/aos/dist/aos.js"></script>
-
-<!-- App Script -->
-<script src="../assets/js/hope-ui.js" defer></script>
-
-<!-- font awesome -->
-<script src="https://kit.fontawesome.com/0de6e278ef.js" crossorigin="anonymous"></script>
+<?= $this->include('admin/template/_partials/js')?>
 
 <script>
 	$(document).ready(function() {
@@ -187,6 +158,43 @@
 				}
 			});
 		});
+
+	// edit group
+    $btn_edit_risk_category.on("click", function (e) {
+		var table = $('#riskcategoryTable').DataTable();
+        $.ajax({
+				url : "<?=site_url('RiskMasterController/onEditRiskCategory')?>/" + document.getElementById('id').value,
+				type: "POST",
+				data: $('#form-edit-risk-category').serialize(),
+				dataType: "JSON",
+
+				success: function(response)
+				{
+					//if success close modal and reload ajax table
+					//$('body').removeClass('modal-open');
+					$('.modal-backdrop.show').css('opacity','0');
+					$('.modal-backdrop').css('z-index','-1');
+					$('#modal-add-group').modal("hide");
+				   
+					swal({
+					  title: "Sukses!",
+					  text: "Data sukses diubah!",
+					  type: "success",
+					  confirmButtonText: "OK"
+					},
+					function(isConfirm){
+					  if (isConfirm) {
+						table.ajax.reload(null, false);
+					  }
+					});
+				  
+				},
+				error: function (jqXHR, textStatus, errorThrown)
+				{
+					swal("Gagal","Gagal mengubah data.","error");
+				}
+			});
+		});
 	});
 	
 	function edit_risk_category(id){
@@ -215,7 +223,7 @@
 	}
 	
 	function delete_risk_category(id){
-		var table = $('#groupTable').DataTable();
+		var table = $('#riskCategoryTable').DataTable();
 		swal({
 			title: "Apakah anda yakin ingin hapus?",
 			text: "Data akan dihapus tidak dapat di-recover!",
@@ -228,7 +236,7 @@
 		function () {
 			// ajax delete data from database
 			  $.ajax({
-				url : "<?=site_url('RiskMasterController/onDeleteGroup')?>/" + id,
+				url : "<?=site_url('RiskMasterController/onDeleteRiskCategory')?>/" + id,
 				type: "POST",
 				dataType: "JSON",
 				success: function(data)

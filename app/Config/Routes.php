@@ -3,6 +3,12 @@
 namespace Config;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RiskMasterController;
+use App\Http\Controllers\KPIController;
+use App\Http\Controllers\DashboardsController;
+use App\Http\Controllers\RiskCauseController;
+
+
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
@@ -50,13 +56,37 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('user', 'UserController::user_list', ['as' => 'get-users']);
 	$routes->add('UserController/onAddUser', 'UserController::onAddUser', ['as' => 'add-users']);
 
+	// Division
+	$routes->add('division', 'UserController::division_list', ['as' => 'get-divisions']);
+	$routes->add('UserController/onAddDivision', 'UserController::onAddDivision', ['as' => 'add-divisions']);
+
 	
 	//Risk Categories
 	$routes->add('risk_category', 'RiskMasterController::index', ['as' => 'get-risk-category']);
 	$routes->add('RiskMasterController/onAddRiskCategory', 'RiskMasterController::onAddRiskCategory', ['as' => 'add-risk-category']);
+
+	//KPI
+	$routes->add('kpi', 'KPIController::index', ['as' => 'get-kpi']);
+	$routes->add('KPIController/onAddKPI', 'KPIController::onAddKPI', ['as' => 'add-kpi']);
+
+	//Risk Event
+	$routes->add('risk-event', 'RiskEventController::index', ['as' => 'get-risk-events']);
+	$routes->add('RiskEventController/onAddRiskEvent', 'RiskEventController::onAddRiskEvent', ['as' => 'add-risk-event']);
+	$routes->add('detail-risk-event/(:num)', 'RiskEventController::getDetailRiskEvent/$1', ['as' => 'detail-risk-event']);
+	$routes->add('RiskEventController/onAddDetailRisk', 'RiskEventController::onAddDetailRisk', ['as' => 'add-risk-event-detail']);
+	
+	//Risk Event Detail
 	
 });
 
+$routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
+	//dashboard
+    $routes->add('dashboards', 'RiskOwner/DashboardController::index', ['as' => 'get-dashboard']);
+
+	//Risk Event
+	$routes->add('risk-events', 'RiskOwner/RiskEventController::index', ['as' => 'get-risk-event']);
+
+});
 
 
 

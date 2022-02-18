@@ -21,7 +21,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <small>Kategori Risiko</small>
+                                                <small>Sasaran</small>
                                                 <input type="text" class="form-control" id="objective" name="objective" value="<?php echo $detail_risk_event->objective;?>">
                                             </div>
                                             <div class="form-group">
@@ -219,6 +219,7 @@
             </div>
             <div class="card-footer">
                 <button type="button" class="btn btn-secondary">Batal</button>
+                <button type="button" class="btn btn-primary">Update Residual</button>
                 <button type="button" id="btn-edit-risk-event"  class="btn btn-primary">Simpan</button>
             </div>
          </div>

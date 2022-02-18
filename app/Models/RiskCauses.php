@@ -54,8 +54,5 @@ class RiskCauses extends Model
       $sql = "DELETE FROM risk_causes WHERE id_risk_event='".$id_risk_event."'";
       $result = $this->db->query($sql);
     }
-
-    
-
     
 }

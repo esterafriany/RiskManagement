@@ -9,6 +9,7 @@ use App\Models\RiskEvents;
 use App\Models\RiskCauses;
 use App\Models\RiskCategories;
 use App\Models\RiskMitigations;
+use App\Models\RiskEventCategories;
 use App\Models\KPIs;
 
 class RiskEventController extends BaseController
@@ -20,6 +21,7 @@ class RiskEventController extends BaseController
         $this->RiskCauseModel = new RiskCauses();
         $this->KPIModel = new KPIs();
         $this->RiskCategoryModel = new RiskCategories();
+        $this->RiskEventCategoryModel = new RiskEventCategories();
     }
     
     public function index(){
@@ -129,9 +131,9 @@ class RiskEventController extends BaseController
            
             $risk_causes = json_decode($_POST['risk_cause']);
             $id_risk_event = json_decode($_POST['id_risk_event']);
-            $risk_mitigations = json_decode($_POST['risk_mitigation']);
+            $division_assignment = json_decode($_POST['division_assignment']);
+            $risk_categories = json_decode($_POST['risk_category']);
 
-            
             $risk_cause_num = count($risk_causes);
             if($risk_cause_num > 0){
                 //delete risk cause
@@ -147,23 +149,45 @@ class RiskEventController extends BaseController
                 }
             }
             
-            $risk_mitigation_num = count($risk_mitigations);
-            if($risk_mitigation_num > 0){
-                //delete risk mit
+            $division_assignment_num = count($division_assignment);
+            if($division_assignment_num > 0){
+
+                //delete risk mit and risk mit division
                 //$this->RiskMitigationModel->delete_by_id_risk($id_risk_event);
                 //re-add risk mit
-                for($j = 0; $j < $risk_mitigation_num; $j++){
+
+                for($j = 0; $j < $division_assignment_num; $j++){
+                
+                    $arr = explode(",",$division_assignment[j]);
+                        for($l = 0; $l < $arr; $l++){
+                            
+                        }
+                    // $data = [
+                    //     'id_risk_event' => $id_risk_event,
+                    //     'risk_mitigation' =>$risk_mitigations[$j],
+                    //     'is_active' => "1",
+                    // ];
+                    // $this->RiskMitigationModel->insert($data);
+                }
+            }
+
+            $risk_category_num = count($risk_categories);
+            if($risk_category_num > 0){
+                //delete risk cause
+                $this->RiskEventCategoryModel->delete_by_id_risk($id_risk_event);
+                 //re-add risk cause
+                for($k = 0; $k < $risk_category_num; $k++){
                     $data = [
                         'id_risk_event' => $id_risk_event,
-                        'risk_mitigation' =>$risk_mitigations[$j],
+                        'id_risk_category' =>$risk_categories[$k],
                         'is_active' => "1",
                     ];
-                    $this->RiskMitigationModel->insert($data);
+                    $this->RiskEventCategoryModel->insert($data);
                 }
             }
            
-            echo json_encode(array("status" => TRUE));
-            //echo json_encode(array("status" => $risk_cause_num));
+            //echo json_encode(array("status" => TRUE));
+            echo json_encode(array("status" => $arr));
         }catch (\Exception $e) {
             
         }

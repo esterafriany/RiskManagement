@@ -2,15 +2,12 @@
 
 <script>
 	$(document).ready(function() {
-
-
-  
-
-
+		
 		var $btn_edit_risk_event = $("#btn-edit-risk-event");
 		var site_url = window.location.pathname;
         var arr = site_url.split("/");
         var id_risk_event = arr[arr.length - 1];
+		let y = 0;
 
 		$.ajax({
 			url : "<?=site_url('RiskCauseController/getRiskCauseList')?>",
@@ -57,40 +54,37 @@
 						<tr>
 							<td width="50%">
 								<input type="text" name="risk_mitigation[]" value="${result['risk_mitigation_list'][i]['risk_mitigation']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
+								<input type="hidden" name="risk_mitigation_id[]" value="${result['risk_mitigation_list'][i]['id']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 							</td>
 							<td>Assign To: </td>
 							<td>
-							<input type="text" id="selectedID-${result['risk_mitigation_list'][i]['id']}" name="selectedID[]">
-								<select id="division-${result['risk_mitigation_list'][i]['id']}" multiple class="form-control">
+							<input type="hidden" id="selectedID-${i}" name="assignment_division[]">
+								<select onChange="show(${i})" id="division-${i}" multiple="multiple" class="form-control">
 								</select>
 							</td>
 							<td><button type="button" id="" class="btn btn-outline-danger btn-sm removes" name="removes" ><i class="fas fa-trash-alt"></i></button></td>
 						</tr>
 						</table>`;
-
-
+						
 					id_risk_mitigation.push(result['risk_mitigation_list'][i]['id']);
-
 					
 				}
 
 				document.getElementById("riskMitigationList").innerHTML = penampung;
 
 				var temp2 = [];
+				y = id_risk_mitigation.length;
 				for(k = 0; k < id_risk_mitigation.length; k++){
 				
 					var list_risk_mitigation = get_risk_assignment(id_risk_mitigation[k]);
 					
-
 					for(j = 0; j < list_risk_mitigation.length; j++){
-						temp2.push(id_risk_mitigation[k]);
-						
+						temp2.push(list_risk_mitigation[j]['id']);
 					}
-					
-					
+				
+				
 					var list_division = get_list_division();
-
-					var elm = $('#division-'+id_risk_mitigation[k]);
+					var elm = $('#division-'+k);
 					$(elm).select2({
 						placeholder: "Pilih Divisi",
 						data:list_division
@@ -99,13 +93,10 @@
 						return val.id;
 						}).join(",");
 						
-						$('#selectedID-'+id_risk_mitigation[k]).val(selectedIDs);
+						$('#selectedID-'+k).val(selectedIDs);
 					}).select2('val',temp2);
-					
+					temp2=[];
 				}
-				
-				
-		
 			},
 			error: function (jqXHR, textStatus, errorThrown)
 			{
@@ -126,25 +117,20 @@
 				var count2 = result['risk_category_list'].length;
 
 				for(i = 0; i < count1; i++){
-					
 					for(j = 0; j < count2; j++){
-					
 						if(result['risk_category_list'][j]['id'] == result['risk_event_category_list'][i]['id_category']){
 							option_risk_category += `<option value="${result['risk_category_list'][j]['id']}" selected>${result['risk_category_list'][j]['name']}</option>`;
 						
 						}else{
 							option_risk_category += `<option value="${result['risk_category_list'][j]['id']}">${result['risk_category_list'][j]['name']}</option>`;
-						
 						}
 					}
 					penampung += `<table width="100%">
 									<tr>
 										<td>
-											<select class="form-control form-select" name="existing_control_1">
+											<select class="form-control form-select" name="risk_category[]">
                                                 <option value="" disabled selected hidden >Pilihan</option>
-												`+ 
-												option_risk_category
-												+`
+												`+  option_risk_category +`
                                             </select>
 												
 										</td>
@@ -174,66 +160,61 @@
 		});
 
 		$("#add-more-mitigation").click(function () {
-
+			
 			$("#riskMitigationList").last().append(
-				`<table width="100%" id="riskMitigationTable"><tr><td><input type="text" name="risk_mitigation[]" value="" class="form-control" placeholder="Masukkan Mitigasi Risiko">
-				</td>
-				<td>
-				<input type="text" id="selectedID" name="selectedID[]">
-				<select id="division[]" name="division[]" multiple>
-				</select>
-				</td>
-				<td><button type="button" name="removes" id="" class="btn btn-outline-primary btn-sm removes" ><i class="fas fa-trash-alt"></i></button></td></tr></table>`
+				`<table width="100%">
+					<tr>
+						<td width="50%">
+							<input type="text" name="risk_mitigation[]" value="" class="form-control" placeholder="Masukkan Mitigasi Risiko">
+							<input type="hidden" name="risk_mitigation_id[]" value="" class="form-control" >
+						</td>
+						<td>Assign To:</td>
+						<td>
+							<input type="hidden" id="selectedID-${y}" name="assignment_division[]">
+							<select onChange="show(${y})" id="division-${y}" multiple="multiple" name="assignment_division[]" class="form-control">
+							</select>
+						</td>
+						<td>
+							<button type="button" name="removes" id="" class="btn btn-outline-primary btn-sm removes" ><i class="fas fa-trash-alt"></i></button>
+						</td>
+					</tr>
+				</table>`
 			);
 				var list_division = get_list_division();
-				var elm = $('#division');
+				var elm = $('#division-'+y);
 				$(elm).select2({
 					placeholder: "Pilih Divisi",
 					data: list_division
-				}).change(function () {
-					var selectedIDs = $.map($(elm).select2('data'), function (val, i) {
-					return val.id;
-					}).join(",");
-					$('#selectedID').val(selectedIDs);
 				});
-				
 
-			$.ajax({
-
-				url : "<?php echo base_url('RiskEventController/onAddDetailRisk')?>",
-				type: "POST",
-				data: {'id_risk_event':id_risk,'risk_cause':JSON.stringify(risk_cause),'risk_mitigation':JSON.stringify(risk_mitigation)},
-				dataType: "JSON",
-
-				success: function(response)
-				{
-					console.log(response);
-					swal({
-					  title: "Sukses!",
-					  text: "Data sukses ditambah/diubah!",
-					  type: "success",
-					  confirmButtonText: "OK"
-					},
-					function(isConfirm){
-					  if (isConfirm) {
-						location.reload();
-					  }
-					});
-				  
-				},
-				error: function (jqXHR, textStatus, errorThrown)
-				{
-					//swal("Gagal","Gagal mengubah data.","error");
-				}
-			});
+				y++;
 		});
 
 		$("#add-more-risk_category").click(function () {
-			$("#riskCategoryList").last().append(
-				'<table width="100%" id="riskMitigationTable"><tr><td><input type="text" name="risk_category[]" value="" class="form-control" placeholder="Masukkan Mitgasi Risiko">' +
-				'</td><td><button type="button" name="remove1" id="" class="btn btn-outline-primary btn-sm remove1" ><i class="fas fa-trash-alt"></i></button></td></tr></table>'+
-				''
-			);
+			
+			var risk_category = get_list_risk_category();
+			var option_risk_category = "";
+			var count = risk_category.length;
+
+			for( var j = 0; j < count; j++){
+				option_risk_category += `<option value="${risk_category[j]['id']}">${risk_category[j]['name']}</option>`;
+			}
+
+			$("#riskCategoryList").last().append(`<table width="100%">
+							<tr>
+								<td>
+									<select class="form-control form-select" name="risk_category[]">
+										<option value="" disabled selected hidden >Pilihan</option>
+										`+  option_risk_category +`
+									</select>
+										
+								</td>
+								<td>
+									<button type="button" id="" class="btn btn-outline-danger btn-sm remove1" name="remove1" ><i class="fas fa-trash-alt"></i></button>
+								</td>
+							</tr>
+						</table>`);
+			option_risk_category = "";
 		});
 
 		$(document).on('click', '.remove', function () {
@@ -254,7 +235,6 @@
 			//risk cause
 			var input = document.getElementsByName('risk_cause[]');
 			var risk_cause = [];
-
 			for (var i = 0; i < input.length; i++) {
                 var a = input[i];
 				risk_cause[i] = a.value;
@@ -262,21 +242,29 @@
             }
 
 			//risk mitigation
-			var input1 = document.getElementsByName('risk_mitigation[]');
-			var risk_mitigation = [];
+			var input1 = document.getElementsByName('risk_mitigation_id[]');
+			var input2 = document.getElementsByName('assignment_division[]');
+			
+			var division_assignment = new Array();
 
 			for (var i = 0; i < input1.length; i++) {
-                var b = input1[i];
-				risk_mitigation[i] = b.value;
-								
+				division_assignment[i]= input2[i].value;
+            }
+
+			console.log(division_assignment);
+			//risk category
+			var input3 = document.getElementsByName('risk_category[]');
+			var risk_category = [];
+			for (var i = 0; i < input3.length; i++) {
+                var a = input3[i];
+				risk_category[i] = a.value;			
             }
 			
 			var id_risk = document.getElementById('id_risk_event').value;
-		
 			$.ajax({
 				url : "<?php echo base_url('admin/RiskEventController/onAddDetailRisk')?>",
 				type: "POST",
-				data: {'id_risk_event':id_risk,'risk_cause':JSON.stringify(risk_cause),'risk_mitigation':JSON.stringify(risk_mitigation)},
+				data: {'id_risk_event':id_risk,'risk_category':JSON.stringify(risk_category),'risk_cause':JSON.stringify(risk_cause),'division_assignment':JSON.stringify(division_assignment)},
 				dataType: "JSON",
 
 				success: function(response)
@@ -334,6 +322,35 @@
 		});
 		return a;
 	}
+
+	function show(id_risk_mit){
+		
+		var elm = $('#division-'+id_risk_mit);
+
+		$(elm).change(function () {
+			var selectedIDs = $.map($(elm).select2('data'), function (val, i) {
+			return val.id;
+			}).join(",");
+			
+			$('#selectedID-'+id_risk_mit).val(selectedIDs);
+		});
+	}
+
+	function get_list_risk_category(){
+		var a;
+		$.ajax({
+			url : "<?=site_url('RiskCategoryController/getRiskCategoryList')?>",
+			type: "GET",
+			dataType: "json",
+			async: false,
+			success: function(data)
+			{
+				a = data;
+			}
+		});
+		return a;
+	}
+
 
 </script>
 

@@ -62,4 +62,9 @@ class RiskCategories extends Model
             ON risk_categories.id = risk_event_categories.id_risk_category
             WHERE risk_event_categories.id_risk_event = '".$risk_id."'")->getResultArray();
     }
+
+
+    
+
+    
 }

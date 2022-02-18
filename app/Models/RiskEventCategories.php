@@ -48,4 +48,11 @@ class RiskEventCategories extends Model
     {	
 		  return $this->db->query("SELECT * FROM risk_event_categories")->getResultArray();
     }
+
+    public function delete_by_id_risk($id_risk_event)
+    {	
+      $sql = "DELETE FROM risk_event_categories WHERE id_risk_event='".$id_risk_event."'";
+      $result = $this->db->query($sql);
+    }
+    
 }

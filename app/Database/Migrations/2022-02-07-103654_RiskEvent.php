@@ -43,7 +43,7 @@ class RiskEvent extends Migration
                 'type'              => 'ENUM',
                 'constraint'        => "'Memadai','Tidak Memadai'",
             ],
-            'existing_control_1'       => [
+            'existing_control_3'       => [
                 'type'              => 'ENUM',
                 'constraint'        => "'Dijalankan','Belum Dijalankan'",
             ],

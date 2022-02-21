@@ -230,28 +230,41 @@
 		});
 
 		// edit risk event
-		//$("#form-edit-risk-event").submit(function(e) {
+		
 		$btn_edit_risk_event.on("click", function (e) {
+			//risk event
+			var risk_event = new Array();
+			risk_event = {
+				'objective':  document.getElementById('objective').value,
+				'risk_event':  document.getElementById('risk_event').value,
+				'year':  document.getElementById('year').value,
+				'existing_control_1':  document.getElementById('existing_control_1').value,
+				'existing_control_2':  document.getElementById('existing_control_2').value,
+				'existing_control_3':  document.getElementById('existing_control_3').value,
+				'probability_level':  document.getElementById('probability_level').value,
+				'impact_level':  document.getElementById('impact_level').value,
+				'final_level':  document.getElementById('final_level').value,
+				'risk_analysis':  document.getElementById('risk_analysis').value
+			};
+			
+			//console.log(JSON.stringify(risk_event));
+
 			//risk cause
 			var input = document.getElementsByName('risk_cause[]');
 			var risk_cause = [];
 			for (var i = 0; i < input.length; i++) {
                 var a = input[i];
-				risk_cause[i] = a.value;
-								
+				risk_cause[i] = a.value;		
             }
 
 			//risk mitigation
-			var input1 = document.getElementsByName('risk_mitigation_id[]');
+			var input1 = document.getElementsByName('risk_mitigation[]');
 			var input2 = document.getElementsByName('assignment_division[]');
-			
 			var division_assignment = new Array();
-
 			for (var i = 0; i < input1.length; i++) {
-				division_assignment[i]= input2[i].value;
+				division_assignment[i]= input1[i].value +"."+input2[i].value;
             }
 
-			console.log(division_assignment);
 			//risk category
 			var input3 = document.getElementsByName('risk_category[]');
 			var risk_category = [];
@@ -264,7 +277,7 @@
 			$.ajax({
 				url : "<?php echo base_url('admin/RiskEventController/onAddDetailRisk')?>",
 				type: "POST",
-				data: {'id_risk_event':id_risk,'risk_category':JSON.stringify(risk_category),'risk_cause':JSON.stringify(risk_cause),'division_assignment':JSON.stringify(division_assignment)},
+				data: {'id_risk_event':id_risk,'risk_event':JSON.stringify(risk_event),'risk_category':JSON.stringify(risk_category),'risk_cause':JSON.stringify(risk_cause),'division_assignment':JSON.stringify(division_assignment)},
 				dataType: "JSON",
 
 				success: function(response)
@@ -285,7 +298,7 @@
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 				{
-					//swal("Gagal","Gagal mengubah data.","error");
+					swal("Gagal","Gagal mengubah data.","error");
 				}
 			});
 
@@ -349,6 +362,28 @@
 			}
 		});
 		return a;
+	}
+
+	function change_level(){
+		var final_level = document.getElementById("final_level");
+		var probability_level = document.getElementById('probability_level').value;
+		var impact_level = document.getElementById('impact_level').value;
+		
+		if(probability_level.value != ""){
+			final_level.value = parseInt(probability_level) * parseInt(impact_level);
+		}
+
+	}
+
+	function change_level1(){
+		var final_level = document.getElementById("final_level");
+		var probability_level = document.getElementById('probability_level').value;
+		var impact_level = document.getElementById('impact_level').value;
+		
+		if(impact_level.value != ""){
+			final_level.value = parseInt(probability_level) * parseInt(impact_level);
+		}
+
 	}
 
 

@@ -51,4 +51,10 @@ class RiskMitigationDivisions extends Model
         FROM risk_mitigation_divisions JOIN divisions
         ON divisions.id = risk_mitigation_divisions.id_division WHERE id_risk_mitigation ='".$id_risk_mitigation."'")->getResultArray();
     }
+
+    public function delete_by_id_risk_mitigation($id_risk_mitigation)
+    {	
+      $sql = "DELETE FROM risk_mitigation_divisions WHERE id_risk_mitigation='".$id_risk_mitigation."'";
+      $result = $this->db->query($sql);
+    }
 }

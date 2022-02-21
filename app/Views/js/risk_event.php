@@ -104,8 +104,7 @@
 				success: function(response)
 				{
 					console.log(response);
-					//if success close modal and reload ajax table
-					//$('body').removeClass('modal-open');
+					
 					$('.modal-backdrop.show').css('opacity','0');
 					$('.modal-backdrop').css('z-index','-1');
 					$('#modal-add-group').modal("hide");
@@ -173,6 +172,28 @@
 			
 		});
 		
+	}
+
+	function change_level(){
+		var final_level = document.getElementById("final_level");
+		var probability_level = document.getElementById('probability_level').value;
+		var impact_level = document.getElementById('impact_level').value;
+		
+		if(probability_level.value != ""){
+			final_level.value = parseInt(probability_level) * parseInt(impact_level);
+		}
+
+	}
+
+	function change_level1(){
+		var final_level = document.getElementById("final_level");
+		var probability_level = document.getElementById('probability_level').value;
+		var impact_level = document.getElementById('impact_level').value;
+		
+		if(impact_level.value != ""){
+			final_level.value = parseInt(probability_level) * parseInt(impact_level);
+		}
+
 	}
 	
 </script>

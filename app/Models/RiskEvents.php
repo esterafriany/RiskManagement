@@ -22,7 +22,7 @@ class RiskEvents extends Model
         "objective",
         "existing_control_1",
         "existing_control_2",
-        "existing_control_1",
+        "existing_control_3",
         "probability_level",
         "impact_level",
         "final_level",

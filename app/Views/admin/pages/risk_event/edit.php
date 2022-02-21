@@ -22,11 +22,11 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <small>Sasaran</small>
-                                                <input type="text" class="form-control" id="objective" name="objective" value="<?php echo $detail_risk_event->objective;?>">
+                                                <input type="text" required class="form-control" id="objective" name="objective" value="<?php echo $detail_risk_event->objective;?>">
                                             </div>
                                             <div class="form-group">
                                                 <small>KPI</small>
-                                                <select class="form-control form-select" name="id_kpi" disabled>
+                                                <select class="form-control form-select" id="id_kpi" name="id_kpi" disabled>
                                                     <option value="" disabled selected hidden >Pilihan</option>
                                                     <?php
                                                         if($kpi_list){
@@ -48,21 +48,21 @@
 
                                             <div class="form-group">
                                                 <small>Nomor Risiko</small>
-                                                <input type="text" class="form-control" id="risk_number" name="risk_number" value="<?php echo $detail_risk_event->risk_number;?>">
+                                                <input type="text" class="form-control" id="risk_number" name="risk_number" value="<?php echo $detail_risk_event->risk_number;?>" disabled>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <small>Risiko Utama</small>
-                                                <textarea class="form-control" id="risk_event" name="risk_event"  rows="2"><?php echo $detail_risk_event->risk_event;?></textarea>
+                                                <textarea class="form-control" required id="risk_event" name="risk_event"  rows="2"><?php echo $detail_risk_event->risk_event;?></textarea>
                                             </div>
 
                                             <div class="form-group">
                                                 <small>Tahun</small>
-                                                <select class="form-control form-select" name="year">
+                                                <select class="form-control form-select" required id="year" name="year">
                                                     <option value="" disabled selected hidden >Pilihan</option>
                                                     <?php
                                                         for($i=2020;$i<2023;$i++){ 
-                                                            if($detail_risk_event->year == $kpi['year']){ ?>
+                                                            if($detail_risk_event->year == $i){ ?>
                                                                 <option value="<?=$i?>"selected><?php echo $i;?></option>
                                                             <?php 
                                                             }else{?>
@@ -72,17 +72,7 @@
                                                     ?>
                                                 </select>
                                             </div>
-                                            
 
-                                           <!--  <select id="multipleSelectExample" data-placeholder="Select Party Extras" multiple>
-                                                <option value="40">Fairy Floss Machine</option>
-                                                <option value="30">Popcorn machine</option>
-                                                <option value="20">Bubble Machine</option>
-                                                <option value="10">Smoke Machine</option>
-                                                <option value="0">party Effect Light</option>
-                                            </select> -->
-
-        
                                             <div class="form-group">
                                                 <small>Kategori Risiko</small>
                                                 <div id="riskCategoryList">
@@ -91,83 +81,119 @@
                                                 <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-risk_category"><i class="fas fa-plus-circle"></i> Tambah Kategori</button>
                                                 
                                             </div>
-                                            
                                         </div>
-
-
 
                                     <!-- Coloumn -->
                                     <div class="col-md-6">
                                         <div class="form-group row">
                                             <small>Existing Control 1</small>
                                             <div class="col-sm-12">
-                                            <select class="form-control form-select" name="existing_control_1">
+                                            <select class="form-control form-select" required id="existing_control_1" name="existing_control_1">
                                                 <option value="" disabled selected hidden >Pilihan</option>
-                                                <option value="Ada">Ada</option>
-                                                <option value="Tidak Ada">Tidak Ada</option>
+                                                    <?php if($detail_risk_event->existing_control_1 == "Ada"){?>
+                                                        <option value="Ada" selected>Ada</option>
+                                                    <?php }else{ ?>
+                                                        <option value="Ada">Ada</option>
+                                                    <?php } ?>
+
+                                                    <?php if($detail_risk_event->existing_control_1 == "Tidak Ada"){?>
+                                                        <option value="Tidak Ada" selected>Tidak Ada</option>
+                                                    <?php }else{ ?>
+                                                        <option value="Tidak Ada">Tidak Ada</option>
+                                                    <?php } ?>
+                                                    
                                             </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <small>Existing Control 2</small>
                                             <div class="col-sm-12">
-                                            <select class="form-control form-select" name="existing_control_2">
+                                            <select class="form-control form-select" required id="existing_control_2" name="existing_control_2">
                                                 <option value="" disabled selected hidden >Pilihan</option>
-                                                <option value="Memadai">Memadai</option>
-                                                <option value="Tidak Memadai">Tidak Memadai</option>
+                                                    <?php if($detail_risk_event->existing_control_2 == "Memadai"){?>
+                                                        <option value="Memadai" selected>Memadai</option>
+                                                    <?php }else{ ?>
+                                                        <option value="Memadai">Memadai</option>
+                                                    <?php } ?>
+
+                                                    <?php if($detail_risk_event->existing_control_2 == "Tidak Memadai"){?>
+                                                        <option value="Tidak Memadai" selected>Tidak Memadai</option>
+                                                    <?php }else{ ?>
+                                                        <option value="Tidak Memadai">Tidak Memadai</option>
+                                                    <?php } ?>
+                                                    
                                             </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <small>Existing Control 3</small>
                                             <div class="col-sm-12">
-                                            <select class="form-control form-select" name="existing_control_3">
+                                            <select class="form-control form-select" required id="existing_control_3" name="existing_control_3">
                                                 <option value="" disabled selected hidden >Pilihan</option>
-                                                <option value="Dijalankan">Dijalankan</option>
-                                                <option value="Belum Dijalankan">Belum Dijalankan</option>
+                                                    <?php if($detail_risk_event->existing_control_3 == "Dijalankan"){?>
+                                                        <option value="Dijalankan" selected>Dijalankan</option>
+                                                    <?php }else{ ?>
+                                                        <option value="Dijalankan">Dijalankan</option>
+                                                    <?php } ?>
+
+                                                    <?php if($detail_risk_event->existing_control_2 == "Belum Dijalankan"){?>
+                                                        <option value="Belum Dijalankan" selected>Belum Dijalankan</option>
+                                                    <?php }else{ ?>
+                                                        <option value="Belum Dijalankan">Belum Dijalankan</option>
+                                                    <?php } ?>
+                                                    
                                             </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <small>Tingkat Kemungkinan</small>
                                             <div class="col-sm-12">
-                                                <select class="form-control form-select" name="probability_level">
+                                                <select class="form-control form-select" required name="probability_level" id="probability_level" onChange="change_level1()">
                                                     <option value="" disabled selected hidden >Pilihan</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="2">3</option>
-                                                    <option value="2">4</option>
-                                                    <option value="2">5</option>
+                                                    <?php
+                                                        for($i=1;$i<6;$i++){ 
+                                                            if($detail_risk_event->probability_level == $i){ ?>
+                                                                <option value="<?=$i?>"selected><?php echo $i;?></option>
+                                                            <?php 
+                                                            }else{?>
+                                                                <option value="<?=$i?>"><?php echo $i;?></option>
+                                                            <?php }
+                                                        }
+                                                    ?>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <small>Tingkat Dampak</small>
                                             <div class="col-sm-12">
-                                                <select class="form-control form-select" name="impact_level">
+                                                <select class="form-control form-select" required name="impact_level" id="impact_level" onChange="change_level()">
                                                     <option value="" disabled selected hidden >Pilihan</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="2">3</option>
-                                                    <option value="2">4</option>
-                                                    <option value="2">5</option>
+                                                    <?php
+                                                        for($i=1;$i<6;$i++){ 
+                                                            if($detail_risk_event->impact_level == $i){ ?>
+                                                                <option value="<?=$i?>"selected><?php echo $i;?></option>
+                                                            <?php 
+                                                            }else{?>
+                                                                <option value="<?=$i?>"><?php echo $i;?></option>
+                                                            <?php }
+                                                        }
+                                                    ?>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <small>Level</small>
-                                            <input type="text" class="form-control" id="final_level" name="final_level" value="<?php echo $detail_risk_event->risk_number;?>">
+                                            <input type="text" required class="form-control" id="final_level" name="final_level" value="<?php echo $detail_risk_event->risk_number;?>">
                                         </div>
                                         <div class="form-group row">
                                             <small>Analisis Risiko</small>
                                             <div class="col-sm-12">
-                                                <select class="form-control form-select" name="impact_level">
+                                                <select class="form-control form-select" required id="risk_analysis" name="risk_analysis">
                                                     <option value="" disabled selected hidden >Pilihan</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="2">3</option>
-                                                    <option value="2">4</option>
-                                                    <option value="2">5</option>
+                                                    <option value="R">R</option>
+                                                    <option value="M">M</option>
+                                                    <option value="T">T</option>
+                                                    <option value="E">E</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -179,25 +205,6 @@
                     
                 </div>
                 <br/>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    Rencana Mitigasi:
-                                </li>
-                                <li class="list-group-item">
-                                    
-
-                                    <div id="riskMitigationList" name="riskMitigationList">
-                                    
-                                    </div><br/>
-                                <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-mitigation"><i class="fas fa-plus-circle"></i> Tambah Mitigasi</button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
@@ -216,10 +223,28 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    Rencana Mitigasi:
+                                </li>
+                                <li class="list-group-item">
+                                    <div id="riskMitigationList" name="riskMitigationList">
+                                    
+                                    </div><br/>
+                                    <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-mitigation"><i class="fas fa-plus-circle"></i> Tambah Mitigasi</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
             <div class="card-footer">
-                <button type="button" class="btn btn-secondary">Batal</button>
-                <button type="button" class="btn btn-primary">Update Residual</button>
+                <a href="<?=base_url('admin/risk-event')?>" type="button" class="btn btn-secondary">Batal</a>
+                <a href="<?=base_url('admin/risk-event')?>" type="button"  class="btn btn-primary">Update Residual</a>
                 <button type="button" id="btn-edit-risk-event"  class="btn btn-primary">Simpan</button>
             </div>
          </div>

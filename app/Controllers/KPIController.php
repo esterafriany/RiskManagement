@@ -101,7 +101,7 @@ class KPIController extends BaseController
 		}
     }
 
-    public function onDetailKPI($id) {
+  public function onDetailKPI($id) {
 		$data = $this->KPIModel->get_kpi($id);
 		
 		echo json_encode($data);

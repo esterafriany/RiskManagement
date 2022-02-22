@@ -47,7 +47,8 @@ $routes->get('/process-logout', 'AuthenticationController::logout', ['filter'=>'
 
 $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('dashboard', 'DashboardController::index', ['as' => 'get-dashboards']);
-	
+	//$routes->add('dashboard-matrix', 'DashboardController::onGetDataMatrix', ['as' => 'get-dashboard-matrix']);
+
 	//Group
 	$routes->add('group', 'UserController::group_list', ['as' => 'get-groups']);
 	$routes->add('UserController/onAddGroup', 'UserController::onAddGroup', ['as' => 'add-groups']);

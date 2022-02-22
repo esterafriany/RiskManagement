@@ -63,4 +63,10 @@ class RiskEvents extends Model
     {	
 		  return $this->db->query("SELECT * FROM risk_events WHERE id ='".$id."'")->getRow();
     }
+    public function get_data_matrix()
+    {	
+		  return $this->db->query("SELECT id, probability_level, impact_level , concat(probability_level,impact_level)  as td_id
+                                FROM risk_events
+                                WHERE YEAR = '2022'")->getResultArray();
+    }
 }

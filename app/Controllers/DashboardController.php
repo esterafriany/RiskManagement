@@ -23,8 +23,8 @@ class DashboardController extends BaseController
         echo view('admin/template/dashboard_template',$data);
     }
 
-    public function onGetDataMatrix() {
-		$data = $this->RiskEventModel->get_data_matrix();
+    public function onGetDataMatrix($year) {
+		$data = $this->RiskEventModel->get_data_matrix($year);
 		
 		echo json_encode($data);
 	}

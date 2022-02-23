@@ -2,25 +2,19 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-
+        var year = document.getElementById('year').value;
         //set td id value
+        
         $.ajax({
-		url : "<?=site_url('DashboardController/onGetDataMatrix')?>",
+		url : "<?=site_url('DashboardController/onGetDataMatrix')?>/" + year,
 		type: "GET",
 		dataType: "JSON",
 		success: function(data)
 		{
             var i = 0;
             for(i = 0; data.length ; i++){
-                document.getElementById(data[i]['td_id']).innerHTML += `<div class="iq-media-group iq-media-group-1"><a href="#" class="iq-media-1">
-                               <div class="icon iq-icon-box-3 rounded-pill"
-                               style="    height: 1.5rem;
-                                width: 1.5rem;
-                                min-width: 1.5rem;
-                                line-height: 1.2rem;
-                                font-size: 0.6rem;
-                                position: absolute;">R${data[i]['id']}</div>
-                            </a></div>` ;   
+                document.getElementById(data[i]['td_id']).innerHTML += `
+                <a href="" class="badge rounded-pill bg-warning text-dark">R${data[i]['id']}</a>` ;   
                              
             }
             
@@ -33,5 +27,34 @@
 		
     });
 
+    function update_matrix(){
+        year = document.getElementById('year').value;
+        
+        $.ajax({
+		url : "<?=site_url('DashboardController/onGetDataMatrix')?>/" + year,
+		type: "GET",
+		dataType: "JSON",
+		success: function(data)
+		{
+            
+            $('#table tr>td').each(function() {
+                $(this).find("#td").html("");
+            });
+
+            document.getElementById('11').innerHTML = "";
+            var i = 0;
+            for(i = 0; data.length ; i++){
+                document.getElementById(data[i]['td_id']).innerHTML += `
+                <a class="badge rounded-pill bg-warning text-dark">R${data[i]['id']}</a>` ;    
+                             
+            }
+            
+		},
+		error: function (jqXHR, textStatus, errorThrown)
+		{
+			swal('Data tidak ditemukan.');
+		}
+	  });
+    }
   
 </script>

@@ -72,7 +72,7 @@
                      <div class="progress-widget">
                         <div id="circle-progress-03" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="70" data-type="percent">
                            <svg class="card-slie-arrow " width="24" viewBox="0 0 24 24">
-                              <path fill="currentColor" d="M19,6.41L17.59,5L7,15.59V9H5V19H15V17H8.41L19,6.41Z" />
+                              <path fill="curxrentColor" d="M19,6.41L17.59,5L7,15.59V9H5V19H15V17H8.41L19,6.41Z" />
                            </svg>
                         </div>
                         <div class="progress-detail">
@@ -152,61 +152,62 @@
       <div class="row">
          <div class="col-md-12 col-lg-12">
             <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
-            <div class="card credit-card-widget" data-aos="fade-up" data-aos-delay="900">
-               
-               <div class="pb-4 border-0 card-header">
-                  
+            <div class="flex-wrap card-header d-flex justify-content-between">
                   <div class="header-title">
-                     <h4 class="card-title">Risk Map</h4> 
-                     
+                     <h4 class="mb-2 card-title">Risk Map</h4>    
                   </div>
-                 
+                  <div class="dropdown">
+                     <select class="form-control" id="year" name="year" onchange="update_matrix()">
+                        <option value="2021">2021</option>
+                        <option value="2022" selected>2022</option>
+                     </select>
+                  </div>
                </div>
-            </div>
                <div class="p-0 card-body">
+               </br>
                   <div class="bd-example table-responsive">
-                     <table id="table" width="90%" height="500px" table table-sm table-bordered style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
-                       
+                  
+                     <table id="table" name="table" width="90%" height="500px" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
                            <tr>
                               <td rowspan="6" width="5%" style="writing-mode: vertical-rl;">Tingkat Kemungkinan</td>
                               <td width="10%">Sangat Besar<br/>(5)</td>
-                              <td id="15" style="background-color:#f16a1b;"></td>
-                              <td id="25" style="background-color:#6bd1da;"></td>
-                              <td id="35" style="background-color:#6bd1da;"></td>
-                              <td id="45" style="background-color:#3a57e8;"></td>
-                              <td id="55" style="background-color:#3a57e8;"></td>
+                              <td id="15" name="td" style="background-color:#f16a1b;"></td>
+                              <td id="25" name="td" style="background-color:#6bd1da;"></td>
+                              <td id="35" name="td" style="background-color:#6bd1da;"></td>
+                              <td id="45" name="td" style="background-color:#3a57e8;"></td>
+                              <td id="55" name="td" style="background-color:#3a57e8;"></td>
                            </tr>
                            <tr>
                               <td>Besar<br/>(4)</td>
-                              <td id="14" style="background-color:#e1d725;"></td>
-                              <td id="24" style="background-color:#f16a1b;"></td>
-                              <td id="34" style="background-color:#6bd1da;"></td>
-                              <td id="44" style="background-color:#6bd1da;"></td>
-                              <td id="54" style="background-color:#3a57e8;"></td>
+                              <td id="14" name="td" style="background-color:#e1d725;"></td>
+                              <td id="24" name="td" style="background-color:#f16a1b;"></td>
+                              <td id="34" name="td" style="background-color:#6bd1da;"></td>
+                              <td id="44" name="td" style="background-color:#6bd1da;"></td>
+                              <td id="54" name="td" style="background-color:#3a57e8;"></td>
                            </tr>
                            <tr>
                               <td>Sedang<br/>(3)</td>
-                              <td id="13" style="background-color:#e1d725;"></td>
-                              <td id="23" style="background-color:#f16a1b;"></td>
-                              <td id="33" style="background-color:#f16a1b;"></td>
-                              <td id="43" style="background-color:#6bd1da;"></td>
-                              <td id="53" style="background-color:#6bd1da;"></td>
+                              <td id="13" name="td" style="background-color:#e1d725;"></td>
+                              <td id="23" name="td" style="background-color:#f16a1b;"></td>
+                              <td id="33" name="td" style="background-color:#f16a1b;"></td>
+                              <td id="43" name="td" style="background-color:#6bd1da;"></td>
+                              <td id="53" name="td" style="background-color:#6bd1da;"></td>
                            </tr>
                            <tr>
                               <td>Kecil<br/>(2)</td>
-                              <td id="12" style="background-color:#e1d725;"></td>
-                              <td id="22" style="background-color:#e1d725;"></td>
-                              <td id="32" style="background-color:#f16a1b;"></td>
-                              <td id="42" style="background-color:#f16a1b;"></td>
-                              <td id="52" style="background-color:#6bd1da;"></td>
+                              <td id="12" name="td" style="background-color:#e1d725;"></td>
+                              <td id="22" name="td" style="background-color:#e1d725;"></td>
+                              <td id="32" name="td" style="background-color:#f16a1b;"></td>
+                              <td id="42" name="td" style="background-color:#f16a1b;"></td>
+                              <td id="52" name="td" style="background-color:#6bd1da;"></td>
                            </tr>
                            <tr>
                               <td>Sangat Kecil<br/>(1)</td>
-                              <td id="11" style="background-color:#e1d725;"><div id="11" class="iq-media-group iq-media-group-1 sm"></div></td>
-                              <td id="21" style="background-color:#e1d725;"></td>
-                              <td id="31" style="background-color:#e1d725;"></td>
-                              <td id="41" style="background-color:#e1d725;"></td>
-                              <td id="51" style="background-color:#f16a1b;"></td>
+                              <td id="11" name="td" style="background-color:#e1d725;"></td>
+                              <td id="21" name="td" style="background-color:#e1d725;">aa</td>
+                              <td id="31" name="td" style="background-color:#e1d725;"></td>
+                              <td id="41" name="td" style="background-color:#e1d725;"></td>
+                              <td id="51" name="td" style="background-color:#f16a1b;"></td>
                            </tr>
                            <tr>
                               <td></td>
@@ -230,6 +231,6 @@
    </div>
 
 </div>
-      </div>
+</div>
 
 <?= $this->include("js/dashboard")?>

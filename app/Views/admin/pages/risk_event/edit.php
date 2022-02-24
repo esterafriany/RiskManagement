@@ -26,8 +26,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <small>KPI</small>
-                                                <select class="form-control form-select" id="id_kpi" name="id_kpi" disabled>
-                                                    <option value="" disabled selected hidden >Pilihan</option>
+                                                <select class="form-control form-select" id="id_kpi" name="id_kpi">
+                                                    <option value="" selected hidden >Pilihan</option>
                                                     <?php
                                                         if($kpi_list){
                                                             foreach($kpi_list as $kpi){

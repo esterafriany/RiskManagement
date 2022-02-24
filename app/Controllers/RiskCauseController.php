@@ -19,8 +19,8 @@ class RiskCauseController extends BaseController
         //
     }
 
-    public function getRiskCauseList(){
-        $data = $this->RiskCauseModel->get_list_risk_cause();
+    public function getRiskCauseList($id_risk_event){
+        $data = $this->RiskCauseModel->get_list_risk_cause($id_risk_event);
 		
 		echo json_encode($data);
     }

@@ -59,4 +59,15 @@ class RiskMitigations extends Model
     {	
 		  return $this->db->query("SELECT id FROM risk_mitigations WHERE id_risk_event='".$id_risk."'")->getResultArray();
     }
+
+    public function get_risk_monitoring_data()
+    {	
+		  return $this->db->query("SELECT risk_events.risk_event
+                    , risk_mitigations.risk_mitigation
+                    , risk_mitigation_details.id
+                    , risk_mitigation_details.risk_mitigation_detail
+                  FROM risk_events 
+                  LEFT JOIN risk_mitigations ON risk_events.id = risk_mitigations.id_risk_event
+                  LEFT JOIN risk_mitigation_details ON risk_mitigation_details.id_risk_mitigation = risk_mitigations.id")->getResultArray();
+    }
 }

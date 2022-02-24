@@ -36,7 +36,7 @@ class RiskEventController extends BaseController
         echo view('admin/template/template',$data);
     }
 
-    public function getRiskEvent(){
+    public function getRiskEvent($year){
         $request = service('request');
         $postData = $request->getPost();
         $dtpostData = $postData['data'];
@@ -62,6 +62,7 @@ class RiskEventController extends BaseController
 
         ## Fetch records
         $records = $this->RiskEventModel
+                ->where('year' , $year)
                 ->select('*')
                 ->orLike('risk_event', $searchValue)
                 ->orLike('is_active', $searchValue)
@@ -72,7 +73,7 @@ class RiskEventController extends BaseController
                 ->join('kpis', 'kpis.id = risk_events.id_kpi')
                 ->select('risk_events.id as id, risk_events.objective, kpis.name as kpi_name, risk_number, risk_event, risk_events.is_active, risk_events.year')
                 ->orLike('risk_events.risk_event', $searchValue)
-                //->orderBy($columnName,$columnSortOrder)
+                ->where('risk_events.year' , $year)
                 ->findAll($rowperpage, $start);
                 
         $data = array();

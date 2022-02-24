@@ -10,7 +10,7 @@
 		let y = 0;
 
 		$.ajax({
-			url : "<?=site_url('RiskCauseController/getRiskCauseList')?>",
+			url : "<?=site_url('RiskCauseController/getRiskCauseList')?>/" + id_risk_event,
 			type: "GET",
 			dataType: "JSON",
 			success: function(result)
@@ -49,7 +49,6 @@
 				var count = result.length;
 				
 				for(i = 0; i < count1; i++){
-					
 					penampung += `<table width="100%">
 						<tr>
 							<td width="50%">
@@ -65,11 +64,9 @@
 							<td><button type="button" id="" class="btn btn-outline-danger btn-sm removes" name="removes" ><i class="fas fa-trash-alt"></i></button></td>
 						</tr>
 						</table>`;
-						
 					id_risk_mitigation.push(result['risk_mitigation_list'][i]['id']);
-					
 				}
-
+			
 				document.getElementById("riskMitigationList").innerHTML = penampung;
 
 				var temp2 = [];
@@ -77,25 +74,22 @@
 				for(k = 0; k < id_risk_mitigation.length; k++){
 				
 					var list_risk_mitigation = get_risk_assignment(id_risk_mitigation[k]);
-					
+					console.log(list_risk_mitigation);
 					for(j = 0; j < list_risk_mitigation.length; j++){
 						temp2.push(list_risk_mitigation[j]['id']);
 					}
-				
-				
+					
 					var list_division = get_list_division();
 					var elm = $('#division-'+k);
-					$(elm).select2({
+					var prevSelect = $(elm).select2({
 						placeholder: "Pilih Divisi",
 						data:list_division
-					}).change(function () {
-						var selectedIDs = $.map($(elm).select2('data'), function (val, i) {
-						return val.id;
-						}).join(",");
-						
-						$('#selectedID-'+k).val(selectedIDs);
 					}).select2('val',temp2);
+					$('#selectedID-'+k).val(temp2);
+
+
 					temp2=[];
+					
 				}
 			},
 			error: function (jqXHR, textStatus, errorThrown)
@@ -171,7 +165,7 @@
 						<td>Assign To:</td>
 						<td>
 							<input type="hidden" id="selectedID-${y}" name="assignment_division[]">
-							<select onChange="show(${y})" id="division-${y}" multiple="multiple" name="assignment_division[]" class="form-control">
+							<select onchange="show(${y})" id="division-${y}" multiple="multiple" name="assignment_division[]" class="form-control">
 							</select>
 						</td>
 						<td>
@@ -180,12 +174,14 @@
 					</tr>
 				</table>`
 			);
+			
 				var list_division = get_list_division();
 				var elm = $('#division-'+y);
-				$(elm).select2({
+				var prevSelect = $(elm).select2({
 					placeholder: "Pilih Divisi",
 					data: list_division
 				});
+
 
 				y++;
 		});
@@ -238,6 +234,7 @@
 				'objective':  document.getElementById('objective').value,
 				'risk_event':  document.getElementById('risk_event').value,
 				'year':  document.getElementById('year').value,
+				'id_kpi':  document.getElementById('id_kpi').value,
 				'existing_control_1':  document.getElementById('existing_control_1').value,
 				'existing_control_2':  document.getElementById('existing_control_2').value,
 				'existing_control_3':  document.getElementById('existing_control_3').value,
@@ -247,8 +244,6 @@
 				'risk_analysis':  document.getElementById('risk_analysis').value
 			};
 			
-			//console.log(JSON.stringify(risk_event));
-
 			//risk cause
 			var input = document.getElementsByName('risk_cause[]');
 			var risk_cause = [];
@@ -337,16 +332,12 @@
 	}
 
 	function show(id_risk_mit){
-		
 		var elm = $('#division-'+id_risk_mit);
-
-		$(elm).change(function () {
-			var selectedIDs = $.map($(elm).select2('data'), function (val, i) {
+		var selectedIDs = $.map($(elm).select2('data'), function (val, i) {
 			return val.id;
-			}).join(",");
-			
-			$('#selectedID-'+id_risk_mit).val(selectedIDs);
-		});
+		}).join(","); 
+		
+		$('#selectedID-'+id_risk_mit).val(selectedIDs);
 	}
 
 	function get_list_risk_category(){

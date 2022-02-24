@@ -48,7 +48,7 @@
                         Tahun &nbsp;
                      
                      <div class="dropdown">
-                     <select class="form-control" id="year" name="year" onchange="update_matrix()">
+                     <select class="form-control" id="year_selected" name="year_selected" onchange="update_risk_table()">
                         <option value="2021">2021</option>
                         <option value="2022" selected>2022</option>
                      </select>
@@ -56,19 +56,22 @@
                   </div>
                </div><br/>
 				<div class="table-responsive">
-                  <table id="riskEventTable" class="table" width="100%" >
-                     <thead>
-                        <tr>
-                           <th>Sasaran</th>
-                           <th>KPI</th>
-                           <th>Nomor Risiko</th>
-                           <th>Risiko Utama</th>
-                           <th>Tahun</th>
-                           <th>Aksi</th>
-                        </tr>
-                     </thead> 
-                  </table>
+
+            
+               <table id="riskEventTable" class="table" width="100%">
+                  <thead>
+                     <tr>
+                        <th>Sasaran</th>
+                        <th>KPI</th>
+                        <th>Nomor Risiko</th>
+                        <th>Risiko Utama</th>
+                        <th>Tahun</th>
+                        <th>Aksi</th>
+                     </tr>
+                  </thead> 
+               </table>
                   
+               
                </div>
             </div>
          </div>
@@ -82,4 +85,13 @@
 </div>
 
 <?= $this->include("js/risk_event")?>
+
+<style>
+   .text-wrap{
+      white-space:normal;
+   }
+   .width-200{
+      width:200px;
+   }
+</style>
 

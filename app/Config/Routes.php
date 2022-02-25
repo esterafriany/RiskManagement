@@ -78,7 +78,10 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	
 	//Risk Monitoring
 	$routes->add('risk-monitoring', 'RiskMonitoringController::index', ['as' => 'get-risk-monitorings']);
-	
+
+	//Risk Mitigation 
+	$routes->add('risk-mitigation', 'RiskMitigationController::index', ['as' => 'get-risk-mitigations']);
+	$routes->add('detail-risk-mitigation/(:num)', 'RiskMitigationController::getDetailRiskMitigation/$1', ['as' => 'detail-risk-mitigations']);
 });
 
 $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){

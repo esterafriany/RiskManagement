@@ -49,6 +49,12 @@ class RiskMitigations extends Model
     {	
 		  return $this->db->query("SELECT * FROM risk_mitigations WHERE id_risk_event='".$id_risk."'")->getResultArray();
     }
+
+    public function get_risk_mitigation($id_risk_mitigation)
+    {	
+		  return $this->db->query("SELECT * FROM risk_mitigations WHERE id='".$id_risk_mitigation."'")->getRow();
+    }
+
     public function delete_by_id_risk($id_risk_event)
     {	
       $sql = "DELETE FROM risk_mitigations WHERE id_risk_event='".$id_risk_event."'";

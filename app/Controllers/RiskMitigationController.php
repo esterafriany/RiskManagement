@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 //Model
 use App\Models\RiskMitigations;
+use App\Models\RiskMitigationDetails;
 use App\Models\RiskEvents;
 use App\Models\Divisions;
 use App\Models\RiskMitigationDivisions;
@@ -18,6 +19,7 @@ class RiskMitigationController extends BaseController
     function __construct(){
         helper(['form', 'url']);
         $this->RiskMitigationModel = new RiskMitigations();
+        $this->RiskMitigationDetailModel = new RiskMitigationDetails();
         $this->DivisionModel = new Divisions();
         $this->RiskMitigationDivisionModel = new RiskMitigationDivisions();
         $this->RiskEventModel = new RiskEvents();
@@ -108,7 +110,7 @@ class RiskMitigationController extends BaseController
         return $this->response->setJSON($response);
     }
 
-    public function getDetailRiskMitigation($id) {
+    public function getDetailRiskMitigations($id) {
 		$data = [
             'title'=>'Risk Mitigation',
             'content'=>'admin/pages/risk_mitigation/edit',
@@ -119,6 +121,78 @@ class RiskMitigationController extends BaseController
         ];
         echo view('admin/template/template',$data);
 	}
+
+    public function getDetailRiskMitigation($id) {
+		$data = [
+            'title'=>'Risk Mitigation',
+            'content'=>'admin/pages/risk_mitigation/detail_risk_mitigation',
+            'risk_mitigation' => $this->RiskMitigationModel->get_risk_mitigation($id),
+            'id_risk_mitigation' => $id, 
+        ];
+        echo view('admin/template/template',$data);
+	}
+    
+    public function onDetailMitigation($id) {
+		$data = $this->RiskMitigationDetailModel->get_detail_mitigation($id);
+		
+		echo json_encode($data);
+	}
+
+    public function getDetailMitigation($id_risk_mitigation){
+        $request = service('request');
+        $postData = $request->getPost();
+        $dtpostData = $postData['data'];
+        $response = array();
+
+        ## Read value
+        $draw = $dtpostData['draw'];
+        $start = $dtpostData['start'];
+        $rowperpage = $dtpostData['length']; // Rows display per page
+        $columnIndex = $dtpostData['order'][0]['column']; // Column index
+        $columnName = $dtpostData['columns'][$columnIndex]['data']; // Column name
+        $columnSortOrder = $dtpostData['order'][0]['dir']; // asc or desc
+        $searchValue = $dtpostData['search']['value']; // Search value
+
+        ## Total number of records without filtering
+        $totalRecords = $this->RiskMitigationDetailModel->select('id')
+                ->where('id_risk_mitigation' , $id_risk_mitigation)
+                ->countAllResults();
+
+        ## Total number of records with filtering
+        $totalRecordwithFilter = $this->RiskMitigationDetailModel->select('id')
+                ->where('id_risk_mitigation' , $id_risk_mitigation)
+                ->orLike('risk_mitigation_detail', $searchValue)
+                ->countAllResults();
+
+        ## Fetch records
+        $records = $this->RiskMitigationDetailModel
+                ->select('*')
+                ->orLike('risk_mitigation_detail', $searchValue)
+                ->orderBy($columnName,$columnSortOrder)
+                ->where('id_risk_mitigation' , $id_risk_mitigation)
+                ->findAll($rowperpage, $start);
+                 
+        $data = array();
+
+        foreach($records as $record ){
+            $data[] = array( 
+                "id"=>$record['id'],
+                "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
+                "is_active"=>$record['is_active']
+            ); 
+        }
+    
+        ## Response
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordwithFilter,
+            "aaData" => $data,
+            "token" => csrf_hash() // New token hash
+        );
+        
+        return $this->response->setJSON($response);
+    }
 
     public function onAddDetailRisk(){
         try {
@@ -192,6 +266,28 @@ class RiskMitigationController extends BaseController
         }catch (\Exception $e) {
             
         }
+    }
+
+    public function onAddDetailMitigation(){
+		if (! $this->validate([
+			'risk_mitigation_detail' => 'required',
+			'id_risk_mitigation' => 'required',
+		])) {
+			throw new \Exception("Some message goes here");
+		}else{
+			try {
+				$data = [
+						'risk_mitigation_detail' => $this->request->getPost('risk_mitigation_detail'),
+						'id_risk_mitigation' => $this->request->getPost('id_risk_mitigation'),
+						];
+
+				$this->RiskMitigationDetailModel->insert($data);
+					
+				echo json_encode(array("status" => $data));
+			}catch (\Exception $e) {
+				
+			}
+		}
     }
     
 }

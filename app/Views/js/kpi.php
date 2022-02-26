@@ -121,6 +121,7 @@
 		});
 		
 	
+	
 	// edit group
     $btn_edit_kpi.on("click", function (e) {
 		var table = $('#kpiTable').DataTable();

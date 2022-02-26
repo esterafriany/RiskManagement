@@ -8,6 +8,7 @@
         var arr = site_url.split("/");
         var id_risk_event = arr[arr.length - 1];
 		let y = 0;
+		
 
 		$.ajax({
 			url : "<?=site_url('RiskCauseController/getRiskCauseList')?>/" + id_risk_event,
@@ -63,8 +64,8 @@
 							</td>
 							<td>
 								<button type="button" id="" class="btn btn-outline-danger btn-sm removes" name="removes" ><i class="fas fa-trash-alt"></i></button>
-								<a type="button" id="" class="btn btn-outline-success btn-sm"><i class="fas fa-edit"></i></a>
-								${result['risk_mitigation_list'][i]['id']}</td>
+								<a href="<?=base_url()?>/admin/detail-risk-mitigation/${result['risk_mitigation_list'][i]['id']}" type="button" id="" class="btn btn-outline-success btn-sm"><i class="fas fa-edit"></i></a>
+								</td>
 						</tr>
 						</table>`;
 					id_risk_mitigation.push(result['risk_mitigation_list'][i]['id']);

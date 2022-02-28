@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div align="right">
-                                        <a type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal-add-detail_mitigation">Tambah</a>
+                                        <a type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal-add-detail-mitigation">Tambah</a>
                                     </div>
                                 
                                     <table id="riskDetailMitigationTable" class="table table-striped" width="100%">
@@ -47,8 +47,7 @@
                 
             </div>
             <div class="card-footer">
-                <a href="<?=base_url('admin/risk-event')?>" type="button" class="btn btn-secondary">Batal</a>
-                <button type="button" id="btn-edit-risk-event"  class="btn btn-primary">Simpan</button>
+                
             </div>
          </div>
       </div>
@@ -58,11 +57,11 @@
 
 			   
 
-<div class="modal fade" id="modal-add-detail_mitigation" name="modal-add-detail_mitigation" tabindex="-1" aria-labelledby="addDetailMitigationModal" style="display: none;" aria-hidden="true">
+<div class="modal fade" id="modal-add-detail-mitigation" name="modal-add-detail-mitigation" tabindex="-1" aria-labelledby="addDetailMitigationModal" style="display: none;" aria-hidden="true">
 	<div class="modal-dialog"><?= $this->include("admin/pages/risk_mitigation/create_detail")?></div>
 </div>
 
-<div class="modal fade" id="modal-edit-detail_mitigation" name="modal-edit-detail_mitigation" tabindex="-1" aria-labelledby="addDetailMitigationModal" style="display: none;" aria-hidden="true">
+<div class="modal fade" id="modal-edit-detail-mitigation" name="modal-edit-detail-mitigation" tabindex="-1" aria-labelledby="addDetailMitigationModal" style="display: none;" aria-hidden="true">
 	<div class="modal-dialog"><?= $this->include("admin/pages/risk_mitigation/edit_detail")?></div>
 </div>
 

@@ -120,6 +120,7 @@
 		
 		});
 
+	
 	// edit division
     $btn_edit_division.on("click", function (e) {
 		var table = $('#divisionTable').DataTable();
@@ -159,7 +160,6 @@
 	});
 	
 	function edit_division(id){
-
 	  //Ajax Load data from ajax
 	  $.ajax({
 		url : "<?=site_url('UserController/onDetailDivision')?>/" + id,

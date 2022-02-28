@@ -85,6 +85,7 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('detail-risk-mitigation/(:num)', 'RiskMitigationController::getDetailRiskMitigation/$1', ['as' => 'detail-risk-mitigation']);
 	$routes->add('RiskMitigationController/onAddDetailMitigation', 'RiskMitigationController::onAddDetailMitigation', ['as' => 'add-detail-mitigation']);
 	
+	
 });
 
 $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){

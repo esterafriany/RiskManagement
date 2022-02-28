@@ -289,5 +289,18 @@ class RiskMitigationController extends BaseController
 			}
 		}
     }
-    
+
+    public function onEditDetailMitigation($id){
+       
+        try {
+            $data = [
+                'risk_mitigation_detail' => $this->request->getPost('risk_mitigation_detail'),
+                ];
+            $this->RiskMitigationDetailModel->update($id, $data);
+              
+            echo json_encode(array("status" => TRUE));
+          }catch (\Exception $e) {
+            
+          }
+    }
 }

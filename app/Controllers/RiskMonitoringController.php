@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\RiskEvents;
 use App\Models\RiskCauses;
 use App\Models\RiskMitigations;
+use App\Models\RiskMitigationDetails;
+use App\Models\RiskMitigationDetailOutputs;
 use App\Models\KPIs;
 
 class RiskMonitoringController extends BaseController
@@ -16,6 +18,8 @@ class RiskMonitoringController extends BaseController
         helper(['form', 'url']);
         $this->RiskEventModel = new RiskEvents();
         $this->RiskMitigationModel = new RiskMitigations();
+        $this->RiskMitigationDetailModel = new RiskMitigationDetails();
+        $this->RiskMitigationDetailOutputModel = new RiskMitigationDetailOutputs();
         $this->RiskCauseModel = new RiskCauses();
         $this->KPIModel = new KPIs();
  
@@ -104,5 +108,20 @@ class RiskMonitoringController extends BaseController
         );
         
         return $this->response->setJSON($response);
+    }
+
+    public function getDetailRiskMonitoring($id_detail_mitigation){
+        $data = [
+            'title'=>'Risk Monitoring Detail',
+            'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
+            'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation)
+        ];
+        echo view('admin/template/template',$data);
+    }
+
+    public function getOutputList($id){
+        $data = $this->RiskMitigationDetailOutputModel->get_list_output($id);
+		
+		echo json_encode($data);
     }
 }

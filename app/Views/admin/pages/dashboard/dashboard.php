@@ -165,49 +165,65 @@
                </div>
                <div class="p-0 card-body">
                </br>
-                  <div class="bd-example table-responsive">
+               <style>
+                  .table tbody tr td{
+                     height:120%;
+                     white-space:normal;
+                     width:200px;
+                  }
+
+                  .text-wrap{
+                     white-space:normal;
+                  }
+                  .width-200{
+                     width:200px;
+                  }
+
                   
-                     <table id="table" name="table" width="90%" height="500px" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
+               </style>
+                  <div class="bd-example table-responsive" style="padding-right:20px;">
+                  
+                     <table id="table" name="table" width="100%" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
                            <tr>
                               <td rowspan="6" width="5%" style="writing-mode: vertical-rl;">Tingkat Kemungkinan</td>
                               <td width="10%">Sangat Besar<br/>(5)</td>
-                              <td id="15" name="td" style="background-color:#f16a1b;"></td>
-                              <td id="25" name="td" style="background-color:#6bd1da;"></td>
-                              <td id="35" name="td" style="background-color:#6bd1da;"></td>
-                              <td id="45" name="td" style="background-color:#3a57e8;"></td>
-                              <td id="55" name="td" style="background-color:#3a57e8;"></td>
+                              <td id="15" name="td" style="background-color:#f6e65a;" width="17%"></td>
+                              <td id="25" name="td" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="35" name="td" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="45" name="td" style="background-color:#ff1e00;" width="17%"></td>
+                              <td id="55" name="td" style="background-color:#ff1e00;" width="17%"></td>
                            </tr>
                            <tr>
                               <td>Besar<br/>(4)</td>
-                              <td id="14" name="td" style="background-color:#e1d725;"></td>
-                              <td id="24" name="td" style="background-color:#f16a1b;"></td>
-                              <td id="34" name="td" style="background-color:#6bd1da;"></td>
-                              <td id="44" name="td" style="background-color:#6bd1da;"></td>
-                              <td id="54" name="td" style="background-color:#3a57e8;"></td>
+                              <td id="14" name="td" style="background-color:#5ce878;"></td>
+                              <td id="24" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="34" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="44" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="54" name="td" style="background-color:#ff1e00;"></td>
                            </tr>
                            <tr>
                               <td>Sedang<br/>(3)</td>
-                              <td id="13" name="td" style="background-color:#e1d725;"></td>
-                              <td id="23" name="td" style="background-color:#f16a1b;"></td>
-                              <td id="33" name="td" style="background-color:#f16a1b;"></td>
-                              <td id="43" name="td" style="background-color:#6bd1da;"></td>
-                              <td id="53" name="td" style="background-color:#6bd1da;"></td>
+                              <td id="13" name="td" style="background-color:#5ce878;"></td>
+                              <td id="23" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="33" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="43" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="53" name="td" style="background-color:#ecd4e0;"></td>
                            </tr>
                            <tr>
                               <td>Kecil<br/>(2)</td>
-                              <td id="12" name="td" style="background-color:#e1d725;"></td>
-                              <td id="22" name="td" style="background-color:#e1d725;"></td>
-                              <td id="32" name="td" style="background-color:#f16a1b;"></td>
-                              <td id="42" name="td" style="background-color:#f16a1b;"></td>
-                              <td id="52" name="td" style="background-color:#6bd1da;"></td>
+                              <td id="12" name="td" style="background-color:#5ce878;"></td>
+                              <td id="22" name="td" style="background-color:#5ce878;"></td>
+                              <td id="32" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="42" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="52" name="td" style="background-color:#ecd4e0;"></td>
                            </tr>
                            <tr>
                               <td>Sangat Kecil<br/>(1)</td>
-                              <td id="11" name="td" style="background-color:#e1d725;"></td>
-                              <td id="21" name="td" style="background-color:#e1d725;">aa</td>
-                              <td id="31" name="td" style="background-color:#e1d725;"></td>
-                              <td id="41" name="td" style="background-color:#e1d725;"></td>
-                              <td id="51" name="td" style="background-color:#f16a1b;"></td>
+                              <td id="11" name="td" style="background-color:#5ce878;"></td>
+                              <td id="21" name="td" style="background-color:#5ce878;"></td>
+                              <td id="31" name="td" style="background-color:#5ce878;"></td>
+                              <td id="41" name="td" style="background-color:#5ce878;"></td>
+                              <td id="51" name="td" style="background-color:#f6e65a;"></td>
                            </tr>
                            <tr>
                               <td></td>

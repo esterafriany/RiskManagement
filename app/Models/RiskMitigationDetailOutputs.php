@@ -43,4 +43,9 @@ class RiskMitigationDetailOutputs extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function get_list_output($id)
+    {	
+		  return $this->db->query("SELECT * FROM risk_mitigation_detail_outputs WHERE id_detail_mitigation ='".$id."'")->getResultArray();
+    }
 }

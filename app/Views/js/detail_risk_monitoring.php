@@ -9,7 +9,6 @@
         var id_risk_event = arr[arr.length - 1];
 		let y = 0;
 		
-
 		$.ajax({
 			url : "<?=site_url('RiskCauseController/getRiskCauseList')?>/" + id_risk_event,
 			type: "GET",

@@ -19,8 +19,6 @@ class RiskMitigationDetails extends Model
         "risk_mitigation_detail",
         "is_active"	
     ];
-  	
-
 
     // Dates
     protected $useTimestamps = false;
@@ -50,4 +48,13 @@ class RiskMitigationDetails extends Model
     {	
 		  return $this->db->query("SELECT * FROM risk_mitigation_details WHERE id ='".$id."'")->getRow();
     }
+
+    public function get_mitigation_with_detail($id)
+    {	
+		  return $this->db->query("SELECT risk_mitigation_details.id, risk_mitigation_details.risk_mitigation_detail, risk_mitigations.risk_mitigation
+                                    FROM risk_mitigation_details JOIN risk_mitigations
+                                    ON risk_mitigation_details.id_risk_mitigation = risk_mitigations.id 
+                                    WHERE risk_mitigation_details.id ='".$id."'")->getRow();
+    }
+
 }

@@ -80,6 +80,7 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('risk-monitoring', 'RiskMonitoringController::index', ['as' => 'get-risk-monitorings']);
 	$routes->add('detail-risk-monitoring/(:num)', 'RiskMonitoringController::getDetailRiskMonitoring/$1', ['as' => 'detail-risk-monitoring']);
 	$routes->add('RiskMonitoringController/onAddDetailMonitoring', 'RiskMonitoringController::onAddDetailMonitoring', ['as' => 'add-risk-monitoring']);
+	// $routes->add('RiskMonitoringController::onDeleteEvidence', 'RiskMonitoringController::onDeleteEvidence/$1', ['as' => 'delete-evidence']);
 	
 	//Risk Mitigation 
 	$routes->add('risk-mitigation', 'RiskMitigationController::index', ['as' => 'get-risk-mitigations']);

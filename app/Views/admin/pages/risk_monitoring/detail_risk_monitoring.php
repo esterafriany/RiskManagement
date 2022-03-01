@@ -29,6 +29,17 @@
                                 </div>
                             </div>
                         </li>
+                        
+                        <li class="list-group-item">
+                            <div class="form-group">
+                                <small>Evidence </small>
+                                <div id="evidenceList">
+                                     
+                                </div><br/>
+                                <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-evidence"><i class="fas fa-plus-circle"></i> Tambah File</button>
+                                
+                            </div>
+                        </li>
                         <li class="list-group-item">
                             <div class="form-group">
                                 <small>Output</small>
@@ -111,16 +122,6 @@
                             
                             </div>
                         </li>
-                        <li class="list-group-item">
-                            <div class="form-group">
-                                <small>Evidence </small>
-                                <div id="evidenceList">
-                                     
-                                </div><br/>
-                                <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-evidence"><i class="fas fa-plus-circle"></i> Tambah File</button>
-                                
-                            </div>
-                        </li>
                     </ul>
                     
                     </div>
@@ -142,3 +143,21 @@
 
 
 <?= $this->include("js/detail_mitigation_monitoring")?>
+
+
+<?php if($state_message){
+
+if($state_message == 'error'){ ?>
+<script>
+    $(document).ready(function() {
+      swal("Test","Tessss","error");
+    });
+</script>
+<?php }else if($state_message == 'success'){ ?>
+<script>
+    $(document).ready(function() {
+      swal("Test","Tessss","success");
+    });
+</script>
+<?php } 
+}?>

@@ -42,6 +42,39 @@
 			}
 		});
 
+		$.ajax({
+			url : "<?=site_url('RiskMonitoringController/getEvidenceList')?>/" + id_detail_mitigation,
+			type: "GET",
+			dataType: "JSON",
+			success: function(result)
+			{
+				var penampung = "";
+				var count = result.length;
+				
+				for(i = 0; i < count; i++){
+					
+					penampung += `<table width="100%">
+							<tr>
+								<td width="50%">
+									<a href="">${result[i]['filename']}</a>
+									
+								</td>
+								<td>
+									<button type="button" onclick="delete_evidence(${result[i]['id']})"  class="btn btn-outline-primary btn-sm removes" ><i class="fas fa-trash-alt"></i></button>
+								</td>
+							</tr>
+						</table>`;
+				}
+				
+				document.getElementById("evidenceList").innerHTML = penampung;
+			},
+			error: function (jqXHR, textStatus, errorThrown)
+			{
+				console.log(jqXHR);
+				alert('Error get data from ajax');
+			}
+		});
+
 		$("#add-more-output").click(function () {
 			$("#outputList").last().append(
 				`<table width="100%">
@@ -82,81 +115,50 @@
 		$(document).on('click', '.removes', function () {
 			$(this).parents('tr').remove();
 		});
-
-		// edit
-		$btn_edit_detail_monitoring.on("click", function (e) {
-						
-			//output
-			var input = document.getElementsByName('output[]');
-			var output = [];
-			for (var i = 0; i < input.length; i++) {
-                var a = input[i];
-				output[i] = a.value;		
-            }
-
-			//evidence
-			//var inputt = document.getElementsByName('evidence[]');
-			var input1 = document.getElementById("myFiles").files;
-			var totalfiles = document.getElementById('myFiles').files.length;
-			var evidence = [];
-			// var evidences = [];
-			// var file={}
-			// for (var i = 0; i < input1.length; i++) {
-            //     var a = input1[i];
-				
-			// 	file.toJSON = {
-			// 		'lastMod'    : input1[i].lastModified,
-			// 		'lastModDate': input1[i].lastModifiedDate,
-			// 		'name'       : input1[i].name,
-			// 		'size'       : input1[i].size,
-			// 		'type'       : input1[i].type,
-			// 	} 
-
-			// 	evidences.push(file);
-            // }
-
-			// for (var i = 0; i < inputt.length; i++) {
-			// 	var a = inputt[i];
-				
-			// 	evidence[i] = a.value;
-			// }
-
-			if(totalfiles > 0 ){
-				var formData = new FormData();
-
-				// Read selected files
-				for (var index = 0; index < totalfiles; index++) {
-					formData.append("myFiles[]", document.getElementById('myFiles').files[index]);
-				}
-
-				var xhttp = new XMLHttpRequest();
-
-				// Set POST method and ajax file path
-				xhttp.open("POST", "<?php echo base_url('admin/RiskMonitoringController/onAddDetailMonitoring')?>", true);
-
-				// call on request changes state
-				xhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-
-						var response = this.responseText;
-
-						console.log(response + " File uploaded.");
-
-					}
-				};
-
-				// Send request with data
-				xhttp.send(formData);
-
-				}else{
-				alert("Please select a file");
-				}
-			
-
-		});
 		
 	});
 	
+	function delete_evidence(id){
+		swal({
+			title: "Apakah anda yakin ingin hapus?",
+			text: "Data akan dihapus tidak dapat di-recover!",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonClass: "btn-danger",
+			confirmButtonText: "Yes",
+			closeOnConfirm: false
+		},
+		function () {
+			// ajax delete data from database
+			  $.ajax({
+				url : "<?=site_url('RiskMonitoringController/onDeleteEvidence')?>/" + id,
+				type: "POST",
+				dataType: "JSON",
+				success: function(data)
+				{
+					
+					swal({
+					  title: "Terhapus!",
+					  text: "Data berhasil dihapus!",
+					  type: "success",
+					  confirmButtonText: "OK"
+					},
+					function(isConfirm){
+					  if (isConfirm) {
+						location.reload();
+					  }
+					});
+				   
+				},
+				error: function (jqXHR, textStatus, errorThrown)
+				{
+					swal("Oops..","Data gagal dihapus.","error");
+				}
+			});
+			
+		});
+		
+	}
 
 </script>
 

@@ -10,6 +10,7 @@ use App\Models\RiskCauses;
 use App\Models\RiskMitigations;
 use App\Models\RiskMitigationDetails;
 use App\Models\RiskMitigationDetailOutputs;
+use App\Models\RiskMitigationDetailEvidences;
 use App\Models\KPIs;
 
 class RiskMonitoringController extends BaseController
@@ -20,6 +21,7 @@ class RiskMonitoringController extends BaseController
         $this->RiskMitigationModel = new RiskMitigations();
         $this->RiskMitigationDetailModel = new RiskMitigationDetails();
         $this->RiskMitigationDetailOutputModel = new RiskMitigationDetailOutputs();
+        $this->RiskMitigationDetailEvidenceModel = new RiskMitigationDetailEvidences();
         $this->RiskCauseModel = new RiskCauses();
         $this->KPIModel = new KPIs();
  
@@ -115,7 +117,8 @@ class RiskMonitoringController extends BaseController
             'title'=>'Risk Monitoring Detail',
             'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
             'id_detail_mitigation' => $id_detail_mitigation,
-            'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation)
+            'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation),
+            'state_message' => ''
         ];
         echo view('admin/template/template',$data);
     }
@@ -126,49 +129,81 @@ class RiskMonitoringController extends BaseController
 		echo json_encode($data);
     }
 
+    public function getEvidenceList($id){
+        $data = $this->RiskMitigationDetailEvidenceModel->get_list_evidence($id);
+		
+		echo json_encode($data);
+    }
+
     public function onAddDetailMonitoring(){
         helper(['form', 'url', 'filesystem']);
         $id_detail_mitigation =  $this->request->getPost('id_detail_mitigation');
-       
-        //output
-        $outputs = $this->request->getPost('output');
-        //delete current output
-        $this->RiskMitigationDetailOutputModel->delete_by_detail_mitigation_id($id_detail_mitigation);
-        // re-add
-        foreach ($outputs as $key => $value){
-            $data_output = [
-                'id_detail_mitigation' => $id_detail_mitigation,
-                'output' => $outputs[$key],
-            ];
-            $this->RiskMitigationDetailOutputModel->insert($data_output);
-        }
-
-        //evidence
-        if($this->request->getFileMultiple('evidence')){
-            foreach($this->request->getFileMultiple('evidence') as $file){
         
-                // $fileName = $file->getName();
-                
-                // $file->move(FCPATH . 'uploads', $fileName);
-                
-                // $data_dokumen = [
-                // 	'id_surat_dokumen' => $id_surat,
-                // 	'dokumen_name' => $fileName,
-                // ];
-                
-                
-                //insert tabel dokumen
-                // $simpan = $model->upload_dokumen_surat_eksternal($data_dokumen);
+        try{
+            //output
+            $outputs = $this->request->getPost('output');
+            //delete current output
+            $this->RiskMitigationDetailOutputModel->delete_by_detail_mitigation_id($id_detail_mitigation);
+            // re-add
+            foreach ($outputs as $key => $value){
+                $data_output = [
+                    'id_detail_mitigation' => $id_detail_mitigation,
+                    'output' => $outputs[$key],
+                ];
+                $this->RiskMitigationDetailOutputModel->insert($data_output);
             }
-        }
+
+            //evidence
+            //delete from fcpath folder
+            $evidences = $this->RiskMitigationDetailEvidenceModel->get_list_evidence($id_detail_mitigation);
             
+           
+            if($this->request->getFileMultiple('evidence')){
+                $i = 1;
+                foreach($this->request->getFileMultiple('evidence') as $file){
+                    //$fileName = "evidence_".$i.".".$file->getClientExtension();
+                    $fileName = $file->getName();
+                    
+                    $file->move(FCPATH . 'uploads', $fileName);
+                    
+                    $data_evidence = [
+                        'id_detail_mitigation' => $id_detail_mitigation,
+                        'filename' => $fileName,
+                        'pathname' => FCPATH . 'uploads' ,
+                    ];
+                    
+                    $this->RiskMitigationDetailEvidenceModel->insert($data_evidence);
+                    $i++;
+                }
+            }
+                
+            $data = [
+                'title'=>'Risk Monitoring Detail',
+                'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
+                'id_detail_mitigation' => $id_detail_mitigation,
+                'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation),
+                'state_message' => 'success'
+            ];
+            echo view('admin/template/template',$data);
+        }catch (\Exception $e) {
+            $data = [
+                'title'=>'Risk Monitoring Detail',
+                'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
+                'id_detail_mitigation' => $id_detail_mitigation,
+                'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation),
+                'state_message' => 'error'
+            ];
+            echo view('admin/template/template',$data);     
+        }
         
-        // $data = [
-        //     'title'=>'Risk Monitoring Detail',
-        //     'content'=>'admin/pages/risk_monitoring/test',
-        //     'flashdata' => 'errodsfr'
+    }
+
+    public function onDeleteEvidence($id){
+        $filename = $this->RiskMitigationDetailEvidenceModel->find($id);
         
-        // ];
-        // echo view('admin/template/template',$data);
+        unlink (FCPATH . 'uploads\\'.$filename['filename']);
+        $this->RiskMitigationDetailEvidenceModel->delete($id);
+
+        echo json_encode(array("status" => TRUE));
     }
 }

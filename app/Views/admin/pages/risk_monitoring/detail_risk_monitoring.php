@@ -8,7 +8,8 @@
                </div>
 			</div>
             <div class="card-body">
-            <form id="form-edit-risk-event" action="" class="form-horizontal" method="POST">
+            <form id="form-edit-risk-event" enctype="multipart/form-data" action="<?php echo base_url('admin/RiskMonitoringController/onAddDetailMonitoring')?>" class="form-horizontal" method="POST">
+                <input type="hidden" value="<?=$id_detail_mitigation;?>" name="id_detail_mitigation">
                 <div class="row">
                     <div class="col">
                     <ul class="list-group">
@@ -25,12 +26,7 @@
                                         <textarea disabled name="risk_mitigation" class="form-control"><?=$risk_mitigation_data->risk_mitigation_detail;?></textarea>
                                     </div>
                                     
-                                    
                                 </div>
-
-                               
-
-                                
                             </div>
                         </li>
                         <li class="list-group-item">
@@ -119,7 +115,7 @@
                             <div class="form-group">
                                 <small>Evidence </small>
                                 <div id="evidenceList">
-                                                
+                                     
                                 </div><br/>
                                 <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-evidence"><i class="fas fa-plus-circle"></i> Tambah File</button>
                                 
@@ -134,13 +130,15 @@
                 
             </div>
             <div class="card-footer">
-                <button>k</button>
+                <button type="button" class="btn btn-secondary">Close</button>
+                <button type="submit" id="btn-add-detail-monitoring"  class="btn btn-primary">Simpan</button>
             </div>
          </div>
       </div>
       </form>
    </div>
 </div>
+
 
 
 <?= $this->include("js/detail_mitigation_monitoring")?>

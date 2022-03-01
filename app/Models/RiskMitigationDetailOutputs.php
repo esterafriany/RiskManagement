@@ -46,6 +46,11 @@ class RiskMitigationDetailOutputs extends Model
 
     public function get_list_output($id)
     {	
-		  return $this->db->query("SELECT * FROM risk_mitigation_detail_outputs WHERE id_detail_mitigation ='".$id."'")->getResultArray();
+		return $this->db->query("SELECT * FROM risk_mitigation_detail_outputs WHERE id_detail_mitigation ='".$id."'")->getResultArray();
+    }
+
+    public function  delete_by_detail_mitigation_id($id){
+        $sql = "DELETE FROM risk_mitigation_detail_outputs WHERE id_detail_mitigation='".$id."'";
+        $result = $this->db->query($sql);
     }
 }

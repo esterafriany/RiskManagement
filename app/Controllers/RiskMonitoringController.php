@@ -15,7 +15,7 @@ use App\Models\KPIs;
 class RiskMonitoringController extends BaseController
 {
     function __construct(){
-        helper(['form', 'url']);
+        helper(['form', 'url', 'filesystem']);
         $this->RiskEventModel = new RiskEvents();
         $this->RiskMitigationModel = new RiskMitigations();
         $this->RiskMitigationDetailModel = new RiskMitigationDetails();
@@ -114,6 +114,7 @@ class RiskMonitoringController extends BaseController
         $data = [
             'title'=>'Risk Monitoring Detail',
             'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
+            'id_detail_mitigation' => $id_detail_mitigation,
             'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation)
         ];
         echo view('admin/template/template',$data);
@@ -123,5 +124,51 @@ class RiskMonitoringController extends BaseController
         $data = $this->RiskMitigationDetailOutputModel->get_list_output($id);
 		
 		echo json_encode($data);
+    }
+
+    public function onAddDetailMonitoring(){
+        helper(['form', 'url', 'filesystem']);
+        $id_detail_mitigation =  $this->request->getPost('id_detail_mitigation');
+       
+        //output
+        $outputs = $this->request->getPost('output');
+        //delete current output
+        $this->RiskMitigationDetailOutputModel->delete_by_detail_mitigation_id($id_detail_mitigation);
+        // re-add
+        foreach ($outputs as $key => $value){
+            $data_output = [
+                'id_detail_mitigation' => $id_detail_mitigation,
+                'output' => $outputs[$key],
+            ];
+            $this->RiskMitigationDetailOutputModel->insert($data_output);
+        }
+
+        //evidence
+        if($this->request->getFileMultiple('evidence')){
+            foreach($this->request->getFileMultiple('evidence') as $file){
+        
+                // $fileName = $file->getName();
+                
+                // $file->move(FCPATH . 'uploads', $fileName);
+                
+                // $data_dokumen = [
+                // 	'id_surat_dokumen' => $id_surat,
+                // 	'dokumen_name' => $fileName,
+                // ];
+                
+                
+                //insert tabel dokumen
+                // $simpan = $model->upload_dokumen_surat_eksternal($data_dokumen);
+            }
+        }
+            
+        
+        // $data = [
+        //     'title'=>'Risk Monitoring Detail',
+        //     'content'=>'admin/pages/risk_monitoring/test',
+        //     'flashdata' => 'errodsfr'
+        
+        // ];
+        // echo view('admin/template/template',$data);
     }
 }

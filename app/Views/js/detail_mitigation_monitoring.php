@@ -2,7 +2,7 @@
 
 <script>
 	$(document).ready(function() {
-		var $btn_edit_risk_event = $("#btn-edit-risk-event");
+		var $btn_edit_detail_monitoring = $("#btn-add-detail-monitoring1");
 		var site_url = window.location.pathname;
         var arr = site_url.split("/");
         var id_detail_mitigation = arr[arr.length - 1];
@@ -63,7 +63,8 @@
 				`<table width="100%">
 					<tr>
 						<td width="50%">
-							<input type="file" name="evidence_file_name[]" value="" class="form-control" placeholder="Browse File">
+							<input type="file" name="evidence[]" id="evidence" value="" class="form-control" placeholder="Browse File">
+						
 							<input type="hidden" name="evidenceId[]" value="" class="form-control" >
 						</td>
 						<td>
@@ -82,76 +83,75 @@
 			$(this).parents('tr').remove();
 		});
 
-		// edit risk
-		$btn_edit_risk_event.on("click", function (e) {
-			//risk event
-			var risk_event = new Array();
-			risk_event = {
-				'objective':  document.getElementById('objective').value,
-				'risk_event':  document.getElementById('risk_event').value,
-				'year':  document.getElementById('year').value,
-				'id_kpi':  document.getElementById('id_kpi').value,
-				'existing_control_1':  document.getElementById('existing_control_1').value,
-				'existing_control_2':  document.getElementById('existing_control_2').value,
-				'existing_control_3':  document.getElementById('existing_control_3').value,
-				'probability_level':  document.getElementById('probability_level').value,
-				'impact_level':  document.getElementById('impact_level').value,
-				'final_level':  document.getElementById('final_level').value,
-				'risk_analysis':  document.getElementById('risk_analysis').value
-			};
-			
-			//risk cause
-			var input = document.getElementsByName('risk_cause[]');
-			var risk_cause = [];
+		// edit
+		$btn_edit_detail_monitoring.on("click", function (e) {
+						
+			//output
+			var input = document.getElementsByName('output[]');
+			var output = [];
 			for (var i = 0; i < input.length; i++) {
                 var a = input[i];
-				risk_cause[i] = a.value;		
+				output[i] = a.value;		
             }
 
-			//risk mitigation
-			var input1 = document.getElementsByName('risk_mitigation[]');
-			var input2 = document.getElementsByName('assignment_division[]');
-			var division_assignment = new Array();
-			for (var i = 0; i < input1.length; i++) {
-				division_assignment[i]= input1[i].value +"."+input2[i].value;
-            }
+			//evidence
+			//var inputt = document.getElementsByName('evidence[]');
+			var input1 = document.getElementById("myFiles").files;
+			var totalfiles = document.getElementById('myFiles').files.length;
+			var evidence = [];
+			// var evidences = [];
+			// var file={}
+			// for (var i = 0; i < input1.length; i++) {
+            //     var a = input1[i];
+				
+			// 	file.toJSON = {
+			// 		'lastMod'    : input1[i].lastModified,
+			// 		'lastModDate': input1[i].lastModifiedDate,
+			// 		'name'       : input1[i].name,
+			// 		'size'       : input1[i].size,
+			// 		'type'       : input1[i].type,
+			// 	} 
 
-			// //risk category
-			// var input3 = document.getElementsByName('risk_category[]');
-			// var risk_category = [];
-			// for (var i = 0; i < input3.length; i++) {
-            //     var a = input3[i];
-			// 	risk_category[i] = a.value;			
+			// 	evidences.push(file);
             // }
-			
-			var id_risk = document.getElementById('id_risk_event').value;
-			$.ajax({
-				url : "<?php echo base_url('admin/RiskMitigationController/onAddDetailRisk')?>",
-				type: "POST",
-				data: {'id_risk_event':id_risk,'risk_event':JSON.stringify(risk_event),'risk_cause':JSON.stringify(risk_cause),'division_assignment':JSON.stringify(division_assignment)},
-				dataType: "JSON",
 
-				success: function(response)
-				{
-					console.log(response);
-					swal({
-					  title: "Sukses!",
-					  text: "Data sukses ditambah/diubah!",
-					  type: "success",
-					  confirmButtonText: "OK"
-					},
-					function(isConfirm){
-					  if (isConfirm) {
-						location.reload();
-					  }
-					});
-				  
-				},
-				error: function (jqXHR, textStatus, errorThrown)
-				{
-					swal("Gagal","Gagal mengubah data.","error");
+			// for (var i = 0; i < inputt.length; i++) {
+			// 	var a = inputt[i];
+				
+			// 	evidence[i] = a.value;
+			// }
+
+			if(totalfiles > 0 ){
+				var formData = new FormData();
+
+				// Read selected files
+				for (var index = 0; index < totalfiles; index++) {
+					formData.append("myFiles[]", document.getElementById('myFiles').files[index]);
 				}
-			});
+
+				var xhttp = new XMLHttpRequest();
+
+				// Set POST method and ajax file path
+				xhttp.open("POST", "<?php echo base_url('admin/RiskMonitoringController/onAddDetailMonitoring')?>", true);
+
+				// call on request changes state
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+
+						var response = this.responseText;
+
+						console.log(response + " File uploaded.");
+
+					}
+				};
+
+				// Send request with data
+				xhttp.send(formData);
+
+				}else{
+				alert("Please select a file");
+				}
+			
 
 		});
 		

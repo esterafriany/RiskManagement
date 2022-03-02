@@ -51,36 +51,39 @@
                             </div>
                         </li>
                         <li class="list-group-item">
+                        <div class="progress">
+                            <div class="progress-bar" id="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100"><text id="text-percentage">0%</text></div>
+                        </div><br/>
                             <div class="form-group">
                                 <table width="100%">
                                     <tr>
                                         <td width="100px"><small>Target </small></td>
                                         <td>
-                                        <input type="checkbox" id="vehicle1" name="t1" value="1"> Januari
+                                        <input type="checkbox" id="t01" name="target[]" onclick="calculate_progress_by_target('t01')" value="1"> Januari
                                         <td/>
                                         <td>
-                                        <input type="checkbox" id="vehicle1" name="t2" value="2"> Februari
+                                        <input type="checkbox" id="t02" name="target[]" onclick="calculate_progress_by_target('t02')" value="2"> Februari
                                         <td/>
                                         <td>
-                                        <input type="checkbox" id="vehicle1" name="t3" value="3"> Maret</Marquee>
+                                        <input type="checkbox" id="t03" name="target[]" onclick="calculate_progress_by_target('t03')" value="3"> Maret</Marquee>
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="t4" value="4"> April
+                                        <input type="checkbox" id="t04" name="target[]" onclick="calculate_progress_by_target('t04')" value="4"> April
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="t5" value="5"> Mei
+                                        <input type="checkbox" id="t05" name="target[]" onclick="calculate_progress_by_target('t05')" value="5"> Mei
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="t6" value="6"> Juni
+                                        <input type="checkbox" id="t06" name="target[]" onclick="calculate_progress_by_target('t06')" value="6"> Juni
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="t7" value="7"> Juli
+                                        <input type="checkbox" id="t07" name="target[]" onclick="calculate_progress_by_target('t07')" value="7"> Juli
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="t8" value="8"> Agustus
+                                        <input type="checkbox" id="t08" name="target[]" onclick="calculate_progress_by_target('t08')" value="8"> Agustus
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="t9" value="9"> September
+                                        <input type="checkbox" id="t09" name="target[]" onclick="calculate_progress_by_target('t09')" value="9"> September
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="t10" value="10"> Oktober
+                                        <input type="checkbox" id="t10" name="target[]" onclick="calculate_progress_by_target('t10')" value="10"> Oktober
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="t11" value="11"> November
+                                        <input type="checkbox" id="t11" name="target[]" onclick="calculate_progress_by_target('t11')" value="11"> November
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="t12" value="12"> Desember
+                                        <input type="checkbox" id="t12" name="target[]" onclick="calculate_progress_by_target('t12')" value="12"> Desember
                                         <td/>
                                     </tr>
                                 </table>
@@ -91,39 +94,37 @@
                                     <tr>
                                         <td width="100px"><small>Monitoring </small></td>
                                         <td>
-                                        <input type="checkbox" id="vehicle1" name="m1" value="1"> Januari
+                                        <input type="checkbox" id="m01" name="monitoring" onclick="calculate_progress_by_monitoring('m01')"  value="1"> Januari
                                         <td/>
                                         <td>
-                                        <input type="checkbox" id="vehicle1" name="m2" value="2"> Februari
+                                        <input type="checkbox" id="m02" name="monitoring" onclick="calculate_progress_by_monitoring('m02')" value="2"> Februari
                                         <td/>
                                         <td>
-                                        <input type="checkbox" id="vehicle1" name="m3" value="3"> Maret</Marquee>
+                                        <input type="checkbox" id="m03" name="monitoring" onclick="calculate_progress_by_monitoring('m03')" value="3"> Maret
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="m4" value="4"> April
+                                        <input type="checkbox" id="m04" name="monitoring" onclick="calculate_progress_by_monitoring('m04')" value="4"> April
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="m5" value="5"> Mei
+                                        <input type="checkbox" id="m05" name="monitoring" onclick="calculate_progress_by_monitoring('m05')" value="5"> Mei
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="m6" value="6"> Juni
+                                        <input type="checkbox" id="m06" name="monitoring" onclick="calculate_progress_by_monitoring('m06')" value="6"> Juni
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="m7" value="7"> Juli
+                                        <input type="checkbox" id="m07" name="monitoring" onclick="calculate_progress_by_monitoring('m07')" value="7"> Juli
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="m8" value="8"> Agustus
+                                        <input type="checkbox" id="m08" name="monitoring" onclick="calculate_progress_by_monitoring('m08')" value="8"> Agustus
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="m9" value="9"> September
+                                        <input type="checkbox" id="m09" name="monitoring" onclick="calculate_progress_by_monitoring('m09')" value="9"> September
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="m10" value="10"> Oktober
+                                        <input type="checkbox" id="m10" name="monitoring" onclick="calculate_progress_by_monitoring('m10')" value="10"> Oktober
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="m11" value="11"> November
+                                        <input type="checkbox" id="m11" name="monitoring" onclick="calculate_progress_by_monitoring('m11')" value="11"> November
                                         <td/><td>
-                                        <input type="checkbox" id="vehicle1" name="m12" value="12"> Desember
+                                        <input type="checkbox" id="m12" name="monitoring" onclick="calculate_progress_by_monitoring('m12')" value="12"> Desember
                                         <td/>
                                     </tr>
                                 </table>
-                            
                             </div>
                         </li>
                     </ul>
-                    
                     </div>
                     
                 </div>
@@ -142,7 +143,6 @@
 
 
 
-<?= $this->include("js/detail_mitigation_monitoring")?>
 
 
 <?php if($state_message){
@@ -161,3 +161,7 @@ if($state_message == 'error'){ ?>
 </script>
 <?php } 
 }?>
+
+
+<?= $this->include("js/detail_mitigation_monitoring")?>
+

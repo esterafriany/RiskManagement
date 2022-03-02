@@ -9,6 +9,7 @@ use App\Models\RiskEvents;
 use App\Models\RiskCauses;
 use App\Models\RiskMitigations;
 use App\Models\RiskMitigationDetails;
+use App\Models\RiskMitigationDetailMonitorings;
 use App\Models\RiskMitigationDetailOutputs;
 use App\Models\RiskMitigationDetailEvidences;
 use App\Models\KPIs;
@@ -20,6 +21,7 @@ class RiskMonitoringController extends BaseController
         $this->RiskEventModel = new RiskEvents();
         $this->RiskMitigationModel = new RiskMitigations();
         $this->RiskMitigationDetailModel = new RiskMitigationDetails();
+        $this->RiskMitigationDetailMonitoringModel = new RiskMitigationDetailMonitorings();
         $this->RiskMitigationDetailOutputModel = new RiskMitigationDetailOutputs();
         $this->RiskMitigationDetailEvidenceModel = new RiskMitigationDetailEvidences();
         $this->RiskCauseModel = new RiskCauses();
@@ -205,5 +207,11 @@ class RiskMonitoringController extends BaseController
         $this->RiskMitigationDetailEvidenceModel->delete($id);
 
         echo json_encode(array("status" => TRUE));
+    }
+
+    public function getDetailMonitoringMonths($id){
+        $data = $this->RiskMitigationDetailMonitoringModel->get_list_monitoring_by_id_detail_mitigation($id);
+		
+		echo json_encode($data);
     }
 }

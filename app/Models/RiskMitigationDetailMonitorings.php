@@ -14,7 +14,12 @@ class RiskMitigationDetailMonitorings extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        "id_detail_mitigation",
+        "target_month",
+        "monitoring_month",
+        "notes"
+    ];
 
     // Dates
     protected $useTimestamps = false;
@@ -39,4 +44,8 @@ class RiskMitigationDetailMonitorings extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function get_list_monitoring_by_id_detail_mitigation($id){
+        return $this->db->query("SELECT * FROM risk_mitigation_detail_monitorings WHERE id_detail_mitigation ='".$id."'")->getResultArray();
+    }
 }

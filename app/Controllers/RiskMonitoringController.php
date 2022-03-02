@@ -214,4 +214,10 @@ class RiskMonitoringController extends BaseController
 		
 		echo json_encode($data);
     }
+
+    public function onShowNotes($id, $month) {
+		$data = $this->RiskMitigationDetailMonitoringModel->get_notes($id, $month);
+		
+		echo json_encode($data);
+	}
 }

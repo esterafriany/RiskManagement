@@ -165,22 +165,7 @@
                </div>
                <div class="p-0 card-body">
                </br>
-               <style>
-                  .table tbody tr td{
-                     height:120%;
-                     white-space:normal;
-                     width:200px;
-                  }
-
-                  .text-wrap{
-                     white-space:normal;
-                  }
-                  .width-200{
-                     width:200px;
-                  }
-
-                  
-               </style>
+               
                   <div class="bd-example table-responsive" style="padding-right:20px;">
                   
                      <table id="table" name="table" width="100%" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
@@ -248,5 +233,19 @@
 
 </div>
 </div>
+<style>
+   .table tbody tr td{
+      height:100%;
+      white-space:normal;
+      width:200px;
+   }
+
+   .text-wrap{
+      white-space:normal;
+   }
+   .width-200{
+      width:200px;
+   }
+</style>
 
 <?= $this->include("js/dashboard")?>

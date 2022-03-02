@@ -48,4 +48,9 @@ class RiskMitigationDetailMonitorings extends Model
     public function get_list_monitoring_by_id_detail_mitigation($id){
         return $this->db->query("SELECT * FROM risk_mitigation_detail_monitorings WHERE id_detail_mitigation ='".$id."'")->getResultArray();
     }
+
+    public function get_notes($id, $month){
+        return $this->db->query("SELECT * FROM risk_mitigation_detail_monitorings 
+        WHERE id_detail_mitigation ='".$id."' AND MONTH(target_month) = '".$month."'")->getRow();
+    }
 }

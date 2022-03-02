@@ -214,7 +214,6 @@
 			target_number = target_number - 1;
 		}
 		percentage = (monitoring_number / target_number) * 100;
-
 		document.getElementById("progress-bar").style.width = percentage+"%";
 		document.getElementById("text-percentage").innerHTML = percentage.toFixed(2)+"%";
 
@@ -229,10 +228,34 @@
 		}
 		
 		percentage = (monitoring_number / target_number) * 100;
-
 		document.getElementById("progress-bar").style.width = percentage+"%";
 		document.getElementById("text-percentage").innerHTML = percentage.toFixed(2)+"%";
+	}
 
+	function show_notes(id, month){
+		//Ajax Load data from ajax
+		$.ajax({
+			url : "<?=site_url('RiskMonitoringController/onShowNotes')?>/" + id +"/" + month,
+			type: "GET",
+			dataType: "JSON",
+			success: function(data)
+			{
+				if(data){
+					$('[name="notes"]').val(data.notes);
+					$('#modal-view-notes').modal('show');
+					$('.modal-title').text('Catatan');
+				}else{
+					$('[name="notes"]').val("Tidak ada catatan.");
+					$('#modal-view-notes').modal('show');
+					$('.modal-title').text('Catatan');
+				}
+				 
+			},
+			error: function (jqXHR, textStatus, errorThrown)
+			{
+				swal('Data tidak ditemukan.');
+			}
+		});
 	}
 
 </script>

@@ -22,6 +22,6 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" data-bs-scroll="true" data-bs-backdrop="true" aria-labelledby="offcanvasExampleLabel">
     <?= $this->include('admin/template/_partials/offcanvas')?>
     </div>
-    <?= $this->include('admin/template/_partials/js')?>
+    <?php //$this->include('admin/template/_partials/js')?>
   </body>
 </html>

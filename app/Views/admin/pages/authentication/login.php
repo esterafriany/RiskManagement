@@ -9,20 +9,16 @@
 	<div class="wrapper">
       <section class="login-content">
          <div class="row m-0 align-items-center bg-white vh-100">            
-            <div class="col-md-6">
+            <div class="col-md-5">
                <div class="row justify-content-center">
                   <div class="col-md-10">
                      <div class="card card-transparent shadow-none d-flex justify-content-center mb-0 auth-card">
-                        <div class="card-body">
-                           <a href="../../dashboard/index.html" class="navbar-brand d-flex align-items-center mb-3">
+                     <div class="card-body">
+                           <a href="<?php echo base_url();?>" class="navbar-brand d-flex align-items-center mb-3">
                               <!--Logo start-->
-                              <svg width="30" class="" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <rect x="-0.757324" y="19.2427" width="28" height="4" rx="2" transform="rotate(-45 -0.757324 19.2427)" fill="currentColor"/>
-                                  <rect x="7.72803" y="27.728" width="28" height="4" rx="2" transform="rotate(-45 7.72803 27.728)" fill="currentColor"/>
-                                  <rect x="10.5366" y="16.3945" width="16" height="4" rx="2" transform="rotate(45 10.5366 16.3945)" fill="currentColor"/>
-                                  <rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor"/>
-                              </svg>
-                              <!--logo End--> <h4 class="logo-title ms-3">Hope UI</h4>
+                              <img src="<?php echo base_url();?>/assets/images/Flag/logo_ppd.png" width="40px" height="60px">
+                              <br/>
+                              <!--logo End--> <h4 class="logo-title ms-3">Aplikasi Manajemen Risiko</h4>
                            </a>
                            <h2 class="mb-2 text-center">Sign In</h2>
 						   
@@ -69,8 +65,11 @@
                </div>
 			   
             </div>
-            <div class="col-md-6 d-md-block  p-0 mt-n1 vh-100 overflow-hidden">
-               <img src="<?php echo base_url();?>/assets/images/auth/01.png" class="img-fluid gradient-main animated-scaleX" alt="images">
+            <div class="col-md-7 d-md-block  p-0 mt-n1 vh-100 overflow-hidden">
+               <img src="<?php echo base_url();?>/assets/images/auth/display2.jpg" class="img-fluid gradient-main animated-scaleX" alt="images">
+             
+               </img>
+            
             </div>
          </div>
       </section>

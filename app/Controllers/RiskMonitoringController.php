@@ -178,24 +178,48 @@ class RiskMonitoringController extends BaseController
                     $i++;
                 }
             }
-                
-            $data = [
-                'title'=>'Risk Monitoring Detail',
-                'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
-                'id_detail_mitigation' => $id_detail_mitigation,
-                'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation),
-                'state_message' => 'success'
-            ];
-            echo view('admin/template/template',$data);
+            
+            //target monitoring
+            //delete by id_detail_mitigation
+            $this->RiskMitigationDetailMonitoringModel->delete_by_detail_mitigation_id($id_detail_mitigation);
+            
+            //re-add
+            $target = $this->request->getPost('target[]');
+            $monitoring = $this->request->getPost('monitoring[]');
+            $notes = $this->request->getPost('notes[]');
+
+            $a = 0;
+            for($i = 0; $i < count($target); $i++){
+                $data=[
+                    'id_detail_mitigation' => $id_detail_mitigation,
+                    'target_month' => date("Y")."-".$target[$i]."-01",
+                    'monitoring_month' => "0000-00-00",
+                    'notes' => $notes[$i],
+                ];
+                $this->RiskMitigationDetailMonitoringModel->insert($data);
+                                
+            }
+            //update monitoring month
+            for($i = 0; $i < count($monitoring); $i++){
+                $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$i]);
+            }
+            // $data = [
+            //     'title'=>'Risk Monitoring Detail',
+            //     'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
+            //     'id_detail_mitigation' => $id_detail_mitigation,
+            //     'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation),
+            //     'state_message' => 'success'
+            // ];
+            // echo view('admin/template/template',$data);
         }catch (\Exception $e) {
-            $data = [
-                'title'=>'Risk Monitoring Detail',
-                'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
-                'id_detail_mitigation' => $id_detail_mitigation,
-                'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation),
-                'state_message' => 'error'
-            ];
-            echo view('admin/template/template',$data);     
+            // $data = [
+            //     'title'=>'Risk Monitoring Detail',
+            //     'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
+            //     'id_detail_mitigation' => $id_detail_mitigation,
+            //     'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation),
+            //     'state_message' => 'error'
+            // ];
+            // echo view('admin/template/template',$data);     
         }
         
     }

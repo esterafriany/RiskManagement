@@ -53,4 +53,17 @@ class RiskMitigationDetailMonitorings extends Model
         return $this->db->query("SELECT * FROM risk_mitigation_detail_monitorings 
         WHERE id_detail_mitigation ='".$id."' AND MONTH(target_month) = '".$month."'")->getRow();
     }
+
+    public function  delete_by_detail_mitigation_id($id){
+        $sql = "DELETE FROM risk_mitigation_detail_monitorings WHERE id_detail_mitigation='".$id."'";
+        $result = $this->db->query($sql);
+    }
+
+    public function update_data_monitoring($id_detail_mitigation, $monitoring_month){
+        $month = date("Y")."-".$monitoring_month."-01";
+        $sql = "UPDATE risk_mitigation_detail_monitorings 
+                SET monitoring_month = '".$month."'
+                WHERE id_detail_mitigation='".$id_detail_mitigation."'and target_month = '".$month."'";
+        $result = $this->db->query($sql);
+    }
 }

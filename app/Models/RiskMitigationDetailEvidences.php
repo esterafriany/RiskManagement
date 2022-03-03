@@ -51,5 +51,5 @@ class RiskMitigationDetailEvidences extends Model
     public function  delete_by_detail_mitigation_id($id){
       $sql = "DELETE FROM risk_mitigation_detail_evidences WHERE id_detail_mitigation='".$id."'";
       $result = $this->db->query($sql);
-  }
+    }
 }

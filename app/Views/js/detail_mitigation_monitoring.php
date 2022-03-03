@@ -56,12 +56,14 @@
 				var count = result.length;
 				var monitoring_sum = 0;
 				var percentage = 0;
+				
 				for(i = 0; i < count; i++){
 					
 					var arr = result[i]['target_month'].split("-");
         			var target_month = arr[arr.length - 2];
 					
 					$("#t"+target_month).prop( "checked", true );
+					$('#n'+target_month).val(result[i]['notes']);
 
 					var arr1 = result[i]['monitoring_month'].split("-");
         			var monitoring_month = arr1[arr1.length - 2];
@@ -232,22 +234,19 @@
 		document.getElementById("text-percentage").innerHTML = percentage.toFixed(2)+"%";
 	}
 
+
 	function show_notes(id, month){
-		//Ajax Load data from ajax
+		//$('#n'+month).each (function() { this.type = 'text'; });
+		$("#div"+month).toggle(); 
 		$.ajax({
 			url : "<?=site_url('RiskMonitoringController/onShowNotes')?>/" + id +"/" + month,
 			type: "GET",
 			dataType: "JSON",
 			success: function(data)
 			{
-				if(data){
-					$('[name="notes"]').val(data.notes);
-					$('#modal-view-notes').modal('show');
-					$('.modal-title').text('Catatan');
-				}else{
-					$('[name="notes"]').val("Tidak ada catatan.");
-					$('#modal-view-notes').modal('show');
-					$('.modal-title').text('Catatan');
+				if(data == null){
+					console.log('a');
+					$('#n'+month).val("Masukkan Data");
 				}
 				 
 			},
@@ -256,6 +255,7 @@
 				swal('Data tidak ditemukan.');
 			}
 		});
+			
 	}
 
 </script>

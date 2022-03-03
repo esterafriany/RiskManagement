@@ -101,79 +101,79 @@
                                     <tr>
                                         <th scope="row">Target</th>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="t01" name="target[]" onclick="calculate_progress_by_target('t01')" value="1">
+                                            <input type="checkbox" id="t01" name="target[]" onclick="calculate_progress_by_target('t01')" value="01">
                                         </td>
                                         <td class="text-center child-cell active">
-                                            <input type="checkbox" id="t02" name="target[]" onclick="calculate_progress_by_target('t02')" value="2">
+                                            <input type="checkbox" id="t02" name="target[]" onclick="calculate_progress_by_target('t02')" value="02">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="t03" name="target[]" onclick="calculate_progress_by_target('t03')" value="2">
+                                            <input type="checkbox" id="t03" name="target[]" onclick="calculate_progress_by_target('t03')" value="03">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="t04" name="target[]" onclick="calculate_progress_by_target('t04')" value="2">
+                                            <input type="checkbox" id="t04" name="target[]" onclick="calculate_progress_by_target('t04')" value="04">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="t05" name="target[]" onclick="calculate_progress_by_target('t05')" value="2">
+                                            <input type="checkbox" id="t05" name="target[]" onclick="calculate_progress_by_target('t05')" value="05">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="t06" name="target[]" onclick="calculate_progress_by_target('t06')" value="2">
+                                            <input type="checkbox" id="t06" name="target[]" onclick="calculate_progress_by_target('t06')" value="06">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="t07" name="target[]" onclick="calculate_progress_by_target('t07')" value="2">
+                                            <input type="checkbox" id="t07" name="target[]" onclick="calculate_progress_by_target('t07')" value="07">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="t08" name="target[]" onclick="calculate_progress_by_target('t08')" value="2">
+                                            <input type="checkbox" id="t08" name="target[]" onclick="calculate_progress_by_target('t08')" value="08">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="t09" name="target[]" onclick="calculate_progress_by_target('t09')" value="2">
+                                            <input type="checkbox" id="t09" name="target[]" onclick="calculate_progress_by_target('t09')" value="09">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="t10" name="target[]" onclick="calculate_progress_by_target('t10')" value="2">
+                                            <input type="checkbox" id="t10" name="target[]" onclick="calculate_progress_by_target('t10')" value="10">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="t11" name="target[]" onclick="calculate_progress_by_target('t11')" value="2">
+                                            <input type="checkbox" id="t11" name="target[]" onclick="calculate_progress_by_target('t11')" value="11">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="t12" name="target[]" onclick="calculate_progress_by_target('t12')" value="2">
+                                            <input type="checkbox" id="t12" name="target[]" onclick="calculate_progress_by_target('t12')" value="12">
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Monitoring</th>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="m01" name="monitoring" onclick="calculate_progress_by_monitoring('m01')"  value="1">
+                                            <input type="checkbox" id="m01" name="monitoring[]" onclick="calculate_progress_by_monitoring('m01')"  value="01">
                                         </td>
                                         <td class="text-center child-cell active">
-                                            <input type="checkbox" id="m02" name="monitoring" onclick="calculate_progress_by_monitoring('m02')"  value="1">
+                                            <input type="checkbox" id="m02" name="monitoring[]" onclick="calculate_progress_by_monitoring('m02')"  value="02">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="m03" name="monitoring" onclick="calculate_progress_by_monitoring('m03')"  value="1">
+                                            <input type="checkbox" id="m03" name="monitoring[]" onclick="calculate_progress_by_monitoring('m03')"  value="03">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="m04" name="monitoring" onclick="calculate_progress_by_monitoring('m04')"  value="1">
+                                            <input type="checkbox" id="m04" name="monitoring[]" onclick="calculate_progress_by_monitoring('m04')"  value="04">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="m05" name="monitoring" onclick="calculate_progress_by_monitoring('m05')"  value="1">
+                                            <input type="checkbox" id="m05" name="monitoring[]" onclick="calculate_progress_by_monitoring('m05')"  value="05">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="m06" name="monitoring" onclick="calculate_progress_by_monitoring('m06')"  value="1">
+                                            <input type="checkbox" id="m06" name="monitoring[]" onclick="calculate_progress_by_monitoring('m06')"  value="06">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="m07" name="monitoring" onclick="calculate_progress_by_monitoring('m07')"  value="1">
+                                            <input type="checkbox" id="m07" name="monitoring[]" onclick="calculate_progress_by_monitoring('m07')"  value="07">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="m08" name="monitoring" onclick="calculate_progress_by_monitoring('m08')"  value="1">
+                                            <input type="checkbox" id="m08" name="monitoring[]" onclick="calculate_progress_by_monitoring('m08')"  value="08">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="m09" name="monitoring" onclick="calculate_progress_by_monitoring('m09')"  value="1">
+                                            <input type="checkbox" id="m09" name="monitoring[]" onclick="calculate_progress_by_monitoring('m09')"  value="09">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="m10" name="monitoring" onclick="calculate_progress_by_monitoring('m10')"  value="1">
+                                            <input type="checkbox" id="m10" name="monitoring[]" onclick="calculate_progress_by_monitoring('m10')"  value="10">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="m11" name="monitoring" onclick="calculate_progress_by_monitoring('m11')"  value="1">
+                                            <input type="checkbox" id="m11" name="monitoring[]" onclick="calculate_progress_by_monitoring('m11')"  value="11">
                                         </td>
                                         <td class="text-center child-cell">
-                                            <input type="checkbox" id="m12" name="monitoring" onclick="calculate_progress_by_monitoring('m12')"  value="1">
+                                            <input type="checkbox" id="m12" name="monitoring[]" onclick="calculate_progress_by_monitoring('m12')"  value="12">
                                         </td>
                                     </tr>
                                     <tr>
@@ -184,6 +184,8 @@
                                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
                                                 </span>
                                             </button>
+                                            
+                                            <div id='div01' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n01" name="notes[]" placeholder="Masukkan Catatan"></div>
                                         </td>
                                         <td class="text-center child-cell">
                                             <button type="button" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'02')">
@@ -191,6 +193,8 @@
                                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
                                                 </span>
                                             </button>
+                                            <div id='div02' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n02" name="notes[]" placeholder="Masukkan Catatan"></div>
+                                            
                                         </td>
                                         <td class="text-center child-cell">
                                             <button type="button" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'03')">
@@ -198,6 +202,7 @@
                                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
                                                 </span>
                                             </button>
+                                            <div id='div03' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n03" name="notes[]" placeholder="Masukkan Catatan"></div>
                                         </td>
                                         <td class="text-center child-cell">
                                             <button type="button" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'04')">
@@ -205,6 +210,8 @@
                                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
                                                 </span>
                                             </button>
+                                            <div id='div04' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n04" name="notes[]" placeholder="Masukkan Catatan"></div>
+
                                         </td>
                                         <td class="text-center child-cell">
                                             <button type="button" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'05')">
@@ -212,6 +219,8 @@
                                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
                                                 </span>
                                             </button>
+                                            <div id='div05' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n05" name="notes[]" placeholder="Masukkan Catatan"></div>
+
                                         </td>
                                         <td class="text-center child-cell">
                                             <button type="button" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'06')">
@@ -219,6 +228,8 @@
                                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
                                                 </span>
                                             </button>
+                                            
+                                            <div id='div06' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n06" name="notes[]" placeholder="Masukkan Catatan"></div>
                                         </td>
                                         <td class="text-center child-cell">
                                             <button type="button" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'07')">
@@ -226,6 +237,7 @@
                                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
                                                 </span>
                                             </button>
+                                            <div id='div07' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n07" name="notes[]" placeholder="Masukkan Catatan"></div>
                                         </td>
                                         <td class="text-center child-cell">
                                             <button type="button" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'08')">
@@ -233,6 +245,8 @@
                                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
                                                 </span>
                                             </button>
+                                            <div id='div08' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n08" name="notes[]" placeholder="Masukkan Catatan"></div>
+
                                         </td>
                                         <td class="text-center child-cell">
                                             <button type="button" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'09')">
@@ -240,6 +254,8 @@
                                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
                                                 </span>
                                             </button>
+                                            <div id='div09' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n09" name="notes[]" placeholder="Masukkan Catatan"></div>
+
                                         </td>
                                         <td class="text-center child-cell">
                                             <button type="button" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'10')">
@@ -247,6 +263,8 @@
                                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
                                                 </span>
                                             </button>
+                                            <div id='div10' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n10" name="notes[]" placeholder="Masukkan Catatan"></div>
+
                                         </td>
                                         <td class="text-center child-cell">
                                             <button type="button" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'11')">
@@ -254,6 +272,8 @@
                                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
                                                 </span>
                                             </button>
+                                            <div id='div11' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n11" name="notes[]" placeholder="Masukkan Catatan"></div>
+
                                         </td>
                                         <td class="text-center child-cell">
                                             <button type="button" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'12')">
@@ -261,6 +281,8 @@
                                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
                                                 </span>
                                             </button>
+                                            <div id='div12' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n12" name="notes[]" placeholder="Masukkan Catatan"></div>
+
                                         </td>
                                     </tr>
                                 </tbody>
@@ -284,9 +306,7 @@
 </div>
 
 <div class="modal fade bd-example-modal-lg" id="modal-view-notes" name="modal-view-notes" tabindex="-1" aria-labelledby="addGroupModal" style="display: none;" aria-hidden="true">
-	
 	<div class="modal-dialog"><?= $this->include("admin/pages/risk_monitoring/show_notes")?></div>
-
 </div>
 
 <?php if($state_message){

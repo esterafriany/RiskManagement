@@ -1,9 +1,19 @@
 <?= $this->include('admin/template/_partials/js')?>
 
 <script>
+	var table = $('#riskMonitoringTable');
 	$(document).ready(function() {
-		
-		$('#riskMonitoringTable').DataTable({
+		var year = document.getElementById('year_selected').value;
+
+		table = $('#riskMonitoringTable').DataTable({
+			deferRender:    true,
+			scrollX: 				true,
+			scrollCollapse: true,
+			scroller:       true,
+			searching: 			false,
+			paging: 				true,
+			info: 					false,
+
 			'processing': true,
 			'serverSide': true,
 			'serverMethod': 'post',
@@ -14,7 +24,7 @@
 				zeroRecords: "Tidak ada Data Risiko ditemukan.",
 			},
 			'ajax': {
-				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoring')?>",
+				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoring')?>/" + year,
 				'data': function(data) {
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
@@ -34,14 +44,22 @@
 					return data.aaData;
 				}
 			},
-			'columns': [{
+			'columns': [
+				{
 					data: 'risk_event'
 				},
 				{
 					data: 'risk_mitigation'
 				},
 				{
-					data: 'id'
+					data: 'id',
+					render: function (data, type, item) {
+						if(item.id > 0){
+							return '<a href="" class="badge rounded-pill bg-primary text-white">'+item.id+'</a>';
+						}else{
+							return '';
+						}
+					},
 				},
 				{
 					data: 'risk_mitigation_detail'
@@ -50,5 +68,88 @@
 			]
 		});
 	});
+
+	function update_risk_table(){
+        year_selected = document.getElementById('year_selected').value;
+        
+		if ( $.fn.dataTable.isDataTable('#riskMonitoringTable') ) {
+			$('#riskMonitoringTable').DataTable().destroy();
+			//$('#riskMonitoringTable').empty();
+		}
+		
+		$('#riskMonitoringTable').DataTable({
+			deferRender:    true,
+			scrollX: 				true,
+			scrollCollapse: true,
+			scroller:       true,
+			searching: 			false,
+			paging: 				true,
+			info: 					false,
+
+			'fixedColumns': true,
+			'processing': true,
+			'serverSide': true,
+			'serverMethod': 'post',
+			lengthMenu: [5, 10, 20, 50, 100],
+			"iDisplayLength": 5,
+			language: {
+				emptyTable: "Belum ada Risiko Utama.",
+				zeroRecords: "Tidak ada Data Risiko Utama ditemukan.",
+			},
+			'ajax': {
+				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoring/')?>" + year_selected,
+				'data': function(data) {
+					// CSRF Hash
+					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
+					var csrfHash = $('.txt_csrfname').val(); // CSRF hash
+
+					return {
+						data: data,
+						[csrfName]: csrfHash // CSRF Token
+					};
+				},
+				dataSrc: function(data) {
+					
+					// Update token hash
+					$('.txt_csrfname').val(data.token);
+
+					// Datatable data
+					return data.aaData;
+				}
+			},
+			'columns': [
+				
+				{
+					data: 'risk_event'
+				},
+				{
+					data: 'risk_mitigation'
+				},
+				{
+					data: 'id',
+					render: function (data, type, item) {
+						if(item.id > 0){
+							return '<a href="" class="badge rounded-pill bg-primary text-white">'+item.id+'</a>';
+						}else{
+							return '';
+						}
+					},
+				},
+				{
+					data: 'risk_mitigation_detail'
+				},
+			]
+		});
+
+
+		$('.toggle-vis').on( 'change', function (e) {
+			e.preventDefault();
+			// Get the column API object
+			var column = $('#riskMonitoringTable').DataTable().column( $(this).attr('data-column') );
+	
+			// Toggle the visibility
+			column.visible( ! column.visible() );
+		});
+    }
 
 </script>

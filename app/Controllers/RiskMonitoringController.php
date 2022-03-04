@@ -38,7 +38,7 @@ class RiskMonitoringController extends BaseController
         echo view('admin/template/template',$data);
     }
 
-    public function getRiskMonitoring(){
+    public function getRiskMonitoring($year){
         $request = service('request');
         $postData = $request->getPost();
         $dtpostData = $postData['data'];
@@ -65,6 +65,7 @@ class RiskMonitoringController extends BaseController
             , risk_mitigations.risk_mitigation
             , risk_mitigation_details.id
             , risk_mitigation_details.risk_mitigation_detail')
+            ->where('risk_events.year' , $year)
                 ->orLike('risk_mitigation', $searchValue)
                 ->countAllResults();
 
@@ -78,17 +79,20 @@ class RiskMonitoringController extends BaseController
                 , risk_mitigation_details.risk_mitigation_detail')
                 ->orLike('risk_event', $searchValue)
                 ->orLike('risk_mitigation', $searchValue)
+                ->where('risk_events.year' , $year)
                 ->orderBy($columnName,$columnSortOrder)
                 ->findAll($rowperpage, $start);
         
         $records = $this->RiskEventModel
                 ->join('risk_mitigations', 'risk_mitigations.id_risk_event = risk_events.id', 'left')
                 ->join('risk_mitigation_details', 'risk_mitigation_details.id_risk_mitigation = risk_mitigations.id', 'left')
+                ->where('risk_events.year' , $year)
                 ->select('risk_events.risk_event
                     , risk_mitigations.risk_mitigation
                     , risk_mitigation_details.id
                     , risk_mitigation_details.risk_mitigation_detail')
                 ->orLike('risk_events.risk_event', $searchValue)
+                ->where('risk_events.year' , $year)
                 ->findAll($rowperpage, $start);
 
         $data = array();

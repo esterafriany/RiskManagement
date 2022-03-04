@@ -56,8 +56,6 @@
                   </div>
                </div><br/>
 				<div class="table-responsive">
-
-            
                <table id="riskEventTable" class="table" width="100%">
                   <thead>
                      <tr>

@@ -23,7 +23,7 @@
 			   </div>
             <div class="card-body">
 				<div class="table-responsive">
-               <table id="riskMonitoringTable" class="table table-striped" width="100%">
+               <table id="riskMonitoringTable" class="table" width="100%">
                   <thead>
                      <tr>
                         <th>Risiko Utama</th>

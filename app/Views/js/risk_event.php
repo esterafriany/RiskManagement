@@ -225,7 +225,6 @@
 		}
 		
 		$('#riskEventTable').DataTable({
-		
 			'fixedColumns': true,
 			'processing': true,
 			'serverSide': true,
@@ -249,7 +248,6 @@
 					};
 				},
 				dataSrc: function(data) {
-					console.log(data);
 					// Update token hash
 					$('.txt_csrfname').val(data.token);
 
@@ -258,9 +256,7 @@
 				}
 			},
 			'columns': [
-				
 				{
-					
 					title: "Sasaran",
 					data: 'objective'
 				},

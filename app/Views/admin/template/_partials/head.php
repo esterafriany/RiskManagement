@@ -3,7 +3,7 @@
       <title>Risk Register Apps</title>
       
       <!-- Favicon -->
-      <link rel="shortcut icon" href="<?php echo base_url();?>/assets/images/Flag/logo.png" />
+      <link rel="shortcut icon" href="<?php echo base_url();?>/assets/images/favicon.ico" />
       
       <!-- Library / Plugin Css Build -->
       <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/core/libs.min.css" />

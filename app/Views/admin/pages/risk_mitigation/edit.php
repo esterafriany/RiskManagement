@@ -99,8 +99,8 @@
                 
             </div>
             <div class="card-footer">
-                <a href="<?=base_url('admin/risk-event')?>" type="button" class="btn btn-secondary">Batal</a>
-                <button type="button" id="btn-edit-risk-event"  class="btn btn-primary">Simpan</button>
+                <a href="<?=base_url('admin/risk-mitigation')?>" type="button" class="btn btn-secondary">Batal</a>
+                <button type="button" id="btn-edit-risk-detail"  class="btn btn-primary">Simpan</button>
             </div>
             
          </div>

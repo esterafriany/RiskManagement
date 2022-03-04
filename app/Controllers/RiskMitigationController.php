@@ -54,7 +54,7 @@ class RiskMitigationController extends BaseController
         echo json_encode($data);
     }
 
-    public function getRiskMitigation(){
+    public function getRiskMitigation($year){
         $request = service('request');
         $postData = $request->getPost();
         $dtpostData = $postData['data'];
@@ -70,19 +70,24 @@ class RiskMitigationController extends BaseController
         $searchValue = $dtpostData['search']['value']; // Search value
 
         ## Total number of records without filtering
-        $totalRecords = $this->RiskMitigationModel->select('id')
-                ->countAllResults();
+        $totalRecords = $this->RiskEventModel
+                        ->join('kpis', 'kpis.id = risk_events.id_kpi')
+                        ->where('risk_events.year' , $year)
+                        ->select('risk_events.id as id, kpis.name as kpi_name, risk_number, risk_event, risk_events.is_active')
+                        ->countAllResults();
 
         ## Total number of records with filtering
-        $totalRecordwithFilter = $this->RiskEventModel->select('id')
-                ->orLike('risk_event', $searchValue)
-                ->countAllResults();
+        $totalRecordwithFilter = $this->RiskEventModel
+                        ->join('kpis', 'kpis.id = risk_events.id_kpi')
+                        ->where('risk_events.year' , $year)
+                        ->select('risk_events.id as id, kpis.name as kpi_name, risk_number, risk_event, risk_events.is_active')
+                        ->countAllResults();
 
         ## Fetch records
         $records = $this->RiskEventModel
                 ->join('kpis', 'kpis.id = risk_events.id_kpi')
+                ->where('risk_events.year' , $year)
                 ->select('risk_events.id as id, kpis.name as kpi_name, risk_number, risk_event, risk_events.is_active')
-                ->orLike('risk_events.risk_event', $searchValue)
                 ->orderBy($columnName,$columnSortOrder)
                 ->findAll($rowperpage, $start);
                 
@@ -189,14 +194,12 @@ class RiskMitigationController extends BaseController
             "iTotalDisplayRecords" => $totalRecordwithFilter,
             "aaData" => $data,
             "token" => csrf_hash() // New token hash
-        );
-        
+        );   
         return $this->response->setJSON($response);
     }
 
     public function onAddDetailRisk(){
         try {
-           
             $risk_causes = json_decode($_POST['risk_cause']);
             $id_risk_event = json_decode($_POST['id_risk_event']);
             $division_assignment = json_decode($_POST['division_assignment']);

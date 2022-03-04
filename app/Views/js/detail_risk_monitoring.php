@@ -3,7 +3,7 @@
 <script>
 	$(document).ready(function() {
 		
-		var $btn_edit_risk_event = $("#btn-edit-risk-event");
+		var $btn_edit_risk_detail = $("#btn-edit-risk-detail");
 		var site_url = window.location.pathname;
         var arr = site_url.split("/");
         var id_risk_event = arr[arr.length - 1];
@@ -77,7 +77,7 @@
 				for(k = 0; k < id_risk_mitigation.length; k++){
 				
 					var list_risk_mitigation = get_risk_assignment(id_risk_mitigation[k]);
-					console.log(list_risk_mitigation);
+					
 					for(j = 0; j < list_risk_mitigation.length; j++){
 						temp2.push(list_risk_mitigation[j]['id']);
 					}
@@ -152,21 +152,12 @@
 		});
 
 		// edit risk
-		$btn_edit_risk_event.on("click", function (e) {
+		$btn_edit_risk_detail.on("click", function (e) {
 			//risk event
 			var risk_event = new Array();
 			risk_event = {
-				'objective':  document.getElementById('objective').value,
 				'risk_event':  document.getElementById('risk_event').value,
-				'year':  document.getElementById('year').value,
-				'id_kpi':  document.getElementById('id_kpi').value,
-				'existing_control_1':  document.getElementById('existing_control_1').value,
-				'existing_control_2':  document.getElementById('existing_control_2').value,
-				'existing_control_3':  document.getElementById('existing_control_3').value,
-				'probability_level':  document.getElementById('probability_level').value,
-				'impact_level':  document.getElementById('impact_level').value,
-				'final_level':  document.getElementById('final_level').value,
-				'risk_analysis':  document.getElementById('risk_analysis').value
+				'id_kpi':  document.getElementById('id_kpi').value
 			};
 			
 			//risk cause
@@ -184,25 +175,17 @@
 			for (var i = 0; i < input1.length; i++) {
 				division_assignment[i]= input1[i].value +"."+input2[i].value;
             }
-
-			// //risk category
-			// var input3 = document.getElementsByName('risk_category[]');
-			// var risk_category = [];
-			// for (var i = 0; i < input3.length; i++) {
-            //     var a = input3[i];
-			// 	risk_category[i] = a.value;			
-            // }
 			
 			var id_risk = document.getElementById('id_risk_event').value;
 			$.ajax({
-				url : "<?php echo base_url('admin/RiskMitigationController/onAddDetailRisk')?>",
+				url : "<?php echo base_url('RiskMitigationController/onAddDetailRisk')?>",
 				type: "POST",
 				data: {'id_risk_event':id_risk,'risk_event':JSON.stringify(risk_event),'risk_cause':JSON.stringify(risk_cause),'division_assignment':JSON.stringify(division_assignment)},
 				dataType: "JSON",
 
 				success: function(response)
 				{
-					console.log(response);
+					//console.log(response);
 					swal({
 					  title: "Sukses!",
 					  text: "Data sukses ditambah/diubah!",

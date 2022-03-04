@@ -74,7 +74,6 @@
         
 		if ( $.fn.dataTable.isDataTable('#riskMonitoringTable') ) {
 			$('#riskMonitoringTable').DataTable().destroy();
-			//$('#riskMonitoringTable').empty();
 		}
 		
 		$('#riskMonitoringTable').DataTable({

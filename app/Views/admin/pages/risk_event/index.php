@@ -6,8 +6,7 @@
                <div class="header-title">
                   <h4 class="card-title">Data Risiko Utama</h4>
                </div>
-                  
-                  
+               
 			      <a type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal-add-risk-event">Tambah</a>
 			   
             </div>
@@ -25,19 +24,15 @@
                         <input class="toggle-vis" type="checkbox" value="" data-column="1">
                         <label class="form-check-label" for="flexCheckChecked11">KPI</label>
 
-                        
                         <input class="toggle-vis" type="checkbox" value="" data-column="2">
                         <label class="form-check-label" for="flexCheckChecked11">No. Resiko</label>
 
-                        
                         <input class="toggle-vis" type="checkbox" value="" data-column="3">
                         <label class="form-check-label" for="flexCheckChecked11">Resiko Utama</label>
 
-                        
                         <input class="toggle-vis" type="checkbox" value="" data-column="4">
                         <label class="form-check-label" for="flexCheckChecked11">Tahun</label>
 
-                        
                      </div>
                   </p>
                   <div class="d-flex align-items-center flex-wrap">
@@ -68,8 +63,6 @@
                      </tr>
                   </thead> 
                </table>
-                  
-               
                </div>
             </div>
          </div>

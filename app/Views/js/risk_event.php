@@ -9,13 +9,9 @@
 		
 		
 		table = $('#riskEventTable').DataTable({
-			deferRender:    true,
 			scrollX: 				true,
 			scrollCollapse: true,
 			scroller:       true,
-			searching: 			false,
-			paging: 				true,
-			info: 					false,
 
 			'processing': true,
 			'serverSide': true,
@@ -304,7 +300,15 @@
 						
 					},
 				},
-			]
+			],
+			columnDefs: [
+                {
+                    render: function (data, type, full, meta) {
+                        return "<div class='text-wrap width-200'>" + data + "</div>";
+                    },
+                    targets: [0,3]
+                }
+            ]
 		});
 
 

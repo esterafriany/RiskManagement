@@ -295,18 +295,16 @@
                 </div>
                 <br/>
             </div>
+
             <div class="card-footer">
-                <button type="button" class="btn btn-secondary">Batal</button>
+                <a href="<?=base_url('admin/risk-mitigation')?>"type="button" class="btn btn-secondary">Batal</a>
                 <button type="submit" id="btn-add-detail-monitoring"  class="btn btn-primary">Simpan</button>
             </div>
+            
          </div>
       </div>
       </form>
    </div>
-</div>
-
-<div class="modal fade bd-example-modal-lg" id="modal-view-notes" name="modal-view-notes" tabindex="-1" aria-labelledby="addGroupModal" style="display: none;" aria-hidden="true">
-	<div class="modal-dialog"><?= $this->include("admin/pages/risk_monitoring/show_notes")?></div>
 </div>
 
 <?php if($state_message){

@@ -7,7 +7,6 @@
 		var year = document.getElementById('year_selected').value;
 		
 		table = $('#riskMitigationTable').DataTable({
-			
 			'processing': true,
 			'serverSide': true,
 			'serverMethod': 'post',
@@ -65,8 +64,15 @@
 						
 					},
 				},
-				
-			]
+			],
+			columnDefs: [
+                {
+                    render: function (data, type, full, meta) {
+                        return "<div class='text-wrap width-200'>" + data + "</div>";
+                    },
+                    targets: 2
+                }
+            ]
 		});
 	});
 
@@ -75,17 +81,13 @@
 
 		if ( $.fn.dataTable.isDataTable('#riskMitigationTable') ) {
 			$('#riskMitigationTable').DataTable().destroy();
-			$('#riskMitigationTable').empty();
+			//$('#riskMitigationTable').empty();
 		}
 		
 		$('#riskMitigationTable').DataTable({
-			deferRender:    true,
 			scrollX: 				true,
 			scrollCollapse: true,
 			scroller:       true,
-			searching: 			false,
-			paging: 				true,
-			info: 					false,
 
 			'fixedColumns': true,
 			'processing': true,
@@ -146,7 +148,15 @@
 						
 					},
 				},
-			]
+			],
+			columnDefs: [
+                {
+                    render: function (data, type, full, meta) {
+                        return "<div class='text-wrap width-200'>" + data + "</div>";
+                    },
+                    targets: 2
+                }
+            ]
 		});
 
 

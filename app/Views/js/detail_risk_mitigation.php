@@ -75,7 +75,15 @@
                               </div>&nbsp;`
 					},					
 				},
-			]
+			],
+			columnDefs: [
+                {
+                    render: function (data, type, full, meta) {
+                        return "<div class='text-wrap width-200'>" + data + "</div>";
+                    },
+                    targets: 0
+                }
+            ]
 		});
 		
 		// add detail mitigasi

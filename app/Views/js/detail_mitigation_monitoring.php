@@ -11,7 +11,6 @@
         var arr = site_url.split("/");
         var id_detail_mitigation = arr[arr.length - 1];
 		let y = 0;
-
 		
 		$.ajax({
 			url : "<?=site_url('RiskMonitoringController/getOutputList')?>/" + id_detail_mitigation,
@@ -58,7 +57,6 @@
 				var percentage = 0;
 				
 				for(i = 0; i < count; i++){
-					
 					var arr = result[i]['target_month'].split("-");
         			var target_month = arr[arr.length - 2];
 					
@@ -233,7 +231,6 @@
 		document.getElementById("progress-bar").style.width = percentage+"%";
 		document.getElementById("text-percentage").innerHTML = percentage.toFixed(2)+"%";
 	}
-
 
 	function show_notes(id, month){
 		//$('#n'+month).each (function() { this.type = 'text'; });

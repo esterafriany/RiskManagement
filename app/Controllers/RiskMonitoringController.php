@@ -71,22 +71,8 @@ class RiskMonitoringController extends BaseController
 
         ## Fetch records
         $records = $this->RiskEventModel
-            ->join('risk_mitigations', 'risk_mitigations.id_risk_event = risk_events.id', 'left')
-            ->join('risk_mitigation_details', 'risk_mitigation_details.id_risk_mitigation = risk_mitigations.id', 'left')
-            ->select('risk_events.risk_event
-                , risk_mitigations.risk_mitigation
-                , risk_mitigation_details.id
-                , risk_mitigation_details.risk_mitigation_detail')
-                ->orLike('risk_event', $searchValue)
-                ->orLike('risk_mitigation', $searchValue)
-                ->where('risk_events.year' , $year)
-                ->orderBy($columnName,$columnSortOrder)
-                ->findAll($rowperpage, $start);
-        
-        $records = $this->RiskEventModel
                 ->join('risk_mitigations', 'risk_mitigations.id_risk_event = risk_events.id', 'left')
                 ->join('risk_mitigation_details', 'risk_mitigation_details.id_risk_mitigation = risk_mitigations.id', 'left')
-                ->where('risk_events.year' , $year)
                 ->select('risk_events.risk_event
                     , risk_mitigations.risk_mitigation
                     , risk_mitigation_details.id

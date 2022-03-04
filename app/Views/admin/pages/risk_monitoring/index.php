@@ -42,3 +42,12 @@
 
 <?= $this->include("js/risk_monitoring")?>
 
+<style>
+   .text-wrap{
+      white-space:normal;
+   }
+   .width-200{
+      width:200px;
+   }
+</style>
+

@@ -6,13 +6,9 @@
 		var year = document.getElementById('year_selected').value;
 
 		table = $('#riskMonitoringTable').DataTable({
-			deferRender:    true,
+			
 			scrollX: 				true,
-			scrollCollapse: true,
-			scroller:       true,
-			searching: 			false,
 			paging: 				true,
-			info: 					false,
 
 			'processing': true,
 			'serverSide': true,
@@ -55,17 +51,31 @@
 					data: 'id',
 					render: function (data, type, item) {
 						if(item.id > 0){
-							return '<a href="" class="badge rounded-pill bg-primary text-white">'+item.id+'</a>';
+							return '<a href="<?=base_url()?>/admin/detail-risk-monitoring/'+item.id+'" class="badge rounded-pill bg-primary text-white">'+item.id+'</a>';
 						}else{
 							return '';
 						}
 					},
 				},
 				{
-					data: 'risk_mitigation_detail'
+					data: 'risk_mitigation_detail',
+					render: function (data, type, item) {
+						if(item.risk_mitigation_detail != ""){
+							return item.risk_mitigation_detail;
+						}else{
+							return '';
+						}
+					},
 				},
-				
-			]
+			],
+			columnDefs: [
+                {
+                    render: function (data, type, full, meta) {
+                        return "<div class='text-wrap width-200'>" + data + "</div>";
+                    },
+                    targets: [0,1,3]
+                }
+            ]
 		});
 	});
 
@@ -77,13 +87,9 @@
 		}
 		
 		$('#riskMonitoringTable').DataTable({
-			deferRender:    true,
 			scrollX: 				true,
 			scrollCollapse: true,
 			scroller:       true,
-			searching: 			false,
-			paging: 				true,
-			info: 					false,
 
 			'fixedColumns': true,
 			'processing': true,
@@ -135,9 +141,24 @@
 					},
 				},
 				{
-					data: 'risk_mitigation_detail'
+					data: 'risk_mitigation_detail',
+					render: function (data, type, item) {
+						if(item.risk_mitigation_detail != ""){
+							return item.risk_mitigation_detail;
+						}else{
+							return '';
+						}
+					},
 				},
-			]
+			],
+			columnDefs: [
+                {
+                    render: function (data, type, full, meta) {
+                        return "<div class='text-wrap width-200'>" + data + "</div>";
+                    },
+                    targets: [0,1,3]
+                }
+            ]
 		});
 
 

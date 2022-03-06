@@ -1,27 +1,45 @@
     <!-- Library Bundle Script -->
-    <script src="../assets/js/core/libs.min.js"></script>
+    <script src="<?php echo base_url();?>/assets/js/core/libs.min.js"></script>
     
     <!-- External Library Bundle Script -->
-    <script src="../assets/js/core/external.min.js"></script>
+    <script src="<?php echo base_url();?>/assets/js/core/external.min.js"></script>
     
     <!-- Widgetchart Script -->
-    <script src="../assets/js/charts/widgetcharts.js"></script>
+    <script src="<?php echo base_url();?>/assets/js/charts/widgetcharts.js"></script>
     
     <!-- mapchart Script -->
-    <script src="../assets/js/charts/vectore-chart.js"></script>
-    <script src="../assets/js/charts/dashboard.js" ></script>
+    <script src="<?php echo base_url();?>/assets/js/charts/vectore-chart.js"></script>
+    <script src="<?php echo base_url();?>/assets/js/charts/dashboard.js" ></script>
     
     <!-- fslightbox Script -->
-    <script src="../assets/js/plugins/fslightbox.js"></script>
+    <script src="<?php echo base_url();?>/assets/js/plugins/fslightbox.js"></script>
     
     <!-- Settings Script -->
-    <script src="../assets/js/plugins/setting.js"></script>
+    <script src="<?php echo base_url();?>/assets/js/plugins/setting.js"></script>
     
     <!-- Form Wizard Script -->
-    <script src="../assets/js/plugins/form-wizard.js"></script>
+    <script src="<?php echo base_url();?>/assets/js/plugins/form-wizard.js"></script>
     
     <!-- AOS Animation Plugin-->
-    <script src="../assets/vendor/aos/dist/aos.js"></script>
+    <script src="<?php echo base_url();?>/assets/vendor/aos/dist/aos.js"></script>
     
     <!-- App Script -->
-    <script src="../assets/js/hope-ui.js" defer></script>
+    <script src="<?php echo base_url();?>/assets/js/hope-ui.js" defer></script>
+
+    <!-- sweet alert -->
+    <script src="<?php echo base_url(); ?>/assets/js/sweet-alert.min.js"></script>
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/0de6e278ef.js" crossorigin="anonymous"></script>
+
+    <!--datatable select -->
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" ></script>
+   
+
+    <!--dropdown select -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+
+
+
+
+    

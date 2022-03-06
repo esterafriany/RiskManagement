@@ -16,11 +16,11 @@
                      <div class="card-body">
                            <a href="<?php echo base_url();?>" class="navbar-brand d-flex align-items-center mb-3">
                               <!--Logo start-->
-                              <img src="<?php echo base_url();?>/assets/images/Flag/logo_ppd.png" width="40px" height="60px">
-                              <br/>
-                              <!--logo End--> <h4 class="logo-title ms-3">Aplikasi Manajemen Risiko</h4>
+                              <img src="<?php echo base_url();?>/assets/images/Flag/logo_ppd.png" width="30px" height="50px">
+                              
+                              <!--logo End--> <h5 class="logo-title ms-2">Aplikasi Manajemen Risiko</h5>
                            </a>
-                           <h2 class="mb-2 text-center">Sign In</h2>
+                           <h6 class="mb-2 text-center">Sign In</h6>
 						   
                            <form id="form-login" action="<?php echo base_url();?>/process-login" method="POST" enctype='multipart/form-data'>
                               <div class="row">

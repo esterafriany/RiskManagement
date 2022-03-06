@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
 				"is_active" => "1"
 			],
 			[
-				"id_group" => "1",
+				"id_group" => "2",
 				"id_division" => "1",
 				"email" => "pic@perumppd.co.id",
 				"password" =>md5("password"),

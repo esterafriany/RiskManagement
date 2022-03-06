@@ -80,7 +80,6 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('risk-monitoring', 'RiskMonitoringController::index', ['as' => 'get-risk-monitorings']);
 	$routes->add('detail-risk-monitoring/(:num)', 'RiskMonitoringController::getDetailRiskMonitoring/$1', ['as' => 'detail-risk-monitoring']);
 	$routes->add('RiskMonitoringController/onAddDetailMonitoring', 'RiskMonitoringController::onAddDetailMonitoring', ['as' => 'add-risk-monitoring']);
-	// $routes->add('RiskMonitoringController::onDeleteEvidence', 'RiskMonitoringController::onDeleteEvidence/$1', ['as' => 'delete-evidence']);
 	
 	//Risk Mitigation 
 	$routes->add('risk-mitigation', 'RiskMitigationController::index', ['as' => 'get-risk-mitigations']);
@@ -96,14 +95,11 @@ $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
     $routes->add('dashboards', 'RiskOwner/DashboardController::index', ['as' => 'get-dashboard']);
 
 	//Risk Event
-	$routes->add('risk-events', 'RiskOwner/RiskEventController::index', ['as' => 'get-risk-event']);
-
+	$routes->add('get-risk-events', 'RiskOwner\RiskEventController::index', ['as' => 'get-risk-event']);
+	$routes->add('get-detail-risk-event/(:num)', 'RiskOwner\RiskEventController::getDetailRiskEvent/$1');
+	
 });
 
-
-
-
- 
 /*
  * --------------------------------------------------------------------
  * Additional Routing

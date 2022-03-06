@@ -4,20 +4,35 @@
          <div class="card">
             <div class="card-header d-flex justify-content-between">
                <div class="header-title">
-                  <h4 class="card-title">Data Risk Category</h4>
+                  <h4 class="card-title">Data Risiko Utama</h4>
                </div>
-			      <a type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal-add-risk-category">Tambah</a>
+               <div class="d-flex align-items-center flex-wrap">
+                        <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2">
+                           <path d="M15.8325 8.17463L10.109 13.9592L3.59944 9.88767C2.66675 9.30414 2.86077 7.88744 3.91572 7.57893L19.3712 3.05277C20.3373 2.76963 21.2326 3.67283 20.9456 4.642L16.3731 20.0868C16.0598 21.1432 14.6512 21.332 14.0732 20.3953L10.106 13.9602" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                                                   
+                        Tahun &nbsp;
+                     
+                     <div class="dropdown">
+                     <select class="form-control" id="year_selected" name="year_selected" onchange="update_risk_table()">
+                        <option value="2021">2021</option>
+                        <option value="2022" selected>2022</option>
+                     </select>
+                     </div>
+                  </div>
 			   </div>
             <div class="card-body">
 				 <div class="table-responsive">
 				 
-                  <table id="riskCategoryTable" class="table table-striped" width="100%">
+                  <table id="riskEventsTable" class="table table-striped" width="100%">
                      <thead>
                         <tr>
-                           <tr>
-                           <th>Risk Category</th>
-                           <th>Status</th>
-                           <th>Aksi <i class="fas fa-user"></i></th>
+                           <th>Sasaran</th>
+                           <th>KPI</th>
+                           <th>No. Risiko</th>
+                           <th>Risiko Utama</th>
+                           <th>Tahun</th>
+                           <th>Aksi</th>
                         </tr>
                      </thead> 
                   </table>
@@ -28,13 +43,13 @@
    </div>
 </div>
 
-<div class="modal fade" id="modal-add-risk-category" name="modal-add-risk-category" tabindex="-1" aria-labelledby="addGroupModal" style="display: none;" aria-hidden="true">
-	<div class="modal-dialog"><?= $this->include("admin/pages/risk_category/create")?></div>
-</div>
+<?= $this->include("js/risk_owner/risk_events")?>
 
-<div class="modal fade" id="modal-edit-risk-category" name="modal-add-risk-category" tabindex="-1" aria-labelledby="addGroupModal" style="display: none;" aria-hidden="true">
-	<div class="modal-dialog"><?= $this->include("admin/pages/risk_category/edit")?></div>
-</div>
-
-<?= $this->include("js/risk_category")?>
-
+<style>
+   .text-wrap{
+      white-space:normal;
+   }
+   .width-200{
+      width:200px;
+   }
+</style>

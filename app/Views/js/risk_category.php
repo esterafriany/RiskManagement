@@ -113,51 +113,49 @@
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 				{
-					swal("Gagal","Gagal menambah data.","error");
+					swal("Error","Gagal menambah data. Pastikan semua field terisi.","error");
 				}
 			});
-		
-		
 		});
 		
 	
 	// edit group
-    $btn_edit_risk_category.on("click", function (e) {
-		var table = $('#riskCategoryTable').DataTable();
-        $.ajax({
-				url : "<?=site_url('UserController/onEditGroup')?>/" + document.getElementById('id').value,
-				type: "POST",
-				data: $('#form-edit-group').serialize(),
-				dataType: "JSON",
+    // $btn_edit_risk_category.on("click", function (e) {
+	// 	var table = $('#riskCategoryTable').DataTable();
+    //     $.ajax({
+	// 			url : "<?=site_url('UserController/onEditGroup')?>/" + document.getElementById('id').value,
+	// 			type: "POST",
+	// 			data: $('#form-edit-group').serialize(),
+	// 			dataType: "JSON",
 
-				success: function(response)
-				{
-					//if success close modal and reload ajax table
-					//$('body').removeClass('modal-open');
-					$('.modal-backdrop.show').css('opacity','0');
-					$('.modal-backdrop').css('z-index','-1');
-					$('#modal-add-group').modal("hide");
+	// 			success: function(response)
+	// 			{
+	// 				//if success close modal and reload ajax table
+	// 				//$('body').removeClass('modal-open');
+	// 				$('.modal-backdrop.show').css('opacity','0');
+	// 				$('.modal-backdrop').css('z-index','-1');
+	// 				$('#modal-add-group').modal("hide");
 				   
-					swal({
-					  title: "Sukses!",
-					  text: "Data sukses ditambah/diubah!",
-					  type: "success",
-					  confirmButtonText: "OK"
-					},
-					function(isConfirm){
-					  if (isConfirm) {
-						// location.reload();
-						table.ajax.reload(null, false);
-					  }
-					});
+	// 				swal({
+	// 				  title: "Sukses!",
+	// 				  text: "Data sukses ditambah/diubah!",
+	// 				  type: "success",
+	// 				  confirmButtonText: "OK"
+	// 				},
+	// 				function(isConfirm){
+	// 				  if (isConfirm) {
+	// 					// location.reload();
+	// 					table.ajax.reload(null, false);
+	// 				  }
+	// 				});
 				  
-				},
-				error: function (jqXHR, textStatus, errorThrown)
-				{
-					swal("Gagal","Gagal menambah / menghapus data.","error");
-				}
-			});
-		});
+	// 			},
+	// 			error: function (jqXHR, textStatus, errorThrown)
+	// 			{
+	// 				swal("Gagal","Gagal menambah / menghapus data.","error");
+	// 			}
+	// 		});
+	// 	});
 
 	// edit group
     $btn_edit_risk_category.on("click", function (e) {
@@ -191,7 +189,7 @@
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 				{
-					swal("Gagal","Gagal mengubah data.","error");
+					swal("Error","Gagal menambah data. Pastikan semua field terisi.","error");
 				}
 			});
 		});

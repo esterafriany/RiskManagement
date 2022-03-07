@@ -194,6 +194,30 @@
                                                     <option value="M">M</option>
                                                     <option value="T">T</option>
                                                     <option value="E">E</option>
+
+                                                    <?php if($detail_risk_event->risk_analysis == "R"){?>
+                                                        <option value="R" selected>R</option>
+                                                    <?php }else{ ?>
+                                                        <option value="R">R</option>
+                                                    <?php } ?>
+
+                                                    <?php if($detail_risk_event->risk_analysis == "M"){?>
+                                                        <option value="M" selected>M</option>
+                                                    <?php }else{ ?>
+                                                        <option value="M">M</option>
+                                                    <?php } ?>
+
+                                                    <?php if($detail_risk_event->risk_analysis == "T"){?>
+                                                        <option value="T" selected>T</option>
+                                                    <?php }else{ ?>
+                                                        <option value="T">T</option>
+                                                    <?php } ?>
+                                                    
+                                                    <?php if($detail_risk_event->risk_analysis == "E"){?>
+                                                        <option value="E" selected>M</option>
+                                                    <?php }else{ ?>
+                                                        <option value="E">E</option>
+                                                    <?php } ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -244,7 +268,7 @@
             </div>
             <div class="card-footer">
                 <a href="<?=base_url('admin/risk-event')?>" type="button" class="btn btn-secondary">Batal</a>
-                <a href="<?=base_url('admin/risk-event')?>" type="button"  class="btn btn-primary">Update Residual</a>
+                <a href="<?=base_url('admin/risk-event-residual/'.$detail_risk_event->id)?>" type="button"  class="btn btn-success">Update Residual</a>
                 <button type="button" id="btn-edit-risk-event"  class="btn btn-primary">Simpan</button>
             </div>
          </div>

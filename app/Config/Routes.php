@@ -98,6 +98,10 @@ $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
 	$routes->add('get-risk-events', 'RiskOwner\RiskEventController::index', ['as' => 'get-risk-event']);
 	$routes->add('get-detail-risk-event/(:num)', 'RiskOwner\RiskEventController::getDetailRiskEvent/$1');
 	
+	//Risk Mitigation
+	$routes->add('get-risk-mitigations', 'RiskOwner\RiskMitigationController::index', ['as' => 'risk-mitigations']);
+	$routes->add('get-detail-risk-mitigation/(:num)', 'RiskOwner\RiskMitigationController::getDetailRiskMitigations/$1', ['as' => 'get-detail-risk-mitigation']);
+
 });
 
 /*

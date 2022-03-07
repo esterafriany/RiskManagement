@@ -153,7 +153,8 @@
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 				{
-					swal("Gagal","Gagal mengubah data.","error");
+					swal("Error","Gagal mengubah data. Pastikan semua field terisi","error");
+
 				}
 			});
 		});
@@ -177,7 +178,7 @@
 		},
 		error: function (jqXHR, textStatus, errorThrown)
 		{
-			swal('Data Risk Category tidak ditemukan.');
+			swal('Data Divisi tidak ditemukan.');
 		}
 	  });
 	}

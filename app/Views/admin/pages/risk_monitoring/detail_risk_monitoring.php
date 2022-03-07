@@ -9,7 +9,7 @@
 			</div>
             <div class="card-body">
             <form id="form-edit-risk-event" enctype="multipart/form-data" action="<?php echo base_url('admin/RiskMonitoringController/onAddDetailMonitoring')?>" class="form-horizontal" method="POST">
-                <input type="text" value="<?=$id_detail_mitigation;?>" name="id_detail_mitigation">
+                <input type="hidden" value="<?=$id_detail_mitigation;?>" name="id_detail_mitigation">
                 <div class="row">
                     <div class="col">
                     <ul class="list-group">

@@ -113,7 +113,7 @@
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 				{
-					swal("Gagal","Gagal menambah / menghapus data.","error");
+					swal("Error","Gagal menambah data. Pastikan semua field terisi","error");
 				}
 			});
 		
@@ -153,7 +153,8 @@
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 				{
-					swal("Gagal","Gagal menambah / menghapus data.","error");
+					swal("Error","Gagal mengubah data. Pastikan semua field terisi","error");
+
 				}
 			});
 		});
@@ -179,7 +180,7 @@
 		},
 		error: function (jqXHR, textStatus, errorThrown)
 		{
-			swal('Error get data from ajax');
+			swal('Data Group tidak ditemukan');
 		}
 	  });
 	}

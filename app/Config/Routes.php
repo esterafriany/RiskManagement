@@ -8,8 +8,6 @@ use App\Http\Controllers\KPIController;
 use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\RiskCauseController;
 
-
-
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -89,6 +87,8 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	
 	//Risk Residual
 	$routes->add('risk-event-residual/(:num)', 'RiskEventController::getDetailRiskResidual/$1', ['as' => 'get-detail-risk-residual']);
+ 
+	$routes->add('change', 'RiskEventController::change', ['as' => 'add-change']);
 
 });
 

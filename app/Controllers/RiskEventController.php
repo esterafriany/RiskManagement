@@ -103,10 +103,14 @@ class RiskEventController extends BaseController
     }
 
     public function onAddRiskEvent(){
+     
+        //get inserted level
+        $level_inserted = $this->request->getPost('probability_level') * $this->request->getPost('impact_level');
+
         try {
             $data = [
                     'id_kpi' => $this->request->getPost('id_kpi'),
-                    'risk_number' => $this->request->getPost('risk_number'),
+                    'risk_number' => '0',
                     'objective' => $this->request->getPost('objective'),
                     'risk_event' => $this->request->getPost('risk_event'),
                     'year' => $this->request->getPost('year'),
@@ -115,16 +119,69 @@ class RiskEventController extends BaseController
                     'existing_control_3' => $this->request->getPost('existing_control_3'),
                     'probability_level' => $this->request->getPost('probability_level'),
                     'impact_level' => $this->request->getPost('impact_level'),
-                    'final_level' => $this->request->getPost('final_level'),
+                    'final_level' => $level_inserted,
                     ];
 
             $this->RiskEventModel->insert($data);
+            
+            ///update nomor risiko
+            //get all risk event in selected year
+            $data_risk_event = $this->RiskEventModel->get_list_risk_event($this->request->getPost('year'));
+
+            $array = [];
+            $n = count($data_risk_event);
+            for($i=0; $i<$n; $i++) {
+                // echo "id_risk : ".$data_risk_event[$i]['id']. " -- level : ". $data_risk_event[$i]['final_level']. " -- level kpi : ".$data_risk_event[$i]['level'];
+                // echo "<br/>";
                 
-            echo json_encode(array("status" => TRUE));
+                for($j=0; $j<$n-$i-1; $j++) {
+                    if($data_risk_event[$j]['final_level']>$data_risk_event[$j+1]['final_level']) {
+                        $temp = $data_risk_event[$j];
+                        $data_risk_event[$j] = $data_risk_event[$j+1];
+                        $data_risk_event[$j+1] = $temp;
+                    }  
+                }
+                array_push($array,$data_risk_event[$j]);
+            }
+
+            //update risk number $arr
+            $risk_num = 1;
+            for($k=0; $k<count($array); $k++) {
+                $data_num['risk_number'] = $risk_num;
+                $this->RiskEventModel->update($array[$k]['id'],$data_num);
+
+                $risk_num +=1;
+            }
+
+            echo json_encode(array("status" => $data_risk_event));
         }catch (\Exception $e) {
             
         }
     }
+
+    public function change(){
+        //get all risk event in selected year
+        $data_risk_event = $this->RiskEventModel->get_list_risk_event('2022');
+
+        $arr = [];
+        $n = count($data_risk_event);
+        for($i=0; $i<$n; $i++) {
+            // echo "id_risk : ".$data_risk_event[$i]['id']. " -- level : ". $data_risk_event[$i]['final_level']. " -- level kpi : ".$data_risk_event[$i]['level'];
+            // echo "<br/>";
+            
+            for($j=0; $j<$n-$i-1; $j++) {
+                if($data_risk_event[$j]['final_level']>$data_risk_event[$j+1]['final_level']) {
+                    $temp = $data_risk_event[$j];
+                    $data_risk_event[$j] = $data_risk_event[$j+1];
+                    $data_risk_event[$j+1] = $temp;
+                }  
+            }
+            array_push($arr,$data_risk_event[$j]);
+        }
+
+        //dd($arr);
+    }
+
 
     public function onAddDetailRisk(){
         try {

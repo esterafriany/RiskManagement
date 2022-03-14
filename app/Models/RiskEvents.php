@@ -65,8 +65,16 @@ class RiskEvents extends Model
     }
     public function get_data_matrix($year)
     {	
-		  return $this->db->query("SELECT id, probability_level, impact_level , concat(probability_level,impact_level)  as td_id
+		  return $this->db->query("SELECT id, risk_number, probability_level, impact_level , concat(probability_level,impact_level)  as td_id
                                 FROM risk_events
                                 WHERE YEAR = '".$year."'")->getResultArray();
+    }
+
+    public function get_list_risk_event($year)
+    {
+        return $this->db->query("SELECT risk_events.id, final_level, kpis.level
+                                FROM risk_events JOIN kpis 
+                                ON kpis.id = risk_events.id_kpi
+                                WHERE risk_events.year = '".$year."'")->getResultArray();
     }
 }

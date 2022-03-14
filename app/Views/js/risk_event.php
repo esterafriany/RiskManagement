@@ -7,12 +7,10 @@
 		var $btn_edit_risk_event = $("#btn-edit-risk-event");
 		var year = document.getElementById('year_selected').value;
 		
-		
 		table = $('#riskEventTable').DataTable({
 			scrollX: 				true,
 			scrollCollapse: true,
 			scroller:       true,
-
 			'processing': true,
 			'serverSide': true,
 			'serverMethod': 'post',
@@ -35,7 +33,6 @@
 					};
 				},
 				dataSrc: function(data) {
-
 					// Update token hash
 					$('.txt_csrfname').val(data.token);
 

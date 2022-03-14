@@ -183,40 +183,36 @@
                                         </div>
                                         <div class="form-group">
                                             <small>Level</small>
-                                            <input type="text" required class="form-control" id="final_level" name="final_level" value="<?php echo $detail_risk_event->risk_number;?>">
+                                            <input type="text" required class="form-control" id="final_level" name="final_level" value="<?php echo $detail_risk_event->final_level;?>">
                                         </div>
                                         <div class="form-group row">
                                             <small>Analisis Risiko</small>
                                             <div class="col-sm-12">
                                                 <select class="form-control form-select" required id="risk_analysis" name="risk_analysis">
                                                     <option value="" disabled selected hidden >Pilihan</option>
-                                                    <option value="R">R</option>
-                                                    <option value="M">M</option>
-                                                    <option value="T">T</option>
-                                                    <option value="E">E</option>
-
+                  
                                                     <?php if($detail_risk_event->risk_analysis == "R"){?>
-                                                        <option value="R" selected>R</option>
+                                                        <option value="R" selected>Rendah</option>
                                                     <?php }else{ ?>
-                                                        <option value="R">R</option>
+                                                        <option value="R">Rendah</option>
                                                     <?php } ?>
 
                                                     <?php if($detail_risk_event->risk_analysis == "M"){?>
-                                                        <option value="M" selected>M</option>
+                                                        <option value="M" selected>Menengah</option>
                                                     <?php }else{ ?>
-                                                        <option value="M">M</option>
+                                                        <option value="M">Menengah</option>
                                                     <?php } ?>
 
                                                     <?php if($detail_risk_event->risk_analysis == "T"){?>
-                                                        <option value="T" selected>T</option>
+                                                        <option value="T" selected>Tinggi</option>
                                                     <?php }else{ ?>
-                                                        <option value="T">T</option>
+                                                        <option value="T">Tinggi</option>
                                                     <?php } ?>
                                                     
                                                     <?php if($detail_risk_event->risk_analysis == "E"){?>
-                                                        <option value="E" selected>M</option>
+                                                        <option value="E" selected>Ekstrem</option>
                                                     <?php }else{ ?>
-                                                        <option value="E">E</option>
+                                                        <option value="E">Ekstrem</option>
                                                     <?php } ?>
                                                 </select>
                                             </div>

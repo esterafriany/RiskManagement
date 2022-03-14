@@ -14,7 +14,7 @@
 		{
             var i = 0;
             for(i = 0; data.length ; i++){
-                document.getElementById(data[i]['td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">R${data[i]['id']}</a>` ;             
+                document.getElementById(data[i]['td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">R${data[i]['risk_number']}</a>` ;             
             }
 		},
 		error: function (jqXHR, textStatus, errorThrown)
@@ -75,7 +75,7 @@
             for(i = 0; data.length ; i++){
 				
                 document.getElementById(data[i]['td_id']).innerHTML += `
-                <a class="badge rounded-pill bg-primary text-white">R${data[i]['id']}</a>` ;         
+                <a class="badge rounded-pill bg-primary text-white">R${data[i]['risk_number']}</a>` ;         
             }
 		},
 		error: function (jqXHR, textStatus, errorThrown)

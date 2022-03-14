@@ -35,13 +35,13 @@
 							<div class="form-group row">
 								<small>Nomor Risiko</small>
 								<div class="col-sm-12">
-								<input type="text" class="form-control" id="risk_number" name="risk_number">
+								<input type="text" class="form-control" id="risk_number" name="risk_number" disabled>
 								</div>
 							</div>
 							<div class="form-group row">
 								<small>Risiko Utama</small>
 								<div class="col-sm-12">
-								<textarea class="form-control" id="risk_event" name="risk_event"  rows="4"></textarea>
+								<textarea class="form-control" id="risk_event" name="risk_event"  rows="3"></textarea>
 							</div>
 							</div>
 							<div class="form-group row">
@@ -116,12 +116,6 @@
 									<option value="4">4</option>
 									<option value="5">5</option>
 								</select>
-								</div>
-							</div>
-							<div class="form-group row">
-								<small>Level</small>
-								<div class="col-sm-12">
-									<input type="text" class="form-control" id="final_level" name="final_level">
 								</div>
 							</div>
 						</li>

@@ -121,46 +121,8 @@
 		
 		});
 		
-	
-	
-	// edit group
-    // $btn_edit_kpi.on("click", function (e) {
-	// 	var table = $('#kpiTable').DataTable();
-    //     $.ajax({
-	// 			url : "<?=site_url('KPIController/onEditKPI')?>/" + document.getElementById('id').value,
-	// 			type: "POST",
-	// 			data: $('#form-edit-kpi').serialize(),
-	// 			dataType: "JSON",
 
-	// 			success: function(response)
-	// 			{
-	// 				//if success close modal and reload ajax table
-	// 				//$('body').removeClass('modal-open');
-	// 				$('.modal-backdrop.show').css('opacity','0');
-	// 				$('.modal-backdrop').css('z-index','-1');
-	// 				$('#modal-add-group').modal("hide");
-				   
-	// 				swal({
-	// 				  title: "Sukses!",
-	// 				  text: "Data sukses ditambah/diubah!",
-	// 				  type: "success",
-	// 				  confirmButtonText: "OK"
-	// 				},
-	// 				function(isConfirm){
-	// 				  if (isConfirm) {
-	// 					table.ajax.reload(null, false);
-	// 				  }
-	// 				});
-				  
-	// 			},
-	// 			error: function (jqXHR, textStatus, errorThrown)
-	// 			{
-	// 				swal("Gagal","Gagal menambah / menghapus data.","error");
-	// 			}
-	// 		});
-	// 	});
-
-	// // edit group
+	// // edit kpi
     $btn_edit_kpi.on("click", function (e) {
 		var table = $('#kpiTable').DataTable();
         $.ajax({
@@ -211,6 +173,7 @@
 			$('[name="name"]').val(data.name);
 			$('[name="description"]').val(data.description);
 			$('[name="is_active"]').val(data.is_active);
+			$('[name="level"]').val(data.level);
 			$('[name="year"]').val(data.year);
  
 			$('#modal-edit-kpi').modal('show');

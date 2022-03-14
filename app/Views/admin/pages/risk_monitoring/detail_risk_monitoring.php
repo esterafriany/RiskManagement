@@ -307,23 +307,5 @@
    </div>
 </div>
 
-<?php if($state_message){
-
-if($state_message == 'error'){ ?>
-<script>
-    $(document).ready(function() {
-      swal("Test","Tessss","error");
-    });
-</script>
-<?php }else if($state_message == 'success'){ ?>
-<script>
-    $(document).ready(function() {
-      swal("Test","Tessss","success");
-    });
-</script>
-<?php } 
-}?>
-
-
 <?= $this->include("js/detail_mitigation_monitoring")?>
 

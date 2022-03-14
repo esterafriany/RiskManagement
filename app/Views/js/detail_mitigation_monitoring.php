@@ -1,5 +1,23 @@
 <?= $this->include('admin/template/_partials/js')?>
 
+
+<?php if($state_message){
+
+if($state_message == 'error'){ ?>
+<script>
+    $(document).ready(function() {
+      swal("Error","Data Gagal ditambahkan.","error");
+    });
+</script>
+<?php }else if($state_message == 'success'){ ?>
+<script>
+    $(document).ready(function() {
+      swal("Success","Data berhasil ditambahkan.","success");
+    });
+</script>
+<?php } 
+}?>
+
 <script>
 	//bar percentage
 	let monitoring_number = 0;

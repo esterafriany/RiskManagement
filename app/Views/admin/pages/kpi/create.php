@@ -9,7 +9,7 @@
 			<div class="form-group row">
 				<label class="control-label col-sm-3 align-self-center mb-0" for="email1">KPI:</label>
 				<div class="col-sm-9">
-				<input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama Group">
+				<input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama KPI">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -27,6 +27,12 @@
 					<option value="2021">2021</option>
 					<option value="2022">2022</option>
 				</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-sm-3 align-self-center mb-0" for="email1">Level:</label>
+				<div class="col-sm-9">
+				<input type="text" class="form-control" id="level" name="level" placeholder="Masukkan Level KPI">
 				</div>
 			</div>
 			<div class="form-group row">

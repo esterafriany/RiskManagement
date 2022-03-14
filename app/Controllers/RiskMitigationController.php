@@ -12,6 +12,9 @@ use App\Models\Divisions;
 use App\Models\RiskMitigationDivisions;
 use App\Models\RiskCauses;
 use App\Models\KPIs;
+use App\Models\RiskMitigationDetailEvidences;
+use App\Models\RiskMitigationDetailMonitorings;
+use App\Models\RiskMitigationDetailOutputs;
 
 
 class RiskMitigationController extends BaseController
@@ -25,6 +28,9 @@ class RiskMitigationController extends BaseController
         $this->RiskEventModel = new RiskEvents();
         $this->RiskCauseModel = new RiskCauses();
         $this->KPIModel = new KPIs();
+        $this->RiskMitigationDetailEvidence = new RiskMitigationDetailEvidences();
+        $this->RiskMitigationDetailMonitoring = new RiskMitigationDetailMonitorings();
+        $this->RiskMitigationDetailOutput = new RiskMitigationDetailOutputs();
         
     }
 
@@ -194,7 +200,8 @@ class RiskMitigationController extends BaseController
             "iTotalDisplayRecords" => $totalRecordwithFilter,
             "aaData" => $data,
             "token" => csrf_hash() // New token hash
-        );   
+        );
+   
         return $this->response->setJSON($response);
     }
 
@@ -294,16 +301,39 @@ class RiskMitigationController extends BaseController
     }
 
     public function onEditDetailMitigation($id){
-       
+        if (! $this->validate([
+			'risk_mitigation_detail' => 'required',
+			'id_risk_mitigation' => 'required',
+		])) {
+			throw new \Exception("Some message goes here");
+		}else{
+            try {
+                $data = [
+                    'risk_mitigation_detail' => $this->request->getPost('risk_mitigation_detail'),
+                    ];
+                $this->RiskMitigationDetailModel->update($id, $data);
+                  
+                echo json_encode(array("status" => TRUE));
+            }catch (\Exception $e) {
+                
+            }
+        }
+        
+    }
+
+    public function onDeleteDetailMitigation($id){
         try {
-            $data = [
-                'risk_mitigation_detail' => $this->request->getPost('risk_mitigation_detail'),
-                ];
-            $this->RiskMitigationDetailModel->update($id, $data);
-              
-            echo json_encode(array("status" => TRUE));
-          }catch (\Exception $e) {
+
+            // evidence, monitoring. outputs delete
+            $this->RiskMitigationDetailEvidence->delete_by_detail_mitigation_id($id);
+            $this->RiskMitigationDetailMonitoring->delete_by_detail_mitigation_id($id);
+            $this->RiskMitigationDetailOutput->delete_by_detail_mitigation_id($id);
             
-          }
+            $this->RiskMitigationDetailModel->delete($id);
+
+            echo json_encode(array("status" => TRUE));
+        }catch (\Exception $e) {
+          
+        }
     }
 }

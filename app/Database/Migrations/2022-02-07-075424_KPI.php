@@ -31,6 +31,10 @@ class KPI extends Migration
                 'type'              => 'ENUM',
                 'constraint'        => "'0','1'",
             ],
+            'level'       => [
+                'type'              => 'INT',
+                'constraint'        => '11',
+            ],
             'created_at' => [
                 'type'           => 'DATETIME',
                 'null'           => true,

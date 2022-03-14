@@ -81,6 +81,8 @@ class KPIController extends BaseController
 		if (! $this->validate([
 			'name' => 'required',
 			'description' => 'required',
+			'level' => 'required',
+			'year' => 'required',
 			'is_active' => 'required',
 		])) {
 			throw new \Exception("Some message goes here");
@@ -89,6 +91,8 @@ class KPIController extends BaseController
 				$data = [
 						'name' => $this->request->getPost('name'),
 						'description' => $this->request->getPost('description'),
+						'level' => $this->request->getPost('level'),
+						'year' => $this->request->getPost('year'),
 						'is_active' => $this->request->getPost('is_active'),
 						];
 
@@ -112,6 +116,7 @@ class KPIController extends BaseController
         'name' => 'required',
         'description' => 'required',
         'is_active' => 'required',
+        'level' => 'required',
         'year' => 'required',
       ])) {
         throw new \Exception("Some message goes here");
@@ -121,6 +126,7 @@ class KPIController extends BaseController
               'name' => $this->request->getPost('name'),
               'description' => $this->request->getPost('description'),
               'is_active' => $this->request->getPost('is_active'),
+              'level' => $this->request->getPost('level'),
               'year' => $this->request->getPost('year'),
               ];
           $this->KPIModel->update($id, $data);

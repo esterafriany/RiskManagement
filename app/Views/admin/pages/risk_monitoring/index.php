@@ -30,6 +30,8 @@
                         <th>Mitigasi</th>
                         <th>No. Detail Mitigasi</th>
                         <th>Detail Mitigasi</th>
+                        <th>PIC</th>
+                        <th>Progress (%)</th>
                      </tr>
                   </thead> 
                </table>

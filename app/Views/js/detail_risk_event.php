@@ -74,7 +74,7 @@
 				for(k = 0; k < id_risk_mitigation.length; k++){
 				
 					var list_risk_mitigation = get_risk_assignment(id_risk_mitigation[k]);
-					console.log(list_risk_mitigation);
+					
 					for(j = 0; j < list_risk_mitigation.length; j++){
 						temp2.push(list_risk_mitigation[j]['id']);
 					}
@@ -272,7 +272,7 @@
 			$.ajax({
 				url : "<?php echo base_url('admin/RiskEventController/onAddDetailRisk')?>",
 				type: "POST",
-				data: {'id_risk_event':id_risk,'risk_event':JSON.stringify(risk_event),'risk_category':JSON.stringify(risk_category),'risk_cause':JSON.stringify(risk_cause),'division_assignment':JSON.stringify(division_assignment)},
+				data: {'year': document.getElementById('year').value,'id_risk_event':id_risk,'risk_event':JSON.stringify(risk_event),'risk_category':JSON.stringify(risk_category),'risk_cause':JSON.stringify(risk_cause),'division_assignment':JSON.stringify(division_assignment)},
 				dataType: "JSON",
 
 				success: function(response)

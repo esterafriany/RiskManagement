@@ -32,16 +32,6 @@
                         
                         <li class="list-group-item">
                             <div class="form-group">
-                                <small>Evidence </small>
-                                <div id="evidenceList">
-                                     
-                                </div><br/>
-                                <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-evidence"><i class="fas fa-plus-circle"></i> Tambah File</button>
-                                
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="form-group">
                                 <small>Output</small>
                                 <div id="outputList">
                                                 
@@ -138,7 +128,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Monitoring</th>
+                                        <th scope="row">Realisasi</th>
                                         <td class="text-center child-cell">
                                             <input type="checkbox" id="m01" name="monitoring[]" onclick="calculate_progress_by_monitoring('m01')"  value="01">
                                         </td>
@@ -285,11 +275,48 @@
 
                                         </td>
                                     </tr>
+                                        
+                                    <tr>
+                                        <th>Evidence</th>
+                                        <td>
+                                            <a type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal-show-evidence">Lihat Evidence</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Lihat Evidence</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Lihat Evidence</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Lihat Evidence</a>
+                                        </td>
+                                        <td><a href="">Lihat Evidence</a></td>
+                                        <td><a href="">Lihat Evidence</a></td>
+                                        <td><a href="">Lihat Evidence</a></td>
+                                        <td><a href="">Lihat Evidence</a></td>
+                                        <td><a href="">Lihat Evidence</a></td>
+                                        <td><a href="">Lihat Evidence</a></td>
+                                        <td><a href="">Lihat Evidence</a></td>
+                                        <td><a href="">Lihat Evidence</a></td>
+                                    </tr>
+                    
                                 </tbody>
                             </table>
                         </div>
                         
                         </li>
+
+                        <li class="list-group-item">
+                            <div class="form-group">
+                                <small>Evidence </small>
+                                <div id="evidenceList">
+                                     
+                                </div><br/>
+                                <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-evidence"><i class="fas fa-plus-circle"></i> Tambah File</button>
+                                
+                            </div>
+                        </li>
+
                     </ul>
                     </div>
                 </div>
@@ -305,6 +332,10 @@
       </div>
       </form>
    </div>
+</div>
+
+<div class="modal fade" id="modal-show-evidence" name="modal-show-evidence" tabindex="-1" aria-labelledby="addEvidenceModal" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog"><?= $this->include("admin/pages/risk_mitigation/evidence")?></div>
 </div>
 
 <?= $this->include("js/detail_mitigation_monitoring")?>

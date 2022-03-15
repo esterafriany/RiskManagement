@@ -66,6 +66,7 @@
                </div>
             </div>
 
+            <a class="button" href="<?php echo base_url('admin/change');?>">Change</a>
          </div>
       </div>
    </div>

@@ -67,6 +67,12 @@
 						}
 					},
 				},
+				{
+					data: 'risk_mitigation'
+				},
+				{
+					data: 'risk_mitigation'
+				}
 			],
 			columnDefs: [
                 {

@@ -15,7 +15,7 @@ class RiskMitigationDetailEvidence extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_detail_mitigation'   => [
+            'id_detail_monitoring'   => [
                 'type'           => 'INT',
                 'constraint'     => 11,
             ],

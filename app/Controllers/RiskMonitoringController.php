@@ -17,7 +17,7 @@ use App\Models\KPIs;
 class RiskMonitoringController extends BaseController
 {
     function __construct(){
-        helper(['form', 'url', 'filesystem']);
+        helper(['form', 'url', 'filesystem','download']);
         $this->RiskEventModel = new RiskEvents();
         $this->RiskMitigationModel = new RiskMitigations();
         $this->RiskMitigationDetailModel = new RiskMitigationDetails();
@@ -121,8 +121,8 @@ class RiskMonitoringController extends BaseController
 		echo json_encode($data);
     }
 
-    public function getEvidenceList($id){
-        $data = $this->RiskMitigationDetailEvidenceModel->get_list_evidence($id);
+    public function getEvidenceList($month,$id){
+        $data = $this->RiskMitigationDetailEvidenceModel->get_list_evidence_by_month($month,$id);
 		
 		echo json_encode($data);
     }
@@ -143,30 +143,6 @@ class RiskMonitoringController extends BaseController
                     'output' => $outputs[$key],
                 ];
                 $this->RiskMitigationDetailOutputModel->insert($data_output);
-            }
-
-            //evidence
-            //delete from fcpath folder
-            $evidences = $this->RiskMitigationDetailEvidenceModel->get_list_evidence($id_detail_mitigation);
-            
-           
-            if($this->request->getFileMultiple('evidence')){
-                $i = 1;
-                foreach($this->request->getFileMultiple('evidence') as $file){
-                    //$fileName = "evidence_".$i.".".$file->getClientExtension();
-                    $fileName = $file->getName();
-                    
-                    $file->move(FCPATH . 'uploads', $fileName);
-                    
-                    $data_evidence = [
-                        'id_detail_mitigation' => $id_detail_mitigation,
-                        'filename' => $fileName,
-                        'pathname' => FCPATH . 'uploads' ,
-                    ];
-                    
-                    $this->RiskMitigationDetailEvidenceModel->insert($data_evidence);
-                    $i++;
-                }
             }
             
             //target monitoring
@@ -216,9 +192,33 @@ class RiskMonitoringController extends BaseController
             echo view('admin/template/template',$data);   
    
         }
+    }
 
-        
-        
+    public function onUploadEvidence(){
+        $id_detail_monitoring = $this->RiskMitigationDetailMonitoringModel->get_id_monitoring($this->request->getPost('month'),$this->request->getPost('id_detail_mitigation'));
+
+        if($this->request->getFileMultiple('evidence')){
+            $i = 1;
+            foreach($this->request->getFileMultiple('evidence') as $file){
+                //$fileName = "evidence_".$i.".".$file->getClientExtension();
+                $fileName = $file->getName();
+                
+                $file->move(FCPATH . 'uploads', $fileName);
+                
+                $data_evidence = [
+                    'id_detail_monitoring' => $id_detail_monitoring->id,
+                    'filename' => $fileName,
+                    'pathname' => FCPATH . 'uploads' ,
+                ];
+                
+                $this->RiskMitigationDetailEvidenceModel->insert($data_evidence);
+                $i++;
+            }
+        }
+    }
+
+    public function download($filename){
+        return $this->response->download(FCPATH.'/uploads/'.$filename, null);
     }
 
     public function onDeleteEvidence($id){

@@ -103,7 +103,6 @@ class RiskEventController extends BaseController
     }
 
     public function onAddRiskEvent(){
-     
         //get inserted level
         $level_inserted = $this->request->getPost('probability_level') * $this->request->getPost('impact_level');
 

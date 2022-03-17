@@ -105,39 +105,6 @@ if($state_message == 'error'){ ?>
 			}
 		});
 		
-		$.ajax({
-			url : "<?=site_url('RiskMonitoringController/getEvidenceList')?>/" + id_detail_mitigation,
-			type: "GET",
-			dataType: "JSON",
-			success: function(result)
-			{
-				var penampung = "";
-				var count = result.length;
-				
-				for(i = 0; i < count; i++){
-					
-					penampung += `<table width="100%">
-							<tr>
-								<td width="50%">
-									<a href="">${result[i]['filename']}</a>
-									
-								</td>
-								<td>
-									<button type="button" onclick="delete_evidence(${result[i]['id']})"  class="btn btn-outline-primary btn-sm removes" ><i class="fas fa-trash-alt"></i></button>
-								</td>
-							</tr>
-						</table>`;
-				}
-				
-				document.getElementById("evidenceList").innerHTML = penampung;
-			},
-			error: function (jqXHR, textStatus, errorThrown)
-			{
-				console.log(jqXHR);
-				alert('Error get data from ajax');
-			}
-		});
-
 		$("#add-more-output").click(function () {
 			$("#outputList").last().append(
 				`<table width="100%">
@@ -153,33 +120,11 @@ if($state_message == 'error'){ ?>
 				</table>`
 			);
 		});	
-
-		$("#add-more-evidence").click(function () {
-			$("#evidenceList").last().append(
-				`<table width="100%">
-					<tr>
-						<td width="50%">
-							<input type="file" name="evidence[]" id="evidence" value="" class="form-control" placeholder="Browse File">
-						
-							<input type="hidden" name="evidenceId[]" value="" class="form-control" >
-						</td>
-						<td>
-							<button type="button" name="removes" id="" class="btn btn-outline-primary btn-sm removes" ><i class="fas fa-trash-alt"></i></button>
-						</td>
-					</tr>
-				</table>`
-			);
-		});		
-
+		
 		$(document).on('click', '.remove', function () {
 			$(this).parents('tr').remove();
 		});
-
-		$(document).on('click', '.removes', function () {
-			$(this).parents('tr').remove();
-		});
-
-			
+		
 	});
 
 	function delete_evidence(id){
@@ -200,7 +145,6 @@ if($state_message == 'error'){ ?>
 				dataType: "JSON",
 				success: function(data)
 				{
-					
 					swal({
 					  title: "Terhapus!",
 					  text: "Data berhasil dihapus!",
@@ -251,7 +195,7 @@ if($state_message == 'error'){ ?>
 	}
 
 	function show_notes(id, month){
-		//$('#n'+month).each (function() { this.type = 'text'; });
+		
 		$("#div"+month).toggle(); 
 		$.ajax({
 			url : "<?=site_url('RiskMonitoringController/onShowNotes')?>/" + id +"/" + month,
@@ -260,8 +204,7 @@ if($state_message == 'error'){ ?>
 			success: function(data)
 			{
 				if(data == null){
-					console.log('a');
-					$('#n'+month).val("Masukkan Data");
+					$('#n'+month).val();
 				}
 				 
 			},
@@ -270,8 +213,73 @@ if($state_message == 'error'){ ?>
 				swal('Data tidak ditemukan.');
 			}
 		});
-			
 	}
+
+	
+	function upload_evidence(target_month, id_detail_mitigation){
+		$.ajax({
+			url : "<?=site_url('RiskMonitoringController/getEvidenceList')?>/" + target_month + "/" +id_detail_mitigation,
+			type: "GET",
+			dataType: "JSON",
+			success: function(result)
+			{
+				var penampung = "";
+				var count = result.length;
+				
+				for(i = 0; i < count; i++){
+					
+					penampung += `<table width="100%">
+							<tr>
+								<td width="50%"> 
+									<a>${result[i]['filename']}</a>
+								</td>
+								<td>
+									<button type="button" onclick="delete_evidence('${result[i]['id']}')" class="btn btn-outline-primary btn-sm removes" ><i class="fas fa-trash-alt"></i></button>
+									<a type="button" href="<?php echo base_url('admin/download')?>/${result[i]['filename']}" class="btn btn-outline-success btn-sm" ><i class="fas fa-download"></i></a>
+								</td>
+							</tr>
+						</table>`;
+				}
+				var monthName = "";
+				if(target_month == "01"){
+					monthName = "Januari";
+				}else if(target_month == "02"){
+					monthName = "Februari";
+				}else if(target_month == "03"){
+					monthName = "Maret";
+				}else if(target_month == "04"){
+					monthName = "April";
+				}else if(target_month == "05"){
+					monthName = "Mei";
+				}else if(target_month == "06"){
+					monthName = "Juni";
+				}else if(target_month == "07"){
+					monthName = "Juli";
+				}else if(target_month == "08"){
+					monthName = "Agustus";
+				}else if(target_month == "09"){
+					monthName = "September";
+				}else if(target_month == "10"){
+					monthName = "Oktober";
+				}else if(target_month == "11"){
+					monthName = "November";
+				}else if(target_month == "12"){
+					monthName = "Desember";
+				}
+
+				$('#modal-add-evidence').modal('show');
+				$('.modal-title').text('Tambah Evidence - Bulan '+monthName); 
+				$('[name="id_detail_mitigation"]').val(id_detail_mitigation);
+				$('[name="month"]').val(target_month);
+				document.getElementById("evidenceList").innerHTML = penampung;
+			},
+			error: function (jqXHR, textStatus, errorThrown)
+			{
+				console.log(jqXHR);
+				swal('Error get data from ajax');
+			}
+		});
+  	}
 
 </script>
 

@@ -1,45 +1,32 @@
-<div class="container-fluid content-inner mt-n5 py-0">
-	<div class="row">
-      <div class="col-sm-12" style="padding-top:75px;">
-         <div class="card">
-            <div class="card-header d-flex justify-content-between">
-               <div class="header-title">
-                  <h4 class="card-title">List Evidence</h4>
-               </div>
-			</div>
-            <div class="card-body">
-            <form id="form-edit-risk-event" action="" class="form-horizontal" method="POST">
-            <input type="hidden" class="form-control" id="id_risk_event" name="id_risk_event" value="">
-       
-                <br/>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    Evidence:
-                                </li>
-                                <li class="list-group-item">
-                                    <div id="evidenceList">
+<form id="form-add-evidence" class="form-horizontal" method="POST" enctype="multipart/form-data" action="<?php echo base_url('admin/RiskMonitoringController/onUploadEvidence')?>">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="addGroupModalLabel">Tambah Evidence></h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <input type="hidden" name="id_detail_mitigation"/>
+            <input type="hidden" name="month"/>
+        </div>
+		<div class="modal-body">
+        <ul class="list-group">
+            <li class="list-group-item">   
+                <div class="form-group">
+                    <small>Upload File </small>
+                    <div id="evidenceList">
+                        
+                    </div><br/>
+                    <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-evidence"><i class="fas fa-plus-circle"></i> Tambah File</button>
                     
-                                    </div><br/>
-                                    <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-cause"><i class="fas fa-plus-circle"></i> Tambah File</button>
-                                
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="card-footer">
-                <a href="<?=base_url('admin/risk-mitigation')?>" type="button" class="btn btn-secondary">Batal</a>
-                <button type="button" id="btn-edit-risk-detail"  class="btn btn-primary">Simpan</button>
-            </div>
-            
-         </div>
-      </div>
-      </form>
-   </div>
-</div>
+                </div>       
+            </li>
+        </ul>
+			
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			<button type="submit" id="btn-add-kpi"  class="btn btn-primary">Simpan</button>
+		</div>
+	</div>
+</form>
+
+<?= $this->include("js/detail_evidence")?>
 

@@ -146,25 +146,25 @@ class RiskMonitoringController extends BaseController
             }
             
             //target monitoring
-            //delete by id_detail_mitigation
-            $this->RiskMitigationDetailMonitoringModel->delete_by_detail_mitigation_id($id_detail_mitigation);
-            
-            //re-add
             $target = $this->request->getPost('target[]');
             $monitoring = $this->request->getPost('monitoring[]');
             $notes = $this->request->getPost('notes[]');
 
-            $a = 0;
             for($i = 0; $i < count($target); $i++){
+                
                 $data=[
                     'id_detail_mitigation' => $id_detail_mitigation,
                     'target_month' => date("Y")."-".$target[$i]."-01",
                     'monitoring_month' => "0000-00-00",
                     'notes' => $notes[$i],
                 ];
-                $this->RiskMitigationDetailMonitoringModel->insert($data);
-                                
+
+                $num_data = $this->RiskMitigationDetailMonitoringModel->get_data_by_month_target($id_detail_mitigation, $target[$i]);
+                if(!$num_data){
+                    $this->RiskMitigationDetailMonitoringModel->insert($data);
+                }               
             }
+
             //update monitoring month
             for($i = 0; $i < count($monitoring); $i++){
                 $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$i]);
@@ -197,22 +197,24 @@ class RiskMonitoringController extends BaseController
     public function onUploadEvidence(){
         $id_detail_monitoring = $this->RiskMitigationDetailMonitoringModel->get_id_monitoring($this->request->getPost('month'),$this->request->getPost('id_detail_mitigation'));
 
-        if($this->request->getFileMultiple('evidence')){
-            $i = 1;
-            foreach($this->request->getFileMultiple('evidence') as $file){
-                //$fileName = "evidence_".$i.".".$file->getClientExtension();
-                $fileName = $file->getName();
-                
-                $file->move(FCPATH . 'uploads', $fileName);
-                
-                $data_evidence = [
-                    'id_detail_monitoring' => $id_detail_monitoring->id,
-                    'filename' => $fileName,
-                    'pathname' => FCPATH . 'uploads' ,
-                ];
-                
-                $this->RiskMitigationDetailEvidenceModel->insert($data_evidence);
-                $i++;
+        if($id_detail_monitoring){
+            if($this->request->getFileMultiple('evidence')){
+                $i = 1;
+                foreach($this->request->getFileMultiple('evidence') as $file){
+                    //$fileName = "evidence_".$i.".".$file->getClientExtension();
+                    $fileName = $file->getName();
+                    
+                    $file->move(FCPATH . 'uploads', $fileName);
+                    
+                    $data_evidence = [
+                        'id_detail_monitoring' => $id_detail_monitoring->id,
+                        'filename' => $fileName,
+                        'pathname' => FCPATH . 'uploads' ,
+                    ];
+                    
+                    $this->RiskMitigationDetailEvidenceModel->insert($data_evidence);
+                    $i++;
+                }
             }
         }
     }

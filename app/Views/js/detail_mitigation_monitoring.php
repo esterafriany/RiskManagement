@@ -6,7 +6,7 @@
 if($state_message == 'error'){ ?>
 <script>
     $(document).ready(function() {
-      swal("Error","Data Gagal ditambahkan.","error");
+      swal("Error","Data gagal ditambahkan.","error");
     });
 </script>
 <?php }else if($state_message == 'success'){ ?>
@@ -78,8 +78,9 @@ if($state_message == 'error'){ ?>
 					var arr = result[i]['target_month'].split("-");
         			var target_month = arr[arr.length - 2];
 					
-					$("#t"+target_month).prop( "checked", true );
+					$("#t"+target_month).prop("checked", true );
 					$('#n'+target_month).val(result[i]['notes']);
+					$('#e'+target_month).prop('disabled', false);
 
 					var arr1 = result[i]['monitoring_month'].split("-");
         			var monitoring_month = arr1[arr1.length - 2];
@@ -169,6 +170,7 @@ if($state_message == 'error'){ ?>
 	}
 
 	function calculate_progress_by_target(id) {
+		console.log(id);
 		var checkBox = document.getElementById(id);
 		if (checkBox.checked == true){
 			target_number = target_number + 1;
@@ -178,7 +180,6 @@ if($state_message == 'error'){ ?>
 		percentage = (monitoring_number / target_number) * 100;
 		document.getElementById("progress-bar").style.width = percentage+"%";
 		document.getElementById("text-percentage").innerHTML = percentage.toFixed(2)+"%";
-
 	}
 
 	function calculate_progress_by_monitoring(id) {

@@ -92,7 +92,6 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('RiskMonitoringController/onUploadEvidence', 'RiskMonitoringController::onUploadEvidence', ['as' => 'upload-evidence']);
 	$routes->add('download/(:any)', 'RiskMonitoringController::download/$1', ['as' => 'download-evidence']);
 
-	$routes->add('list-evidence/(:num)', 'RiskMonitoringController::getListEvidence/$1', ['as' => 'get-list-evidence']);
 
 });
 

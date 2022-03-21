@@ -170,16 +170,14 @@ class RiskMonitoringController extends BaseController
                 $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$i]);
             }
 
-            return redirect()->back();
-
-            // $data = [
-            //     'title'=>'Risk Monitoring Detail',
-            //     'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
-            //     'id_detail_mitigation' => $id_detail_mitigation,
-            //     'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation),
-            //     'state_message' => 'success'
-            // ];
-            // echo view('admin/template/template',$data);
+            $data = [
+                'title'=>'Risk Monitoring Detail',
+                'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
+                'id_detail_mitigation' => $id_detail_mitigation,
+                'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation),
+                'state_message' => 'success'
+            ];
+            echo view('admin/template/template',$data);
 
         }catch (\Exception $e) {
             $data = [
@@ -217,6 +215,10 @@ class RiskMonitoringController extends BaseController
                 }
             }
         }
+
+        return redirect()->back()->with('foo', 'message');
+
+        //return redirect()->to(base_url('/admin/detail-risk-monitoring/'.$this->request->getPost('id_detail_mitigation')));
     }
 
     public function download($filename){

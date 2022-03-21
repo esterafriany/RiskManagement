@@ -328,13 +328,12 @@ class RiskEventController extends BaseController
 
     public function getDetailRiskResidual($id_risk_event){
         $data = [
-            'title'=>'Risk Residual',
-            'content'=>'admin/pages/risk_residual/index',
+            'title'=>'Risk Events',
+            'content'=>'admin/pages/risk_event/residual',
             'kpi_list'=> $this->KPIModel->get_list_kpis(),
-            'risk_category_list'=> $this->RiskCategoryModel->get_list_risk_category(),
-            'detail_risk_event' => $this->RiskEventModel->get_risk_event($id)
+            'detail_risk_event' => $this->RiskEventModel->get_risk_event($id_risk_event)
         ];
         echo view('admin/template/template',$data);
-
     }
+
 }

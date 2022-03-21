@@ -17,7 +17,6 @@
                                     Detail Risiko Utama
                                 </li>
                                 <li class="list-group-item">
-                                    
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -264,7 +263,8 @@
             </div>
             <div class="card-footer">
                 <a href="<?=base_url('admin/risk-event')?>" type="button" class="btn btn-secondary">Batal</a>
-                <a href="<?=base_url('admin/risk-event-residual/'.$detail_risk_event->id)?>" type="button"  class="btn btn-success">Update Residual</a>
+                <a href="<?=base_url('admin/risk-event-residual/'.$detail_risk_event->id)?>" class="btn btn-success">Update Residual</a>
+  
                 <button type="button" id="btn-edit-risk-event"  class="btn btn-primary">Simpan</button>
             </div>
          </div>

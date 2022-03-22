@@ -51,11 +51,23 @@ class RiskEvent extends Migration
                 'type'              => 'ENUM',
                 'constraint'        => "'1','2','3','4','5'",
             ],
+            'target_probability_level'       => [
+                'type'              => 'ENUM',
+                'constraint'        => "'1','2','3','4','5'",
+            ],
             'impact_level'       => [
                 'type'              => 'ENUM',
                 'constraint'        => "'1','2','3','4','5'",
             ],
+            'target_impact_level'       => [
+                'type'              => 'ENUM',
+                'constraint'        => "'1','2','3','4','5'",
+            ],
             'final_level'       => [
+                'type'              => 'INT',
+                'constraint'        => '10',
+            ],
+            'target_final_level'       => [
                 'type'              => 'INT',
                 'constraint'        => '10',
             ],
@@ -80,8 +92,7 @@ class RiskEvent extends Migration
                 'constraint'        => "'R','M','T','E'",
             ],
             'risk_impact_quantitative'       => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '500',
+                'type'           => 'LONGTEXT',
             ],
             'description'       => [
                 'type'           => 'VARCHAR',

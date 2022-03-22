@@ -1,5 +1,7 @@
 <?= $this->include('admin/template/_partials/js')?>
 
+
+
 <script>
 	var table = $('#riskEventTable');
 	$(document).ready(function() {

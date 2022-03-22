@@ -93,30 +93,63 @@
 								</div>
 							</div>
 							<div class="form-group row">
-								<small>Tingkat Kemungkinan</small>
-								<div class="col-sm-12">
-								<select class="form-control form-select" name="probability_level" onChange="change_level1()">
-									<option value="" disabled selected hidden >Pilihan</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
+								<div class="col-sm-5">
+									<small>Tingkat Kemungkinan</small>
+									<div class="col-sm-12">
+										<select class="form-control form-select" name="probability_level">
+											<option value="" disabled selected hidden >Pilihan</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</div>
 								</div>
+								<div class="col-sm-7">
+									<small>Tingkat Kemungkinan Target</small>
+									<div class="col-sm-12">
+										<select class="form-control form-select" name="target_probability_level">
+											<option value="" disabled selected hidden >Pilihan</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</div>
+								</div>
+								
 							</div>
 							<div class="form-group row">
-								<small>Tingkat Dampak</small>
-								<div class="col-sm-12">
-								<select class="form-control form-select" name="impact_level" onChange="change_level()">
-									<option value="" disabled selected hidden >Pilihan</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
+								<div class="col-sm-5">
+									<small>Tingkat Dampak</small>
+									<div class="col-sm-12">
+										<select class="form-control form-select" name="impact_level">
+											<option value="" disabled selected hidden >Pilihan</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</div>
 								</div>
+
+								<div class="col-sm-7">
+									<small>Tingkat Dampak Target</small>
+									<div class="col-sm-12">
+										<select class="form-control form-select" name="target_impact_level">
+											<option value="" disabled selected hidden >Pilihan</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</div>
+								</div>
+								
 							</div>
 						</li>
 					</ul>

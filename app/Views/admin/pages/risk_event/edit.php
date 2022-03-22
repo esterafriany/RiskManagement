@@ -145,45 +145,103 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <small>Tingkat Kemungkinan</small>
-                                            <div class="col-sm-12">
-                                                <select class="form-control form-select" required name="probability_level" id="probability_level" onChange="change_level1()">
-                                                    <option value="" disabled selected hidden >Pilihan</option>
-                                                    <?php
-                                                        for($i=1;$i<6;$i++){ 
-                                                            if($detail_risk_event->probability_level == $i){ ?>
-                                                                <option value="<?=$i?>"selected><?php echo $i;?></option>
-                                                            <?php 
-                                                            }else{?>
-                                                                <option value="<?=$i?>"><?php echo $i;?></option>
-                                                            <?php }
-                                                        }
-                                                    ?>
-                                                </select>
+                                            <div class="col-sm-6">
+                                                <small>Tingkat Kemungkinan</small>
+                                                <div class="col-sm-12">
+                                                    <select class="form-control form-select" required name="probability_level" id="probability_level" onChange="change_level1()">
+                                                        <option value="" disabled selected hidden >Pilihan</option>
+                                                        <?php
+                                                            for($i=1;$i<6;$i++){ 
+                                                                if($detail_risk_event->probability_level == $i){ ?>
+                                                                    <option value="<?=$i?>"selected><?php echo $i;?></option>
+                                                                <?php 
+                                                                }else{?>
+                                                                    <option value="<?=$i?>"><?php echo $i;?></option>
+                                                                <?php }
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </div>
                                             </div>
+                                            <div class="col-sm-6">
+                                                <small>Tingkat Kemungkinan Target</small>
+                                                <div class="col-sm-12">
+                                                    <select class="form-control form-select" required name="target_probability_level" id="target_probability_level" onChange="change_level1()">
+                                                        <option value="" disabled selected hidden >Pilihan</option>
+                                                        <?php
+                                                            for($i=1;$i<6;$i++){ 
+                                                                if($detail_risk_event->probability_level == $i){ ?>
+                                                                    <option value="<?=$i?>"selected><?php echo $i;?></option>
+                                                                <?php 
+                                                                }else{?>
+                                                                    <option value="<?=$i?>"><?php echo $i;?></option>
+                                                                <?php }
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
                                         </div>
                                         <div class="form-group row">
-                                            <small>Tingkat Dampak</small>
-                                            <div class="col-sm-12">
-                                                <select class="form-control form-select" required name="impact_level" id="impact_level" onChange="change_level()">
-                                                    <option value="" disabled selected hidden >Pilihan</option>
-                                                    <?php
-                                                        for($i=1;$i<6;$i++){ 
-                                                            if($detail_risk_event->impact_level == $i){ ?>
-                                                                <option value="<?=$i?>"selected><?php echo $i;?></option>
-                                                            <?php 
-                                                            }else{?>
-                                                                <option value="<?=$i?>"><?php echo $i;?></option>
-                                                            <?php }
-                                                        }
-                                                    ?>
-                                                </select>
+                                            <div class="col-sm-6">
+                                                <small>Tingkat Dampak</small>
+                                                <div class="col-sm-12">
+                                                    <select class="form-control form-select" required name="impact_level" id="impact_level" onChange="change_level()">
+                                                        <option value="" disabled selected hidden >Pilihan</option>
+                                                        <?php
+                                                            for($i=1;$i<6;$i++){ 
+                                                                if($detail_risk_event->impact_level == $i){ ?>
+                                                                    <option value="<?=$i?>"selected><?php echo $i;?></option>
+                                                                <?php 
+                                                                }else{?>
+                                                                    <option value="<?=$i?>"><?php echo $i;?></option>
+                                                                <?php }
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <small>Tingkat Dampak Target</small>
+                                                <div class="col-sm-12">
+                                                    <select class="form-control form-select" required name="target_impact_level" id="target_impact_level" onChange="change_level()">
+                                                        <option value="" disabled selected hidden >Pilihan</option>
+                                                        <?php
+                                                            for($i=1;$i<6;$i++){ 
+                                                                if($detail_risk_event->impact_level == $i){ ?>
+                                                                    <option value="<?=$i?>"selected><?php echo $i;?></option>
+                                                                <?php 
+                                                                }else{?>
+                                                                    <option value="<?=$i?>"><?php echo $i;?></option>
+                                                                <?php }
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <small>Level</small>
-                                            <input type="text" required class="form-control" id="final_level" name="final_level" value="<?php echo $detail_risk_event->final_level;?>">
+
+
+                                        <div class="form-group row">
+
+                                            <div class="col-sm-6">
+                                                <small>Level Dampak</small>
+                                                <div class="col-sm-12">
+                                                    <input type="text" required class="form-control" id="final_level" name="final_level" value="<?php echo $detail_risk_event->final_level;?>">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <small>Level Target</small>
+                                                <div class="col-sm-12">
+                                                    <input type="text" required class="form-control" id="target_final_level" name="target_final_level" value="<?php echo $detail_risk_event->final_level;?>">
+                                                </div>
+                                            </div>
+                                            
                                         </div>
+
                                         <div class="form-group row">
                                             <small>Analisis Risiko</small>
                                             <div class="col-sm-12">

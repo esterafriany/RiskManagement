@@ -26,6 +26,9 @@ class RiskEvents extends Model
         "probability_level",
         "impact_level",
         "final_level",
+        "target_probability_level",
+        "target_impact_level",
+        "target_final_level",
         "risk_analysis",
         "probability_level_residual",
         "impact_level_residual",
@@ -66,9 +69,25 @@ class RiskEvents extends Model
 
     public function get_data_matrix($year)
     {	
-		  return $this->db->query("SELECT id, risk_number, probability_level, impact_level , concat(probability_level,impact_level)  as td_id
+		  return $this->db->query("SELECT id
+                                , risk_number, probability_level
+                                , impact_level, target_probability_level
+                                , target_impact_level
+                                , concat(probability_level,impact_level)  as td_id
+                                , concat(target_probability_level,target_impact_level) as target_td_id
                                 FROM risk_events
                                 WHERE YEAR = '".$year."'")->getResultArray();
+    }
+
+    public function get_data_progress_matrix($year)
+    {	
+		  return $this->db->query("SELECT id, risk_number, probability_level, impact_level,concat(probability_level,impact_level)  as td_id
+                                    FROM risk_events
+                                    WHERE probability_level_residual IS NULL AND YEAR = '".$year."'
+                                    UNION
+                                    SELECT id, risk_number, probability_level_residual, impact_level_residual, concat(probability_level_residual,impact_level_residual)
+                                    FROM risk_events
+                                    WHERE probability_level_residual IS NOT NULL AND YEAR = '".$year."'")->getResultArray();
     }
 
     public function get_list_risk_event($year)

@@ -105,6 +105,7 @@ class RiskEventController extends BaseController
     public function onAddRiskEvent(){
         //get inserted level
         $level_inserted = $this->request->getPost('probability_level') * $this->request->getPost('impact_level');
+        $target_level_inserted = $this->request->getPost('target_probability_level') * $this->request->getPost('target_impact_level');
 
         try {
             $data = [
@@ -119,6 +120,9 @@ class RiskEventController extends BaseController
                     'probability_level' => $this->request->getPost('probability_level'),
                     'impact_level' => $this->request->getPost('impact_level'),
                     'final_level' => $level_inserted,
+                    'target_probability_level' => $this->request->getPost('target_probability_level'),
+                    'target_impact_level' => $this->request->getPost('target_impact_level'),
+                    'target_final_level' => $target_level_inserted,
                     ];
 
             $this->RiskEventModel->insert($data);
@@ -143,7 +147,7 @@ class RiskEventController extends BaseController
                 $risk_num +=1;
             }
 
-            echo json_encode(array("status" => $data_risk_event));
+            echo json_encode(array("status" => $data));
         }catch (\Exception $e) {
             
         }
@@ -152,8 +156,6 @@ class RiskEventController extends BaseController
     public function change(){
         //get all risk event in selected year
         $data_risk_event = $this->RiskEventModel->get_list_risk_event('2022');
-
-      
 
         $sort = array();
         foreach($data_risk_event as $k=>$v) {
@@ -164,7 +166,6 @@ class RiskEventController extends BaseController
         array_multisort($sort['final_level'], SORT_DESC, $sort['level'], SORT_DESC,$data_risk_event);
         dd($data_risk_event);
     }
-
 
     public function onAddDetailRisk(){
         try {
@@ -269,11 +270,33 @@ class RiskEventController extends BaseController
                 $data_num['risk_number'] = $risk_num;
                 $this->RiskEventModel->update($data_risk_event[$k]['id'],$data_num);
 
-                $risk_num +=1;
+                $risk_num += 1;
             }
 
             // echo json_encode(array("status" => TRUE));
             echo json_encode(array("status" => $year));
+        }catch (\Exception $e) {
+            
+        }
+    }
+
+    public function onAddRiskResidual(){
+        //get inserted level
+        $residual_level_inserted = $this->request->getPost('probability_level_residual') * $this->request->getPost('impact_level_residual');
+        $id_risk_event = $this->request->getPost('id_risk_event');
+        try {
+            $data = [
+                    'probability_level_residual' => $this->request->getPost('probability_level_residual'),
+                    'impact_level_residual' => $this->request->getPost('impact_level_residual'),
+                    'final_level_residual' => $this->request->getPost('final_level_residual'),
+                    'risk_analysis_residual' => $this->request->getPost('risk_analysis_residual'),
+                    'risk_impact_quantitative' => $this->request->getPost('r'), //$this->request->getPost('risk_impact_quantitative'),
+                    'description' => $this->request->getPost('description'),
+                    ];
+
+            $this->RiskEventModel->update($id_risk_event,$data);
+        
+            echo json_encode(array("status" => $data));
         }catch (\Exception $e) {
             
         }
@@ -331,6 +354,7 @@ class RiskEventController extends BaseController
             'title'=>'Risk Events',
             'content'=>'admin/pages/risk_event/residual',
             'kpi_list'=> $this->KPIModel->get_list_kpis(),
+            'id_risk_event'=> $id_risk_event,
             'detail_risk_event' => $this->RiskEventModel->get_risk_event($id_risk_event)
         ];
         echo view('admin/template/template',$data);

@@ -87,6 +87,7 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	
 	//Risk Residual
 	$routes->add('risk-event-residual/(:num)', 'RiskEventController::getDetailRiskResidual/$1', ['as' => 'get-detail-risk-residual']);
+	$routes->add('RiskEventController/onAddRiskResidual', 'RiskEventController::onAddRiskResidual', ['as' => 'add-risk-residual']);
 
 	//Risk Evidence
 	$routes->add('RiskMonitoringController/onUploadEvidence', 'RiskMonitoringController::onUploadEvidence', ['as' => 'upload-evidence']);

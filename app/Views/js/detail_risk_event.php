@@ -241,6 +241,9 @@
 				'probability_level':  document.getElementById('probability_level').value,
 				'impact_level':  document.getElementById('impact_level').value,
 				'final_level':  document.getElementById('final_level').value,
+				'target_probability_level':  document.getElementById('target_probability_level').value,
+				'target_impact_level':  document.getElementById('target_impact_level').value,
+				'target_final_level':  document.getElementById('target_final_level').value,
 				'risk_analysis':  document.getElementById('risk_analysis').value
 			};
 			
@@ -296,9 +299,7 @@
 					swal("Gagal","Gagal mengubah data.","error");
 				}
 			});
-
 		});
-		
 	});
 	
 	function get_risk_assignment(id){
@@ -377,7 +378,25 @@
 
 	}
 
+	function change_level_target(){
+		var final_level = document.getElementById("target_final_level");
+		var probability_level = document.getElementById('target_probability_level').value;
+		var impact_level = document.getElementById('target_impact_level').value;
+		
+		if(probability_level.value != ""){
+			final_level.value = parseInt(probability_level) * parseInt(impact_level);
+		}
+	}
 
+	function change_level_target1(){
+		var final_level = document.getElementById("target_final_level");
+		var probability_level = document.getElementById('target_probability_level').value;
+		var impact_level = document.getElementById('target_impact_level').value;
+		
+		if(impact_level.value != ""){
+			final_level.value = parseInt(probability_level) * parseInt(impact_level);
+		}
+	}
 </script>
 
 

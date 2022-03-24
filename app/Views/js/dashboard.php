@@ -7,21 +7,46 @@
         //set td id value
         
         $.ajax({
-		url : "<?=site_url('DashboardController/onGetDataMatrix')?>/" + year,
-		type: "GET",
-		dataType: "JSON",
-		success: function(data)
-		{
-            var i = 0;
-            for(i = 0; data.length ; i++){
-                document.getElementById(data[i]['td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">R${data[i]['risk_number']}</a>` ;             
+            url : "<?=site_url('DashboardController/onGetDataMatrix')?>/" + year,
+            type: "GET",
+            dataType: "JSON",
+            success: function(data)
+            {
+                var i = 0;
+                for(i = 0; data.length ; i++){
+                    //risk map before mitigation
+                    document.getElementById(data[i]['td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">R${data[i]['risk_number']}</a>` ;             
+                
+                    //risk map after mitigation
+                    document.getElementById("target_"+ data[i]['target_td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">R${data[i]['risk_number']}</a>` ;             
+
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                swal('Data tidak ditemukan.');
             }
-		},
-		error: function (jqXHR, textStatus, errorThrown)
-		{
-			swal('Data tidak ditemukan.');
-		}
-	  });
+	    });
+
+        $.ajax({
+            url : "<?=site_url('DashboardController/onGetDataMatrixProgress')?>/" + year,
+            type: "GET",
+            dataType: "JSON",
+            success: function(data)
+            {
+                var i = 0;
+                for(i = 0; data.length ; i++){
+                   
+                    //risk map progress mitigation
+                    document.getElementById("residual_"+ data[i]['td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">R${data[i]['risk_number']}</a>` ;             
+
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                swal('Data tidak ditemukan.');
+            }
+	    });
 		
     });
 

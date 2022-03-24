@@ -154,7 +154,7 @@
             <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
             <div class="flex-wrap card-header d-flex justify-content-between">
                   <div class="header-title">
-                     <h4 class="mb-2 card-title">Risk Map Initial</h4>    
+                     <h4 class="mb-2 card-title">Risk Map Sebelum Mitigasi - Inherent</h4>    
                   </div>
                   
                   <div class="dropdown"> 
@@ -232,13 +232,14 @@
       </div>
    </div>
 
+
    <div class="col-md-12 col-lg-12">
       <div class="row">
          <div class="col-md-12 col-lg-12">
             <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
             <div class="flex-wrap card-header d-flex justify-content-between">
                   <div class="header-title">
-                     <h4 class="mb-2 card-title">Risk Map - Setelah Mitigasi</h4>    
+                     <h4 class="mb-2 card-title">Risk Map Progress Mitigasi</h4>    
                   </div>
                   
                </div>
@@ -251,43 +252,121 @@
                            <tr>
                               <td rowspan="6" width="5%" style="writing-mode: vertical-rl;">Tingkat Kemungkinan</td>
                               <td width="10%">Sangat Besar<br/>(5)</td>
-                              <td id="15" name="td" style="background-color:#f6e65a;" width="17%"></td>
-                              <td id="25" name="td" style="background-color:#ecd4e0;" width="17%"></td>
-                              <td id="35" name="td" style="background-color:#ecd4e0;" width="17%"></td>
-                              <td id="45" name="td" style="background-color:#ff1e00;" width="17%"></td>
-                              <td id="55" name="td" style="background-color:#ff1e00;" width="17%"></td>
+                              <td id="residual_15" name="td" style="background-color:#f6e65a;" width="17%"></td>
+                              <td id="residual_25" name="td" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="residual_35" name="td" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="residual_45" name="td" style="background-color:#ff1e00;" width="17%"></td>
+                              <td id="residual_55" name="td" style="background-color:#ff1e00;" width="17%"></td>
                            </tr>
                            <tr>
                               <td>Besar<br/>(4)</td>
-                              <td id="14" name="td" style="background-color:#5ce878;"></td>
-                              <td id="24" name="td" style="background-color:#f6e65a;"></td>
-                              <td id="34" name="td" style="background-color:#ecd4e0;"></td>
-                              <td id="44" name="td" style="background-color:#ecd4e0;"></td>
-                              <td id="54" name="td" style="background-color:#ff1e00;"></td>
+                              <td id="residual_14" name="td" style="background-color:#5ce878;"></td>
+                              <td id="residual_24" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="residual_34" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="residual_44" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="residual_54" name="td" style="background-color:#ff1e00;"></td>
                            </tr>
                            <tr>
                               <td>Sedang<br/>(3)</td>
-                              <td id="13" name="td" style="background-color:#5ce878;"></td>
-                              <td id="23" name="td" style="background-color:#f6e65a;"></td>
-                              <td id="33" name="td" style="background-color:#f6e65a;"></td>
-                              <td id="43" name="td" style="background-color:#ecd4e0;"></td>
-                              <td id="53" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="residual_13" name="td" style="background-color:#5ce878;"></td>
+                              <td id="residual_23" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="residual_33" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="residual_43" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="residual_53" name="td" style="background-color:#ecd4e0;"></td>
                            </tr>
                            <tr>
                               <td>Kecil<br/>(2)</td>
-                              <td id="12" name="td" style="background-color:#5ce878;"></td>
-                              <td id="22" name="td" style="background-color:#5ce878;"></td>
-                              <td id="32" name="td" style="background-color:#f6e65a;"></td>
-                              <td id="42" name="td" style="background-color:#f6e65a;"></td>
-                              <td id="52" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="residual_12" name="td" style="background-color:#5ce878;"></td>
+                              <td id="residual_22" name="td" style="background-color:#5ce878;"></td>
+                              <td id="residual_32" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="residual_42" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="residual_52" name="td" style="background-color:#ecd4e0;"></td>
                            </tr>
                            <tr>
                               <td>Sangat Kecil<br/>(1)</td>
-                              <td id="11" name="td" style="background-color:#5ce878;"></td>
-                              <td id="21" name="td" style="background-color:#5ce878;"></td>
-                              <td id="31" name="td" style="background-color:#5ce878;"></td>
-                              <td id="41" name="td" style="background-color:#5ce878;"></td>
-                              <td id="51" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="residual_11" name="td" style="background-color:#5ce878;"></td>
+                              <td id="residual_21" name="td" style="background-color:#5ce878;"></td>
+                              <td id="residual_31" name="td" style="background-color:#5ce878;"></td>
+                              <td id="residual_41" name="td" style="background-color:#5ce878;"></td>
+                              <td id="residual_51" name="td" style="background-color:#f6e65a;"></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td>Tidak<br/>Signifikan<br/>(1)</td>
+                              <td>Minor<br/>(2)</td>
+                              <td>Medium<br/>(3)</td>
+                              <td>Signifikan<br/>(4)</td>
+                              <td>Sangat<br/>Signifikan<br/>(5)</td>
+                           </tr>
+                           <tr>
+                              <td ></td>
+                              <td ></td>
+                              <td colspan="5">Tingkat Dampak</td>
+                           </tr>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div class="col-md-12 col-lg-12">
+      <div class="row">
+         <div class="col-md-12 col-lg-12">
+            <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
+            <div class="flex-wrap card-header d-flex justify-content-between">
+                  <div class="header-title">
+                     <h4 class="mb-2 card-title">Risk Map Setelah Mitigasi - Residual Risk</h4>    
+                  </div>
+                  
+               </div>
+               <div class="p-0 card-body">
+               </br>
+               
+                  <div class="bd-example table-responsive" style="padding-right:20px;">
+                  
+                     <table id="table" name="table" width="100%" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
+                           <tr>
+                              <td rowspan="6" width="5%" style="writing-mode: vertical-rl;">Tingkat Kemungkinan</td>
+                              <td width="10%">Sangat Besar<br/>(5)</td>
+                              <td id="target_15" name="td" style="background-color:#f6e65a;" width="17%"></td>
+                              <td id="target_25" name="td" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="target_35" name="td" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="target_45" name="td" style="background-color:#ff1e00;" width="17%"></td>
+                              <td id="target_55" name="td" style="background-color:#ff1e00;" width="17%"></td>
+                           </tr>
+                           <tr>
+                              <td>Besar<br/>(4)</td>
+                              <td id="target_14" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_24" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_34" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="target_44" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="target_54" name="td" style="background-color:#ff1e00;"></td>
+                           </tr>
+                           <tr>
+                              <td>Sedang<br/>(3)</td>
+                              <td id="target_13" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_23" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_33" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_43" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="target_53" name="td" style="background-color:#ecd4e0;"></td>
+                           </tr>
+                           <tr>
+                              <td>Kecil<br/>(2)</td>
+                              <td id="target_12" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_22" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_32" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_42" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_52" name="td" style="background-color:#ecd4e0;"></td>
+                           </tr>
+                           <tr>
+                              <td>Sangat Kecil<br/>(1)</td>
+                              <td id="target_11" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_21" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_31" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_41" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_51" name="td" style="background-color:#f6e65a;"></td>
                            </tr>
                            <tr>
                               <td></td>

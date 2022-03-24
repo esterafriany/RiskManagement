@@ -22,6 +22,7 @@
 			'ajax': {
 				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoring')?>/" + year,
 				'data': function(data) {
+					console.log(data);
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
 					var csrfHash = $('.txt_csrfname').val(); // CSRF hash
@@ -45,7 +46,14 @@
 					data: 'risk_event'
 				},
 				{
-					data: 'risk_mitigation'
+					data: 'risk_mitigation',
+					render: function (data, type, item) {
+						if(item.risk_mitigation != null){
+							return item.risk_mitigation;
+						}else{
+							return '';
+						}
+					},
 				},
 				{
 					data: 'id',
@@ -68,7 +76,7 @@
 					},
 				},
 				{
-					data: 'risk_mitigation'
+					data: 'id_division'
 				},
 				{
 					data: 'risk_mitigation'

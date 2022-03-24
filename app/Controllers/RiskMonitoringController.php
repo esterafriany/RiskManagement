@@ -73,12 +73,18 @@ class RiskMonitoringController extends BaseController
         $records = $this->RiskEventModel
                 ->join('risk_mitigations', 'risk_mitigations.id_risk_event = risk_events.id', 'left')
                 ->join('risk_mitigation_details', 'risk_mitigation_details.id_risk_mitigation = risk_mitigations.id', 'left')
+                ->join('risk_mitigation_divisions', 'risk_mitigation_divisions.id_risk_mitigation = risk_mitigations.id', 'left')
+                ->join('divisions', 'divisions.id = risk_mitigation_divisions.id_division')
                 ->select('risk_events.risk_event
                     , risk_mitigations.risk_mitigation
                     , risk_mitigation_details.id
-                    , risk_mitigation_details.risk_mitigation_detail')
+                    , risk_mitigation_details.risk_mitigation_detail
+                    , GROUP_CONCAT(divisions.name) as id_div
+                    ')
+
                 ->orLike('risk_events.risk_event', $searchValue)
                 ->where('risk_events.year' , $year)
+                ->groupBy('risk_mitigation_details.id')
                 ->findAll($rowperpage, $start);
 
         $data = array();
@@ -88,7 +94,8 @@ class RiskMonitoringController extends BaseController
                 "id"=>$record['id'],
                 "risk_event"=>$record['risk_event'],
                 "risk_mitigation"=>$record['risk_mitigation'],
-                "risk_mitigation_detail"=>$record['risk_mitigation_detail']
+                "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
+                "id_division"=>$record['id_div']
             ); 
         }
     
@@ -146,9 +153,11 @@ class RiskMonitoringController extends BaseController
             }
             
             //target monitoring
+            $this->RiskMitigationDetailMonitoringModel->delete_by_detail_mitigation_id($id_detail_mitigation);
+            
             $target = $this->request->getPost('target[]');
-            $monitoring = $this->request->getPost('monitoring[]');
             $notes = $this->request->getPost('notes[]');
+            $monitoring = $this->request->getPost('monitoring[]');
 
             for($i = 0; $i < count($target); $i++){
                 
@@ -169,26 +178,11 @@ class RiskMonitoringController extends BaseController
             for($i = 0; $i < count($monitoring); $i++){
                 $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$i]);
             }
-
-            $data = [
-                'title'=>'Risk Monitoring Detail',
-                'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
-                'id_detail_mitigation' => $id_detail_mitigation,
-                'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation),
-                'state_message' => 'success'
-            ];
-            echo view('admin/template/template',$data);
+            
+            return redirect()->back()->with('state_message', 'success');
 
         }catch (\Exception $e) {
-            $data = [
-                'title'=>'Risk Monitoring Detail',
-                'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
-                'id_detail_mitigation' => $id_detail_mitigation,
-                'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation),
-                'state_message' => 'error'
-            ];
-            echo view('admin/template/template',$data);   
-   
+            return redirect()->back()->with('state_message', 'error');
         }
     }
 
@@ -216,9 +210,8 @@ class RiskMonitoringController extends BaseController
             }
         }
 
-        return redirect()->back()->with('foo', 'message');
+        return redirect()->back()->with('state_message', 'file');
 
-        //return redirect()->to(base_url('/admin/detail-risk-monitoring/'.$this->request->getPost('id_detail_mitigation')));
     }
 
     public function download($filename){

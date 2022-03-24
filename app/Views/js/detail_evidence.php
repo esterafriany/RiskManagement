@@ -9,7 +9,7 @@
 			$("#evidenceList").last().append(
 				`<table width="100%">
 					<tr>
-						<td width="50%">
+						<td width="100%">
 							<input type="file" name="evidence[]" id="evidence" value="" class="form-control" placeholder="Browse File">
 						
 							<input type="hidden" name="evidenceId[]" value="" class="form-control" >

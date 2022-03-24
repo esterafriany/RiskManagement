@@ -1,22 +1,30 @@
 <?= $this->include('admin/template/_partials/js')?>
 
 
-<?php if($state_message){
-
-if($state_message == 'error'){ ?>
-<script>
-    $(document).ready(function() {
-      swal("Error","Data gagal ditambahkan.","error");
-    });
-</script>
-<?php }else if($state_message == 'success'){ ?>
-<script>
-    $(document).ready(function() {
-      swal("Success","Data berhasil ditambahkan.","success");
-    });
-</script>
-<?php } 
+<?php 
+$session = session();
+if($session->get('state_message')){
+	if($session->get('state_message') == 'error'){ ?>
+	<script>
+		$(document).ready(function() {
+		swal("Error","Data gagal ditambahkan. Pastikan Data Output, Target dan Realisasi tidak kosong.","error");
+		});
+	</script>
+<?php }else if($session->get('state_message') == 'success'){ ?>
+	<script>
+		$(document).ready(function() {
+		swal("Success","Data berhasil ditambahkan.","success");
+		});
+	</script>
+<?php }else if($session->get('state_message') == 'file'){ ?>
+	<script>
+		$(document).ready(function() {
+		swal("Success","File berhasil di-upload.","success");
+		});
+	</script>
+<?php }
 }?>
+
 
 <script>
 	//bar percentage

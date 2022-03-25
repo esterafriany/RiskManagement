@@ -42,7 +42,9 @@
                             </div>
                         </li>
                         <li class="list-group-item"><br/>
+                        <input type="text" name="progress_percentage" id="progress_percentage">
                         <div class="progress">
+                            
                             <div class="progress-bar" id="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100"><text id="text-percentage">0%</text></div>
                         </div>
                         <div class="table-responsive pricing pt-2">

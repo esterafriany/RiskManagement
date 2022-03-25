@@ -76,10 +76,17 @@
 					},
 				},
 				{
-					data: 'id_division'
+					data: 'division_name'
 				},
 				{
-					data: 'risk_mitigation'
+					data: 'progress_percentage',
+					render: function (data, type, item) {
+						if(item.progress_percentage != ""){
+							return item.progress_percentage + ' %';
+						}else{
+							return '-';
+						}
+					},
 				}
 			],
 			columnDefs: [

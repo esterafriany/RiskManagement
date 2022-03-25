@@ -79,7 +79,8 @@ class RiskMonitoringController extends BaseController
                     , risk_mitigations.risk_mitigation
                     , risk_mitigation_details.id
                     , risk_mitigation_details.risk_mitigation_detail
-                    , GROUP_CONCAT(divisions.name) as id_div
+                    , GROUP_CONCAT(divisions.name) as division_name
+                    , progress_percentage
                     ')
 
                 ->orLike('risk_events.risk_event', $searchValue)
@@ -95,7 +96,9 @@ class RiskMonitoringController extends BaseController
                 "risk_event"=>$record['risk_event'],
                 "risk_mitigation"=>$record['risk_mitigation'],
                 "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
-                "id_division"=>$record['id_div']
+                "division_name"=>$record['division_name'],
+                "progress_percentage"=>$record['progress_percentage'],
+                
             ); 
         }
     
@@ -139,6 +142,10 @@ class RiskMonitoringController extends BaseController
         $id_detail_mitigation =  $this->request->getPost('id_detail_mitigation');
         
         try{
+            //update progress_percentage
+            $percentage['progress_percentage']=$this->request->getPost('progress_percentage');
+            $this->RiskMitigationDetailModel->update($id_detail_mitigation, $percentage);
+
             //output
             $outputs = $this->request->getPost('output');
             //delete current output

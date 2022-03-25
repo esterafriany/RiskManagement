@@ -232,7 +232,6 @@ class RiskEventController extends BaseController
                         $this->RiskMitigationDivisionModel->insert($data2);
                         
                     }
-                    
                 }
             }
 

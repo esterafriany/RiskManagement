@@ -16,6 +16,7 @@ class RiskMitigationDetails extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         "id_risk_mitigation",	
+        "progress_percentage",
         "risk_mitigation_detail",
         "is_active"	
     ];

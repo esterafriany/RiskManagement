@@ -102,6 +102,7 @@ if($session->get('state_message')){
 				percentage = (monitoring_sum / count) * 100;
 
 				document.getElementById("progress-bar").style.width = percentage+"%";
+				document.getElementById("progress_percentage").value = percentage.toFixed(2);
 				document.getElementById("text-percentage").innerHTML = percentage.toFixed(2)+"%";
 
 				target_number = count;
@@ -187,6 +188,8 @@ if($session->get('state_message')){
 		}
 		percentage = (monitoring_number / target_number) * 100;
 		document.getElementById("progress-bar").style.width = percentage+"%";
+		
+		document.getElementById("progress_percentage").value = percentage.toFixed(2);
 		document.getElementById("text-percentage").innerHTML = percentage.toFixed(2)+"%";
 	}
 
@@ -200,6 +203,7 @@ if($session->get('state_message')){
 		
 		percentage = (monitoring_number / target_number) * 100;
 		document.getElementById("progress-bar").style.width = percentage+"%";
+		document.getElementById("progress_percentage").value = percentage.toFixed(2);
 		document.getElementById("text-percentage").innerHTML = percentage.toFixed(2)+"%";
 	}
 

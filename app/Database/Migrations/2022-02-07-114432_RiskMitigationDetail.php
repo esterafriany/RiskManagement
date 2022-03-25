@@ -19,6 +19,10 @@ class RiskMitigationDetail extends Migration
                 'type'              => 'INT',
                 'constraint'        => '11',
             ],
+			'progress_percentage'       => [
+                'type'              => 'DECIMAL',
+                'constraint'        => '11,2',
+            ],
             'risk_mitigation_detail'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '500',

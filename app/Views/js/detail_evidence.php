@@ -25,8 +25,6 @@
 		$(document).on('click', '.removes', function () {
 			$(this).parents('tr').remove();
 		});
-	
-		
 	});
 
 </script>

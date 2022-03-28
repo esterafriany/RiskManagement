@@ -82,7 +82,7 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	//Risk Mitigation 
 	$routes->add('risk-mitigation', 'RiskMitigationController::index', ['as' => 'get-risk-mitigations']);
 	$routes->add('detail-risk-mitigations/(:num)', 'RiskMitigationController::getDetailRiskMitigations/$1', ['as' => 'detail-risk-mitigations']);
-	$routes->add('detail-risk-mitigation/(:num)', 'RiskMitigationController::getDetailRiskMitigation/$1', ['as' => 'detail-risk-mitigation']);
+	//$routes->add('detail-risk-mitigation/(:num)', 'RiskMitigationController::getDetailRiskMitigation/$1', ['as' => 'detail-risk-mitigation']);
 	$routes->add('RiskMitigationController/onAddDetailMitigation', 'RiskMitigationController::onAddDetailMitigation', ['as' => 'add-detail-mitigation']);
 	
 	//Risk Residual
@@ -107,6 +107,7 @@ $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
 	$routes->add('get-risk-mitigations', 'RiskOwner\RiskMitigationController::index', ['as' => 'risk-mitigations']);
 	//$routes->add('RiskOwner\RiskMitigationController::getRiskMitigationListRiskOwner', 'RiskOwner\RiskMitigationController::getRiskMitigationListRiskOwner', ['as' => 'risk-mitigations-risk_owner']);
 	$routes->add('get-detail-risk-mitigation/(:num)', 'RiskOwner\RiskMitigationController::getDetailRiskMitigations/$1', ['as' => 'get-detail-risk-mitigation']);
+	$routes->add('detail-risk-mitigation/(:num)', 'RiskOwner\RiskMitigationController::getDetailRiskMitigation/$1', ['as' => 'detail-risk-mitigation']);
 
 	//Risk Monitoring
 	$routes->add('risk-monitoring', 'RiskOwner\RiskMonitoringController::index', ['as' => 'get-risk-monitoring']);

@@ -212,8 +212,9 @@ class RiskMitigationController extends BaseController
         try {
             $risk_causes = json_decode($_POST['risk_cause']);
             $id_risk_event = json_decode($_POST['id_risk_event']);
-            $division_assignment = json_decode($_POST['division_assignment']);
+            $risk_mitigation = json_decode($_POST['risk_mitigation']);
             $risk_event = json_decode($_POST['risk_event']);
+            $id_division = json_decode($_POST['id_division']);
 
             //update risk event
             $this->RiskEventModel->update($id_risk_event,$risk_event);
@@ -234,46 +235,52 @@ class RiskMitigationController extends BaseController
                 }
             }
             
-            //risk assignment
-            $division_assignment_num = count($division_assignment);
-            if($division_assignment_num > 0){
-                $deleted_id_risk_mitigation = $this->RiskMitigationModel->get_deleted_risk_mitigation($id_risk_event);
-                $valuee = count($deleted_id_risk_mitigation);
-                for($num = 0; $num < count($deleted_id_risk_mitigation); $num++){
-                    //delete risk mit division
-                    $this->RiskMitigationDivisionModel->delete_by_id_risk_mitigation($deleted_id_risk_mitigation[$num]['id']); 
-                }
-                //delete risk mit
-                $this->RiskMitigationModel->delete_by_id_risk($id_risk_event);
-
-                //re-add risk mit
-                for($j = 0; $j < $division_assignment_num; $j++){
-                    $arr = explode(".",$division_assignment[$j]);
-                    $risk_mitigation_name = $arr[0];
+            //risk mitigation
+            $not_deleted_id_array = array();
+            for($j = 0; $j < count($risk_mitigation); $j++){
+                $arr = explode(".",$risk_mitigation[$j]);
                     
-                    //add risk mitigation tabel get inserted id
-                    $data = [
+                if($arr[1]){
+                    array_push($not_deleted_id_array,$arr[2]);  
+                
+                    $id = $this->RiskMitigationModel->where('id' , $arr[2])->select('*')->first();
+                    if(count($id) !=0){
+                        //do update
+                        $risk_mitigation_name = $arr[0];
+                        $data = [
                             'id_risk_event' => $id_risk_event,
                             'risk_mitigation' =>$risk_mitigation_name,
                             'is_active' => "1",
-                    ];
-
-                    $inserted_id = $this->RiskMitigationModel->insert($data);
-                    $arr1 = explode(",",$arr[1]);
-
-                    for($k = 0; $k < count($arr1); $k++){
-                        //add risk assignment table using inserted id
-                        $data2 = [
-                            'id_risk_mitigation' => $inserted_id,
-                            'id_division' =>$arr1[$k],
-                            'is_active' => "1",
                         ];
-                        $this->RiskMitigationDivisionModel->insert($data2);
-                        
+                        $this->RiskMitigationModel->update($arr[2],$data);
+
+
                     }
-                    
+                }else{
+                    //do insert
+                    $risk_mitigation_name = $arr[0];
+                    $data = [
+                        'id_risk_event' => $id_risk_event,
+                        'risk_mitigation' =>$risk_mitigation_name,
+                        'is_active' => "1",
+                    ];
+                    $inserted_id = $this->RiskMitigationModel->insert($data);
+                    array_push($not_deleted_id_array, $inserted_id);
+
+                    //insert to mitigation division
+                    $data2 = [
+                        'id_risk_mitigation' => $inserted_id,
+                        'id_division' => $id_division,
+                        'is_active' => "1",
+                    ];
+                    $this->RiskMitigationDivisionModel->insert($data2);
+
                 }
             }
+
+            //delete not in
+            $not_deleted_id= implode(",",$not_deleted_id_array);;
+            $this->RiskMitigationModel->delete_not_in($not_deleted_id, $id_risk_event);
             
             echo json_encode(array("status" => TRUE));
         }catch (\Exception $e) {

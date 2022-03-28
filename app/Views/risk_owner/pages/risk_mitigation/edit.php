@@ -7,9 +7,15 @@
                   <h4 class="card-title">Detail Risiko</h4>
                </div>
 			</div>
+            <?php 
+                    $this->session = \Config\Services::session();
+                    $this->session->start(); 
+                    ?>
             <div class="card-body">
             <form id="form-edit-risk-event" action="" class="form-horizontal" method="POST">
             <input type="hidden" class="form-control" id="id_risk_event" name="id_risk_event" value="<?php echo $detail_risk_event->id;?>">
+            <input type="hidden" id="id_division" name="id_division" value="<?=$this->session->get("id_division")?>">
+            
                 <div class="row">
                     <div class="col">
                     <ul class="list-group">
@@ -99,7 +105,7 @@
                 
             </div>
             <div class="card-footer">
-                <a href="<?=base_url('admin/risk-mitigation')?>" type="button" class="btn btn-secondary">Batal</a>
+                <a href="<?=base_url('risk_owner/risk-mitigation')?>" type="button" class="btn btn-secondary">Batal</a>
                 <button type="button" id="btn-edit-risk-detail"  class="btn btn-primary">Simpan</button>
             </div>
             
@@ -109,4 +115,4 @@
    </div>
 </div>
 
-<?= $this->include("js/detail_risk_monitoring")?>
+<?= $this->include("js/risk_owner/detail_risk_monitoring")?>

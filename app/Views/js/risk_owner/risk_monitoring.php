@@ -59,7 +59,7 @@
 					data: 'id',
 					render: function (data, type, item) {
 						if(item.id > 0){
-							return '<a href="<?=base_url()?>/admin/detail-risk-monitoring/'+item.id+'" class="badge rounded-pill bg-primary text-white">'+item.id+'</a>';
+							return '<a href="<?=base_url()?>/risk_owner/detail-risk-monitoring/'+item.id+'" class="badge rounded-pill bg-primary text-white">'+item.id+'</a>';
 						}else{
 							return '-';
 						}

@@ -84,9 +84,6 @@
 			
 		});
 
-	
-	
-
 	});
 
 	function update_risk_table(){

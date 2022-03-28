@@ -60,7 +60,7 @@
 							</td>
 							<td>
 								<button type="button" id="" class="btn btn-outline-danger btn-sm removes" name="removes" ><i class="fas fa-trash-alt"></i></button>
-								<a href="<?=base_url()?>/risk_owner/detail-risk-mitigations/${result['risk_mitigation_list'][i]['id_risk_mitigation']}" type="button" id="" class="btn btn-outline-success btn-sm"><i class="fas fa-edit"></i></a>
+								<a href="<?=base_url()?>/risk_owner/detail-mitigation-risk/${result['risk_mitigation_list'][i]['id_risk_mitigation']}" type="button" id="" class="btn btn-outline-success btn-sm"><i class="fas fa-edit"></i></a>
 								</td>
 						</tr>
 						</table>`;

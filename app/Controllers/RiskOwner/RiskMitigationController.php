@@ -140,11 +140,11 @@ class RiskMitigationController extends BaseController
     public function getDetailRiskMitigation($id) {
 		$data = [
             'title'=>'Risk Mitigation',
-            'content'=>'admin/pages/risk_mitigation/detail_risk_mitigation',
+            'content'=>'risk_owner/pages/risk_mitigation/detail_risk_mitigation',
             'risk_mitigation' => $this->RiskMitigationModel->get_risk_mitigation($id),
             'id_risk_mitigation' => $id, 
         ];
-        echo view('admin/template/template',$data);
+        echo view('risk_owner/template/template',$data);
 	}
     
     public function onDetailMitigation($id) {

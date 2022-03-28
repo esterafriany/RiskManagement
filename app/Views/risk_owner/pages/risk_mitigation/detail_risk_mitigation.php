@@ -66,4 +66,4 @@
 </div>
 
 
-<?= $this->include("js/detail_risk_mitigation")?>
+<?= $this->include("js/risk_owner/detail_risk_mitigation")?>

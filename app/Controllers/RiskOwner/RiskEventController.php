@@ -154,15 +154,7 @@ class RiskEventController extends BaseController
                 }
             }
             
-            //risk assignment
-            // $deleted_id_risk_mitigation = $this->RiskMitigationModel->get_deleted_risk_mitigation($id_risk_event);
-  
-            // for($num = 0; $num < count($deleted_id_risk_mitigation); $num++){
-            //     //delete risk mit division
-            //     $this->RiskMitigationDivisionModel->delete_by_id_risk_mitigation($deleted_id_risk_mitigation[$num]['id']); 
-            // }
-            // //delete risk mit
-            // $this->RiskMitigationModel->delete_by_id_risk($id_risk_event);
+            //risk mitigation
             $not_deleted_id_array = array();
             for($j = 0; $j < count($risk_mitigation); $j++){
                 $arr = explode(".",$risk_mitigation[$j]);

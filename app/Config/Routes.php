@@ -105,6 +105,7 @@ $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
 	
 	//Risk Mitigation
 	$routes->add('get-risk-mitigations', 'RiskOwner\RiskMitigationController::index', ['as' => 'risk-mitigations']);
+	//$routes->add('RiskOwner\RiskMitigationController::getRiskMitigationListRiskOwner', 'RiskOwner\RiskMitigationController::getRiskMitigationListRiskOwner', ['as' => 'risk-mitigations-risk_owner']);
 	$routes->add('get-detail-risk-mitigation/(:num)', 'RiskOwner\RiskMitigationController::getDetailRiskMitigations/$1', ['as' => 'get-detail-risk-mitigation']);
 
 });

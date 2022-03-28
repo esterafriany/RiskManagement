@@ -5,6 +5,11 @@
             <div class="card-header d-flex justify-content-between">
                <div class="header-title">
                   <h4 class="card-title">Detail Risiko</h4>
+                  <?php 
+                    $this->session = \Config\Services::session();
+                    $this->session->start(); 
+                    ?>
+                  <input type="text" id="id_risk_owner" name="id_risk_owner" value="<?=$this->session->get("id_group")?>">
                </div>
 			</div>
             <div class="card-body">
@@ -17,7 +22,6 @@
                                     Detail Risiko Utama
                                 </li>
                                 <li class="list-group-item">
-                                    
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -253,7 +257,7 @@
    </div>
 </div>
 
-<?= $this->include("js/detail_risk_event")?>
+<?= $this->include("js/risk_owner/detail_risk_event")?>
 
 <style>
 .selectRow {

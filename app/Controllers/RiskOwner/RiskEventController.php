@@ -130,7 +130,7 @@ class RiskEventController extends BaseController
            
             $risk_causes = json_decode($_POST['risk_cause']);
             $id_risk_event = json_decode($_POST['id_risk_event']);
-            $division_assignment = json_decode($_POST['division_assignment']);
+            //$division_assignment = json_decode($_POST['division_assignment']);
             $risk_categories = json_decode($_POST['risk_category']);
             $risk_event = json_decode($_POST['risk_event']);
 

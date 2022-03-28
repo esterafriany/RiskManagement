@@ -47,6 +47,16 @@ class RiskMitigationController extends BaseController
 		echo json_encode($data);
     }
 
+    public function getRiskMitigationListRiskOwner($id_risk, $id_risk_owner)
+    {
+        $data = [
+            'risk_mitigation_list'=> $this->RiskMitigationModel->get_list_risk_mitigation_by_risk_owner($id_risk, $id_risk_owner),
+            'risk_division_list'=> $this->DivisionModel->get_list_divisions()
+        ];
+		
+		echo json_encode($data);
+    }
+
     public function getRiskMitigationDivision($id_risk_mitigation){
         
         $data = $this->RiskMitigationDivisionModel->get_risk_division_by_risk_mitigation_id($id_risk_mitigation);

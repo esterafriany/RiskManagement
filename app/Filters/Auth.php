@@ -25,7 +25,7 @@ class Auth implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (!session()->get('isLoggedIn')) {
+        if (!session()->get('isLoggedIn') || session()->get('id_group') != '1') {
             return redirect()->to(site_url('/'));
         }
     }

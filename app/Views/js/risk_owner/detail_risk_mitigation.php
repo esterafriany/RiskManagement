@@ -26,7 +26,7 @@
 				zeroRecords: "Tidak ada Detail Mitigasi.",
 			},
 			'ajax': {
-				'url': "<?=site_url('RiskMitigationController/getDetailMitigation')?>/"+id_risk_mitigation,
+				'url': "<?=site_url('RiskOwner/RiskMitigationController/getDetailMitigation')?>/"+id_risk_mitigation,
 				'data': function(data) {
 					
 					// CSRF Hash
@@ -63,7 +63,7 @@
 								 <button type="button" class="btn btn-sm btn-icon btn-danger" onclick="delete_detail_risk_mitigation(${item.id})">
 								    <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M19.3248 9.46826C19.3248 9.46826 18.7818 16.2033 18.4668 19.0403C18.3168 20.3953 17.4798 21.1893 16.1088 21.2143C13.4998 21.2613 10.8878 21.2643 8.27979 21.2093C6.96079 21.1823 6.13779 20.3783 5.99079 19.0473C5.67379 16.1853 5.13379 9.46826 5.13379 9.46826" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M20.708 6.23975H3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M17.4406 6.23973C16.6556 6.23973 15.9796 5.68473 15.8256 4.91573L15.5826 3.69973C15.4326 3.13873 14.9246 2.75073 14.3456 2.75073H10.1126C9.53358 2.75073 9.02558 3.13873 8.87558 3.69973L8.63258 4.91573C8.47858 5.68473 7.80258 6.23973 7.01758 6.23973" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
                                  </button>&nbsp;
-								 <a type="button" class="btn btn-sm btn-icon btn-success" href="<?=base_url()?>/admin/detail-risk-monitoring/${item.id}">
+								 <a type="button" class="btn btn-sm btn-icon btn-success" href="<?=base_url()?>/risk_owner/view-detail-risk-monitoring/${item.id}">
 								    <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M15.7161 16.2234H8.49609" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M15.7161 12.0369H8.49609" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.2521 7.86011H8.49707" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.909 2.74976C15.909 2.74976 8.23198 2.75376 8.21998 2.75376C5.45998 2.77076 3.75098 4.58676 3.75098 7.35676V16.5528C3.75098 19.3368 5.47298 21.1598 8.25698 21.1598C8.25698 21.1598 15.933 21.1568 15.946 21.1568C18.706 21.1398 20.416 19.3228 20.416 16.5528V7.35676C20.416 4.57276 18.693 2.74976 15.909 2.74976Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                                                   
                                  </a>
                               </div>&nbsp;`
@@ -84,7 +84,7 @@
 		$btn_add_risk_detail.on("click", function (e) {
 			var table = $('#riskDetailMitigationTable').DataTable();
 			$.ajax({
-					url : "<?php echo base_url('admin/RiskMitigationController/onAddDetailMitigation')?>",
+					url : "<?php echo base_url('RiskOwner/RiskMitigationController/onAddDetailMitigation')?>",
 					type: "POST",
 					data: $('#form-add-detail-mitigation').serialize(),
 					dataType: "JSON",
@@ -122,7 +122,7 @@
 		$btn_edit_risk_detail.on("click", function (e) {
 			var table = $('#riskDetailMitigationTable').DataTable();
 			$.ajax({
-					url : "<?=site_url('RiskMitigationController/onEditDetailMitigation')?>/" + document.getElementById('id').value,
+					url : "<?=site_url('RiskOwner/RiskMitigationController/onEditDetailMitigation')?>/" + document.getElementById('id').value,
 					type: "POST",
 					data: $('#form-edit-detail-mitigation').serialize(),
 					dataType: "JSON",
@@ -135,10 +135,10 @@
 						$('#modal-add-group').modal("hide");
 					
 						swal({
-						title: "Sukses!",
-						text: "Data sukses diubah!",
-						type: "success",
-						confirmButtonText: "OK"
+							title: "Sukses!",
+							text: "Data sukses diubah!",
+							type: "success",
+							confirmButtonText: "OK"
 						},
 						function(isConfirm){
 						if (isConfirm) {
@@ -158,7 +158,7 @@
 
 		function edit_detail_risk_mitigation(id){
 			$.ajax({
-				url : "<?=site_url('RiskMitigationController/onDetailMitigation')?>/" + id,
+				url : "<?=site_url('RiskOwner/RiskMitigationController/onDetailMitigation')?>/" + id,
 				type: "POST",
 				dataType: "JSON",
 				success: function(data)
@@ -191,7 +191,7 @@
 			function(){
 			// ajax delete data from database
 			  $.ajax({
-				url : "<?=site_url('RiskMitigationController/onDeleteDetailMitigation')?>/" + id,
+				url : "<?=site_url('RiskOwner/RiskMitigationController/onDeleteDetailMitigation')?>/" + id,
 				type: "POST",
 				dataType: "JSON",
 				success: function(data)

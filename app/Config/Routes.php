@@ -112,8 +112,9 @@ $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
 
 	//Risk Monitoring
 	$routes->add('risk-monitoring', 'RiskOwner\RiskMonitoringController::index', ['as' => 'get-risk-monitoring']);
-	$routes->add('detail-risk-monitoring/(:num)', 'RiskOwner\RiskMonitoringController::getDetailRiskMonitoring/$1', ['as' => 'detail-risk-monitoring']);
-
+	//$routes->add('detail-risk-monitoring/(:num)', 'RiskOwner\RiskMonitoringController::getDetailRiskMonitoring/$1', ['as' => 'detail-risk-monitoring']);
+	$routes->add('view-detail-risk-monitoring/(:num)', 'RiskOwner\RiskMonitoringController::getDetailRiskMonitoring/$1', ['as' => 'aa-detail-risk-monitoring']);
+	
 });
 
 /*

@@ -287,7 +287,6 @@ class RiskEventController extends BaseController
                 $not_deleted_id= implode(",",$not_deleted_id_array);;
                 $this->RiskMitigationModel->delete_not_in($not_deleted_id, $id_risk_event);
                 
-                
             }
 
 

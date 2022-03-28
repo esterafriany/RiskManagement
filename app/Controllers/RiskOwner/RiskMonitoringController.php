@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\RiskOwner;
 use App\Controllers\BaseController;
 use Illuminate\Http\Request;
 
@@ -32,10 +32,10 @@ class RiskMonitoringController extends BaseController
     public function index(){
         $data = [
             'title'=>'Risk Monitoring',
-            'content'=>'admin/pages/risk_monitoring/index',
+            'content'=>'risk_owner/pages/risk_monitoring/index',
             'kpi_list'=> $this->KPIModel->get_list_kpis()
         ];
-        echo view('admin/template/template',$data);
+        echo view('risk_owner/template/template',$data);
     }
 
     public function getRiskMonitoring($year){
@@ -115,12 +115,12 @@ class RiskMonitoringController extends BaseController
     public function getDetailRiskMonitoring($id_detail_mitigation){
         $data = [
             'title'=>'Risk Monitoring Detail',
-            'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
+            'content'=>'risk_owner/pages/risk_monitoring/detail_risk_monitoring',
             'id_detail_mitigation' => $id_detail_mitigation,
             'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation),
             'state_message' => ''
         ];
-        echo view('admin/template/template',$data);
+        echo view('risk_owner/template/template',$data);
     }
 
     public function getOutputList($id){

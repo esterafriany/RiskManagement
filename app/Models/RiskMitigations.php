@@ -74,6 +74,14 @@ class RiskMitigations extends Model
       $result = $this->db->query($sql);
     }
 
+    public function delete_not_in($not_deleted_id,$id_risk_event)
+    {	
+      $sql = "DELETE FROM risk_mitigations WHERE id_risk_event = ".$id_risk_event." AND risk_mitigations.id NOT IN (".$not_deleted_id.")";
+      $result = $this->db->query($sql);
+    }
+
+    
+
     public function get_deleted_risk_mitigation($id_risk)
     {	
 		  return $this->db->query("SELECT id FROM risk_mitigations WHERE id_risk_event='".$id_risk."'")->getResultArray();

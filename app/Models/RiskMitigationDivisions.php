@@ -57,4 +57,11 @@ class RiskMitigationDivisions extends Model
       $sql = "DELETE FROM risk_mitigation_divisions WHERE id_risk_mitigation='".$id_risk_mitigation."'";
       $result = $this->db->query($sql);
     }
+
+    public function delete_not_in_divison($delete_not_in_divison, $id_risk_mitigation)
+    {	
+      $sql = "DELETE FROM risk_mitigation_divisions
+      WHERE id_risk_mitigation = '".$id_risk_mitigation."' AND id_division NOT IN(".$delete_not_in_divison.")";
+      $result = $this->db->query($sql);
+    }
 }

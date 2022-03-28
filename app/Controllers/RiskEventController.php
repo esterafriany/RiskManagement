@@ -194,39 +194,70 @@ class RiskEventController extends BaseController
                     $this->RiskCauseModel->insert($data);
                 }
             }
+
             
             //risk assignment
             $division_assignment_num = count($division_assignment);
             if($division_assignment_num > 0){
-                // $deleted_id_risk_mitigation = $this->RiskMitigationModel->get_deleted_risk_mitigation($id_risk_event);
-                // $valuee = count($deleted_id_risk_mitigation);
-                // for($num = 0; $num < count($deleted_id_risk_mitigation); $num++){
-                //     //delete risk mit division
-                //     $this->RiskMitigationDivisionModel->delete_by_id_risk_mitigation($deleted_id_risk_mitigation[$num]['id']); 
-                // }
-
-                // //delete risk mit
-                // $this->RiskMitigationModel->delete_by_id_risk($id_risk_event);
+                $not_deleted_id_array=array();
 
                 for($j = 0; $j < $division_assignment_num; $j++){
-                    
                     $arr = explode(".",$division_assignment[$j]);
-
-                    //cek whether updated or inserted
-                    $id = $this->RiskMitigationModel->where('year' , $arr[2])->select('*')->first();
-                    if($id){
-                        //do update
-                        $risk_mitigation_name = $arr[0];
                     
-                        //add risk mitigation tabel get inserted id
-                        $data = [
+                    if($arr[2]){
+                        array_push($not_deleted_id_array,$arr[2]);  
+                    }
+                    
+                    //cek whether updated or inserted
+                    if($arr[2]){
+                        $id = $this->RiskMitigationModel->where('id' , $arr[2])->select('*')->first();
+                        if(count($id) !=0){
+                            //do update
+                            $risk_mitigation_name = $arr[0];
+                            //add risk mitigation tabel get inserted id
+                            $data = [
                                 'id_risk_event' => $id_risk_event,
                                 'risk_mitigation' =>$risk_mitigation_name,
                                 'is_active' => "1",
-                        ];
+                            ];
+                            $this->RiskMitigationModel->update($arr[2],$data);
+                            
+                            $arr1 = explode(",",$arr[1]);
+                            //get id mitigation division by updated id and id division
+                            $arr_id_not_deleted_division = array();
+                            
 
-                        $updated_id = $this->RiskMitigationModel->update($arr[2],$data);
-                        
+                            for($k = 0; $k < count($arr1); $k++){
+
+                                $id_mitigation_division = $this->RiskMitigationDivisionModel
+                                ->where('id_division',$arr1[$k])
+                                ->where('id_risk_mitigation',$arr[2])
+                                ->select('id')->first();
+                                if($id_mitigation_division){
+                                    array_push($arr_id_not_deleted_division, $arr1[$k]);
+                                    $data2 = [
+                                        'id_risk_mitigation' => $arr[2],
+                                        'id_division' =>$arr1[$k],
+                                        'is_active' => "1",
+                                    ];
+                                    $this->RiskMitigationDivisionModel->update($id_mitigation_division,$data2);
+                                
+                                }else{
+                                    array_push($arr_id_not_deleted_division, $arr1[$k]);
+                                    $data2 = [
+                                        'id_risk_mitigation' => $arr[2],
+                                        'id_division' =>$arr1[$k],
+                                        'is_active' => "1",
+                                    ];
+                                    $this->RiskMitigationDivisionModel->insert($data2);
+                                }
+                            }
+
+                            //delete
+                            $not_deleted_id_division= implode(",",$arr_id_not_deleted_division);;
+                            $this->RiskMitigationDivisionModel->delete_not_in_divison($not_deleted_id_division, $arr[2]);
+
+                        }
                     }else{
                         //do insert
                         $risk_mitigation_name = $arr[0];
@@ -239,6 +270,7 @@ class RiskEventController extends BaseController
                         ];
 
                         $inserted_id = $this->RiskMitigationModel->insert($data);
+                        array_push($not_deleted_id_array, $inserted_id);
                         $arr1 = explode(",",$arr[1]);
 
                         for($k = 0; $k < count($arr1); $k++){
@@ -252,10 +284,15 @@ class RiskEventController extends BaseController
                             
                         }
                     }
-
-                    
                 }
+
+                $not_deleted_id= implode(",",$not_deleted_id_array);;
+                $this->RiskMitigationModel->delete_not_in($not_deleted_id, $id_risk_event);
+                
+                
             }
+
+
 
             //risk category
             $risk_category_num = count($risk_categories);
@@ -273,7 +310,6 @@ class RiskEventController extends BaseController
                 }
             }
 
-            
             //update nomor resiko lagi
             //get all risk event in selected year
             $data_risk_event = $this->RiskEventModel->get_list_risk_event($year);
@@ -295,7 +331,7 @@ class RiskEventController extends BaseController
             }
 
             // echo json_encode(array("status" => TRUE));
-            echo json_encode(array("status" => $year));
+            echo json_encode(array("status" => $not_deleted_id));
         }catch (\Exception $e) {
             
         }

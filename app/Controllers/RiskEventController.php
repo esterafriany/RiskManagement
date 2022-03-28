@@ -198,40 +198,62 @@ class RiskEventController extends BaseController
             //risk assignment
             $division_assignment_num = count($division_assignment);
             if($division_assignment_num > 0){
-                $deleted_id_risk_mitigation = $this->RiskMitigationModel->get_deleted_risk_mitigation($id_risk_event);
-                $valuee = count($deleted_id_risk_mitigation);
-                for($num = 0; $num < count($deleted_id_risk_mitigation); $num++){
-                    //delete risk mit division
-                    $this->RiskMitigationDivisionModel->delete_by_id_risk_mitigation($deleted_id_risk_mitigation[$num]['id']); 
-                }
-                //delete risk mit
-                $this->RiskMitigationModel->delete_by_id_risk($id_risk_event);
+                // $deleted_id_risk_mitigation = $this->RiskMitigationModel->get_deleted_risk_mitigation($id_risk_event);
+                // $valuee = count($deleted_id_risk_mitigation);
+                // for($num = 0; $num < count($deleted_id_risk_mitigation); $num++){
+                //     //delete risk mit division
+                //     $this->RiskMitigationDivisionModel->delete_by_id_risk_mitigation($deleted_id_risk_mitigation[$num]['id']); 
+                // }
 
-                //re-add risk mit
+                // //delete risk mit
+                // $this->RiskMitigationModel->delete_by_id_risk($id_risk_event);
+
                 for($j = 0; $j < $division_assignment_num; $j++){
-                    $arr = explode(".",$division_assignment[$j]);
-                    $risk_mitigation_name = $arr[0];
                     
-                    //add risk mitigation tabel get inserted id
-                    $data = [
-                            'id_risk_event' => $id_risk_event,
-                            'risk_mitigation' =>$risk_mitigation_name,
-                            'is_active' => "1",
-                    ];
+                    $arr = explode(".",$division_assignment[$j]);
 
-                    $inserted_id = $this->RiskMitigationModel->insert($data);
-                    $arr1 = explode(",",$arr[1]);
-
-                    for($k = 0; $k < count($arr1); $k++){
-                        //add risk assignment table using inserted id
-                        $data2 = [
-                            'id_risk_mitigation' => $inserted_id,
-                            'id_division' =>$arr1[$k],
-                            'is_active' => "1",
+                    //cek whether updated or inserted
+                    $id = $this->RiskMitigationModel->where('year' , $arr[2])->select('*')->first();
+                    if($id){
+                        //do update
+                        $risk_mitigation_name = $arr[0];
+                    
+                        //add risk mitigation tabel get inserted id
+                        $data = [
+                                'id_risk_event' => $id_risk_event,
+                                'risk_mitigation' =>$risk_mitigation_name,
+                                'is_active' => "1",
                         ];
-                        $this->RiskMitigationDivisionModel->insert($data2);
+
+                        $updated_id = $this->RiskMitigationModel->update($arr[2],$data);
                         
+                    }else{
+                        //do insert
+                        $risk_mitigation_name = $arr[0];
+                    
+                        //add risk mitigation tabel get inserted id
+                        $data = [
+                                'id_risk_event' => $id_risk_event,
+                                'risk_mitigation' =>$risk_mitigation_name,
+                                'is_active' => "1",
+                        ];
+
+                        $inserted_id = $this->RiskMitigationModel->insert($data);
+                        $arr1 = explode(",",$arr[1]);
+
+                        for($k = 0; $k < count($arr1); $k++){
+                            //add risk assignment table using inserted id
+                            $data2 = [
+                                'id_risk_mitigation' => $inserted_id,
+                                'id_division' =>$arr1[$k],
+                                'is_active' => "1",
+                            ];
+                            $this->RiskMitigationDivisionModel->insert($data2);
+                            
+                        }
                     }
+
+                    
                 }
             }
 

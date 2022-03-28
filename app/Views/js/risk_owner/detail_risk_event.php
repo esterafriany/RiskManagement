@@ -231,10 +231,11 @@
 			//risk mitigation
 			var input1 = document.getElementsByName('risk_mitigation[]');
 			var input2 = document.getElementsByName('assignment_division[]');
-			//var division_assignment = new Array();
-			// for (var i = 0; i < input1.length; i++) {
-			// 	division_assignment[i]= input1[i].value +"."+input2[i].value;
-            // }
+
+			var risk_mitigation = new Array();
+			for (var i = 0; i < input1.length; i++) {
+				risk_mitigation[i]= input1[i].value;
+            }
 
 			//risk category
 			var input3 = document.getElementsByName('risk_category[]');
@@ -243,12 +244,13 @@
                 var a = input3[i];
 				risk_category[i] = a.value;			
             }
-			
+
+			risk_owner_id = document.getElementById('id_group').value;
 			var id_risk = document.getElementById('id_risk_event').value;
 			$.ajax({
-				url : "<?php echo base_url('risk_owner/RiskEventController/onAddDetailRisk')?>",
+				url : "<?php echo base_url('RiskOwner/RiskEventController/onAddDetailRisk')?>",
 				type: "POST",
-				data: {'year': document.getElementById('year').value,'id_risk_event':id_risk,'risk_event':JSON.stringify(risk_event),'risk_category':JSON.stringify(risk_category),'risk_cause':JSON.stringify(risk_cause)},
+				data: {'risk_owner_id': risk_owner_id,'year': document.getElementById('year').value,'id_risk_event':id_risk,'risk_event':JSON.stringify(risk_event),'risk_category':JSON.stringify(risk_category),'risk_cause':JSON.stringify(risk_cause),'risk_mitigation':JSON.stringify(risk_mitigation)},
 				dataType: "JSON",
 
 				success: function(response)

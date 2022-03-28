@@ -1,5 +1,4 @@
 <?= $this->include('admin/template/_partials/js')?>
-
 <script>
 	$(document).ready(function() {
 		
@@ -258,9 +257,10 @@
 			//risk mitigation
 			var input1 = document.getElementsByName('risk_mitigation[]');
 			var input2 = document.getElementsByName('assignment_division[]');
+			var input3 = document.getElementsByName('risk_mitigation_id[]');
 			var division_assignment = new Array();
 			for (var i = 0; i < input1.length; i++) {
-				division_assignment[i]= input1[i].value +"."+input2[i].value;
+				division_assignment[i]= input1[i].value +"."+input2[i].value+"."+input3[i].value;
             }
 
 			//risk category

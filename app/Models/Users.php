@@ -63,7 +63,7 @@ class Users extends Model
 
 	public function login($email,$password)
     {
-        $result = $this->db->query("SELECT users.id, users.name, divisions.name as division_name, email, id_group
+        $result = $this->db->query("SELECT id_division, users.id, users.name, divisions.name as division_name, email, id_group
          FROM users left join divisions ON users.id_division = divisions.id
          WHERE email = '$email' AND password = '$password' AND users.is_active = '1'");
         

@@ -9,10 +9,10 @@
         var id_risk_event = arr[arr.length - 1];
 		let y = 0;
 
-		var id_risk_owner = document.getElementById('id_risk_owner').value;
-
+		var id_risk_owner = document.getElementById('id_division').value;
+		
 		$.ajax({
-			url : "<?=site_url('RiskCauseController/getRiskCauseList')?>/" + id_risk_event,
+			url : "<?=site_url('RiskOwner/RiskCauseController/getRiskCauseList')?>/" + id_risk_event,
 			type: "GET",
 			dataType: "JSON",
 			success: function(result)
@@ -44,7 +44,7 @@
 			success: function(result)
 			{
 				var count1 = result['risk_mitigation_list'].length;
-				var count2 = result['risk_division_list'].length;
+				//var count2 = result['risk_division_list'].length;
 				
 				var penampung = "";
 				var id_risk_mitigation = [];
@@ -55,7 +55,8 @@
 						<tr>
 							<td width="100%">
 								<input type="text" name="risk_mitigation[]" value="${result['risk_mitigation_list'][i]['risk_mitigation']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
-								<input type="hidden" name="risk_mitigation_id[]" value="${result['risk_mitigation_list'][i]['id']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
+								<input type="hidden" name="risk_mitigation_division_id[]" value="${result['risk_mitigation_list'][i]['id_risk_mitigation_division']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
+								<input type="hidden" name="risk_mitigation_id[]" value="${result['risk_mitigation_list'][i]['id_risk_mitigation']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 							</td>
 							
 							<td>
@@ -77,7 +78,7 @@
 		});
 
 		$.ajax({
-			url : "<?=site_url('RiskCategoryController/getRiskCategoryByRiskEvent')?>/" + id_risk_event,
+			url : "<?=site_url('RiskOwner/RiskCategoryController/getRiskCategoryByRiskEvent')?>/" + id_risk_event,
 			type: "GET",
 			dataType: "JSON",
 			success: function(result)
@@ -96,7 +97,7 @@
 							option_risk_category += `<option value="${result['risk_category_list'][j]['id']}">${result['risk_category_list'][j]['name']}</option>`;
 						}
 					}
-					penampung += `<table width="100%">
+						penampung += `<table width="100%">
 									<tr>
 										<td>
 											<select class="form-control form-select" name="risk_category[]">
@@ -137,7 +138,8 @@
 					<tr>
 						<td width="100%">
 							<input type="text" name="risk_mitigation[]" value="" class="form-control" placeholder="Masukkan Mitigasi Risiko">
-							<input type="hidden" name="risk_mitigation_id[]" value="" class="form-control" >
+							<input type="hidden" name="risk_mitigation_division_id[]" value="" class="form-control" >
+							<input type="hidden" name="risk_mitigation_id[]" value="" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 						</td>
 						<td>
 							<input type="hidden" id="selectedID-${y}" name="assignment_division[]">
@@ -230,11 +232,12 @@
 
 			//risk mitigation
 			var input1 = document.getElementsByName('risk_mitigation[]');
-			var input2 = document.getElementsByName('assignment_division[]');
-
+			var input2 = document.getElementsByName('risk_mitigation_division_id[]');
+			var input3 = document.getElementsByName('risk_mitigation_id[]');
+			
 			var risk_mitigation = new Array();
 			for (var i = 0; i < input1.length; i++) {
-				risk_mitigation[i]= input1[i].value;
+				risk_mitigation[i]= input1[i].value+"."+input2[i].value+"."+input3[i].value;
             }
 
 			//risk category
@@ -245,16 +248,17 @@
 				risk_category[i] = a.value;			
             }
 
-			risk_owner_id = document.getElementById('id_group').value;
+			id_division = document.getElementById('id_division').value;
 			var id_risk = document.getElementById('id_risk_event').value;
 			$.ajax({
 				url : "<?php echo base_url('RiskOwner/RiskEventController/onAddDetailRisk')?>",
 				type: "POST",
-				data: {'risk_owner_id': risk_owner_id,'year': document.getElementById('year').value,'id_risk_event':id_risk,'risk_event':JSON.stringify(risk_event),'risk_category':JSON.stringify(risk_category),'risk_cause':JSON.stringify(risk_cause),'risk_mitigation':JSON.stringify(risk_mitigation)},
+				data: {'id_division': id_division,'year': document.getElementById('year').value,'id_risk_event':id_risk,'risk_event':JSON.stringify(risk_event),'risk_category':JSON.stringify(risk_category),'risk_cause':JSON.stringify(risk_cause),'risk_mitigation':JSON.stringify(risk_mitigation)},
 				dataType: "JSON",
 
 				success: function(response)
 				{
+
 					console.log(response);
 					swal({
 					  title: "Sukses!",

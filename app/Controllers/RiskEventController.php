@@ -204,17 +204,15 @@ class RiskEventController extends BaseController
                 for($j = 0; $j < $division_assignment_num; $j++){
                     $arr = explode(".",$division_assignment[$j]);
                     
-                    if($arr[2]){
-                        array_push($not_deleted_id_array,$arr[2]);  
-                    }
                     
                     //cek whether updated or inserted
                     if($arr[2]){
+                        array_push($not_deleted_id_array,$arr[2]);  
+
                         $id = $this->RiskMitigationModel->where('id' , $arr[2])->select('*')->first();
                         if(count($id) !=0){
                             //do update
                             $risk_mitigation_name = $arr[0];
-                            //add risk mitigation tabel get inserted id
                             $data = [
                                 'id_risk_event' => $id_risk_event,
                                 'risk_mitigation' =>$risk_mitigation_name,

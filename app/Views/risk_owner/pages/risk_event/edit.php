@@ -9,7 +9,7 @@
                     $this->session = \Config\Services::session();
                     $this->session->start(); 
                     ?>
-                  <input type="text" id="id_group" name="id_group" value="<?=$this->session->get("id_group")?>">
+                  <input type="hidden" id="id_division" name="id_division" value="<?=$this->session->get("id_division")?>">
                </div>
 			</div>
             <div class="card-body">
@@ -249,10 +249,30 @@
                                             <div class="col-sm-12">
                                                 <select class="form-control form-select" required id="risk_analysis" name="risk_analysis">
                                                     <option value="" disabled selected hidden >Pilihan</option>
-                                                    <option value="R">R</option>
-                                                    <option value="M">M</option>
-                                                    <option value="T">T</option>
-                                                    <option value="E">E</option>
+                  
+                                                    <?php if($detail_risk_event->risk_analysis == "R"){?>
+                                                        <option value="R" selected>Rendah</option>
+                                                    <?php }else{ ?>
+                                                        <option value="R">Rendah</option>
+                                                    <?php } ?>
+
+                                                    <?php if($detail_risk_event->risk_analysis == "M"){?>
+                                                        <option value="M" selected>Menengah</option>
+                                                    <?php }else{ ?>
+                                                        <option value="M">Menengah</option>
+                                                    <?php } ?>
+
+                                                    <?php if($detail_risk_event->risk_analysis == "T"){?>
+                                                        <option value="T" selected>Tinggi</option>
+                                                    <?php }else{ ?>
+                                                        <option value="T">Tinggi</option>
+                                                    <?php } ?>
+                                                    
+                                                    <?php if($detail_risk_event->risk_analysis == "E"){?>
+                                                        <option value="E" selected>Ekstrem</option>
+                                                    <?php }else{ ?>
+                                                        <option value="E">Ekstrem</option>
+                                                    <?php } ?>
                                                 </select>
                                             </div>
                                         </div>

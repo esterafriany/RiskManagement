@@ -334,7 +334,7 @@
                 <br/>
             </div>
             <div class="card-footer">
-                <a href="<?=base_url('admin/risk-mitigation')?>"type="button" class="btn btn-secondary">Batal</a>
+                <a href="<?=base_url('risk_owner/risk-mitigation')?>"type="button" class="btn btn-secondary">Batal</a>
                 <button type="submit" id="btn-add-detail-monitoring"  class="btn btn-primary">Simpan Semua Perubahan</button>
             </div>
             
@@ -345,7 +345,7 @@
 </div>
 
 <div class="modal fade" id="modal-add-evidence" name="modal-add-evidence" tabindex="-1" aria-labelledby="addGroupEvidenceModal" style="display: none;" aria-hidden="true">
-	<div class="modal-dialog"><?= $this->include("admin/pages/risk_mitigation/evidence")?></div>
+	<div class="modal-dialog"><?= $this->include("risk_owner/pages/risk_mitigation/evidence")?></div>
 </div>
 
 <?= $this->include("js/risk_owner/detail_mitigation_monitoring")?>

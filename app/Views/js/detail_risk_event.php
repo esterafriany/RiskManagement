@@ -225,7 +225,6 @@
 		});
 
 		// edit risk event
-		
 		$btn_edit_risk_event.on("click", function (e) {
 			//risk event
 			var risk_event = new Array();

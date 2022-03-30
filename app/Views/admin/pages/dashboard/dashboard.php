@@ -30,6 +30,7 @@
             <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
                <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="700">
                   <div class="card-body">
+
                      <div class="progress-widget">
                         <div id="circle-progress-01" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="100" data-type="percent">
                            <svg class="card-slie-arrow" width="24" height="24px" viewBox="0 0 24 24">
@@ -74,6 +75,7 @@
                   </div>
                </li>
             </ul>
+            
             <div class="swiper-button swiper-button-next"></div>
             <div class="swiper-button swiper-button-prev"></div>
          </div>
@@ -81,6 +83,7 @@
    </div>
    <div class="col-lg-12">
          <div class="row">
+        
          <div class="col-md-3">
                   <div class="card">
                      <div class="card-body">

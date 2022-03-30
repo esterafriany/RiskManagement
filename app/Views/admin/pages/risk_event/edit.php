@@ -36,7 +36,6 @@
                                                                 <?php
                                                                 }else{?>
                                                                     <option value="<?php echo $kpi['id'];?>"><?php echo $kpi['name'];?></option>
-                                                                
                                                                 <?php
                                                                 }
                                                             }	

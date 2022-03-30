@@ -216,8 +216,65 @@ class RiskEventController extends BaseController
                     $this->RiskEventCategoryModel->insert($data);
                 }
             }
+
+            ///update risk number
+            //get all risk event in selected year
+            $data_risk_event = $this->RiskEventModel->get_list_risk_event($this->request->getPost('year'));
+
+            $array = [];
+            $n = count($data_risk_event);
+            for($i=0; $i<$n; $i++) {
+    
+                for($j=0; $j<$n-$i-1; $j++) {
+                    if($data_risk_event[$j]['final_level']>$data_risk_event[$j+1]['final_level']) {
+                        $temp = $data_risk_event[$j];
+                        $data_risk_event[$j] = $data_risk_event[$j+1];
+                        $data_risk_event[$j+1] = $temp;
+                    }  
+                }
+                array_push($array,$data_risk_event[$j]);
+            }
+
+            //update risk number $arr
+            $risk_num = 1;
+            for($k=0; $k<count($array); $k++) {
+                $data_num['risk_number'] = $risk_num;
+                $this->RiskEventModel->update($array[$k]['id'],$data_num);
+
+                $risk_num +=1;
+            }
+            //end of update risk number
+
+
+            ///update risk number target
+            //get all risk event in selected year
+            
+            $array1 = [];
+            $n = count($data_risk_event);
+            for($i=0; $i<$n; $i++) {
+                for($j=0; $j<$n-$i-1; $j++) {
+                    if($data_risk_event[$j]['target_final_level']>$data_risk_event[$j+1]['target_final_level']) {
+                        $temp = $data_risk_event[$j];
+                        $data_risk_event[$j] = $data_risk_event[$j+1];
+                        $data_risk_event[$j+1] = $temp;
+                    }  
+                }
+                array_push($array1,$data_risk_event[$j]);
+            }
+
+            //update risk number $arr
+            $risk_num = 1;
+            for($k=0; $k<count($array1); $k++) {
+                $data_num['risk_number_target'] = $risk_num;
+                $this->RiskEventModel->update($array1[$k]['id'],$data_num);
+
+                $risk_num +=1;
+            }
+            //end of update risk number target
+
+            
             //echo json_encode(array("status" => TRUE));
-            echo json_encode(array("status" => $not_deleted_id_array));
+            echo json_encode(array("status" => $array1));
         }catch (\Exception $e) {
             
         }

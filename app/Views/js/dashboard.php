@@ -12,13 +12,14 @@
             dataType: "JSON",
             success: function(data)
             {
+
                 var i = 0;
                 for(i = 0; data.length ; i++){
                     //risk map before mitigation
-                    document.getElementById(data[i]['td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">R${data[i]['risk_number']}</a>` ;             
+                    document.getElementById(data[i]['td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">No.${data[i]['id']} <b style="color:cyan">R${data[i]['risk_number']}</b></a>` ;             
                 
                     //risk map after mitigation
-                    document.getElementById("target_"+ data[i]['target_td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">R${data[i]['risk_number']}</a>` ;             
+                    document.getElementById("target_"+ data[i]['target_td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">No.${data[i]['id']} R${data[i]['risk_number_target']}</a>` ;             
 
                 }
             },
@@ -59,7 +60,6 @@
 		dataType: "JSON",
 		success: function(data)
 		{
-            
             $('#table tr>td').each(function() {
                 $(this).find("#td").html("");
             });

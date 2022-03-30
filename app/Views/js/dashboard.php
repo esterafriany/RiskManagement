@@ -21,6 +21,9 @@
                     //risk map after mitigation
                     document.getElementById("target_"+ data[i]['target_td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">No.${data[i]['id']} R${data[i]['risk_number_target']}</a>` ;             
 
+                    //risk map progress mitigation
+                    document.getElementById("residual_"+ data[i]['residual_td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">No.${data[i]['id']} R${data[i]['risk_number_residual']}</a>` ;             
+                    
                 }
             },
             error: function (jqXHR, textStatus, errorThrown)

@@ -70,8 +70,8 @@
       </div>
    </div>
 </div>
-
-
+<!-- 
+<a href="<?=base_url('admin/detail')?>">Change</a> -->
 <div class="modal fade bd-example-modal-lg" id="modal-add-risk-event" name="modal-add-risk-event" tabindex="-1" aria-labelledby="addGroupModal" style="display: none;" aria-hidden="true">
 	<div class="modal-dialog modal-lg"><?= $this->include("admin/pages/risk_event/create")?></div>
 </div>

@@ -112,8 +112,6 @@
 
 				success: function(response)
 				{
-					console.log(response);
-					
 					$('.modal-backdrop.show').css('opacity','0');
 					$('.modal-backdrop').css('z-index','-1');
 					$('#modal-add-group').modal("hide");
@@ -129,11 +127,10 @@
 						table.ajax.reload(null, false);
 					  }
 					});
-				  
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 				{
-					swal("Error","Gagal menambah data. Pastikan semua field terisi","error");
+					swal("Error","Gagal menambah data.".errorThrown,"error");
 
 				}
 			});

@@ -320,6 +320,7 @@
   
                 <button type="button" id="btn-edit-risk-event"  class="btn btn-primary">Simpan</button>
             </div>
+            
          </div>
       </div>
       </form>

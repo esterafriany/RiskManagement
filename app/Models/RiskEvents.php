@@ -17,6 +17,8 @@ class RiskEvents extends Model
     protected $allowedFields    = [
         "id_kpi",
         "risk_number",
+        "risk_number_residual",
+        "risk_number_target",
         "risk_event",
         "year",
         "objective",
@@ -70,11 +72,13 @@ class RiskEvents extends Model
     public function get_data_matrix($year)
     {	
 		  return $this->db->query("SELECT id
-                                , risk_number, probability_level
-                                , impact_level, target_probability_level
-                                , target_impact_level
+                                , risk_number, risk_number_target, risk_number_residual
+                                , probability_level, impact_level
+                                , target_probability_level, target_impact_level
+                                , probability_level_residual, impact_level_residual
                                 , concat(probability_level,impact_level)  as td_id
                                 , concat(target_probability_level,target_impact_level) as target_td_id
+                                , concat(probability_level_residual,impact_level_residual) as residual_td_id
                                 FROM risk_events
                                 WHERE YEAR = '".$year."'")->getResultArray();
     }
@@ -97,4 +101,22 @@ class RiskEvents extends Model
                                 ON kpis.id = risk_events.id_kpi
                                 WHERE risk_events.year = '".$year."'")->getResultArray();
     }
+
+    public function get_list_risk_event_target($year)
+    {
+        return $this->db->query("SELECT risk_events.id, target_final_level, kpis.level
+                                FROM risk_events JOIN kpis 
+                                ON kpis.id = risk_events.id_kpi
+                                WHERE risk_events.year = '".$year."'")->getResultArray();
+    }
+
+    public function get_list_risk_event_residual($year)
+    {
+        return $this->db->query("SELECT risk_events.id, final_level_residual, kpis.level
+                                FROM risk_events JOIN kpis 
+                                ON kpis.id = risk_events.id_kpi
+                                WHERE risk_events.year = '".$year."'")->getResultArray();
+    }
+
+    
 }

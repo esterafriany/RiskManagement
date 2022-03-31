@@ -396,4 +396,4 @@
    }
 </style>
 
-<?= $this->include("js/dashboard")?>
+<?= $this->include("js/risk_owner/dashboard")?>

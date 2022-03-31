@@ -58,11 +58,11 @@
 			   
 
 <div class="modal fade" id="modal-add-detail-mitigation" name="modal-add-detail-mitigation" tabindex="-1" aria-labelledby="addDetailMitigationModal" style="display: none;" aria-hidden="true">
-	<div class="modal-dialog"><?= $this->include("admin/pages/risk_mitigation/create_detail")?></div>
+	<div class="modal-dialog"><?= $this->include("risk_owner/pages/risk_mitigation/create_detail")?></div>
 </div>
 
 <div class="modal fade" id="modal-edit-detail-mitigation" name="modal-edit-detail-mitigation" tabindex="-1" aria-labelledby="addDetailMitigationModal" style="display: none;" aria-hidden="true">
-	<div class="modal-dialog"><?= $this->include("admin/pages/risk_mitigation/edit_detail")?></div>
+	<div class="modal-dialog"><?= $this->include("risk_owner/pages/risk_mitigation/edit_detail")?></div>
 </div>
 
 

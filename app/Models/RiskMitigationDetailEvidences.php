@@ -48,7 +48,7 @@ class RiskMitigationDetailEvidences extends Model
 		  return $this->db->query("SELECT * FROM risk_mitigation_detail_evidences WHERE id_detail_monitoring ='".$id."'")->getResultArray();
     }
 
-    public function  delete_by_detail_mitigation_id($id){
+    public function  delete_by_detail_monitoring_id($id){
       $sql = "DELETE FROM risk_mitigation_detail_evidences WHERE id_detail_monitoring='".$id."'";
       $result = $this->db->query($sql);
     }

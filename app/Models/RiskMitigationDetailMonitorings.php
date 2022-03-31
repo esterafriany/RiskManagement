@@ -84,4 +84,13 @@ class RiskMitigationDetailMonitorings extends Model
         return $this->db->query("SELECT * FROM risk_mitigation_detail_monitorings 
         WHERE id_detail_mitigation ='".$id."' AND MONTH(target_month) = '".$month."'")->getRow();
     }
+
+    public function delete_evidence_by_id_monitoring($id){
+        $sql = "DELETE FROM risk_mitigation_detail_evidences 
+        WHERE risk_mitigation_detail_evidences.id_detail_monitoring IN (
+            SELECT id from risk_mitigation_detail_monitorings WHERE
+            risk_mitigation_detail_monitorings.id_detail_mitigation = '".$id."')";
+        
+        $result = $this->db->query($sql);
+    }
 }

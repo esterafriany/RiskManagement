@@ -2,12 +2,12 @@
 <input type="hidden" class="form-control" id="id" name="id" placeholder="Masukkan Nama Group">
 	<div class="modal-content">
 		<div class="modal-header">
-			<h5 class="modal-title" id="addGroupModalLabel">Edit KPI</h5>
+			<h5 class="modal-title" id="addGroupModalLabel">Edit Detail Mitigasi</h5>
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
 		<div class="modal-body">
 			<div class="form-group row">
-				<label class="control-label col-sm-3 align-self-center mb-0" for="email1">KPI:</label>
+				<label class="control-label col-sm-3 align-self-center mb-0" for="email1">Detail Mitigasi:</label>
 				<div class="col-sm-9">
 				<input type="text" class="form-control" id="risk_mitigation_detail" name="risk_mitigation_detail" placeholder="Masukkan Detail Mitigasi">
 				</div>

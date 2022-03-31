@@ -10,6 +10,9 @@ use App\Models\RiskMitigationDetails;
 use App\Models\RiskEvents;
 use App\Models\Divisions;
 use App\Models\RiskMitigationDivisions;
+use App\Models\RiskMitigationDetailMonitorings;
+use App\Models\RiskMitigationDetailOutputs;
+
 use App\Models\RiskCauses;
 use App\Models\KPIs;
 
@@ -25,6 +28,8 @@ class RiskMitigationController extends BaseController
         $this->RiskEventModel = new RiskEvents();
         $this->RiskCauseModel = new RiskCauses();
         $this->KPIModel = new KPIs();
+        $this->RiskMitigationDetailMonitoring = new RiskMitigationDetailMonitorings();
+        $this->RiskMitigationDetailOutput = new RiskMitigationDetailOutputs();
         
     }
 
@@ -322,5 +327,19 @@ class RiskMitigationController extends BaseController
           }catch (\Exception $e) {
             
           }
+    }
+
+    public function onDeleteDetailMitigation($id){
+        try {
+            // monitoring. outputs delete
+            $this->RiskMitigationDetailMonitoring->delete_evidence_by_id_monitoring($id);
+            $this->RiskMitigationDetailMonitoring->delete_by_detail_mitigation_id($id);
+            $this->RiskMitigationDetailOutput->delete_by_detail_mitigation_id($id);
+            $this->RiskMitigationDetailModel->delete($id);
+
+            echo json_encode(array("status" => TRUE));
+        }catch (\Exception $e) {
+          
+        }
     }
 }

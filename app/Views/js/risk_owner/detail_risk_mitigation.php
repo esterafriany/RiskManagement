@@ -91,7 +91,6 @@
 
 					success: function(response)
 					{
-						console.log(response);
 						//if success close modal and reload ajax table
 						//$('body').removeClass('modal-open');
 						$('.modal-backdrop.show').css('opacity','0');
@@ -211,7 +210,7 @@
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 				{
-					swal("Oops..","Data gagal dihapus.","error");
+					swal("Oops..",errorThrown,"error");
 				}
 			});
 			

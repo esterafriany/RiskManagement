@@ -12,17 +12,6 @@
 				<input type="text" class="form-control" id="risk_mitigation_detail" name="risk_mitigation_detail" placeholder="Masukkan Detail Mitigasi">
 				</div>
 			</div>
-			
-			<div class="form-group row">
-				<label class="control-label col-sm-3 align-self-center mb-0" for="pwd2">Status:</label>
-				<div class="col-sm-9">
-				<select class="form-control form-select" name="is_active">
-					<option value="" disabled selected hidden >Pilihan</option>
-					<option value="1">Aktif</option>
-					<option value="0">Tidak Aktif</option>
-				</select>
-				</div>
-			</div>
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

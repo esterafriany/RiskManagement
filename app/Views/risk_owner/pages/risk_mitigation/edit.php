@@ -105,7 +105,7 @@
                 
             </div>
             <div class="card-footer">
-                <a href="<?=base_url('risk_owner/risk-mitigation')?>" type="button" class="btn btn-secondary">Batal</a>
+                <a href="<?=base_url('risk_owner/get-risk-mitigations')?>" type="button" class="btn btn-secondary">Batal</a>
                 <button type="button" id="btn-edit-risk-detail"  class="btn btn-primary">Simpan</button>
             </div>
             

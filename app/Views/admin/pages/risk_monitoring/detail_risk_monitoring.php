@@ -35,10 +35,8 @@
                             <div class="form-group">
                                 <small>Output</small>
                                 <div id="outputList">
-                                                
                                 </div><br/>
                                 <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-output"><i class="fas fa-plus-circle"></i> Tambah Output</button>
-                                
                             </div>
                         </li>
                         <li class="list-group-item"><br/>

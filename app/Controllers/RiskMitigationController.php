@@ -266,7 +266,6 @@ class RiskMitigationController extends BaseController
                             'is_active' => "1",
                         ];
                         $this->RiskMitigationDivisionModel->insert($data2);
-                        
                     }
                     
                 }
@@ -301,34 +300,31 @@ class RiskMitigationController extends BaseController
     }
 
     public function onEditDetailMitigation($id){
+        helper(['form', 'url']);
         if (! $this->validate([
-			'risk_mitigation_detail' => 'required',
-			'id_risk_mitigation' => 'required',
-		])) {
-			throw new \Exception("Some message goes here");
-		}else{
+            'risk_mitigation_detail' => 'required',
+        ])) {
+            echo 'error';
+        }else{
             try {
                 $data = [
                     'risk_mitigation_detail' => $this->request->getPost('risk_mitigation_detail'),
                     ];
                 $this->RiskMitigationDetailModel->update($id, $data);
-                  
+                    
                 echo json_encode(array("status" => TRUE));
             }catch (\Exception $e) {
                 
             }
         }
-        
     }
 
     public function onDeleteDetailMitigation($id){
         try {
-
-            // evidence, monitoring. outputs delete
-            $this->RiskMitigationDetailEvidence->delete_by_detail_mitigation_id($id);
+            // monitoring. outputs delete
+            $this->RiskMitigationDetailMonitoring->delete_evidence_by_id_monitoring($id);
             $this->RiskMitigationDetailMonitoring->delete_by_detail_mitigation_id($id);
             $this->RiskMitigationDetailOutput->delete_by_detail_mitigation_id($id);
-            
             $this->RiskMitigationDetailModel->delete($id);
 
             echo json_encode(array("status" => TRUE));

@@ -1,37 +1,28 @@
 <div class="iq-navbar-header" style="height: 215px;">
-              <div class="container-fluid iq-container">
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="flex-wrap d-flex justify-content-between align-items-center">
-                              <div>
-                                  <h1>Hello, <?=session()->get('name')?>!</h1>
-                                  <p>Welcome to Risk Register Apps !</p>
-                              </div>
-                              <div>
-                                  <a href="" class="btn btn-link btn-soft-light">
-                                       <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M11.8251 15.2171H12.1748C14.0987 15.2171 15.731 13.985 16.3054 12.2764C16.3887 12.0276 16.1979 11.7713 15.9334 11.7713H14.8562C14.5133 11.7713 14.2362 11.4977 14.2362 11.16C14.2362 10.8213 14.5133 10.5467 14.8562 10.5467H15.9005C16.2463 10.5467 16.5263 10.2703 16.5263 9.92875C16.5263 9.58722 16.2463 9.31075 15.9005 9.31075H14.8562C14.5133 9.31075 14.2362 9.03619 14.2362 8.69849C14.2362 8.35984 14.5133 8.08528 14.8562 8.08528H15.9005C16.2463 8.08528 16.5263 7.8088 16.5263 7.46728C16.5263 7.12575 16.2463 6.84928 15.9005 6.84928H14.8562C14.5133 6.84928 14.2362 6.57472 14.2362 6.23606C14.2362 5.89837 14.5133 5.62381 14.8562 5.62381H15.9886C16.2483 5.62381 16.4343 5.3789 16.3645 5.13113C15.8501 3.32401 14.1694 2 12.1748 2H11.8251C9.42172 2 7.47363 3.92287 7.47363 6.29729V10.9198C7.47363 13.2933 9.42172 15.2171 11.8251 15.2171Z" fill="currentColor"></path>
-                                          <path opacity="0.4" d="M19.5313 9.82568C18.9966 9.82568 18.5626 10.2533 18.5626 10.7823C18.5626 14.3554 15.6186 17.2627 12.0005 17.2627C8.38136 17.2627 5.43743 14.3554 5.43743 10.7823C5.43743 10.2533 5.00345 9.82568 4.46872 9.82568C3.93398 9.82568 3.5 10.2533 3.5 10.7823C3.5 15.0873 6.79945 18.6413 11.0318 19.1186V21.0434C11.0318 21.5715 11.4648 22.0001 12.0005 22.0001C12.5352 22.0001 12.9692 21.5715 12.9692 21.0434V19.1186C17.2006 18.6413 20.5 15.0873 20.5 10.7823C20.5 10.2533 20.066 9.82568 19.5313 9.82568Z" fill="currentColor"></path>
-                                       </svg>
-                                      Announcements
-                                  </a>
-                              </div>
-                          </div>
-                      </div>
+   <div class="container-fluid iq-container">
+      <div class="row">
+            <div class="col-md-12">
+               <div class="flex-wrap d-flex justify-content-between align-items-center">
+                  <div>
+                        <h1>Hello, <?=session()->get('name')?>!</h1>
+                        <p>Welcome to Risk Register Apps !</p>
                   </div>
-              </div>
-              <div class="iq-header-img">
-                  <img src="../assets/images/dashboard/top-header.png" alt="header" class="theme-color-default-img img-fluid w-100 h-100 animated-scaleX">
-                  <img src="../assets/images/dashboard/top-header1.png" alt="header" class="theme-color-purple-img img-fluid w-100 h-100 animated-scaleX">
-                  <img src="../assets/images/dashboard/top-header2.png" alt="header" class="theme-color-blue-img img-fluid w-100 h-100 animated-scaleX">
-                  <img src="../assets/images/dashboard/top-header3.png" alt="header" class="theme-color-green-img img-fluid w-100 h-100 animated-scaleX">
-                  <img src="../assets/images/dashboard/top-header4.png" alt="header" class="theme-color-yellow-img img-fluid w-100 h-100 animated-scaleX">
-                  <img src="../assets/images/dashboard/top-header5.png" alt="header" class="theme-color-pink-img img-fluid w-100 h-100 animated-scaleX">
-              </div>
-          </div>          <!-- Nav Header Component End -->
-        <!--Nav End-->
+               </div>
+            </div>
       </div>
-      <div class="conatiner-fluid content-inner mt-n5 py-0">
+   </div>
+      <div class="iq-header-img">
+         <img src="../assets/images/dashboard/top-header.png" alt="header" class="theme-color-default-img img-fluid w-100 h-100 animated-scaleX">
+         <img src="../assets/images/dashboard/top-header1.png" alt="header" class="theme-color-purple-img img-fluid w-100 h-100 animated-scaleX">
+         <img src="../assets/images/dashboard/top-header2.png" alt="header" class="theme-color-blue-img img-fluid w-100 h-100 animated-scaleX">
+         <img src="../assets/images/dashboard/top-header3.png" alt="header" class="theme-color-green-img img-fluid w-100 h-100 animated-scaleX">
+         <img src="../assets/images/dashboard/top-header4.png" alt="header" class="theme-color-yellow-img img-fluid w-100 h-100 animated-scaleX">
+         <img src="../assets/images/dashboard/top-header5.png" alt="header" class="theme-color-pink-img img-fluid w-100 h-100 animated-scaleX">
+      </div>
+   </div>          <!-- Nav Header Component End -->
+<!--Nav End-->
+</div>
+<div class="conatiner-fluid content-inner mt-n5 py-0">
 <div class="row">
    <div class="col-md-12 col-lg-12">
       <div class="row row-cols-1">
@@ -39,15 +30,16 @@
             <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
                <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="700">
                   <div class="card-body">
+
                      <div class="progress-widget">
-                        <div id="circle-progress-01" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="90" data-type="percent">
-                           <svg class="card-slie-arrow " width="24" height="24px" viewBox="0 0 24 24">
+                        <div id="circle-progress-01" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="100" data-type="percent">
+                           <svg class="card-slie-arrow" width="24" height="24px" viewBox="0 0 24 24">
                               <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
                            </svg>
                         </div>
                         <div class="progress-detail">
-                           <p  class="mb-2">Total Sales</p>
-                           <h4 class="counter">$560K</h4>
+                           <p  class="mb-2">Total Kategori Risiko</p>
+                           <h4 class="counter"><?=$total_risk_category?></h4>
                         </div>
                      </div>
                   </div>
@@ -55,14 +47,14 @@
                <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="800">
                   <div class="card-body">
                      <div class="progress-widget">
-                        <div id="circle-progress-02" class="text-center circle-progress-01 circle-progress circle-progress-info" data-min-value="0" data-max-value="100" data-value="80" data-type="percent">
-                           <svg class="card-slie-arrow " width="24" height="24" viewBox="0 0 24 24">
-                              <path fill="currentColor" d="M19,6.41L17.59,5L7,15.59V9H5V19H15V17H8.41L19,6.41Z" />
+                        <div id="circle-progress-02" class="text-center circle-progress-01 circle-progress circle-progress-info" data-min-value="0" data-max-value="100" data-value="100" data-type="percent">
+                           <svg class="card-slie-arrow" width="24" height="24px" viewBox="0 0 24 24">
+                              <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
                            </svg>
                         </div>
                         <div class="progress-detail">
-                           <p  class="mb-2">Total Profit</p>
-                           <h4 class="counter">$185K</h4>
+                           <p  class="mb-2">Total Divisi</p>
+                           <h4 class="counter"><?=$total_division?></h4>
                         </div>
                      </div>
                   </div>
@@ -70,377 +62,158 @@
                <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="900">
                   <div class="card-body">
                      <div class="progress-widget">
-                        <div id="circle-progress-03" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="70" data-type="percent">
-                           <svg class="card-slie-arrow " width="24" viewBox="0 0 24 24">
-                              <path fill="currentColor" d="M19,6.41L17.59,5L7,15.59V9H5V19H15V17H8.41L19,6.41Z" />
-                           </svg>
-                        </div>
-                        <div class="progress-detail">
-                           <p  class="mb-2">Total Cost</p>
-                           <h4 class="counter">$375K</h4>
-                        </div>
-                     </div>
-                  </div>
-               </li>
-               <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1000">
-                  <div class="card-body">
-                     <div class="progress-widget">
-                        <div id="circle-progress-04" class="text-center circle-progress-01 circle-progress circle-progress-info" data-min-value="0" data-max-value="100" data-value="60" data-type="percent">
-                           <svg class="card-slie-arrow " width="24px" height="24px" viewBox="0 0 24 24">
+                        <div id="circle-progress-03" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="100" data-type="percent">
+                           <svg class="card-slie-arrow" width="24" height="24px" viewBox="0 0 24 24">
                               <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
                            </svg>
                         </div>
                         <div class="progress-detail">
-                           <p  class="mb-2">Revenue</p>
-                           <h4 class="counter">$742K</h4>
-                        </div>
-                     </div>
-                  </div>
-               </li>
-               <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1100">
-                  <div class="card-body">
-                     <div class="progress-widget">
-                        <div id="circle-progress-05" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="50" data-type="percent">
-                           <svg class="card-slie-arrow " width="24px" height="24px" viewBox="0 0 24 24">
-                              <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
-                           </svg>
-                        </div>
-                        <div class="progress-detail">
-                           <p  class="mb-2">Net Income</p>
-                           <h4 class="counter">$150K</h4>
-                        </div>
-                     </div>
-                  </div>
-               </li>
-               <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1200">
-                  <div class="card-body">
-                     <div class="progress-widget">
-                        <div id="circle-progress-06" class="text-center circle-progress-01 circle-progress circle-progress-info" data-min-value="0" data-max-value="100" data-value="40" data-type="percent">
-                           <svg class="card-slie-arrow " width="24" viewBox="0 0 24 24">
-                              <path fill="currentColor" d="M19,6.41L17.59,5L7,15.59V9H5V19H15V17H8.41L19,6.41Z" />
-                           </svg>
-                        </div>
-                        <div class="progress-detail">
-                           <p  class="mb-2">Today</p>
-                           <h4 class="counter">$4600</h4>
-                        </div>
-                     </div>
-                  </div>
-               </li>
-               <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1300">
-                  <div class="card-body">
-                     <div class="progress-widget">
-                        <div id="circle-progress-07" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="30" data-type="percent">
-                           <svg class="card-slie-arrow " width="24" viewBox="0 0 24 24">
-                              <path fill="currentColor" d="M19,6.41L17.59,5L7,15.59V9H5V19H15V17H8.41L19,6.41Z" />
-                           </svg>
-                        </div>
-                        <div class="progress-detail">
-                           <p  class="mb-2">Members</p>
-                           <h4 class="counter">11.2M</h4>
+                           <p  class="mb-2">Total KPI</p>
+                           <h4 class="counter"><?=$total_kpi?></h4>
                         </div>
                      </div>
                   </div>
                </li>
             </ul>
+            
             <div class="swiper-button swiper-button-next"></div>
             <div class="swiper-button swiper-button-prev"></div>
          </div>
       </div>
    </div>
-   <div class="col-md-12 col-lg-8">
+   <div class="col-lg-12">
+         <div class="row">
+         <div class="col-md-3">
+                  <div class="card">
+                     <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                           <div>
+                              <span><b>Perum PPD</b></span>
+                              <div class="mt-2">
+                              <h2 class="counter"><?= number_format((float)$progress_percentage_corporate->percentage_progress, 2, '.', '');?>%</h2>
+                                 
+                              </div>
+                           </div>
+                           <div>
+                              <span class="badge bg-warning">
+                                 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="currentColor" d="m479.66 268.7l-32-151.81C441.48 83.77 417.68 64 384 64H128c-16.8 0-31 4.69-42.1 13.94s-18.37 22.31-21.58 38.89l-32 151.87A16.65 16.65 0 0 0 32 272v112a64 64 0 0 0 64 64h320a64 64 0 0 0 64-64V272a16.65 16.65 0 0 0-.34-3.3Zm-384-145.4v-.28c3.55-18.43 13.81-27 32.29-27H384c18.61 0 28.87 8.55 32.27 26.91c0 .13.05.26.07.39l26.93 127.88a4 4 0 0 1-3.92 4.82H320a15.92 15.92 0 0 0-16 15.82a48 48 0 1 1-96 0A15.92 15.92 0 0 0 192 256H72.65a4 4 0 0 1-3.92-4.82Z"/><path fill="currentColor" d="M368 160H144a16 16 0 0 1 0-32h224a16 16 0 0 1 0 32Zm16 64H128a16 16 0 0 1 0-32h256a16 16 0 0 1 0 32Z"/></svg>
+                              </span>
+                           </div>
+                        </div>
+                       
+                        <div class="mt-3">
+                           <div class="progress bg-soft-warning shadow-none w-100" style="height: 6px">
+                              <div class="progress-bar bg-warning" data-toggle="progress-bar" role="progressbar" aria-valuenow="<?=$progress_percentage_corporate->percentage_progress?>" aria-valuemin="0" aria-valuemax="100"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            <?php foreach($progress_percentage as $progress){ ?>
+               <div class="col-md-3">
+                  <div class="card">
+                     <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                           <div>
+                              <span><b><?=$progress['name']?></b></span>
+                              <div class="mt-2">
+                                 <h2 class="counter"><?= number_format((float)$progress['percentage_progress'], 2, '.', '');?>%</h2>
+                              </div>
+                           </div>
+                           <div>
+                              <span class="badge bg-primary">
+                                 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="currentColor" d="m479.66 268.7l-32-151.81C441.48 83.77 417.68 64 384 64H128c-16.8 0-31 4.69-42.1 13.94s-18.37 22.31-21.58 38.89l-32 151.87A16.65 16.65 0 0 0 32 272v112a64 64 0 0 0 64 64h320a64 64 0 0 0 64-64V272a16.65 16.65 0 0 0-.34-3.3Zm-384-145.4v-.28c3.55-18.43 13.81-27 32.29-27H384c18.61 0 28.87 8.55 32.27 26.91c0 .13.05.26.07.39l26.93 127.88a4 4 0 0 1-3.92 4.82H320a15.92 15.92 0 0 0-16 15.82a48 48 0 1 1-96 0A15.92 15.92 0 0 0 192 256H72.65a4 4 0 0 1-3.92-4.82Z"/><path fill="currentColor" d="M368 160H144a16 16 0 0 1 0-32h224a16 16 0 0 1 0 32Zm16 64H128a16 16 0 0 1 0-32h256a16 16 0 0 1 0 32Z"/></svg>
+                              </span>
+                           </div>
+                        </div>
+                        <div class="mt-3">
+                           <div class="progress bg-soft-primary shadow-none w-100" style="height: 6px">
+                              <div class="progress-bar bg-primary" data-toggle="progress-bar" role="progressbar" aria-valuenow="<?=$progress['percentage_progress']?>" aria-valuemin="0" aria-valuemax="100"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            <?php } ?>
+         </div>
+      </div>
+     
+   <div class="col-md-12 col-lg-12">
       <div class="row">
-         <div class="col-md-12">
-            <div class="card" data-aos="fade-up" data-aos-delay="800">
-               <div class="flex-wrap card-header d-flex justify-content-between align-items-center">
-                  <div class="header-title">
-                     <h4 class="card-title">$855.8K</h4>
-                     <p class="mb-0">Gross Sales</p>          
-                  </div>
-                  <div class="d-flex align-items-center align-self-center">
-                     <div class="d-flex align-items-center text-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" viewBox="0 0 24 24" fill="currentColor">
-                           <g>
-                              <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                           </g>
-                        </svg>
-                        <div class="ms-2">
-                           <span class="text-secondary">Sales</span>
-                        </div>
-                     </div>
-                     <div class="d-flex align-items-center ms-3 text-info">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" viewBox="0 0 24 24" fill="currentColor">
-                           <g>
-                              <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                           </g>
-                        </svg>
-                        <div class="ms-2">
-                           <span class="text-secondary">Cost</span>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="dropdown">
-                     <a href="#" class="text-secondary dropdown-toggle" id="dropdownMenuButton22" data-bs-toggle="dropdown" aria-expanded="false">
-                     This Week
-                     </a>
-                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton22">
-                        <li><a class="dropdown-item" href="#">This Week</a></li>
-                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="card-body">
-                  <div id="d-main" class="d-main"></div>
-               </div>
-            </div>
-         </div>
-         <div class="col-md-12 col-xl-6">
-            <div class="card" data-aos="fade-up" data-aos-delay="900">
-               <div class="flex-wrap card-header d-flex justify-content-between">
-                  <div class="header-title">
-                     <h4 class="card-title">Earnings</h4>            
-                  </div>   
-                  <div class="dropdown">
-                     <a href="#" class="text-secondary dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        This Week
-                     </a>
-                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">This Week</a></li>
-                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="card-body">
-                  <div class="flex-wrap d-flex align-items-center justify-content-between">
-                     <div id="myChart" class="col-md-8 col-lg-8 myChart"></div>
-                     <div class="d-grid gap col-md-4 col-lg-4">
-                        <div class="d-flex align-items-start">
-                           <svg class="mt-2" xmlns="http://www.w3.org/2000/svg" width="14" viewBox="0 0 24 24" fill="#3a57e8">
-                              <g>
-                                 <circle cx="12" cy="12" r="8" fill="#3a57e8"></circle>
-                              </g>
-                           </svg>
-                           <div class="ms-3">
-                              <span class="text-secondary">Fashion</span>
-                              <h6>251K</h6>
-                           </div>
-                        </div>
-                        <div class="d-flex align-items-start">
-                           <svg class="mt-2" xmlns="http://www.w3.org/2000/svg" width="14" viewBox="0 0 24 24" fill="#4bc7d2">
-                              <g>
-                                 <circle cx="12" cy="12" r="8" fill="#4bc7d2"></circle>
-                              </g>
-                           </svg>
-                           <div class="ms-3">
-                              <span class="text-secondary">Accessories</span>
-                              <h6>176K</h6>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="col-md-12 col-xl-6">
-            <div class="card" data-aos="fade-up" data-aos-delay="1000">
-               <div class="flex-wrap card-header d-flex justify-content-between">
-                  <div class="header-title">
-                     <h4 class="card-title">Conversions</h4>            
-                  </div>
-                  <div class="dropdown">
-                     <a href="#" class="text-secondary dropdown-toggle" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
-                        This Week
-                     </a>
-                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton3">
-                        <li><a class="dropdown-item" href="#">This Week</a></li>
-                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="card-body">
-                  <div id="d-activity" class="d-activity"></div>
-               </div>
-            </div>
-         </div>         
          <div class="col-md-12 col-lg-12">
             <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
-               <div class="flex-wrap card-header d-flex justify-content-between">
+            <div class="flex-wrap card-header d-flex justify-content-between">
                   <div class="header-title">
-                     <h4 class="mb-2 card-title">Enterprise Clients</h4>
-                     <p class="mb-0">
-                        <svg class ="me-2 text-primary" width="24" height="24" viewBox="0 0 24 24">
-                           <path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-                        </svg>
-                        15 new acquired this month
-                     </p>            
+                     <h4 class="mb-2 card-title">Risk Map Sebelum Mitigasi - Inherent</h4>    
                   </div>
-                  <div class="dropdown">
-                     <span class="dropdown-toggle" id="dropdownMenuButton7" data-bs-toggle="dropdown" aria-expanded="false" role="button">
-                     </span>
-                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton7">
-                        <a class="dropdown-item " href="javascript:void(0);">Action</a>
-                        <a class="dropdown-item " href="javascript:void(0);">Another action</a>
-                        <a class="dropdown-item " href="javascript:void(0);">Something else here</a>
-                     </div>
+                  
+                  <div class="dropdown"> 
+                     <select class="form-control" id="year" name="year" onchange="update_matrix()">
+                        <option value="2021">2021</option>
+                        <option value="2022" selected>2022</option>
+                     </select>
                   </div>
                </div>
                <div class="p-0 card-body">
-                  <div class="mt-4 table-responsive">
-                     <table id="basic-table" class="table mb-0 table-striped" role="grid">
-                        <thead>
+               </br>
+               
+                  <div class="bd-example table-responsive" style="padding-right:20px;">
+                  
+                     <table id="table" name="table" width="100%" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
                            <tr>
-                              <th>COMPANIES</th>
-                              <th>CONTACTS</th>
-                              <th>ORDER</th>
-                              <th>COMPLETION</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                           <tr>
-                              <td>
-                                 <div class="d-flex align-items-center">
-                                    <img class="rounded bg-soft-primary img-fluid avatar-40 me-3" src="../assets/images/shapes/01.png" alt="profile">
-                                    <h6>Addidis Sportwear</h6>
-                                 </div>
-                              </td>
-                              <td>
-                                 <div class="iq-media-group iq-media-group-1">
-                                    <a href="#" class="iq-media-1">
-                                       <div class="icon iq-icon-box-3 rounded-pill">SP</div>
-                                    </a>
-                                    <a href="#" class="iq-media-1">
-                                       <div class="icon iq-icon-box-3 rounded-pill">PP</div>
-                                    </a>
-                                    <a href="#" class="iq-media-1">
-                                       <div class="icon iq-icon-box-3 rounded-pill">MM</div>
-                                    </a>
-                                 </div>
-                              </td>
-                              <td>$14,000</td>
-                              <td>
-                                 <div class="mb-2 d-flex align-items-center">
-                                    <h6>60%</h6>
-                                 </div>
-                                 <div class="shadow-none progress bg-soft-primary w-100" style="height: 4px">
-                                    <div class="progress-bar bg-primary" data-toggle="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                 </div>
-                              </td>
+                              <td rowspan="6" width="5%" style="writing-mode: vertical-rl;">Tingkat Kemungkinan</td>
+                              <td width="10%">Sangat Besar<br/>(5)</td>
+                              <td id="15" name="td" style="background-color:#f6e65a;" width="17%"></td>
+                              <td id="25" name="td" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="35" name="td" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="45" name="td" style="background-color:#ff1e00;" width="17%"></td>
+                              <td id="55" name="td" style="background-color:#ff1e00;" width="17%"></td>
                            </tr>
                            <tr>
-                              <td>
-                                 <div class="d-flex align-items-center">
-                                    <img class="rounded bg-soft-primary img-fluid avatar-40 me-3" src="../assets/images/shapes/05.png" alt="profile">
-                                    <h6>Netflixer Platforms</h6>
-                                 </div>
-                              </td>
-                              <td>
-                                 <div class="iq-media-group iq-media-group-1">
-                                    <a href="#" class="iq-media-1">
-                                       <div class="icon iq-icon-box-3 rounded-pill">SP</div>
-                                    </a>
-                                    <a href="#" class="iq-media-1">
-                                       <div class="icon iq-icon-box-3 rounded-pill">PP</div>
-                                    </a>
-                                 </div>
-                              </td>
-                              <td>$30,000</td>
-                              <td>
-                                 <div class="mb-2 d-flex align-items-center">
-                                    <h6>25%</h6>
-                                 </div>
-                                 <div class="shadow-none progress bg-soft-primary w-100" style="height: 4px">
-                                    <div class="progress-bar bg-primary" data-toggle="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                 </div>
-                              </td>
+                              <td>Besar<br/>(4)</td>
+                              <td id="14" name="td" style="background-color:#5ce878;"></td>
+                              <td id="24" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="34" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="44" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="54" name="td" style="background-color:#ff1e00;"></td>
                            </tr>
                            <tr>
-                              <td>
-                                 <div class="d-flex align-items-center">
-                                    <img class="rounded bg-soft-primary img-fluid avatar-40 me-3" src="../assets/images/shapes/02.png" alt="profile">
-                                    <h6>Shopifi Stores</h6>
-                                 </div>
-                              </td>
-                              <td>                                 
-                                 <div class="iq-media-group iq-media-group-1">
-                                    <a href="#" class="iq-media-1">
-                                       <div class="icon iq-icon-box-3 rounded-pill">PP</div>
-                                    </a>
-                                    <a href="#" class="iq-media-1">
-                                       <div class="icon iq-icon-box-3 rounded-pill">TP</div>
-                                    </a>
-                                 </div>
-                              </td>
-                              <td>$8,500</td>
-                              <td>
-                                 <div class="mb-2 d-flex align-items-center">
-                                    <h6>100%</h6>
-                                 </div>
-                                 <div class="shadow-none progress bg-soft-success w-100" style="height: 4px">
-                                    <div class="progress-bar bg-success" data-toggle="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                 </div>
-                              </td>
+                              <td>Sedang<br/>(3)</td>
+                              <td id="13" name="td" style="background-color:#5ce878;"></td>
+                              <td id="23" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="33" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="43" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="53" name="td" style="background-color:#ecd4e0;"></td>
                            </tr>
                            <tr>
-                              <td>
-                                 <div class="d-flex align-items-center">
-                                    <img class="rounded bg-soft-primary img-fluid avatar-40 me-3" src="../assets/images/shapes/03.png" alt="profile">
-                                    <h6>Bootstrap Technologies</h6>
-                                 </div>
-                              </td>
-                              <td>
-                                 <div class="iq-media-group iq-media-group-1">
-                                    <a href="#" class="iq-media-1">
-                                       <div class="icon iq-icon-box-3 rounded-pill">SP</div>
-                                    </a>
-                                    <a href="#" class="iq-media-1">
-                                       <div class="icon iq-icon-box-3 rounded-pill">PP</div>
-                                    </a>
-                                    <a href="#" class="iq-media-1">
-                                       <div class="icon iq-icon-box-3 rounded-pill">MM</div>
-                                    </a>
-                                    <a href="#" class="iq-media-1">
-                                       <div class="icon iq-icon-box-3 rounded-pill">TP</div>
-                                    </a>
-                                 </div>
-                              </td>
-                              <td>$20,500</td>
-                              <td>
-                                 <div class="mb-2 d-flex align-items-center">
-                                    <h6>100%</h6>
-                                 </div>
-                                 <div class="shadow-none progress bg-soft-success w-100" style="height: 4px">
-                                    <div class="progress-bar bg-success" data-toggle="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                 </div>
-                              </td>
+                              <td>Kecil<br/>(2)</td>
+                              <td id="12" name="td" style="background-color:#5ce878;"></td>
+                              <td id="22" name="td" style="background-color:#5ce878;"></td>
+                              <td id="32" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="42" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="52" name="td" style="background-color:#ecd4e0;"></td>
                            </tr>
                            <tr>
-                              <td>
-                                 <div class="d-flex align-items-center">
-                                    <img class="rounded bg-soft-primary img-fluid avatar-40 me-3" src="../assets/images/shapes/04.png" alt="profile">
-                                    <h6>Community First</h6>
-                                 </div>
-                              </td>
-                              <td>
-                                 <div class="iq-media-group iq-media-group-1">
-                                    <a href="#" class="iq-media-1">
-                                       <div class="icon iq-icon-box-3 rounded-pill">MM</div>
-                                    </a>
-                                 </div>
-                              </td>
-                              <td>$9,800</td>
-                              <td>
-                                 <div class="mb-2 d-flex align-items-center">
-                                    <h6>75%</h6>
-                                 </div>
-                                 <div class="shadow-none progress bg-soft-primary w-100" style="height: 4px">
-                                    <div class="progress-bar bg-primary" data-toggle="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                 </div>
-                              </td>
+                              <td>Sangat Kecil<br/>(1)</td>
+                              <td id="11" name="td" style="background-color:#5ce878;"></td>
+                              <td id="21" name="td" style="background-color:#5ce878;"></td>
+                              <td id="31" name="td" style="background-color:#5ce878;"></td>
+                              <td id="41" name="td" style="background-color:#5ce878;"></td>
+                              <td id="51" name="td" style="background-color:#f6e65a;"></td>
                            </tr>
-                        </tbody>
+                           <tr>
+                              <td></td>
+                              <td>Tidak<br/>Signifikan<br/>(1)</td>
+                              <td>Minor<br/>(2)</td>
+                              <td>Medium<br/>(3)</td>
+                              <td>Signifikan<br/>(4)</td>
+                              <td>Sangat<br/>Signifikan<br/>(5)</td>
+                           </tr>
+                           <tr>
+                              <td ></td>
+                              <td ></td>
+                              <td colspan="5">Tingkat Dampak</td>
+                           </tr>
                      </table>
                   </div>
                </div>
@@ -448,155 +221,179 @@
          </div>
       </div>
    </div>
-   <div class="col-md-12 col-lg-4">
+
+
+   <div class="col-md-12 col-lg-12">
       <div class="row">
          <div class="col-md-12 col-lg-12">
-            <div class="card credit-card-widget" data-aos="fade-up" data-aos-delay="900">
-               <div class="pb-4 border-0 card-header">
-                  <div class="p-4 border border-white rounded primary-gradient-card">
-                     <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                           <h5 class="font-weight-bold">VISA </h5>
-                           <P class="mb-0">PREMIUM ACCOUNT</P>  
-                        </div>
-                        <div class="master-card-content">
-                           <svg class="master-card-1" width="60" height="60" viewBox="0 0 24 24">
-                              <path fill="#ffffff" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
-                           </svg>
-                           <svg class="master-card-2" width="60" height="60" viewBox="0 0 24 24">
-                              <path fill="#ffffff" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
-                           </svg>
-                        </div>
-                     </div>
-                     <div class="my-4">
-                        <div class="card-number">
-                           <span class="fs-5 me-2">5789</span>
-                           <span class="fs-5 me-2">****</span>
-                           <span class="fs-5 me-2">****</span>
-                           <span class="fs-5">2847</span>
-                        </div>
-                     </div>
-                     <div class="mb-2 d-flex align-items-center justify-content-between">
-                        <p class="mb-0">Card holder</p>
-                        <p class="mb-0">Expire Date</p>
-                     </div>
-                     <div class="d-flex align-items-center justify-content-between">
-                        <h6>Mike Smith</h6>
-                        <h6 class="ms-5">06/11</h6>
-                     </div>
-                  </div>
-               </div>
-               <div class="card-body">
-                  <div class="flex-wrap mb-4 d-flex align-itmes-center justify-content-between">
-                     <div class="d-flex align-itmes-center me-0 me-md-4">
-                        <div>
-                           <div class="p-3 mb-2 rounded bg-soft-primary">
-                              <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" clip-rule="evenodd" d="M16.9303 7C16.9621 6.92913 16.977 6.85189 16.9739 6.77432H17C16.8882 4.10591 14.6849 2 12.0049 2C9.325 2 7.12172 4.10591 7.00989 6.77432C6.9967 6.84898 6.9967 6.92535 7.00989 7H6.93171C5.65022 7 4.28034 7.84597 3.88264 10.1201L3.1049 16.3147C2.46858 20.8629 4.81062 22 7.86853 22H16.1585C19.2075 22 21.4789 20.3535 20.9133 16.3147L20.1444 10.1201C19.676 7.90964 18.3503 7 17.0865 7H16.9303ZM15.4932 7C15.4654 6.92794 15.4506 6.85153 15.4497 6.77432C15.4497 4.85682 13.8899 3.30238 11.9657 3.30238C10.0416 3.30238 8.48184 4.85682 8.48184 6.77432C8.49502 6.84898 8.49502 6.92535 8.48184 7H15.4932ZM9.097 12.1486C8.60889 12.1486 8.21321 11.7413 8.21321 11.2389C8.21321 10.7366 8.60889 10.3293 9.097 10.3293C9.5851 10.3293 9.98079 10.7366 9.98079 11.2389C9.98079 11.7413 9.5851 12.1486 9.097 12.1486ZM14.002 11.2389C14.002 11.7413 14.3977 12.1486 14.8858 12.1486C15.3739 12.1486 15.7696 11.7413 15.7696 11.2389C15.7696 10.7366 15.3739 10.3293 14.8858 10.3293C14.3977 10.3293 14.002 10.7366 14.002 11.2389Z" fill="currentColor"></path>                                            
-                              </svg>
-                           </div>
-                        </div>
-                        <div class="ms-3">
-                           <h5>1153</h5>
-                           <small class="mb-0">Products</small>
-                        </div>
-                     </div>
-                     <div class="d-flex align-itmes-center">
-                        <div>
-                           <div class="p-3 mb-2 rounded bg-soft-info">
-                              <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M14.1213 11.2331H16.8891C17.3088 11.2331 17.6386 10.8861 17.6386 10.4677C17.6386 10.0391 17.3088 9.70236 16.8891 9.70236H14.1213C13.7016 9.70236 13.3719 10.0391 13.3719 10.4677C13.3719 10.8861 13.7016 11.2331 14.1213 11.2331ZM20.1766 5.92749C20.7861 5.92749 21.1858 6.1418 21.5855 6.61123C21.9852 7.08067 22.0551 7.7542 21.9652 8.36549L21.0159 15.06C20.8361 16.3469 19.7569 17.2949 18.4879 17.2949H7.58639C6.25742 17.2949 5.15828 16.255 5.04837 14.908L4.12908 3.7834L2.62026 3.51807C2.22057 3.44664 1.94079 3.04864 2.01073 2.64043C2.08068 2.22305 2.47038 1.94649 2.88006 2.00874L5.2632 2.3751C5.60293 2.43735 5.85274 2.72207 5.88272 3.06905L6.07257 5.35499C6.10254 5.68257 6.36234 5.92749 6.68209 5.92749H20.1766ZM7.42631 18.9079C6.58697 18.9079 5.9075 19.6018 5.9075 20.459C5.9075 21.3061 6.58697 22 7.42631 22C8.25567 22 8.93514 21.3061 8.93514 20.459C8.93514 19.6018 8.25567 18.9079 7.42631 18.9079ZM18.6676 18.9079C17.8282 18.9079 17.1487 19.6018 17.1487 20.459C17.1487 21.3061 17.8282 22 18.6676 22C19.4969 22 20.1764 21.3061 20.1764 20.459C20.1764 19.6018 19.4969 18.9079 18.6676 18.9079Z" fill="currentColor"></path>                                            
-                              </svg>                                        
-                           </div>
-                        </div>
-                        <div class="ms-3">
-                           <h5>81K</h5>
-                           <small class="mb-0">Order Served</small>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="mb-4">
-                     <div class="flex-wrap d-flex justify-content-between">
-                        <h2 class="mb-2">$405,012,300</h2>
-                        <div>
-                           <span class="badge bg-success rounded-pill">YoY 24%</span>
-                        </div>
-                     </div>
-                     <p class="text-info">Life time sales</p>
-                  </div>
-                  <div class="grid-cols-2 d-grid gap-card">
-                     <button class="p-2 btn btn-primary text-uppercase">SUMMARY</button>
-                     <button class="p-2 btn btn-info text-uppercase">ANALYTICS</button>
-                  </div>
-               </div>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="500">
-               <div class="text-center card-body d-flex justify-content-around">
-                  <div>
-                     <h2 class="mb-2">750<small>K</small></h2>
-                     <p class="mb-0 text-secondary">Website Visitors</p>
-                  </div>
-                  <hr class="hr-vertial">
-                  <div>
-                     <h2 class="mb-2">7,500</h2>
-                     <p class="mb-0 text-secondary">New Customers</p>
-                  </div>
-               </div>
-            </div> 
-         </div>
-         <div class="col-md-12 col-lg-12">
-            <div class="card" data-aos="fade-up" data-aos-delay="600">
-               <div class="flex-wrap card-header d-flex justify-content-between">
+            <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
+            <div class="flex-wrap card-header d-flex justify-content-between">
                   <div class="header-title">
-                     <h4 class="mb-2 card-title">Activity overview</h4>
-                     <p class="mb-0">
-                        <svg class ="me-2" width="24" height="24" viewBox="0 0 24 24">
-                           <path fill="#17904b" d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" />
-                        </svg>
-                        16% this month
-                     </p>
+                     <h4 class="mb-2 card-title">Risk Map Progress Mitigasi</h4>    
                   </div>
+                  
                </div>
-               <div class="card-body">
-                  <div class="mb-2  d-flex profile-media align-items-top">
-                     <div class="mt-1 profile-dots-pills border-primary"></div>
-                     <div class="ms-4">
-                        <h6 class="mb-1 ">$2400, Purchase</h6>
-                        <span class="mb-0">11 JUL 8:10 PM</span>
-                     </div>
-                  </div>
-                  <div class="mb-2  d-flex profile-media align-items-top">
-                     <div class="mt-1 profile-dots-pills border-primary"></div>
-                     <div class="ms-4">
-                        <h6 class="mb-1 ">New order #8744152</h6>
-                        <span class="mb-0">11 JUL 11 PM</span>
-                     </div>
-                  </div>
-                  <div class="mb-2  d-flex profile-media align-items-top">
-                     <div class="mt-1 profile-dots-pills border-primary"></div>
-                     <div class="ms-4">
-                        <h6 class="mb-1 ">Affiliate Payout</h6>
-                        <span class="mb-0">11 JUL 7:64 PM</span>
-                     </div>
-                  </div>
-                  <div class="mb-2  d-flex profile-media align-items-top">
-                     <div class="mt-1 profile-dots-pills border-primary"></div>
-                     <div class="ms-4">
-                        <h6 class="mb-1 ">New user added</h6>
-                        <span class="mb-0">11 JUL 1:21 AM</span>
-                     </div>
-                  </div>
-                  <div class="mb-1  d-flex profile-media align-items-top">
-                     <div class="mt-1 profile-dots-pills border-primary"></div>
-                     <div class="ms-4">
-                        <h6 class="mb-1 ">Product added</h6>
-                        <span class="mb-0">11 JUL 4:50 AM</span>
-                     </div>
+               <div class="p-0 card-body">
+               </br>
+               
+                  <div class="bd-example table-responsive" style="padding-right:20px;">
+                  
+                     <table id="table" name="table" width="100%" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
+                           <tr>
+                              <td rowspan="6" width="5%" style="writing-mode: vertical-rl;">Tingkat Kemungkinan</td>
+                              <td width="10%">Sangat Besar<br/>(5)</td>
+                              <td id="residual_15" name="residual_15" style="background-color:#f6e65a;" width="17%"></td>
+                              <td id="residual_25" name="residual_25" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="residual_35" name="residual_35" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="residual_45" name="residual_45" style="background-color:#ff1e00;" width="17%"></td>
+                              <td id="residual_55" name="residual_55" style="background-color:#ff1e00;" width="17%"></td>
+                           </tr>
+                           <tr>
+                              <td>Besar<br/>(4)</td>
+                              <td id="residual_14" name="residual_14" style="background-color:#5ce878;"></td>
+                              <td id="residual_24" name="residual_24" style="background-color:#f6e65a;"></td>
+                              <td id="residual_34" name="residual_34" style="background-color:#ecd4e0;"></td>
+                              <td id="residual_44" name="residual_44" style="background-color:#ecd4e0;"></td>
+                              <td id="residual_54" name="residual_54" style="background-color:#ff1e00;"></td>
+                           </tr>
+                           <tr>
+                              <td>Sedang<br/>(3)</td>
+                              <td id="residual_13" name="residual_13" style="background-color:#5ce878;"></td>
+                              <td id="residual_23" name="residual_23" style="background-color:#f6e65a;"></td>
+                              <td id="residual_33" name="residual_33" style="background-color:#f6e65a;"></td>
+                              <td id="residual_43" name="residual_43" style="background-color:#ecd4e0;"></td>
+                              <td id="residual_53" name="residual_53" style="background-color:#ecd4e0;"></td>
+                           </tr>
+                           <tr>
+                              <td>Kecil<br/>(2)</td>
+                              <td id="residual_12" name="residual_12" style="background-color:#5ce878;"></td>
+                              <td id="residual_22" name="residual_22" style="background-color:#5ce878;"></td>
+                              <td id="residual_32" name="residual_32" style="background-color:#f6e65a;"></td>
+                              <td id="residual_42" name="residual_42" style="background-color:#f6e65a;"></td>
+                              <td id="residual_52" name="residual_52" style="background-color:#ecd4e0;"></td>
+                           </tr>
+                           <tr>
+                              <td>Sangat Kecil<br/>(1)</td>
+                              <td id="residual_11" name="residual_11" style="background-color:#5ce878;"></td>
+                              <td id="residual_21" name="residual_21" style="background-color:#5ce878;"></td>
+                              <td id="residual_31" name="residual_31" style="background-color:#5ce878;"></td>
+                              <td id="residual_41" name="residual_41" style="background-color:#5ce878;"></td>
+                              <td id="residual_51" name="residual_51" style="background-color:#f6e65a;"></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td>Tidak<br/>Signifikan<br/>(1)</td>
+                              <td>Minor<br/>(2)</td>
+                              <td>Medium<br/>(3)</td>
+                              <td>Signifikan<br/>(4)</td>
+                              <td>Sangat<br/>Signifikan<br/>(5)</td>
+                           </tr>
+                           <tr>
+                              <td ></td>
+                              <td ></td>
+                              <td colspan="5">Tingkat Dampak</td>
+                           </tr>
+                     </table>
                   </div>
                </div>
             </div>
          </div>
       </div>
-   </div> 
-</div>
+   </div>
+
+   <div class="col-md-12 col-lg-12">
+      <div class="row">
+         <div class="col-md-12 col-lg-12">
+            <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
+            <div class="flex-wrap card-header d-flex justify-content-between">
+                  <div class="header-title">
+                     <h4 class="mb-2 card-title">Risk Map Setelah Mitigasi - Residual Risk</h4>    
+                  </div>
+                  
+               </div>
+               <div class="p-0 card-body">
+               </br>
+               
+                  <div class="bd-example table-responsive" style="padding-right:20px;">
+                  
+                     <table id="table" name="table" width="100%" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
+                           <tr>
+                              <td rowspan="6" width="5%" style="writing-mode: vertical-rl;">Tingkat Kemungkinan</td>
+                              <td width="10%">Sangat Besar<br/>(5)</td>
+                              <td id="target_15" name="td" style="background-color:#f6e65a;" width="17%"></td>
+                              <td id="target_25" name="td" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="target_35" name="td" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="target_45" name="td" style="background-color:#ff1e00;" width="17%"></td>
+                              <td id="target_55" name="td" style="background-color:#ff1e00;" width="17%"></td>
+                           </tr>
+                           <tr>
+                              <td>Besar<br/>(4)</td>
+                              <td id="target_14" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_24" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_34" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="target_44" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="target_54" name="td" style="background-color:#ff1e00;"></td>
+                           </tr>
+                           <tr>
+                              <td>Sedang<br/>(3)</td>
+                              <td id="target_13" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_23" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_33" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_43" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="target_53" name="td" style="background-color:#ecd4e0;"></td>
+                           </tr>
+                           <tr>
+                              <td>Kecil<br/>(2)</td>
+                              <td id="target_12" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_22" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_32" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_42" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_52" name="td" style="background-color:#ecd4e0;"></td>
+                           </tr>
+                           <tr>
+                              <td>Sangat Kecil<br/>(1)</td>
+                              <td id="target_11" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_21" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_31" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_41" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_51" name="td" style="background-color:#f6e65a;"></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td>Tidak<br/>Signifikan<br/>(1)</td>
+                              <td>Minor<br/>(2)</td>
+                              <td>Medium<br/>(3)</td>
+                              <td>Signifikan<br/>(4)</td>
+                              <td>Sangat<br/>Signifikan<br/>(5)</td>
+                           </tr>
+                           <tr>
+                              <td ></td>
+                              <td ></td>
+                              <td colspan="5">Tingkat Dampak</td>
+                           </tr>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
+   </div>
+
+</div>
+</div>
+<style>
+   .table tbody tr td{
+      height:100%;
+      white-space:normal;
+      width:200px;
+   }
+
+   .text-wrap{
+      white-space:normal;
+   }
+   .width-200{
+      width:200px;
+   }
+</style>
+
+<?= $this->include("js/dashboard")?>

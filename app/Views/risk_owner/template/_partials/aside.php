@@ -1,7 +1,7 @@
 <div class="sidebar-header d-flex align-items-center justify-content-start">
     <a href="<?=base_url('risk_owner/dashboards');?>" class="navbar-brand">
          <!--Logo start-->
-         <img src="../assets/images/Flag/icon_ppd.jpg" style="height: 65px; min-width: 50px; width: 50px;">        
+         <img src="<?=base_url()?>/assets/images/Flag/icon_ppd.jpg" style="height: 65px; min-width: 50px; width: 50px;">        
                     <h4 class="logo-title">Risk <br/>Monitoring</h4>
     </a>
     <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">

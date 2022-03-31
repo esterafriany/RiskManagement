@@ -12,17 +12,18 @@
             dataType: "JSON",
             success: function(data)
             {
-
                 var i = 0;
                 for(i = 0; data.length ; i++){
                     //risk map before mitigation
                     document.getElementById(data[i]['td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">No.${data[i]['id']} <b style="color:cyan">R${data[i]['risk_number']}</b></a>` ;             
                 
                     //risk map after mitigation
-                    document.getElementById("target_"+ data[i]['target_td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">No.${data[i]['id']} R${data[i]['risk_number_target']}</a>` ;             
+                    document.getElementById("target_"+ data[i]['target_td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">No.${data[i]['id']} <b style="color:cyan">R${data[i]['risk_number_target']}</b></a>` ;             
 
                     //risk map progress mitigation
-                    document.getElementById("residual_"+ data[i]['residual_td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">No.${data[i]['id']} R${data[i]['risk_number_residual']}</a>` ;             
+                    if(data[i]['risk_number_residual'] != 0){
+                        document.getElementById("residual_"+ data[i]['residual_td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">No.${data[i]['id']} <b style="color:cyan"> R${data[i]['risk_number_residual']}</b></a>` ;             
+                    }
                     
                 }
             },
@@ -32,25 +33,25 @@
             }
 	    });
 
-        $.ajax({
-            url : "<?=site_url('DashboardController/onGetDataMatrixProgress')?>/" + year,
-            type: "GET",
-            dataType: "JSON",
-            success: function(data)
-            {
-                var i = 0;
-                for(i = 0; data.length ; i++){
+        // $.ajax({
+        //     url : "<?=site_url('DashboardController/onGetDataMatrixProgress')?>/" + year,
+        //     type: "GET",
+        //     dataType: "JSON",
+        //     success: function(data)
+        //     {
+        //         var i = 0;
+        //         for(i = 0; data.length ; i++){
                    
-                    //risk map progress mitigation
-                    document.getElementById("residual_"+ data[i]['td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">R${data[i]['risk_number']}</a>` ;             
+        //             //risk map progress mitigation
+        //             document.getElementById("residual_"+ data[i]['td_id']).innerHTML += `<a href="" class="badge rounded-pill bg-primary text-white">R${data[i]['risk_number']}</a>` ;             
 
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
-                swal('Data tidak ditemukan.');
-            }
-	    });
+        //         }
+        //     },
+        //     error: function (jqXHR, textStatus, errorThrown)
+        //     {
+        //         swal('Data tidak ditemukan.');
+        //     }
+	    // });
 		
     });
 

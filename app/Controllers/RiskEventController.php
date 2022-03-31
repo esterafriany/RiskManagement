@@ -382,7 +382,6 @@ class RiskEventController extends BaseController
                 $risk_num +=1;
             }
             /////////////////
-            
 
             // echo json_encode(array("status" => TRUE));
             echo json_encode(array("status" => $not_deleted_id));
@@ -407,6 +406,30 @@ class RiskEventController extends BaseController
 
             $this->RiskEventModel->update($id_risk_event,$data);
         
+
+            /////////////////
+            ///update nomor risiko residual
+            //get all risk event in selected year
+            $data_risk_event = $this->RiskEventModel->get_list_risk_event_residual($this->request->getPost('year'));
+
+            $sort = array();
+            foreach($data_risk_event as $k=>$v) {
+                $sort['final_level_residual'][$k] = $v['final_level_residual'];
+                $sort['level'][$k] = $v['level'];
+            }
+            array_multisort($sort['final_level_residual'], SORT_DESC, $sort['level'], SORT_DESC,$data_risk_event);
+            
+            //update risk number
+            $risk_num = 1;
+            for($k=0; $k<count($data_risk_event); $k++) {
+                
+                $data_number['risk_number_residual'] = $risk_num;
+                $this->RiskEventModel->update($data_risk_event[$k]['id'],$data_number);
+
+                $risk_num +=1;
+            }
+            ///////////////
+            
             echo json_encode(array("status" => $data));
         }catch (\Exception $e) {
             

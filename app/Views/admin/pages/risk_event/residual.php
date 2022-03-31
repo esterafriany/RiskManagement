@@ -10,6 +10,7 @@
             <div class="card-body">
             <form id="form-add-risk-residual" action="" class="form-horizontal" method="POST">
                <input type="hidden" class="form-control" id="id_risk_event" name="id_risk_event" value="<?php echo $id_risk_event;?>">
+               <input type="hidden" class="form-control" id="year" name="year" value="<?php echo $detail_risk_event->year;?>">
         
                <div class="row">
                   <div class="col-md-6">

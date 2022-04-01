@@ -53,7 +53,17 @@ class DashboardController extends BaseController
     {
         $data = [
             'title'=>'title here',
-            'content'=>'admin/pages/risk_terms/index',
+            'content'=>'admin/pages/risk_terms/probability_criteria',
+        ];
+
+        echo view('admin/template/template',$data);
+    }
+
+    public function view_impact_criteria()
+    {
+        $data = [
+            'title'=>'title here',
+            'content'=>'admin/pages/risk_terms/impact_criteria',
         ];
 
         echo view('admin/template/template',$data);

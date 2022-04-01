@@ -94,9 +94,8 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('download/(:any)', 'RiskMonitoringController::download/$1', ['as' => 'download-evidence']);
 
 	//Data Kamus display
-	$routes->add('aaa', 'DashboardController::aaa', ['as' => 'get-probability-criteria']);
-
-	$routes->add('dashboard', 'DashboardController::index', ['as' => 'get-dashboards']);
+	$routes->add('probability-criteria', 'DashboardController::view_probability_criteria', ['as' => 'probability-criteria']);
+	$routes->add('impact-criteria', 'DashboardController::view_impact_criteria', ['as' => 'impact-criteria']);
 
 });
 

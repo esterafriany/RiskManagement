@@ -46,4 +46,24 @@ class DashboardController extends BaseController
 		
 		echo json_encode($data);
 	}
+
+    public function view_probability_criteria()
+    {
+        $data = [
+            'title'=>'title here',
+            'content'=>'risk_owner/pages/risk_terms/probability_criteria',
+        ];
+
+        echo view('risk_owner/template/template',$data);
+    }
+
+    public function view_impact_criteria()
+    {
+        $data = [
+            'title'=>'title here',
+            'content'=>'risk_owner/pages/risk_terms/impact_criteria',
+        ];
+
+        echo view('risk_owner/template/template',$data);
+    }
 }

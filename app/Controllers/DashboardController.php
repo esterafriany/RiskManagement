@@ -48,4 +48,14 @@ class DashboardController extends BaseController
 		
 		echo json_encode($data);
 	}
+
+    public function view_probability_criteria()
+    {
+        $data = [
+            'title'=>'title here',
+            'content'=>'admin/pages/risk_terms/index',
+        ];
+
+        echo view('admin/template/template',$data);
+    }
 }

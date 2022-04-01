@@ -1,7 +1,6 @@
 <?= $this->include('admin/template/_partials/js')?>
 
 <script type="text/javascript">
-
 	$(document).ready(function() {
         var year = document.getElementById('year').value;
         //set td id value

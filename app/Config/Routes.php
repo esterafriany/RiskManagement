@@ -93,8 +93,10 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('RiskMonitoringController/onUploadEvidence', 'RiskMonitoringController::onUploadEvidence', ['as' => 'upload-evidence']);
 	$routes->add('download/(:any)', 'RiskMonitoringController::download/$1', ['as' => 'download-evidence']);
 
-	$routes->add('detail', 'RiskEventController::display_data', ['as' => 'detail-']);
+	//Data Kamus display
+	$routes->add('aaa', 'DashboardController::aaa', ['as' => 'get-probability-criteria']);
 
+	$routes->add('dashboard', 'DashboardController::index', ['as' => 'get-dashboards']);
 
 });
 
@@ -112,12 +114,15 @@ $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
 	$routes->add('get-detail-risk-mitigation/(:num)', 'RiskOwner\RiskMitigationController::getDetailRiskMitigations/$1', ['as' => 'get-detail-risk-mitigation']);
 	$routes->add('detail-mitigation-risk/(:num)', 'RiskOwner\RiskMitigationController::getDetailRiskMitigation/$1', ['as' => 'aa']);
 
-
 	//Risk Monitoring
 	$routes->add('risk-monitoring', 'RiskOwner\RiskMonitoringController::index', ['as' => 'get-risk-monitoring']);
 	//$routes->add('detail-risk-monitoring/(:num)', 'RiskOwner\RiskMonitoringController::getDetailRiskMonitoring/$1', ['as' => 'detail-risk-monitoring']);
 	$routes->add('view-detail-risk-monitoring/(:num)', 'RiskOwner\RiskMonitoringController::getDetailRiskMonitoring/$1', ['as' => 'aa-detail-risk-monitoring']);
 	
+	//risk terms
+	$routes->add('probability-criteria', 'RiskOwner\DashboardController::view_probability_criteria', ['as' => 'probability-criteria']);
+	$routes->add('impact-criteria', 'RiskOwner\DashboardController::view_impact_criteria', ['as' => 'impact-criteria']);
+
 });
 
 /*

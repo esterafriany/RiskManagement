@@ -7,13 +7,19 @@ use App\Models\Users;
 
 class AuthenticationController extends BaseController
 {
+    private $session;
+
 	public function __construct()
     {
         $this->UsersModel = new Users();
+        session()->start();
     }
 
     public function index()
     {
+        $this->session = \Config\Services::session();
+        $this->session->set('key','12345');
+        
 		helper(['form']);
         if (empty(session()->get('email'))) {
 			echo view('admin/template/login_header');

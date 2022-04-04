@@ -28,6 +28,11 @@ class Auth implements FilterInterface
         if (!session()->get('isLoggedIn')) {
             return redirect()->to(site_url('/'));
         }
+
+        // $auth = \Config\Services::authentif();
+        // if ($auth->isLoggedIn() === false){
+        //     return redirect()->to(site_url('/'));
+        // }
     }
 
     /**

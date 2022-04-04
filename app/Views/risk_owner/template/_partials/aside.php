@@ -79,7 +79,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo site_url('risk_owner/probability-criteria'); ?>">
+                <a class="nav-link" href="<?php echo site_url('risk_owner/view-probability-criteria'); ?>">
                     <i class="icon">
                     <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path opacity="0.4" d="M11.9912 18.6215L5.49945 21.864C5.00921 22.1302 4.39768 21.9525 4.12348 21.4643C4.0434 21.3108 4.00106 21.1402 4 20.9668V13.7087C4 14.4283 4.40573 14.8725 5.47299 15.37L11.9912 18.6215Z" fill="currentColor"></path>
@@ -90,7 +90,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo site_url('risk_owner/impact-criteria'); ?>">
+                <a class="nav-link" href="<?php echo site_url('risk_owner/view-impact-criteria'); ?>">
                     <i class="icon">
                     <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path opacity="0.4" d="M11.9912 18.6215L5.49945 21.864C5.00921 22.1302 4.39768 21.9525 4.12348 21.4643C4.0434 21.3108 4.00106 21.1402 4 20.9668V13.7087C4 14.4283 4.40573 14.8725 5.47299 15.37L11.9912 18.6215Z" fill="currentColor"></path>

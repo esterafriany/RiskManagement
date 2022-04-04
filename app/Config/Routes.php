@@ -119,8 +119,8 @@ $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
 	$routes->add('view-detail-risk-monitoring/(:num)', 'RiskOwner\RiskMonitoringController::getDetailRiskMonitoring/$1', ['as' => 'aa-detail-risk-monitoring']);
 	
 	//risk terms
-	$routes->add('probability-criteria', 'RiskOwner\DashboardController::view_probability_criteria', ['as' => 'probability-criteria']);
-	$routes->add('impact-criteria', 'RiskOwner\DashboardController::view_impact_criteria', ['as' => 'impact-criteria']);
+	$routes->add('view-probability-criteria', 'RiskOwner\DashboardController::view_probability_criteria', ['as' => 'aaa']);
+	$routes->add('view-impact-criteria', 'RiskOwner\DashboardController::view_impact_criteria', ['as' => 'bbb']);
 
 });
 

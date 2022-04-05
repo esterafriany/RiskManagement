@@ -2,7 +2,7 @@
 <input type="hidden" class="form-control" id="id" name="id" placeholder="Masukkan Nama Group">
 	<div class="modal-content">
 		<div class="modal-header">
-			<h5 class="modal-title" id="addGroupModalLabel">Create KPI</h5>
+			<h5 class="modal-title" id="addGroupModalLabel">Tambah KPI</h5>
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
 		<div class="modal-body">

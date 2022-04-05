@@ -2,14 +2,10 @@
 	<div class="row">
       <div class="col-sm-12" style="padding-top:75px;">
          <div class="card">
-
-
             <div class="card-header d-flex justify-content-between">
                <div class="header-title">
                   <h4 class="card-title">Data KPI</h4>
-                 
                </div>
-               
 			      <a type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal-add-kpi">Tambah</a>
 			   </div>
 

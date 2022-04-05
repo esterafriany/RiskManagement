@@ -78,32 +78,32 @@ class KPIController extends BaseController
     }
 
     public function onAddKPI(){
-		if (! $this->validate([
-			'name' => 'required',
-			'description' => 'required',
-			'level' => 'required',
-			'year' => 'required',
-			'is_active' => 'required',
-		])) {
-			throw new \Exception("Some message goes here");
-		}else{
-			try {
-				$data = [
-						'name' => $this->request->getPost('name'),
-						'description' => $this->request->getPost('description'),
-						'level' => $this->request->getPost('level'),
-						'year' => $this->request->getPost('year'),
-						'is_active' => $this->request->getPost('is_active'),
-						];
+      if (! $this->validate([
+        'name' => 'required',
+        'description' => 'required',
+        'level' => 'required',
+        'year' => 'required',
+        'is_active' => 'required',
+      ])) {
+        throw new \Exception("Some message goes here");
+      }else{
+        try {
+          $data = [
+              'name' => $this->request->getPost('name'),
+              'description' => $this->request->getPost('description'),
+              'level' => $this->request->getPost('level'),
+              'year' => $this->request->getPost('year'),
+              'is_active' => $this->request->getPost('is_active'),
+              ];
 
-				$this->KPIModel->insert($data);
-					
-				echo json_encode(array("status" => TRUE));
-			}catch (\Exception $e) {
-				
-			}
-		}
-  }
+          $this->KPIModel->insert($data);
+            
+          echo json_encode(array("status" => TRUE));
+        }catch (\Exception $e) {
+          
+        }
+      }
+    }
 
   public function onDetailKPI($id) {
 		$data = $this->KPIModel->get_kpi($id);

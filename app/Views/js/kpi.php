@@ -87,7 +87,6 @@
 
 				success: function(response)
 				{
-					console.log(response);
 					//if success close modal and reload ajax table
 					//$('body').removeClass('modal-open');
 					$('.modal-backdrop.show').css('opacity','0');
@@ -126,15 +125,15 @@
 				type: "POST",
 				data: $('#form-edit-kpi').serialize(),
 				dataType: "JSON",
-
+				
 				success: function(response)
 				{
 					//if success close modal and reload ajax table
-					//$('body').removeClass('modal-open');
+					$('body').removeClass('modal-open');
 					$('.modal-backdrop.show').css('opacity','0');
 					$('.modal-backdrop').css('z-index','-1');
-					$('#modal-add-group').modal("hide");
-				   
+					$('#modal-add-kpi').modal('hide');
+				
 					swal({
 					  title: "Sukses!",
 					  text: "Data sukses diubah!",

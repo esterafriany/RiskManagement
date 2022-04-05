@@ -6,10 +6,8 @@
 		var year = document.getElementById('year_selected').value;
 
 		table = $('#riskMonitoringTable').DataTable({
-			
 			scrollX: 				true,
 			paging: 				true,
-
 			'processing': true,
 			'serverSide': true,
 			'serverMethod': 'post',

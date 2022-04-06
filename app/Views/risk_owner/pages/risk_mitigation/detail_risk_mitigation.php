@@ -67,3 +67,15 @@
 
 
 <?= $this->include("js/risk_owner/detail_risk_mitigation")?>
+
+<style>
+   .dataTables_paginate .paginate_button{
+      padding-right: 5px;
+   }
+   .text-wrap{
+      white-space:normal;
+   }
+   .width-200{
+      width:200px;
+   }
+</style>

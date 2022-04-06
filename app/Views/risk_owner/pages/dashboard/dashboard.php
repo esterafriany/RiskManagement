@@ -4,22 +4,22 @@
             <div class="col-md-12">
                <div class="flex-wrap d-flex justify-content-between align-items-center">
                   <div>
-                     <h1>Hello, <?=session()->get('name')?>!</h1>
-                     <p>Welcome to Risk Register Apps !</p>
+                        <h1>Hello, <?=session()->get('name')?>!</h1>
+                        <p>Welcome to Risk Register Apps !</p>
                   </div>
                </div>
             </div>
       </div>
    </div>
-   <div class="iq-header-img">
-      <img src="../assets/images/dashboard/top-header.png" alt="header" class="theme-color-default-img img-fluid w-100 h-100 animated-scaleX">
-      <img src="../assets/images/dashboard/top-header1.png" alt="header" class="theme-color-purple-img img-fluid w-100 h-100 animated-scaleX">
-      <img src="../assets/images/dashboard/top-header2.png" alt="header" class="theme-color-blue-img img-fluid w-100 h-100 animated-scaleX">
-      <img src="../assets/images/dashboard/top-header3.png" alt="header" class="theme-color-green-img img-fluid w-100 h-100 animated-scaleX">
-      <img src="../assets/images/dashboard/top-header4.png" alt="header" class="theme-color-yellow-img img-fluid w-100 h-100 animated-scaleX">
-      <img src="../assets/images/dashboard/top-header5.png" alt="header" class="theme-color-pink-img img-fluid w-100 h-100 animated-scaleX">
-   </div>
-</div>   <!-- Nav Header Component End -->
+      <div class="iq-header-img">
+         <img src="../assets/images/dashboard/top-header.png" alt="header" class="theme-color-default-img img-fluid w-100 h-100 animated-scaleX">
+         <img src="../assets/images/dashboard/top-header1.png" alt="header" class="theme-color-purple-img img-fluid w-100 h-100 animated-scaleX">
+         <img src="../assets/images/dashboard/top-header2.png" alt="header" class="theme-color-blue-img img-fluid w-100 h-100 animated-scaleX">
+         <img src="../assets/images/dashboard/top-header3.png" alt="header" class="theme-color-green-img img-fluid w-100 h-100 animated-scaleX">
+         <img src="../assets/images/dashboard/top-header4.png" alt="header" class="theme-color-yellow-img img-fluid w-100 h-100 animated-scaleX">
+         <img src="../assets/images/dashboard/top-header5.png" alt="header" class="theme-color-pink-img img-fluid w-100 h-100 animated-scaleX">
+      </div>
+   </div><!-- Nav Header Component End -->
 <!--Nav End-->
 </div>
 <div class="conatiner-fluid content-inner mt-n5 py-0">
@@ -28,64 +28,6 @@
       <div class="row row-cols-1">
          <div class="overflow-hidden d-slider1 ">
             <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
-               <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="700">
-                  <div class="card-body">
-
-                     <div class="progress-widget">
-                        <div id="circle-progress-01" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="100" data-type="percent">
-                           <svg class="card-slie-arrow" width="24" height="24px" viewBox="0 0 24 24">
-                              <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
-                           </svg>
-                        </div>
-                        <div class="progress-detail">
-                           <p  class="mb-2">Total Kategori Risiko</p>
-                           <h4 class="counter"><?=$total_risk_category?></h4>
-                        </div>
-                     </div>
-                  </div>
-               </li>
-               <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="800">
-                  <div class="card-body">
-                     <div class="progress-widget">
-                        <div id="circle-progress-02" class="text-center circle-progress-01 circle-progress circle-progress-info" data-min-value="0" data-max-value="100" data-value="100" data-type="percent">
-                           <svg class="card-slie-arrow" width="24" height="24px" viewBox="0 0 24 24">
-                              <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
-                           </svg>
-                        </div>
-                        <div class="progress-detail">
-                           <p  class="mb-2">Total Divisi</p>
-                           <h4 class="counter"><?=$total_division?></h4>
-                        </div>
-                     </div>
-                  </div>
-               </li>
-               <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="900">
-                  <div class="card-body">
-                     <div class="progress-widget">
-                        <div id="circle-progress-03" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="100" data-type="percent">
-                           <svg class="card-slie-arrow" width="24" height="24px" viewBox="0 0 24 24">
-                              <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
-                           </svg>
-                        </div>
-                        <div class="progress-detail">
-                           <p  class="mb-2">Total KPI</p>
-                           <h4 class="counter"><?=$total_kpi?></h4>
-                        </div>
-                     </div>
-                  </div>
-               </li>
-            </ul>
-            
-            <div class="swiper-button swiper-button-next"></div>
-            <div class="swiper-button swiper-button-prev"></div>
-         </div>
-      </div>
-   </div>
-   <div class="col-md-12 col-lg-12">
-      <div class="row row-cols-1">
-         <div class="overflow-hidden d-slider1 ">
-            <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
-               
             <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="700">
                <div class="card">
                   <div class="card-body">
@@ -145,7 +87,7 @@
          </div>
       </div>
    </div>
-   
+     
    <div class="col-md-12 col-lg-12">
       <div class="row">
          <div class="col-md-12 col-lg-12">
@@ -404,4 +346,4 @@
    }
 </style>
 
-<?= $this->include("js/risk_owner/dashboard")?>
+<?= $this->include("js/dashboard")?>

@@ -79,6 +79,9 @@
 <?= $this->include("js/risk_event")?>
 
 <style>
+   .dataTables_paginate .paginate_button{
+      padding-right: 5px;
+   }
    .text-wrap{
       white-space:normal;
    }

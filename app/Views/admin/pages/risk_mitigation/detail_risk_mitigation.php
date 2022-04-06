@@ -67,3 +67,9 @@
 
 
 <?= $this->include("js/detail_risk_mitigation")?>
+
+<style>
+   .dataTables_paginate .paginate_button{
+      padding-right: 5px;
+   }
+</style>

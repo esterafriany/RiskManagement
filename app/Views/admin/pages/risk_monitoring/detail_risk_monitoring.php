@@ -15,13 +15,13 @@
                     <ul class="list-group">
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <small>Rencana Mitigasi</small>
+                                        <small><b>Rencana Mitigasi</b></small>
                                         <textarea disabled name="risk_mitigation" class="form-control"><?=$risk_mitigation_data->risk_mitigation;?></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <small>Detail Mitigasi</small>
+                                        <small><b>Detail Mitigasi</b></small>
                                         <textarea disabled name="risk_mitigation" class="form-control"><?=$risk_mitigation_data->risk_mitigation_detail;?></textarea>
                                     </div>
                                     
@@ -31,7 +31,7 @@
                         
                         <li class="list-group-item">
                             <div class="form-group">
-                                <small>Output</small>
+                                <small><b>Output</b></small>
                                 <div id="outputList">
                                 </div><br/>
                                 <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-output"><i class="fas fa-plus-circle"></i> Tambah Output</button>
@@ -330,8 +330,8 @@
                 <br/>
             </div>
             <div class="card-footer">
-                <a href="<?=base_url('admin/risk-mitigation')?>"type="button" class="btn btn-secondary">Batal</a>
-                <button type="submit" id="btn-add-detail-monitoring"  class="btn btn-primary">Simpan Semua Perubahan</button>
+                <a href="<?=base_url('admin/risk-mitigation')?>"type="button" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><circle cx="256" cy="256" r="208" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="m108.92 108.92l294.16 294.16"/></svg> Batal</a>
+                <button type="submit" id="btn-add-detail-monitoring"  class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M380.93 57.37A32 32 0 0 0 358.3 48H94.22A46.21 46.21 0 0 0 48 94.22v323.56A46.21 46.21 0 0 0 94.22 464h323.56A46.36 46.36 0 0 0 464 417.78V153.7a32 32 0 0 0-9.37-22.63ZM256 416a64 64 0 1 1 64-64a63.92 63.92 0 0 1-64 64Zm48-224H112a16 16 0 0 1-16-16v-64a16 16 0 0 1 16-16h192a16 16 0 0 1 16 16v64a16 16 0 0 1-16 16Z"/></svg> Simpan Perubahan</button>
             </div>
             
          </div>

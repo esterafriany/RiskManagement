@@ -52,7 +52,7 @@
                            </svg>
                         </div>
                         <div class="progress-detail">
-                           <p  class="mb-2">Total Divisi</p>
+                           <p  class="mb-2">Total Risk Owner</p>
                            <h4 class="counter"><?=$total_division?></h4>
                         </div>
                      </div>

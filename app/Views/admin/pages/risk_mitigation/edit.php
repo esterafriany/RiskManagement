@@ -21,11 +21,11 @@
                                     <div class="row">
                                         <div class="col-md-6">
 											<div class="form-group">
-                                                <small>Nomor Risiko</small>
+                                                <small><b>Nomor Risiko</b></small>
                                                 <input type="text" class="form-control" id="risk_number" name="risk_number" value="<?php echo $detail_risk_event->risk_number;?>" disabled>
                                             </div>
                                             <div class="form-group">
-                                                <small>KPI</small>
+                                                <small><b>KPI</b></small>
                                                 <select class="form-control form-select" id="id_kpi" name="id_kpi">
                                                     <option value="" selected hidden >Pilihan</option>
                                                     <?php
@@ -47,7 +47,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <small>Risiko Utama</small>
+                                                <small><b>Risiko Utama</b></small>
                                                 <textarea class="form-control" required id="risk_event" name="risk_event"  rows="2"><?php echo $detail_risk_event->risk_event;?></textarea>
                                             </div>
 
@@ -99,8 +99,8 @@
                 
             </div>
             <div class="card-footer">
-                <a href="<?=base_url('admin/risk-mitigation')?>" type="button" class="btn btn-secondary">Batal</a>
-                <button type="button" id="btn-edit-risk-detail"  class="btn btn-primary">Simpan</button>
+                <a href="<?=base_url('admin/risk-mitigation')?>" type="button" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><circle cx="256" cy="256" r="208" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="m108.92 108.92l294.16 294.16"/></svg> Batal</a>
+                <button type="button" id="btn-edit-risk-detail"  class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M380.93 57.37A32 32 0 0 0 358.3 48H94.22A46.21 46.21 0 0 0 48 94.22v323.56A46.21 46.21 0 0 0 94.22 464h323.56A46.36 46.36 0 0 0 464 417.78V153.7a32 32 0 0 0-9.37-22.63ZM256 416a64 64 0 1 1 64-64a63.92 63.92 0 0 1-64 64Zm48-224H112a16 16 0 0 1-16-16v-64a16 16 0 0 1 16-16h192a16 16 0 0 1 16 16v64a16 16 0 0 1-16 16Z"/></svg> Simpan</button>
             </div>
             
          </div>

@@ -50,8 +50,9 @@ class KPIController extends BaseController
         $records = $this->KPIModel
                 ->select('*')
                 ->orLike('name', $searchValue)
-                ->orLike('is_active', $searchValue)
-                ->orderBy($columnName,$columnSortOrder)
+                ->orLike('description', $searchValue)
+                ->orLike('level', $searchValue)
+                ->orderBy('level')
                 ->findAll($rowperpage, $start);
                  
         $data = array();
@@ -60,6 +61,7 @@ class KPIController extends BaseController
             $data[] = array( 
                 "id"=>$record['id'],
                 "name"=>$record['name'],
+                "level"=>$record['level'],
                 "description"=>$record['description'],
                 "is_active"=>$record['is_active']
             ); 

@@ -6,15 +6,15 @@
 		</div>
 		<div class="modal-body">
 			<div class="form-group row">
-				<label class="control-label col-sm-3 align-self-center mb-0" for="email1">Nama Risk:</label>
+				<label class="control-label col-sm-3 align-self-center mb-0" for="email1">Risk Category:</label>
 				<div class="col-sm-9">
-				<input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama Risk Category">
+				<input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Risk Category">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-sm-3 align-self-center mb-0" for="email1">Description:</label>
+				<label class="control-label col-sm-3 align-self-center mb-0" for="email1">Deskripsi:</label>
 				<div class="col-sm-9">
-				<textarea class="form-control" id="description" name="description"  rows="4"></textarea>
+				<textarea class="form-control" id="description" name="description" placeholder="Masukkan Deskripsi Risk Category" rows="4"></textarea>
 			</div>
 			</div>
 			<div class="form-group row">

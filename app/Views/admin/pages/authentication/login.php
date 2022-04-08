@@ -14,14 +14,21 @@
                   <div class="col-md-10">
                      <div class="card card-transparent shadow-none d-flex justify-content-center mb-0 auth-card">
                      <div class="card-body">
+
                            <a href="<?php echo base_url();?>" class="navbar-brand d-flex align-items-center mb-3">
                               <!--Logo start-->
                               <img src="<?php echo base_url();?>/assets/images/Flag/logo_ppd.png" width="30px" height="50px">
-                              
                               <!--logo End--> <h5 class="logo-title ms-2">Aplikasi Manajemen Risiko</h5>
                            </a>
                            <h6 class="mb-2 text-center">Sign In</h6>
-						   
+                           <?php if(session()->getFlashdata('msg')){ ?>
+                              <div class="bd-example">                
+                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                 <?=session()->getFlashdata('msg')?>
+                                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                 </div>
+                              </div>
+                           <?php } ?>
                            <form id="form-login" action="<?php echo base_url();?>/process-login" method="POST" enctype='multipart/form-data'>
                               <div class="row">
                                  <div class="col-lg-12">

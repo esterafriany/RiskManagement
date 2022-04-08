@@ -16,11 +16,11 @@ class UserController extends BaseController
 		$this->GroupModel = new Groups();
 		$this->UserModel = new Users();
 		$this->DivisionModel = new Divisions();
-  }
+	}
 	
-  public function index(){
-    echo view('admin/template/template');
-  }
+	public function index(){
+		echo view('admin/template/template');
+	}
 	
 	public function group_list(){
 		$data = [
@@ -28,7 +28,7 @@ class UserController extends BaseController
             'content'=>'admin/pages/group/index'
         ];
         echo view('admin/template/template',$data);
-  }
+	}
 	
 	public function getGroup(){
 
@@ -85,8 +85,8 @@ class UserController extends BaseController
            "aaData" => $data,
            "token" => csrf_hash() // New token hash
         );
-       return $this->response->setJSON($response);
-  }
+		return $this->response->setJSON($response);
+	}
 	
 	public function onDetailGroup($id) {
 		$data = $this->GroupModel->get_group($id);

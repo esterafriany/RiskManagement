@@ -36,8 +36,15 @@
 					return data.aaData;
 				}
 			},
-			'columns': [{
+			'columns': [
+				{
 					data: 'name'
+				},
+				{
+					data: 'description'
+				},
+				{
+					data: 'level'
 				},
 				{
 					data:  'is_active',
@@ -73,7 +80,15 @@
 						
 					},
 				},
-			]
+			],
+			columnDefs: [
+                {
+                    render: function (data, type, full, meta) {
+                        return "<div class='text-wrap width-200'>" + data + "</div>";
+                    },
+                    targets: [1]
+                }
+            ]
 		});
 	
 	// add kpi
@@ -216,7 +231,6 @@
 				error: function (jqXHR, textStatus, errorThrown)
 				{
 					swal("Oops..","Data gagal dihapus.","error");
-					
 				}
 			});
 			

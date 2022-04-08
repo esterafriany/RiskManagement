@@ -36,8 +36,12 @@
 					return data.aaData;
 				}
 			},
-			'columns': [{
+			'columns': [
+				{
 					data: 'name'
+				},
+				{
+					data: 'description'
 				},
 				{
 					data:  'is_active',
@@ -73,7 +77,15 @@
 						
 					},
 				},
-			]
+			],
+			columnDefs: [
+                {
+                    render: function (data, type, full, meta) {
+                        return "<div class='text-wrap width-200'>" + data + "</div>";
+                    },
+                    targets: [1]
+                }
+            ]
 		});
 	
 	// add risk category

@@ -60,7 +60,7 @@ class AuthenticationController extends BaseController
             
 			
         }else{
-            $session->setFlashdata('msg', 'User not Found');
+            $session->setFlashdata('msg', 'User tidak ditemukan. Periksa kembali email dan password Anda.');
             return redirect()->to(base_url('/'));
         }
     }

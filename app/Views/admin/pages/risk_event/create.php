@@ -10,13 +10,13 @@
 					<ul class="list-group">
 						<li class="list-group-item">
 							<div class="form-group row">
-								<small>Sasaran</small>
+								<small><b>Sasaran</b></small>
 								<div class="col-sm-12">
 								<input type="text" class="form-control" id="objective" name="objective">
 								</div>
 							</div>
 							<div class="form-group row">
-								<small>KPI</small>
+								<small><b>KPI</b></small>
 								<div class="col-sm-12">
 									<select class="form-control form-select" name="id_kpi">
 										<option value="" disabled selected hidden >Pilihan</option>
@@ -33,19 +33,19 @@
 								</div>
 							</div>
 							<div class="form-group row">
-								<small>Nomor Risiko</small>
+								<small><b>Nomor Risiko</b></small>
 								<div class="col-sm-12">
 								<input type="text" class="form-control" id="risk_number" name="risk_number" disabled>
 								</div>
 							</div>
 							<div class="form-group row">
-								<small>Risiko Utama</small>
+								<small><b>Risiko Utama</b></small>
 								<div class="col-sm-12">
 								<textarea class="form-control" id="risk_event" name="risk_event"  rows="3"></textarea>
 							</div>
 							</div>
 							<div class="form-group row">
-								<small>Year</small>
+								<small><b>Year</b></small>
 								<div class="col-sm-12">
 								<select class="form-control form-select" name="year">
 									<option value="" disabled selected hidden >Pilihan</option>
@@ -61,39 +61,46 @@
 				<div class="col-md-6">
 					<ul class="list-group">
 						<li class="list-group-item">
-							
 							<div class="form-group row">
-								<small>Existing Control 1</small>
-								<div class="col-sm-12">
-								<select class="form-control form-select" name="existing_control_1">
-									<option value="" disabled selected hidden >Pilihan</option>
-									<option value="Ada">Ada</option>
-									<option value="Tidak Ada">Tidak Ada</option>
-								</select>
+								<small><b>Existing Control/Pengendalian Yang Ada</b></small>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-4"><small>Ada/Tidak Ada</small></div>
+								<div class="col-sm-8">
+									<select class="form-control form-select" name="existing_control_1">
+										<option value="" disabled selected hidden >Pilihan</option>
+										<option value="Ada">Ada</option>
+										<option value="Tidak Ada">Tidak Ada</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group row">
-								<small>Existing Control 2</small>
-								<div class="col-sm-12">
-								<select class="form-control form-select" name="existing_control_2">
-									<option value="" disabled selected hidden >Pilihan</option>
-									<option value="Memadai">Memadai</option>
-									<option value="Tidak Memadai">Tidak Memadai</option>
-								</select>
+								<div class="col-sm-4"><small>Memadai/Tidak Memadai</small></div>
+								<div class="col-sm-8">
+									<select class="form-control form-select" name="existing_control_2">
+										<option value="" disabled selected hidden >Pilihan</option>
+										<option value="Memadai">Memadai</option>
+										<option value="Tidak Memadai">Tidak Memadai</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group row">
-								<small>Existing Control 3</small>
-								<div class="col-sm-12">
-								<select class="form-control form-select" name="existing_control_3">
-									<option value="" disabled selected hidden >Pilihan</option>
-									<option value="Dijalankan">Dijalankan</option>
-									<option value="Belum Dijalankan">Belum Dijalankan</option>
-								</select>
+								<div class="col-sm-4"><small>Dijalankan/Belum Dijalankan</small></div>
+								<div class="col-sm-8">
+									<select class="form-control form-select" name="existing_control_3">
+										<option value="" disabled selected hidden >Pilihan</option>
+										<option value="Dijalankan">Dijalankan</option>
+										<option value="Belum Dijalankan">Belum Dijalankan</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group row">
-								<div class="col-sm-5">
+								<div class="col-sm-12">
+									<small><b>Analisis Risiko Inheren (Inherent Risk)</b></small>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-6">
 									<small>Tingkat Kemungkinan</small>
 									<div class="col-sm-12">
 										<select class="form-control form-select" name="probability_level">
@@ -106,23 +113,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="col-sm-7">
-									<small>Tingkat Kemungkinan Target</small>
-									<div class="col-sm-12">
-										<select class="form-control form-select" name="target_probability_level">
-											<option value="" disabled selected hidden >Pilihan</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-										</select>
-									</div>
-								</div>
-								
-							</div>
-							<div class="form-group row">
-								<div class="col-sm-5">
+								<div class="col-sm-6">
 									<small>Tingkat Dampak</small>
 									<div class="col-sm-12">
 										<select class="form-control form-select" name="impact_level">
@@ -135,9 +126,29 @@
 										</select>
 									</div>
 								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<small><b>Analisis Risiko Residual (Residual Risk)</b></small>
+								</div>
+							</div>
+							<div class="form-group row">
+							<div class="col-sm-6">
+									<small>Tingkat Kemungkinan</small>
+									<div class="col-sm-12">
+										<select class="form-control form-select" name="target_probability_level">
+											<option value="" disabled selected hidden >Pilihan</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</div>
+								</div>
 
-								<div class="col-sm-7">
-									<small>Tingkat Dampak Target</small>
+								<div class="col-sm-6">
+									<small>Tingkat Dampak</small>
 									<div class="col-sm-12">
 										<select class="form-control form-select" name="target_impact_level">
 											<option value="" disabled selected hidden >Pilihan</option>
@@ -149,8 +160,9 @@
 										</select>
 									</div>
 								</div>
-								
 							</div>
+
+							
 						</li>
 					</ul>
 				</div>

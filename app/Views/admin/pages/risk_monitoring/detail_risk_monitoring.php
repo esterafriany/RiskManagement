@@ -12,8 +12,6 @@
                 <input type="hidden" value="<?=$id_detail_mitigation;?>" name="id_detail_mitigation">
                 <div class="row">
                     <div class="col">
-
-                  
                     <ul class="list-group">
                         <li class="list-group-item">
                             <div class="row">

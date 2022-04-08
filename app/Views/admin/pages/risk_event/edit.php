@@ -20,11 +20,11 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <small>Sasaran</small>
+                                                <small><b>Sasaran</b></small>
                                                 <input type="text" required class="form-control" id="objective" name="objective" value="<?php echo $detail_risk_event->objective;?>">
                                             </div>
                                             <div class="form-group">
-                                                <small>KPI</small>
+                                                <small><b>KPI</b></small>
                                                 <select class="form-control form-select" id="id_kpi" name="id_kpi">
                                                     <option value="" selected hidden >Pilihan</option>
                                                     <?php
@@ -45,17 +45,17 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <small>Nomor Risiko</small>
+                                                <small><b>Nomor Risiko</b></small>
                                                 <input type="text" class="form-control" id="risk_number" name="risk_number" value="<?php echo $detail_risk_event->risk_number;?>" disabled>
                                             </div>
                                             
                                             <div class="form-group">
-                                                <small>Risiko Utama</small>
+                                                <small><b>Risiko Utama</b></small>
                                                 <textarea class="form-control" required id="risk_event" name="risk_event"  rows="2"><?php echo $detail_risk_event->risk_event;?></textarea>
                                             </div>
 
                                             <div class="form-group">
-                                                <small>Tahun</small>
+                                                <small><b>Tahun</b></small>
                                                 <select class="form-control form-select" required id="year" name="year">
                                                     <option value="" disabled selected hidden >Pilihan</option>
                                                     <?php
@@ -72,7 +72,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <small>Kategori Risiko</small>
+                                                <small><b>Kategori Risiko</b></small>
                                                 <div id="riskCategoryList">
                                                 
                                                 </div><br/>
@@ -84,63 +84,71 @@
                                     <!-- Coloumn -->
                                     <div class="col-md-6">
                                         <div class="form-group row">
-                                            <small>Existing Control 1</small>
-                                            <div class="col-sm-12">
-                                            <select class="form-control form-select" required id="existing_control_1" name="existing_control_1">
-                                                <option value="" disabled selected hidden >Pilihan</option>
-                                                    <?php if($detail_risk_event->existing_control_1 == "Ada"){?>
-                                                        <option value="Ada" selected>Ada</option>
-                                                    <?php }else{ ?>
-                                                        <option value="Ada">Ada</option>
-                                                    <?php } ?>
+                                            <small><b>Existing Control/Pengendalian Yang Ada</b></small>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4"><small>Ada/Tidak Ada</small></div>
+                                            <div class="col-sm-8">
+                                                <select class="form-control form-select" required id="existing_control_1" name="existing_control_1">
+                                                    <option value="" disabled selected hidden >Pilihan</option>
+                                                        <?php if($detail_risk_event->existing_control_1 == "Ada"){?>
+                                                            <option value="Ada" selected>Ada</option>
+                                                        <?php }else{ ?>
+                                                            <option value="Ada">Ada</option>
+                                                        <?php } ?>
 
-                                                    <?php if($detail_risk_event->existing_control_1 == "Tidak Ada"){?>
-                                                        <option value="Tidak Ada" selected>Tidak Ada</option>
-                                                    <?php }else{ ?>
-                                                        <option value="Tidak Ada">Tidak Ada</option>
-                                                    <?php } ?>
-                                                    
-                                            </select>
+                                                        <?php if($detail_risk_event->existing_control_1 == "Tidak Ada"){?>
+                                                            <option value="Tidak Ada" selected>Tidak Ada</option>
+                                                        <?php }else{ ?>
+                                                            <option value="Tidak Ada">Tidak Ada</option>
+                                                        <?php } ?>
+                                                        
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <small>Existing Control 2</small>
-                                            <div class="col-sm-12">
-                                            <select class="form-control form-select" required id="existing_control_2" name="existing_control_2">
-                                                <option value="" disabled selected hidden >Pilihan</option>
-                                                    <?php if($detail_risk_event->existing_control_2 == "Memadai"){?>
-                                                        <option value="Memadai" selected>Memadai</option>
-                                                    <?php }else{ ?>
-                                                        <option value="Memadai">Memadai</option>
-                                                    <?php } ?>
+                                            <div class="col-sm-4"><small>Memadai/Tidak Memadai</small></div>
+                                            <div class="col-sm-8">
+                                                <select class="form-control form-select" required id="existing_control_2" name="existing_control_2">
+                                                    <option value="" disabled selected hidden >Pilihan</option>
+                                                        <?php if($detail_risk_event->existing_control_2 == "Memadai"){?>
+                                                            <option value="Memadai" selected>Memadai</option>
+                                                        <?php }else{ ?>
+                                                            <option value="Memadai">Memadai</option>
+                                                        <?php } ?>
 
-                                                    <?php if($detail_risk_event->existing_control_2 == "Tidak Memadai"){?>
-                                                        <option value="Tidak Memadai" selected>Tidak Memadai</option>
-                                                    <?php }else{ ?>
-                                                        <option value="Tidak Memadai">Tidak Memadai</option>
-                                                    <?php } ?>
-                                                    
-                                            </select>
+                                                        <?php if($detail_risk_event->existing_control_2 == "Tidak Memadai"){?>
+                                                            <option value="Tidak Memadai" selected>Tidak Memadai</option>
+                                                        <?php }else{ ?>
+                                                            <option value="Tidak Memadai">Tidak Memadai</option>
+                                                        <?php } ?>
+                                                        
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <small>Existing Control 3</small>
-                                            <div class="col-sm-12">
-                                            <select class="form-control form-select" required id="existing_control_3" name="existing_control_3">
-                                                <option value="" disabled selected hidden >Pilihan</option>
-                                                    <?php if($detail_risk_event->existing_control_3 == "Dijalankan"){?>
-                                                        <option value="Dijalankan" selected>Dijalankan</option>
-                                                    <?php }else{ ?>
-                                                        <option value="Dijalankan">Dijalankan</option>
-                                                    <?php } ?>
+                                            <div class="col-sm-4"><small>Dijalankan/Belum Dijalankan</small></div>
+                                            <div class="col-sm-8">
+                                                <select class="form-control form-select" required id="existing_control_3" name="existing_control_3">
+                                                    <option value="" disabled selected hidden >Pilihan</option>
+                                                        <?php if($detail_risk_event->existing_control_3 == "Dijalankan"){?>
+                                                            <option value="Dijalankan" selected>Dijalankan</option>
+                                                        <?php }else{ ?>
+                                                            <option value="Dijalankan">Dijalankan</option>
+                                                        <?php } ?>
 
-                                                    <?php if($detail_risk_event->existing_control_2 == "Belum Dijalankan"){?>
-                                                        <option value="Belum Dijalankan" selected>Belum Dijalankan</option>
-                                                    <?php }else{ ?>
-                                                        <option value="Belum Dijalankan">Belum Dijalankan</option>
-                                                    <?php } ?>
-                                                    
-                                            </select>
+                                                        <?php if($detail_risk_event->existing_control_2 == "Belum Dijalankan"){?>
+                                                            <option value="Belum Dijalankan" selected>Belum Dijalankan</option>
+                                                        <?php }else{ ?>
+                                                            <option value="Belum Dijalankan">Belum Dijalankan</option>
+                                                        <?php } ?>
+                                                        
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <small><b>Analisis Risiko Inheren (Inherent Risk)</b></small>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -163,27 +171,6 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
-                                                <small>Tingkat Kemungkinan Target</small>
-                                                <div class="col-sm-12">
-                                                    <select class="form-control form-select" required name="target_probability_level" id="target_probability_level" onChange="change_level_target1()">
-                                                        <option value="" disabled selected hidden >Pilihan</option>
-                                                        <?php
-                                                            for($i=1;$i<6;$i++){ 
-                                                                if($detail_risk_event->target_probability_level == $i){ ?>
-                                                                    <option value="<?=$i?>"selected><?php echo $i;?></option>
-                                                                <?php 
-                                                                }else{?>
-                                                                    <option value="<?=$i?>"><?php echo $i;?></option>
-                                                                <?php }
-                                                            }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-6">
                                                 <small>Tingkat Dampak</small>
                                                 <div class="col-sm-12">
                                                     <select class="form-control form-select" required name="impact_level" id="impact_level" onChange="change_level()">
@@ -201,9 +188,71 @@
                                                     </select>
                                                 </div>
                                             </div>
-
+                                        </div>
+                                       
+                                        <div class="form-group row">
                                             <div class="col-sm-6">
-                                                <small>Tingkat Dampak Target</small>
+                                                <small>Level</small>
+                                                <input type="text" required class="form-control" id="final_level" name="final_level" value="<?php echo $detail_risk_event->final_level;?>">
+                                            </div>
+                                        
+                                            <div class="col-sm-6">
+                                                <small>Analisis Risiko</small>
+                                                <select class="form-control form-select" required id="risk_analysis" name="risk_analysis">
+                                                    <option value="" disabled selected hidden >Pilihan</option>
+                
+                                                    <?php if($detail_risk_event->risk_analysis == "R"){?>
+                                                        <option value="R" selected>Rendah</option>
+                                                    <?php }else{ ?>
+                                                        <option value="R">Rendah</option>
+                                                    <?php } ?>
+
+                                                    <?php if($detail_risk_event->risk_analysis == "M"){?>
+                                                        <option value="M" selected>Menengah</option>
+                                                    <?php }else{ ?>
+                                                        <option value="M">Menengah</option>
+                                                    <?php } ?>
+
+                                                    <?php if($detail_risk_event->risk_analysis == "T"){?>
+                                                        <option value="T" selected>Tinggi</option>
+                                                    <?php }else{ ?>
+                                                        <option value="T">Tinggi</option>
+                                                    <?php } ?>
+                                                    
+                                                    <?php if($detail_risk_event->risk_analysis == "E"){?>
+                                                        <option value="E" selected>Ekstrem</option>
+                                                    <?php }else{ ?>
+                                                        <option value="E">Ekstrem</option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <small><b>Analisis Risiko Residual (Residual Risk)</b></small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6">
+                                                <small>Tingkat Kemungkinan</small>
+                                                <div class="col-sm-12">
+                                                    <select class="form-control form-select" required name="target_probability_level" id="target_probability_level" onChange="change_level_target1()">
+                                                        <option value="" disabled selected hidden >Pilihan</option>
+                                                        <?php
+                                                            for($i=1;$i<6;$i++){ 
+                                                                if($detail_risk_event->target_probability_level == $i){ ?>
+                                                                    <option value="<?=$i?>"selected><?php echo $i;?></option>
+                                                                <?php 
+                                                                }else{?>
+                                                                    <option value="<?=$i?>"><?php echo $i;?></option>
+                                                                <?php }
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <small>Tingkat Dampak</small>
                                                 <div class="col-sm-12">
                                                     <select class="form-control form-select" required name="target_impact_level" id="target_impact_level" onChange="change_level_target()">
                                                         <option value="" disabled selected hidden >Pilihan</option>
@@ -223,26 +272,16 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-6">
-                                                <small>Level</small>
-                                                <div class="col-sm-12">
-                                                    <input type="text" required class="form-control" id="final_level" name="final_level" value="<?php echo $detail_risk_event->final_level;?>">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6">
                                                 <small>Level Target</small>
                                                 <div class="col-sm-12">
                                                     <input type="text" required class="form-control" id="target_final_level" name="target_final_level" value="<?php echo $detail_risk_event->target_final_level;?>">
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <small>Analisis Risiko</small>
-                                            <div class="col-sm-12">
+                                            <div class="col-sm-6">
+                                                <small>Analisis Risiko</small>
                                                 <select class="form-control form-select" required id="risk_analysis" name="risk_analysis">
                                                     <option value="" disabled selected hidden >Pilihan</option>
-                  
+                
                                                     <?php if($detail_risk_event->risk_analysis == "R"){?>
                                                         <option value="R" selected>Rendah</option>
                                                     <?php }else{ ?>

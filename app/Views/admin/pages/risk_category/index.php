@@ -16,8 +16,9 @@
                         <tr>
                            <tr>
                            <th>Risk Category</th>
+                           <th>Deskripsi</th>
                            <th>Status</th>
-                           <th>Aksi <i class="fas fa-user"></i></th>
+                           <th>Aksi</th>
                         </tr>
                      </thead> 
                   </table>
@@ -38,3 +39,14 @@
 
 <?= $this->include("js/risk_category")?>
 
+<style>
+   .dataTables_paginate .paginate_button{
+      padding-right: 5px;
+   }
+   .text-wrap{
+      white-space:normal;
+   }
+   .width-200{
+      width:200px;
+   }
+</style>

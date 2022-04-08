@@ -51,7 +51,6 @@ if($session->get('state_message')){
 					
 					penampung += `<table width="100%">
 							<tr>
-								
 								<td width="50%">
 									<input type="text" name="output[]" value="${result[i]['output']}" class="form-control" placeholder="Masukkan Output">
 									<input type="hidden" name="output_id[]" value="${result[i]['id']}" class="form-control" >
@@ -241,17 +240,17 @@ if($session->get('state_message')){
 				
 				for(i = 0; i < count; i++){
 					
-					penampung += `<table width="100%">
-							<tr>
-								<td width="50%"> 
-									<a>${result[i]['filename']}</a>
-								</td>
-								<td>
-									<button type="button" onclick="delete_evidence('${result[i]['id']}')" class="btn btn-outline-primary btn-sm removes" ><i class="fas fa-trash-alt"></i></button>
-									<a type="button" href="<?php echo base_url('admin/download')?>/${result[i]['filename']}" class="btn btn-outline-success btn-sm" ><i class="fas fa-download"></i></a>
-								</td>
-							</tr>
-						</table>`;
+					penampung += `	<table width="100%">
+										<tr>
+											<td width="50%"> 
+												<a>${result[i]['filename']}</a>
+											</td>
+											<td>
+												<button type="button" onclick="delete_evidence('${result[i]['id']}')" class="btn btn-outline-primary btn-sm removes" ><i class="fas fa-trash-alt"></i></button>
+												<a type="button" href="<?php echo base_url('admin/download')?>/${result[i]['filename']}" class="btn btn-outline-success btn-sm" ><i class="fas fa-download"></i></a>
+											</td>
+										</tr>
+									</table>`;
 				}
 				var monthName = "";
 				if(target_month == "01"){

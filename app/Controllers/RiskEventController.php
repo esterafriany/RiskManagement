@@ -107,6 +107,28 @@ class RiskEventController extends BaseController
         $level_inserted = $this->request->getPost('probability_level') * $this->request->getPost('impact_level');
         $target_level_inserted = $this->request->getPost('target_probability_level') * $this->request->getPost('target_impact_level');
 
+        
+        //risk analysis
+        if($level_inserted == 1 || $level_inserted == 2 || $level_inserted == 3 || $level_inserted == 4){
+            $risk_analysis = "R";
+        }else if($level_inserted == 5 || $level_inserted == 6 || $level_inserted == 8 || $level_inserted == 9){
+            $risk_analysis = "M";
+        }else if($level_inserted == 10 || $level_inserted == 12 || $level_inserted == 15 || $level_inserted == 16){
+            $risk_analysis = "T";
+        }else if($level_inserted == 20 || $level_inserted == 25){
+            $risk_analysis = "E";
+        }
+
+        //risk analysis target
+        if($target_level_inserted == 1 || $target_level_inserted == 2 || $target_level_inserted == 3 || $target_level_inserted == 4){
+            $target_risk_analysis = "R";
+        }else if($target_level_inserted == 5 || $target_level_inserted == 6 || $target_level_inserted == 8 || $target_level_inserted == 9){
+            $target_risk_analysis = "M";
+        }else if($target_level_inserted == 10 || $target_level_inserted == 12 || $target_level_inserted == 15 || $target_level_inserted == 16){
+            $target_risk_analysis = "T";
+        }else if($target_level_inserted == 20 || $target_level_inserted == 25){
+            $target_risk_analysis = "E";
+        }
         try {
             $data = [
                     'id_kpi' => $this->request->getPost('id_kpi'),
@@ -123,6 +145,8 @@ class RiskEventController extends BaseController
                     'target_probability_level' => $this->request->getPost('target_probability_level'),
                     'target_impact_level' => $this->request->getPost('target_impact_level'),
                     'target_final_level' => $target_level_inserted,
+                    'risk_analysis' => $risk_analysis,
+                    'target_risk_analysis' => $target_risk_analysis,
                     ];
 
             $this->RiskEventModel->insert($data);
@@ -137,7 +161,6 @@ class RiskEventController extends BaseController
                 $sort['level'][$k] = $v['level'];
             }
             array_multisort($sort['final_level'], SORT_DESC, $sort['level'], SORT_DESC,$data_risk_event);
-           
             //update risk number
             $risk_num = 1;
             for($k=0; $k<count($data_risk_event); $k++) {
@@ -171,7 +194,7 @@ class RiskEventController extends BaseController
             /////////////////
 
             
-            echo json_encode(array("status" => $data));
+            echo json_encode(array("status" => $target_level_inserted));
         }catch (\Exception $e) {
             
         }
@@ -374,8 +397,7 @@ class RiskEventController extends BaseController
             //update risk number
             $risk_num = 1;
             for($k=0; $k<count($data_risk_event); $k++) {
-                echo $risk_num."-".$data_risk_event[$k]['id'];
-                echo '<br/>';
+           
                 $data_number['risk_number_target'] = $risk_num;
                 $this->RiskEventModel->update($data_risk_event[$k]['id'],$data_number);
 
@@ -383,57 +405,65 @@ class RiskEventController extends BaseController
             }
             /////////////////
 
-            // echo json_encode(array("status" => TRUE));
-            echo json_encode(array("status" => $not_deleted_id));
+            echo json_encode(array("status" => TRUE));
+            //echo json_encode(array("status" => $not_deleted_id));
         }catch (\Exception $e) {
             
         }
     }
 
     public function onAddRiskResidual(){
-        //get inserted level
-        $residual_level_inserted = $this->request->getPost('probability_level_residual') * $this->request->getPost('impact_level_residual');
-        $id_risk_event = $this->request->getPost('id_risk_event');
-        try {
-            $data = [
-                    'probability_level_residual' => $this->request->getPost('probability_level_residual'),
-                    'impact_level_residual' => $this->request->getPost('impact_level_residual'),
-                    'final_level_residual' => $this->request->getPost('final_level_residual'),
-                    'risk_analysis_residual' => $this->request->getPost('risk_analysis_residual'),
-                    'risk_impact_quantitative' => $this->request->getPost('r'), //$this->request->getPost('risk_impact_quantitative'),
-                    'description' => $this->request->getPost('description'),
-                    ];
+        if (! $this->validate([
+            'probability_level_residual' => 'required',
+            'impact_level_residual' => 'required',
+            'final_level_residual' => 'required',
+        ])) {
+            throw new \Exception("Some message goes here");
+        }else{
+            //get inserted level
+            $residual_level_inserted = $this->request->getPost('probability_level_residual') * $this->request->getPost('impact_level_residual');
+            $id_risk_event = $this->request->getPost('id_risk_event');
+            try {
+                $data = [
+                        'probability_level_residual' => $this->request->getPost('probability_level_residual'),
+                        'impact_level_residual' => $this->request->getPost('impact_level_residual'),
+                        'final_level_residual' => $this->request->getPost('final_level_residual'),
+                        'risk_analysis_residual' => $this->request->getPost('risk_analysis_residual'),
+                        'risk_impact_quantitative' => $this->request->getPost('r'), //$this->request->getPost('risk_impact_quantitative'),
+                        'description' => $this->request->getPost('description'),
+                        ];
 
-            $this->RiskEventModel->update($id_risk_event,$data);
-        
-
-            /////////////////
-            ///update nomor risiko residual
-            //get all risk event in selected year
-            $data_risk_event = $this->RiskEventModel->get_list_risk_event_residual($this->request->getPost('year'));
-
-            $sort = array();
-            foreach($data_risk_event as $k=>$v) {
-                $sort['final_level_residual'][$k] = $v['final_level_residual'];
-                $sort['level'][$k] = $v['level'];
-            }
-            array_multisort($sort['final_level_residual'], SORT_DESC, $sort['level'], SORT_DESC,$data_risk_event);
+                $this->RiskEventModel->update($id_risk_event,$data);
             
-            //update risk number
-            $risk_num = 1;
-            for($k=0; $k<count($data_risk_event); $k++) {
+                /////////////////
+                ///update nomor risiko residual
+                //get all risk event in selected year
+                $data_risk_event = $this->RiskEventModel->get_list_risk_event_residual($this->request->getPost('year'));
+
+                $sort = array();
+                foreach($data_risk_event as $k=>$v) {
+                    $sort['final_level_residual'][$k] = $v['final_level_residual'];
+                    $sort['level'][$k] = $v['level'];
+                }
+                array_multisort($sort['final_level_residual'], SORT_DESC, $sort['level'], SORT_DESC,$data_risk_event);
                 
-                $data_number['risk_number_residual'] = $risk_num;
-                $this->RiskEventModel->update($data_risk_event[$k]['id'],$data_number);
+                //update risk number
+                $risk_num = 1;
+                for($k=0; $k<count($data_risk_event); $k++) {
+                    
+                    $data_number['risk_number_residual'] = $risk_num;
+                    $this->RiskEventModel->update($data_risk_event[$k]['id'],$data_number);
 
-                $risk_num +=1;
+                    $risk_num +=1;
+                }
+                ///////////////
+                
+                echo json_encode(array("status" => $data));
+            }catch (\Exception $e) {
+                
             }
-            ///////////////
-            
-            echo json_encode(array("status" => $data));
-        }catch (\Exception $e) {
-            
         }
+        
     }
 
     public function getDetailRiskEvent($id) {

@@ -25,8 +25,7 @@
                   <thead>
                      <tr>
                         <th>Risiko Utama</th>
-                        <th>Mitigasi</th>
-                        <th>No. Detail Mitigasi</th>
+                        <th>Mitigasi</th> 
                         <th>Detail Mitigasi</th>
                         <th>PIC</th>
                         <th>Progress (%)</th>
@@ -43,9 +42,6 @@
 <?= $this->include("js/risk_monitoring")?>
 
 <style>
-   .dataTables_paginate .paginate_button{
-      padding-right: 5px;
-   }
    .text-wrap{
       white-space:normal;
    }

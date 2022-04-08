@@ -271,6 +271,7 @@
             }
 			
 			var id_risk = document.getElementById('id_risk_event').value;
+			
 			$.ajax({
 				url : "<?php echo base_url('admin/RiskEventController/onAddDetailRisk')?>",
 				type: "POST",

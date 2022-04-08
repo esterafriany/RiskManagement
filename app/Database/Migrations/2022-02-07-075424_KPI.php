@@ -34,6 +34,7 @@ class KPI extends Migration
             'level'       => [
                 'type'              => 'INT',
                 'constraint'        => '11',
+                'unique'         => true,
             ],
             'created_at' => [
                 'type'           => 'DATETIME',

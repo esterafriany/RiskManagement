@@ -82,6 +82,12 @@ class RiskEvent extends Migration
 			'risk_analysis'       => [
                 'type'              => 'ENUM',
                 'constraint'        => "'R','M','T','E'",
+                'null' => true,
+            ],
+            'target_risk_analysis'       => [
+                'type'              => 'ENUM',
+                'constraint'        => "'R','M','T','E'",
+                'null' => true,
             ],
             'probability_level_residual'       => [
                 'type'              => 'ENUM',
@@ -98,6 +104,7 @@ class RiskEvent extends Migration
 			'risk_analysis_residual'       => [
                 'type'              => 'ENUM',
                 'constraint'        => "'R','M','T','E'",
+                'null' => true,
             ],
             'risk_impact_quantitative'       => [
                 'type'           => 'LONGTEXT',

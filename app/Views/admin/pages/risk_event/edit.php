@@ -195,7 +195,6 @@
                                                 <small>Level</small>
                                                 <input type="text" required class="form-control" id="final_level" name="final_level" value="<?php echo $detail_risk_event->final_level;?>">
                                             </div>
-                                        
                                             <div class="col-sm-6">
                                                 <small>Analisis Risiko</small>
                                                 <select class="form-control form-select" required id="risk_analysis" name="risk_analysis">
@@ -279,28 +278,28 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <small>Analisis Risiko</small>
-                                                <select class="form-control form-select" required id="risk_analysis" name="risk_analysis">
+                                                <select class="form-control form-select" required id="target_risk_analysis" name="target_risk_analysis">
                                                     <option value="" disabled selected hidden >Pilihan</option>
                 
-                                                    <?php if($detail_risk_event->risk_analysis == "R"){?>
+                                                    <?php if($detail_risk_event->target_risk_analysis == "R"){?>
                                                         <option value="R" selected>Rendah</option>
                                                     <?php }else{ ?>
                                                         <option value="R">Rendah</option>
                                                     <?php } ?>
 
-                                                    <?php if($detail_risk_event->risk_analysis == "M"){?>
+                                                    <?php if($detail_risk_event->target_risk_analysis == "M"){?>
                                                         <option value="M" selected>Menengah</option>
                                                     <?php }else{ ?>
                                                         <option value="M">Menengah</option>
                                                     <?php } ?>
 
-                                                    <?php if($detail_risk_event->risk_analysis == "T"){?>
+                                                    <?php if($detail_risk_event->target_risk_analysis == "T"){?>
                                                         <option value="T" selected>Tinggi</option>
                                                     <?php }else{ ?>
                                                         <option value="T">Tinggi</option>
                                                     <?php } ?>
                                                     
-                                                    <?php if($detail_risk_event->risk_analysis == "E"){?>
+                                                    <?php if($detail_risk_event->target_risk_analysis == "E"){?>
                                                         <option value="E" selected>Ekstrem</option>
                                                     <?php }else{ ?>
                                                         <option value="E">Ekstrem</option>
@@ -354,10 +353,9 @@
                 
             </div>
             <div class="card-footer">
-                <a href="<?=base_url('admin/risk-event')?>" type="button" class="btn btn-secondary">Batal</a>
-                <a href="<?=base_url('admin/risk-event-residual/'.$detail_risk_event->id)?>" class="btn btn-success">Update Progress</a>
-  
-                <button type="button" id="btn-edit-risk-event"  class="btn btn-primary">Simpan</button>
+                <a href="<?=base_url('admin/risk-event')?>" type="button" class="btn btn-secondary"> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><circle cx="256" cy="256" r="208" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="m108.92 108.92l294.16 294.16"/></svg> Batal</a>
+                <a href="<?=base_url('admin/risk-event-residual/'.$detail_risk_event->id)?>" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M384 224v184a40 40 0 0 1-40 40H104a40 40 0 0 1-40-40V168a40 40 0 0 1 40-40h167.48"/><path fill="currentColor" d="M459.94 53.25a16.06 16.06 0 0 0-23.22-.56L424.35 65a8 8 0 0 0 0 11.31l11.34 11.32a8 8 0 0 0 11.34 0l12.06-12c6.1-6.09 6.67-16.01.85-22.38ZM399.34 90L218.82 270.2a9 9 0 0 0-2.31 3.93L208.16 299a3.91 3.91 0 0 0 4.86 4.86l24.85-8.35a9 9 0 0 0 3.93-2.31L422 112.66a9 9 0 0 0 0-12.66l-9.95-10a9 9 0 0 0-12.71 0Z"/></svg> Update Progress</a>
+                <button type="button" id="btn-edit-risk-event"  class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M380.93 57.37A32 32 0 0 0 358.3 48H94.22A46.21 46.21 0 0 0 48 94.22v323.56A46.21 46.21 0 0 0 94.22 464h323.56A46.36 46.36 0 0 0 464 417.78V153.7a32 32 0 0 0-9.37-22.63ZM256 416a64 64 0 1 1 64-64a63.92 63.92 0 0 1-64 64Zm48-224H112a16 16 0 0 1-16-16v-64a16 16 0 0 1 16-16h192a16 16 0 0 1 16 16v64a16 16 0 0 1-16 16Z"/></svg> Simpan</button>
             </div>
             
          </div>

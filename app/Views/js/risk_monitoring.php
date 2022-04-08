@@ -54,20 +54,11 @@
 					},
 				},
 				{
-					data: 'id',
-					render: function (data, type, item) {
-						if(item.id > 0){
-							return '<a href="<?=base_url()?>/admin/detail-risk-monitoring/'+item.id+'" class="badge rounded-pill bg-primary text-white">'+item.id+'</a>';
-						}else{
-							return '';
-						}
-					},
-				},
-				{
 					data: 'risk_mitigation_detail',
 					render: function (data, type, item) {
 						if(item.risk_mitigation_detail != ""){
-							return item.risk_mitigation_detail;
+							return '<a href="<?=base_url()?>/admin/detail-risk-monitoring/'+item.id+'">'+item.risk_mitigation_detail+'</a>';
+
 						}else{
 							return '';
 						}

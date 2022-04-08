@@ -32,6 +32,7 @@ class RiskEvents extends Model
         "target_impact_level",
         "target_final_level",
         "risk_analysis",
+        "target_risk_analysis",
         "probability_level_residual",
         "impact_level_residual",
         "final_level_residual",

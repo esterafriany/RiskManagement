@@ -4,7 +4,7 @@
 	$(document).ready(function() {
 		var $btn_add_kpi = $("#btn-add-kpi");
 		var $btn_edit_kpi = $("#btn-edit-kpi");
-		
+		$('#kpiTables').DataTable();
 		$('#kpiTable').DataTable({
 			'processing': true,
 			'serverSide': true,

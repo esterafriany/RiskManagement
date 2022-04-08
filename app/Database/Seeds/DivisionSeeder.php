@@ -15,11 +15,20 @@ class DivisionSeeder extends Seeder
 				"name" => "Divisi Keuangan",
 				"division_code" => "KEU",
 				"is_active" => "1"
-				
 			],
 			[
 				"name" => "Divisi Operasional",
 				"division_code" => "OPR",
+				"is_active" => "1"
+			],
+			[
+				"name" => "Transjabodetabek",
+				"division_code" => "TJB",
+				"is_active" => "1"
+			],
+			[
+				"name" => "Komersial",
+				"division_code" => "KOM",
 				"is_active" => "1"
 			]
 		]);

@@ -43,10 +43,15 @@
                                                     ?>
                                                 </select>
                                             </div>
-
+                                            
                                             <div class="form-group">
                                                 <small><b>Nomor Risiko</b></small>
-                                                <input type="text" class="form-control" id="risk_number" name="risk_number" value="<?php echo $detail_risk_event->risk_number;?>" disabled>
+                                                <input type="text" class="form-control" id="risk_number" name="id_risk" value="R<?php echo $detail_risk_event->id;?>" disabled>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <small><b>Perankingan Risiko Progress</b></small>
+                                                <input type="text" class="form-control" id="risk_number" name="risk_number" value="<?php echo $detail_risk_event->risk_number_residual;?>" disabled>
                                             </div>
                                             
                                             <div class="form-group">

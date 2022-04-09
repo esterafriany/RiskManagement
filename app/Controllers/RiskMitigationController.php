@@ -171,14 +171,13 @@ class RiskMitigationController extends BaseController
 
         ## Total number of records with filtering
         $totalRecordwithFilter = $this->RiskMitigationDetailModel->select('id')
-                ->where('id_risk_mitigation' , $id_risk_mitigation)
                 ->orLike('risk_mitigation_detail', $searchValue)
+                ->where('id_risk_mitigation' , $id_risk_mitigation)
                 ->countAllResults();
 
         ## Fetch records
         $records = $this->RiskMitigationDetailModel
                 ->select('*')
-                ->orLike('risk_mitigation_detail', $searchValue)
                 ->orderBy($columnName,$columnSortOrder)
                 ->where('id_risk_mitigation' , $id_risk_mitigation)
                 ->findAll($rowperpage, $start);

@@ -111,7 +111,6 @@
 		});
 
 		$("#add-more-mitigation").click(function () {
-			
 			$("#riskMitigationList").last().append(
 				`<table width="100%">
 					<tr>

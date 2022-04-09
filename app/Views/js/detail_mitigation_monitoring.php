@@ -87,6 +87,7 @@ if($session->get('state_message')){
 					
 					$("#t"+target_month).prop("checked", true );
 					$('#n'+target_month).val(result[i]['notes']);
+					$('#btn_notes'+target_month).removeClass("btn btn-sm btn-icon btn-secondary").addClass("btn btn-sm btn-icon btn-primary");      
 					$('#e'+target_month).prop('disabled', false);
 
 					var arr1 = result[i]['monitoring_month'].split("-");
@@ -240,17 +241,17 @@ if($session->get('state_message')){
 				
 				for(i = 0; i < count; i++){
 					
-					penampung += `	<table width="100%">
-										<tr>
-											<td width="50%"> 
-												<a>${result[i]['filename']}</a>
-											</td>
-											<td>
-												<button type="button" onclick="delete_evidence('${result[i]['id']}')" class="btn btn-outline-primary btn-sm removes" ><i class="fas fa-trash-alt"></i></button>
-												<a type="button" href="<?php echo base_url('admin/download')?>/${result[i]['filename']}" class="btn btn-outline-success btn-sm" ><i class="fas fa-download"></i></a>
-											</td>
-										</tr>
-									</table>`;
+				penampung += `<table width="100%">
+									<tr>
+										<td width="100%"> 
+											<a href="<?=base_url('uploads')?>/${result[i]['filename']}" target="_blank">${result[i]['filename']}</a>
+										</td>
+										<td>
+											<button type="button" onclick="delete_evidence('${result[i]['id']}')" class="btn btn-outline-primary btn-sm removes" ><i class="fas fa-trash-alt"></i></button>
+											<a type="button" href="<?php echo base_url('admin/download')?>/${result[i]['filename']}" class="btn btn-outline-success btn-sm" ><i class="fas fa-download"></i></a>
+										</td>
+									</tr>
+								</table>`;
 				}
 				var monthName = "";
 				if(target_month == "01"){

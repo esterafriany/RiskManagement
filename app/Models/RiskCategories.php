@@ -51,7 +51,7 @@ class RiskCategories extends Model
 
     public function get_list_risk_category()
     {	
-		  return $this->db->query("SELECT * FROM risk_categories")->getResultArray();
+		  return $this->db->query("SELECT * FROM risk_categories WHERE is_active='1'")->getResultArray();
     }
 
     public function get_list_risk_category_by_risk_id($risk_id)

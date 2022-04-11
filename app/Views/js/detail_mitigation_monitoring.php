@@ -87,9 +87,11 @@ if($session->get('state_message')){
 					
 					$("#t"+target_month).prop("checked", true );
 					$('#n'+target_month).val(result[i]['notes']);
-					$('#btn_notes'+target_month).removeClass("btn btn-sm btn-icon btn-secondary").addClass("btn btn-sm btn-icon btn-primary");      
 					$('#e'+target_month).prop('disabled', false);
-
+					if(result[i]['notes'] != ""){
+						$('#btn_notes'+target_month).removeClass("btn btn-sm btn-icon btn-warning").addClass("btn btn-sm btn-icon btn-primary");      
+					}
+					
 					var arr1 = result[i]['monitoring_month'].split("-");
         			var monitoring_month = arr1[arr1.length - 2];
 					

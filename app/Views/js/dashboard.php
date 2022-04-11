@@ -14,14 +14,14 @@
                 var i = 0;
                 for(i = 0; data.length ; i++){
                     //risk map before mitigation
-                    document.getElementById(data[i]['td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data[i]['id']}</b></a>` ;             
+                    document.getElementById(data[i]['td_id']).innerHTML += `<a href="<?=base_url()?>/admin/detail-risk-mitigations/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data[i]['id']}</b></a>` ;             
                 
                     //risk map after mitigation
-                    document.getElementById("target_"+ data[i]['target_td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data[i]['id']}</b></a>` ;             
+                    document.getElementById("target_"+ data[i]['target_td_id']).innerHTML += `<a href="<?=base_url()?>/admin/detail-risk-mitigations/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data[i]['id']}</b></a>` ;             
 
                     //risk map progress mitigation
                     if(data[i]['risk_number_residual'] != 0){
-                        document.getElementById("residual_"+ data[i]['residual_td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b> R${data[i]['id']}</b></a>` ;             
+                        document.getElementById("residual_"+ data[i]['residual_td_id']).innerHTML += `<a href="<?=base_url()?>/admin/detail-risk-mitigations/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b> R${data[i]['id']}</b></a>` ;             
                     }
                     
                 }

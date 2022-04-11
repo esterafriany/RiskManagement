@@ -27,7 +27,7 @@
                   <thead>
                      <tr>
                         <th>KPI</th>
-                        <th>Nomor Risiko</th>
+                        <th>Perankingan Risiko Inherent</th>
                         <th>Risiko Utama</th>
                         <th>Aksi</th>
                      </tr>

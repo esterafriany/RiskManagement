@@ -56,11 +56,11 @@
 				{
 					data: 'risk_mitigation_detail',
 					render: function (data, type, item) {
-						if(item.risk_mitigation_detail != ""){
+						if(item.risk_mitigation_detail != null){
 							return '<a href="<?=base_url()?>/admin/detail-risk-monitoring/'+item.id+'">'+item.risk_mitigation_detail+'</a>';
 
 						}else{
-							return '';
+							return '-';
 						}
 					},
 				},
@@ -70,7 +70,7 @@
 				{
 					data: 'progress_percentage',
 					render: function (data, type, item) {
-						if(item.progress_percentage != ""){
+						if(item.progress_percentage != null){
 							return item.progress_percentage + ' %';
 						}else{
 							return '-';

@@ -23,6 +23,7 @@
 			'ajax': {
 				'url': "<?=site_url('RiskEventController/getRiskEvent/')?>" + year,
 				'data': function(data) {
+					console.log(data);
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
 					var csrfHash = $('.txt_csrfname').val(); // CSRF hash

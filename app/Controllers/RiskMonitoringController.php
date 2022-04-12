@@ -43,7 +43,7 @@ class RiskMonitoringController extends BaseController
         $postData = $request->getPost();
         $dtpostData = $postData['data'];
         $response = array();
-
+        
         ## Read value
         $draw = $dtpostData['draw'];
         $start = $dtpostData['start'];
@@ -118,6 +118,109 @@ class RiskMonitoringController extends BaseController
                 "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
                 "division_name"=>$record['division_name'],
                 "progress_percentage"=>$record['progress_percentage'],
+                
+            ); 
+        }
+    
+        ## Response
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordwithFilter,
+            "aaData" => $data,
+            "token" => csrf_hash() // New token hash
+        );
+        
+        return $this->response->setJSON($response);
+    }
+
+    public function getRiskMonitoringByRiskOwner($year, $id_division){
+        $request = service('request');
+        $postData = $request->getPost();
+        $dtpostData = $postData['data'];
+        $response = array();
+        
+        ## Read value
+        $draw = $dtpostData['draw'];
+        $start = $dtpostData['start'];
+        $rowperpage = $dtpostData['length']; // Rows display per page
+        $columnIndex = $dtpostData['order'][0]['column']; // Column index
+        $columnName = $dtpostData['columns'][$columnIndex]['data']; // Column name
+        $columnSortOrder = $dtpostData['order'][0]['dir']; // asc or desc
+        $searchValue = $dtpostData['search']['value']; // Search value
+
+        ## Total number of records without filtering
+        $totalRecords = $this->RiskEventModel
+                        ->join('risk_mitigations', 'risk_mitigations.id_risk_event = risk_events.id', 'left')
+                        ->join('risk_mitigation_details', 'risk_mitigation_details.id_risk_mitigation = risk_mitigations.id', 'left')
+                        ->join('risk_mitigation_divisions', 'risk_mitigation_divisions.id_risk_mitigation = risk_mitigations.id', 'left')
+                        ->join('divisions', 'divisions.id = risk_mitigation_divisions.id_division')
+                        ->select('risk_events.risk_event
+                            , risk_mitigations.risk_mitigation
+                            , risk_mitigation_details.id
+                            , risk_mitigation_details.risk_mitigation_detail
+                            , GROUP_CONCAT(divisions.name) as division_name
+                            , progress_percentage')
+                        ->orLike('risk_events.risk_event', $searchValue)
+                        ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
+                        ->orLike('progress_percentage', $searchValue)
+                        ->where('risk_events.year' , $year)
+                        ->where('risk_mitigation_divisions.id_division' , $id_division)
+                        ->groupBy('risk_mitigation_details.id, risk_mitigations.id')
+                        ->countAllResults();
+
+        ## Total number of records with filtering
+        $totalRecordwithFilter = $this->RiskEventModel
+                                ->join('risk_mitigations', 'risk_mitigations.id_risk_event = risk_events.id', 'left')
+                                ->join('risk_mitigation_details', 'risk_mitigation_details.id_risk_mitigation = risk_mitigations.id', 'left')
+                                ->join('risk_mitigation_divisions', 'risk_mitigation_divisions.id_risk_mitigation = risk_mitigations.id', 'left')
+                                ->join('divisions', 'divisions.id = risk_mitigation_divisions.id_division')
+                                ->select('risk_events.risk_event
+                                    , risk_mitigations.risk_mitigation
+                                    , risk_mitigation_details.id
+                                    , risk_mitigation_details.risk_mitigation_detail
+                                    , GROUP_CONCAT(divisions.name) as division_name
+                                    , progress_percentage')
+                                ->orLike('risk_events.risk_event', $searchValue)
+                                ->where('risk_events.year' , $year)
+                                ->where('risk_mitigation_divisions.id_division' , $id_division)
+                                ->groupBy('risk_mitigation_details.id, risk_mitigations.id')
+                                ->orLike('risk_events.risk_event', $searchValue)
+                                ->orLike('risk_mitigations.risk_mitigation', $searchValue)
+                                ->countAllResults();
+
+        ## Fetch records
+        $records = $this->RiskEventModel
+                    ->join('risk_mitigations', 'risk_mitigations.id_risk_event = risk_events.id')
+                    ->join('risk_mitigation_divisions', 'risk_mitigation_divisions.id_risk_mitigation = risk_mitigations.id')
+                    ->join('divisions', 'divisions.id = risk_mitigation_divisions.id_division')
+                    ->join('risk_mitigation_details', 'risk_mitigation_details.id_risk_mitigation = risk_mitigations.id', 'left')
+                    ->select('risk_events.risk_event
+                        , risk_mitigations.risk_mitigation
+                        , risk_mitigation_details.id
+                        , risk_mitigation_details.risk_mitigation_detail
+                        , GROUP_CONCAT(divisions.name) as division_name
+                        , progress_percentage
+                        , risk_mitigation_divisions.id_division')
+                    ->where('risk_events.year' , $year)
+                    ->whereIn('risk_mitigation_divisions.id_division' , [$id_division])
+                    ->orLike('risk_mitigation_detail', $searchValue)
+                    ->orLike('progress_percentage', $searchValue)
+                    ->groupBy('risk_mitigation_details.id, risk_mitigations.id')
+                    ->orderBy($columnName,$columnSortOrder)
+                    ->findAll($rowperpage, $start);
+
+        $data = array();
+
+        foreach($records as $record ){
+            $data[] = array( 
+                "id"=>$record['id'],
+                "risk_event"=>$record['risk_event'],
+                "risk_mitigation"=>$record['risk_mitigation'],
+                "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
+                "division_name"=>$record['division_name'],
+                "progress_percentage"=>$record['progress_percentage'],
+                "id_division"=>$record['id_division'],
                 
             ); 
         }

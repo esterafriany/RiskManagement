@@ -5,6 +5,12 @@
             <div class="card-header d-flex justify-content-between">
                <div class="header-title">
                   <h4 class="card-title">Data Risiko dan Mitigasi</h4>
+                  <?php
+                    $this->session = \Config\Services::session();
+                    $this->session->start(); 
+                  ?>
+                  <input type="hidden" id="id_division" name="id_division" value="<?=$this->session->get("id_division")?>">
+
                </div>
                <div class="d-flex align-items-center flex-wrap">
                      <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2">
@@ -26,7 +32,6 @@
                      <tr>
                         <th>Risiko Utama</th>
                         <th>Mitigasi</th>
-                        <th>No. Detail Mitigasi</th>
                         <th>Detail Mitigasi</th>
                         <th>PIC</th>
                         <th>Progress (%)</th>
@@ -43,9 +48,6 @@
 <?= $this->include("js/risk_owner/risk_monitoring")?>
 
 <style>
-   .dataTables_paginate .paginate_button{
-      padding-right: 5px;
-   }
    .text-wrap{
       white-space:normal;
    }

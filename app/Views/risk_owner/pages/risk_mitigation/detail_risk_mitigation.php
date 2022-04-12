@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div align="right">
-                                        <a type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal-add-detail-mitigation">Tambah</a>
+                                        <a type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal-add-detail-mitigation"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-miterlimit="60" stroke-width="40" d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192s192-86 192-192Z"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 176v160m80-80H176"/></svg> Tambah</a>
                                     </div>
                                 
                                     <table id="riskDetailMitigationTable" class="table table-striped" width="100%">
@@ -69,9 +69,6 @@
 <?= $this->include("js/risk_owner/detail_risk_mitigation")?>
 
 <style>
-   .dataTables_paginate .paginate_button{
-      padding-right: 5px;
-   }
    .text-wrap{
       white-space:normal;
    }

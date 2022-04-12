@@ -43,6 +43,13 @@ class DashboardController extends BaseController
 		echo json_encode($data);
 	}
 
+    public function onGetDataMatrixRiskOwner($year, $id_division) {		
+        $data = $this->RiskEventModel->get_data_matrix($year);
+
+		
+		echo json_encode($data);
+	}
+
     public function onGetDataMatrixProgress($year) {
 		$data = $this->RiskEventModel->get_data_progress_matrix($year);
 		

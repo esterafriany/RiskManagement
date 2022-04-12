@@ -84,6 +84,21 @@ class RiskEvents extends Model
                                 WHERE YEAR = '".$year."'")->getResultArray();
     }
 
+    public function get_data_matrix_risk_owner($year, $id_division)
+    {	
+		  return $this->db->query("SELECT risk_events.id
+                                    , risk_number, risk_number_target, risk_number_residual
+                                    , probability_level, impact_level
+                                    , target_probability_level, target_impact_level
+                                    , probability_level_residual, impact_level_residual
+                                    , concat(probability_level,impact_level)  as td_id
+                                    , concat(target_probability_level,target_impact_level) as target_td_id
+                                    , concat(probability_level_residual,impact_level_residual) as residual_td_id
+                                FROM risk_events JOIN risk_mitigations ON risk_events.id = risk_mitigations.id_risk_event
+                                JOIN risk_mitigation_divisions ON risk_mitigations.id = risk_mitigation_divisions.id_risk_mitigation
+                                WHERE YEAR = '".$year."' AND risk_mitigation_divisions.id = '".$id_division."'")->getResultArray();
+    }
+
     public function get_data_progress_matrix($year)
     {	
 		  return $this->db->query("SELECT id, risk_number, probability_level, impact_level,concat(probability_level,impact_level)  as td_id

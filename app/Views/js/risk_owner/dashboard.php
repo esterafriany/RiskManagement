@@ -3,25 +3,51 @@
 <script type="text/javascript">
 	$(document).ready(function() {
         var year = document.getElementById('year').value;
-        //set td id value
-        
+        var id_division = document.getElementById('id_division').value;
+    
         $.ajax({
-            url : "<?=site_url('DashboardController/onGetDataMatrix')?>/" + year,
+            url : "<?=site_url('RiskOwner/DashboardController/onGetDataMatrixRiskOwner')?>/" + year + "/" + id_division,
             type: "GET",
             dataType: "JSON",
             success: function(data)
             {
-                var i = 0;
-                for(i = 0; data.length ; i++){
-                    //risk map before mitigation
-                    document.getElementById(data[i]['td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data[i]['id']}</b></a>` ;             
-                
-                    //risk map after mitigation
-                    document.getElementById("target_"+ data[i]['target_td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data[i]['id']}</b></a>` ;             
+             
+                var count1 = data['all_data_matrix'].length;
+				var count2 = data['data_matrix_risk_owner'].length;
 
-                    //risk map progress mitigation
-                    if(data[i]['risk_number_residual'] != 0){
-                        document.getElementById("residual_"+ data[i]['residual_td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b> R${data[i]['id']}</b></a>` ;             
+                var myarray = [];
+                for(j = 0; j < count2 ; j++){
+                    myarray.push(data['data_matrix_risk_owner'][j]['id']);
+                }
+                
+                //if(jQuery.inArray("test", myarray) !== -1)
+
+                var i = 0;
+                for(i = 0; i < count1 ; i++){
+                    if(jQuery.inArray(data['all_data_matrix'][i]['id'], myarray) !== -1){
+                        //in array
+                        //risk map before mitigation
+                        document.getElementById(data['all_data_matrix'][i]['td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data['all_data_matrix'][i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data['all_data_matrix'][i]['id']}</b></a>` ;             
+                        
+                        //risk map after mitigation
+                        document.getElementById("target_"+ data['all_data_matrix'][i]['target_td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data['all_data_matrix'][i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data['all_data_matrix'][i]['id']}</b></a>` ;             
+
+                        //risk map progress mitigation
+                        if(data['all_data_matrix'][i]['risk_number_residual'] != 0){
+                            document.getElementById("residual_"+ data['all_data_matrix'][i]['residual_td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data['all_data_matrix'][i]['id']}" class="badge rounded-pill bg-primary text-white"><b> R${data['all_data_matrix'][i]['id']}</b></a>` ;             
+                        }
+                    }else{
+                        //not in array
+                        //risk map before mitigation
+                        document.getElementById(data['all_data_matrix'][i]['td_id']).innerHTML += `<a onClick="show_alert()" class="badge rounded-pill bg-primary text-white"><b>R${data['all_data_matrix'][i]['id']}</b></a>` ;             
+                        
+                        //risk map after mitigation
+                        document.getElementById("target_"+ data['all_data_matrix'][i]['target_td_id']).innerHTML += `<a onClick="show_alert()" class="badge rounded-pill bg-primary text-white"><b>R${data['all_data_matrix'][i]['id']}</b></a>` ;             
+
+                        //risk map progress mitigation
+                        if(data['all_data_matrix'][i]['risk_number_residual'] != 0){
+                            document.getElementById("residual_"+ data['all_data_matrix'][i]['residual_td_id']).innerHTML += `<a onClick="show_alert()" class="badge rounded-pill bg-primary text-white"><b> R${data['all_data_matrix'][i]['id']}</b></a>` ;             
+                        }
                     }
                     
                 }
@@ -29,6 +55,7 @@
             error: function (jqXHR, textStatus, errorThrown)
             {
                 swal('Data tidak ditemukan.');
+                
             }
 	    });
 
@@ -53,6 +80,10 @@
 	    // });
 		
     });
+
+    function show_alert(){
+        swal("Warning","Risiko ini tidak dialokasikan pada Divisi Anda. Silahkan pilih risiko lain.","warning");
+    }
 
     function update_matrix(){
         year = document.getElementById('year').value;

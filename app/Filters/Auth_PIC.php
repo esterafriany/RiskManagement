@@ -25,8 +25,10 @@ class Auth_PIC implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (!session()->get('isLoggedIn')) {
-            return redirect()->to(site_url('/'));
+        if (session()->get('isLoggedIn') == false) {
+            return redirect()->to(base_url('/'));
+        }else if(session()->get('id_group') != "2"){
+            session()->destroy();   
         }
     }
 

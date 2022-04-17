@@ -39,9 +39,9 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 //--Auth
-$routes->get('/', 'AuthenticationController::index');
-$routes->post('/process-login', 'AuthenticationController::login');
-$routes->get('/process-logout', 'AuthenticationController::logout', ['filter'=>'auth']);
+$routes->add('/', 'AuthenticationController::index');
+$routes->add('/process-login', 'AuthenticationController::login');
+$routes->add('/process-logout', 'AuthenticationController::logout', ['filter'=>'auth']);
 
 $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('dashboard', 'DashboardController::index', ['as' => 'get-dashboards']);

@@ -27,10 +27,10 @@
       <!-- Customizer Css -->
       <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/customizer.min.css" />
 	  
-	<!--sweetalert-->
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/sweet-alert.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/animate.css" type="text/css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/animate.min.css" type="text/css">
+	  <!--sweetalert-->
+	  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/sweet-alert.css">
+	  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/animate.css" type="text/css">
+	  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/animate.min.css" type="text/css">
 
       <!--dropdown select--> 
       <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/select2.min.css">

@@ -80,8 +80,6 @@ class RiskMitigations extends Model
       $result = $this->db->query($sql);
     }
 
-    
-
     public function get_deleted_risk_mitigation($id_risk)
     {	
 		  return $this->db->query("SELECT id FROM risk_mitigations WHERE id_risk_event='".$id_risk."'")->getResultArray();

@@ -106,7 +106,6 @@ class RiskEventController extends BaseController
         //get inserted level
         $level_inserted = $this->request->getPost('probability_level') * $this->request->getPost('impact_level');
         $target_level_inserted = $this->request->getPost('target_probability_level') * $this->request->getPost('target_impact_level');
-
         
         //risk analysis
         if($level_inserted == 1 || $level_inserted == 2 || $level_inserted == 3 || $level_inserted == 4){
@@ -403,7 +402,7 @@ class RiskEventController extends BaseController
 
                 $risk_num +=1;
             }
-            /////////////////
+            ///////////////
 
             echo json_encode(array("status" => TRUE));
             //echo json_encode(array("status" => $not_deleted_id));

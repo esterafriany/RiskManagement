@@ -5,13 +5,12 @@
                <div class="flex-wrap d-flex justify-content-between align-items-center">
                   <div>
                         <h1>Hello, <?=session()->get('name')?>!</h1>
-                        <p>Welcome to Risk Register Apps ! <?=session()->get('id_group')?></p>
+                        <p>Welcome to Risk Register Apps !</p>
                         <?php
                            $this->session = \Config\Services::session();
                            $this->session->start(); 
                         ?>
                         <input type="hidden" id="id_division" name="id_division" value="<?=$this->session->get("id_division")?>">
-
                   </div>
                </div>
             </div>

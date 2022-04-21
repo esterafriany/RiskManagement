@@ -5,7 +5,7 @@
                <div class="flex-wrap d-flex justify-content-between align-items-center">
                   <div>
                         <h1>Hello, <?=session()->get('name')?>!</h1>
-                        <p>Welcome to Risk Monitoring Apps !</p>
+                        <p>Welcome to Risk Management Apps !</p>
                   </div>
                </div>
             </div>
@@ -74,8 +74,6 @@
                   </div>
                </li>
             </ul>
-            <div class="swiper-button swiper-button-next"></div>
-            <div class="swiper-button swiper-button-prev"></div>
          </div>
       </div>
    </div>
@@ -135,11 +133,11 @@
                            </div>
                         </div>
                   </div>
-                  
                   </li>
                <?php } ?>
-           
             </ul>
+            <div class="swiper-button swiper-button-next"></div>
+            <div class="swiper-button swiper-button-prev"></div>
          </div>
       </div>
    </div>
@@ -162,9 +160,7 @@
                </div>
                <div class="p-0 card-body">
                </br>
-               
                   <div class="bd-example table-responsive" style="padding-right:20px;">
-                  
                      <table id="table" name="table" width="100%" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
                            <tr>
                               <td rowspan="6" width="5%" style="writing-mode: vertical-rl;">Tingkat Kemungkinan</td>

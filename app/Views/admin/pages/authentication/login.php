@@ -5,7 +5,6 @@
 			<div class="loader-body"></div>
 		</div>    </div>
     <!-- loader END -->
-    
 	<div class="wrapper">
       <section class="login-content">
          <div class="row m-0 align-items-center bg-white vh-100">            
@@ -14,13 +13,11 @@
                   <div class="col-md-10">
                      <div class="card card-transparent shadow-none d-flex justify-content-center mb-0 auth-card">
                      <div class="card-body">
-
                            <a href="<?php echo base_url();?>" class="navbar-brand d-flex align-items-center mb-3">
                               <!--Logo start-->
                               <img src="<?php echo base_url();?>/assets/images/Flag/logo_ppd.png" width="30px" height="50px">
                               <!--logo End--> <h5 class="logo-title ms-2">Aplikasi Manajemen Risiko</h5>
                            </a>
-                           <h6 class="mb-2 text-center">Sign In</h6>
                            <?php if(session()->getFlashdata('msg')){ ?>
                               <div class="bd-example">                
                                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -29,33 +26,31 @@
                                  </div>
                               </div>
                            <?php } ?>
-                           <form id="form-login" action="<?php echo base_url();?>/process-login" method="POST" enctype='multipart/form-data'>
-                              <div class="row">
-                                 <div class="col-lg-12">
-                                    <div class="form-group">
-                                       <label for="email" class="form-label">Email</label>
-                                       <input type="email" class="form-control" name="email" id="email" aria-describedby="email" placeholder=" ">
+                           <ul class="list-group">
+                                <li class="list-group-item">
+                                <form id="form-login" action="<?php echo base_url();?>/process-login" method="POST" enctype='multipart/form-data'>
+                                    <div class="row">
+                                       <div class="col-lg-12">
+                                          <div class="form-group">
+                                             <label for="email" class="form-label">Email</label>
+                                             <input type="email" class="form-control" name="email" id="email" aria-describedby="email" placeholder=" ">
+                                          </div>
+                                       </div>
+                                       <div class="col-lg-12">
+                                          <div class="form-group">
+                                             <label for="password" class="form-label">Password</label>
+                                             <input type="password" class="form-control" name="password" id="password" aria-describedby="password" placeholder=" ">
+                                          </div>
+                                       </div>
+                               
                                     </div>
-                                 </div>
-                                 <div class="col-lg-12">
-                                    <div class="form-group">
-                                       <label for="password" class="form-label">Password</label>
-                                       <input type="password" class="form-control" name="password" id="password" aria-describedby="password" placeholder=" ">
+                                    <div class="d-flex justify-content">
+                                       <button type="submit" class="btn btn-primary">Login</button> &nbsp;
                                     </div>
-                                 </div>
-                                 <div class="col-lg-12 d-flex justify-content-between">
-                                    <div class="form-check mb-3">
-                                       <input type="checkbox" class="form-check-input" id="customCheck1">
-                                       <label class="form-check-label" for="customCheck1">Remember Me</label>
-                                    </div>
-                                    <a href="recoverpw.html">Forgot Password?</a>
-                                 </div>
-                              </div>
-                              <div class="d-flex justify-content-center">
-                                 <button type="submit" class="btn btn-primary">Sign In</button>
-                              </div>
-                              
-                           </form>
+                                    
+                                 </form>
+                                </li>
+                            </ul>
                         </div>
                      </div>
                   </div>

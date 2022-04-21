@@ -52,6 +52,7 @@ class AuthenticationController extends BaseController
 			];
 			$session->set($ses_data);
             
+			
             if(session()->get('id_group') == "1"){
                 return redirect('get-dashboards');
             }else{

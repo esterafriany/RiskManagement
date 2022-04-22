@@ -131,8 +131,7 @@
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 				{
-					swal("Error","Gagal menambah data.".errorThrown,"error");
-
+					swal("Warning","Gagal menambah data. Pastikan semua field terisi.","warning");
 				}
 			});
 		

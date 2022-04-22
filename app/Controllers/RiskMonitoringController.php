@@ -206,6 +206,7 @@ class RiskMonitoringController extends BaseController
                     ->where('risk_events.year' , $year)
                     ->whereIn('risk_mitigation_divisions.id_division' , [$id_division])
                     ->orLike('risk_mitigation_detail', $searchValue)
+                    ->orLike('risk_mitigations.risk_mitigation', $searchValue)
                     ->orLike('progress_percentage', $searchValue)
                     ->groupBy('risk_mitigation_details.id, risk_mitigations.id')
                     ->orderBy($columnName,$columnSortOrder)

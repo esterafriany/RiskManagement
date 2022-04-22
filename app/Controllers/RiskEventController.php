@@ -59,6 +59,7 @@ class RiskEventController extends BaseController
         ## Total number of records with filtering
         $totalRecordwithFilter = $this->RiskEventModel->select('id')
                 ->orLike('risk_event', $searchValue)
+                ->orLike('year', $searchValue)
                 ->countAllResults();
 
         ## Fetch records
@@ -66,7 +67,6 @@ class RiskEventController extends BaseController
                 ->where('year' , $year)
                 ->select('*')
                 ->orLike('risk_event', $searchValue)
-                ->orLike('is_active', $searchValue)
                 ->orderBy($columnName,$columnSortOrder)
                 ->findAll($rowperpage, $start);
 
@@ -74,6 +74,10 @@ class RiskEventController extends BaseController
                 ->join('kpis', 'kpis.id = risk_events.id_kpi')
                 ->select('risk_events.id as id, risk_events.objective, kpis.name as kpi_name, risk_number, risk_event, risk_events.is_active, risk_events.year')
                 ->orLike('risk_events.risk_event', $searchValue)
+                ->orLike('risk_events.year', $searchValue)
+                ->orLike('risk_number', $searchValue)
+                ->orLike('kpis.name', $searchValue)
+                ->orLike('risk_events.objective', $searchValue)
                 ->where('risk_events.year' , $year)
                 ->findAll($rowperpage, $start);
                 
@@ -104,100 +108,120 @@ class RiskEventController extends BaseController
     }
 
     public function onAddRiskEvent(){
-        //get inserted level
-        $level_inserted = $this->request->getPost('probability_level') * $this->request->getPost('impact_level');
-        $target_level_inserted = $this->request->getPost('target_probability_level') * $this->request->getPost('target_impact_level');
+
+        if (! $this->validate([
+            'objective' => 'required',
+            'id_kpi' => 'required',
+            'risk_event' => 'required',
+            'year' => 'required',
+            'existing_control_1' => 'required',
+            'existing_control_2' => 'required',
+            'existing_control_3' => 'required', 
+            'probability_level' => 'required', 
+            'target_probability_level' => 'required', 
+            'target_impact_level' => 'required', 
+            
+          ])) {
+            throw new \Exception("Some message goes here");
+          }else{
+            //get inserted level
+            $level_inserted = $this->request->getPost('probability_level') * $this->request->getPost('impact_level');
+            $target_level_inserted = $this->request->getPost('target_probability_level') * $this->request->getPost('target_impact_level');
+            
+            //risk analysis
+            if($level_inserted == 1 || $level_inserted == 2 || $level_inserted == 3 || $level_inserted == 4){
+                $risk_analysis = "R";
+            }else if($level_inserted == 5 || $level_inserted == 6 || $level_inserted == 8 || $level_inserted == 9){
+                $risk_analysis = "M";
+            }else if($level_inserted == 10 || $level_inserted == 12 || $level_inserted == 15 || $level_inserted == 16){
+                $risk_analysis = "T";
+            }else if($level_inserted == 20 || $level_inserted == 25){
+                $risk_analysis = "E";
+            }
+
+            //risk analysis target
+            if($target_level_inserted == 1 || $target_level_inserted == 2 || $target_level_inserted == 3 || $target_level_inserted == 4){
+                $target_risk_analysis = "R";
+            }else if($target_level_inserted == 5 || $target_level_inserted == 6 || $target_level_inserted == 8 || $target_level_inserted == 9){
+                $target_risk_analysis = "M";
+            }else if($target_level_inserted == 10 || $target_level_inserted == 12 || $target_level_inserted == 15 || $target_level_inserted == 16){
+                $target_risk_analysis = "T";
+            }else if($target_level_inserted == 20 || $target_level_inserted == 25){
+                $target_risk_analysis = "E";
+            }
+            try {
+                $data = [
+                        'id_kpi' => $this->request->getPost('id_kpi'),
+                        'risk_number' => '0',
+                        'objective' => $this->request->getPost('objective'),
+                        'risk_event' => $this->request->getPost('risk_event'),
+                        'year' => $this->request->getPost('year'),
+                        'existing_control_1' => $this->request->getPost('existing_control_1'),
+                        'existing_control_2' => $this->request->getPost('existing_control_2'),
+                        'existing_control_3' => $this->request->getPost('existing_control_3'),
+                        'probability_level' => $this->request->getPost('probability_level'),
+                        'impact_level' => $this->request->getPost('impact_level'),
+                        'final_level' => $level_inserted,
+                        'target_probability_level' => $this->request->getPost('target_probability_level'),
+                        'target_impact_level' => $this->request->getPost('target_impact_level'),
+                        'target_final_level' => $target_level_inserted,
+                        'risk_analysis' => $risk_analysis,
+                        'target_risk_analysis' => $target_risk_analysis,
+                        ];
+
+                $this->RiskEventModel->insert($data);
+                
+                ///update nomor risiko
+                //get all risk event in selected year
+                $data_risk_event = $this->RiskEventModel->get_list_risk_event($this->request->getPost('year'));
+
+                $sort = array();
+                foreach($data_risk_event as $k=>$v) {
+                    $sort['final_level'][$k] = $v['final_level'];
+                    $sort['level'][$k] = $v['level'];
+                }
+                array_multisort($sort['final_level'], SORT_DESC, $sort['level'], SORT_DESC,$data_risk_event);
+                //update risk number
+                $risk_num = 1;
+                for($k=0; $k<count($data_risk_event); $k++) {
+                    $data_num['risk_number'] = $risk_num;
+                    $this->RiskEventModel->update($data_risk_event[$k]['id'],$data_num);
+
+                    $risk_num +=1;
+                }
+
+                /////////////////
+                //update nomor risiko target
+                //get all risk event in selected year
+                $data_risk_event1 = $this->RiskEventModel->get_list_risk_event_target($this->request->getPost('year'));
+
+                $sort1 = array();
+                foreach($data_risk_event1 as $k=>$v) {
+                    $sort1['target_final_level'][$k] = $v['target_final_level'];
+                    $sort1['level'][$k] = $v['level'];
+                }
+                array_multisort($sort1['target_final_level'], SORT_DESC, $sort1['level'], SORT_DESC,$data_risk_event1);
+                
+                // //update risk number
+                $risk_number = 1;
+                for($l=0; $l<count($data_risk_event1); $l++) {
+                
+                    $data_number['risk_number_target'] = $risk_number;
+                    $this->RiskEventModel->update($data_risk_event1[$l]['id'],$data_number);
+
+                    $risk_number +=1;
+                }
+                /////////////////
+
+                
+                echo json_encode(array("status" => TRUE));
+            }catch (\Exception $e) {
+                
+            }
+
+          }
+
         
-        //risk analysis
-        if($level_inserted == 1 || $level_inserted == 2 || $level_inserted == 3 || $level_inserted == 4){
-            $risk_analysis = "R";
-        }else if($level_inserted == 5 || $level_inserted == 6 || $level_inserted == 8 || $level_inserted == 9){
-            $risk_analysis = "M";
-        }else if($level_inserted == 10 || $level_inserted == 12 || $level_inserted == 15 || $level_inserted == 16){
-            $risk_analysis = "T";
-        }else if($level_inserted == 20 || $level_inserted == 25){
-            $risk_analysis = "E";
-        }
-
-        //risk analysis target
-        if($target_level_inserted == 1 || $target_level_inserted == 2 || $target_level_inserted == 3 || $target_level_inserted == 4){
-            $target_risk_analysis = "R";
-        }else if($target_level_inserted == 5 || $target_level_inserted == 6 || $target_level_inserted == 8 || $target_level_inserted == 9){
-            $target_risk_analysis = "M";
-        }else if($target_level_inserted == 10 || $target_level_inserted == 12 || $target_level_inserted == 15 || $target_level_inserted == 16){
-            $target_risk_analysis = "T";
-        }else if($target_level_inserted == 20 || $target_level_inserted == 25){
-            $target_risk_analysis = "E";
-        }
-        try {
-            $data = [
-                    'id_kpi' => $this->request->getPost('id_kpi'),
-                    'risk_number' => '0',
-                    'objective' => $this->request->getPost('objective'),
-                    'risk_event' => $this->request->getPost('risk_event'),
-                    'year' => $this->request->getPost('year'),
-                    'existing_control_1' => $this->request->getPost('existing_control_1'),
-                    'existing_control_2' => $this->request->getPost('existing_control_2'),
-                    'existing_control_3' => $this->request->getPost('existing_control_3'),
-                    'probability_level' => $this->request->getPost('probability_level'),
-                    'impact_level' => $this->request->getPost('impact_level'),
-                    'final_level' => $level_inserted,
-                    'target_probability_level' => $this->request->getPost('target_probability_level'),
-                    'target_impact_level' => $this->request->getPost('target_impact_level'),
-                    'target_final_level' => $target_level_inserted,
-                    'risk_analysis' => $risk_analysis,
-                    'target_risk_analysis' => $target_risk_analysis,
-                    ];
-
-            $this->RiskEventModel->insert($data);
-            
-            ///update nomor risiko
-            //get all risk event in selected year
-            $data_risk_event = $this->RiskEventModel->get_list_risk_event($this->request->getPost('year'));
-
-            $sort = array();
-            foreach($data_risk_event as $k=>$v) {
-                $sort['final_level'][$k] = $v['final_level'];
-                $sort['level'][$k] = $v['level'];
-            }
-            array_multisort($sort['final_level'], SORT_DESC, $sort['level'], SORT_DESC,$data_risk_event);
-            //update risk number
-            $risk_num = 1;
-            for($k=0; $k<count($data_risk_event); $k++) {
-                $data_num['risk_number'] = $risk_num;
-                $this->RiskEventModel->update($data_risk_event[$k]['id'],$data_num);
-
-                $risk_num +=1;
-            }
-
-            /////////////////
-            //update nomor risiko target
-            //get all risk event in selected year
-            $data_risk_event1 = $this->RiskEventModel->get_list_risk_event_target($this->request->getPost('year'));
-
-            $sort1 = array();
-            foreach($data_risk_event1 as $k=>$v) {
-                $sort1['target_final_level'][$k] = $v['target_final_level'];
-                $sort1['level'][$k] = $v['level'];
-            }
-            array_multisort($sort1['target_final_level'], SORT_DESC, $sort1['level'], SORT_DESC,$data_risk_event1);
-            
-            // //update risk number
-            $risk_number = 1;
-            for($l=0; $l<count($data_risk_event1); $l++) {
-              
-                $data_number['risk_number_target'] = $risk_number;
-                $this->RiskEventModel->update($data_risk_event1[$l]['id'],$data_number);
-
-                $risk_number +=1;
-            }
-            /////////////////
-
-            
-            echo json_encode(array("status" => $target_level_inserted));
-        }catch (\Exception $e) {
-            
-        }
     }
     public function display_data(){
         /////////////////

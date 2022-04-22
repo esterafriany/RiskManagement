@@ -93,6 +93,9 @@ class RiskMitigationController extends BaseController
         ## Fetch records
         $records = $this->RiskEventModel
                 ->join('kpis', 'kpis.id = risk_events.id_kpi')
+                ->orLike('kpis.name', $searchValue)
+                ->orLike('risk_events.risk_event', $searchValue)
+                ->orLike('risk_number', $searchValue)
                 ->where('risk_events.year' , $year)
                 ->select('risk_events.id as id, kpis.name as kpi_name, risk_number, risk_event, risk_events.is_active')
                 ->orderBy($columnName,$columnSortOrder)

@@ -12,13 +12,13 @@
 							<div class="form-group row">
 								<small><b>Sasaran</b></small>
 								<div class="col-sm-12">
-								<input type="text" class="form-control" id="objective" name="objective">
+								<input type="text" class="form-control" id="objective" name="objective" required>
 								</div>
 							</div>
 							<div class="form-group row">
 								<small><b>KPI</b></small>
 								<div class="col-sm-12">
-									<select class="form-control form-select" name="id_kpi">
+									<select class="form-control form-select" name="id_kpi" required>
 										<option value="" disabled selected hidden >Pilihan</option>
 										<?php
 											if($kpi_list){
@@ -35,13 +35,13 @@
 							<div class="form-group row">
 								<small><b>Risiko Utama</b></small>
 								<div class="col-sm-12">
-								<textarea class="form-control" id="risk_event" name="risk_event"  rows="3"></textarea>
+								<textarea class="form-control" id="risk_event" name="risk_event"  rows="3" required></textarea>
 							</div>
 							</div>
 							<div class="form-group row">
 								<small><b>Year</b></small>
 								<div class="col-sm-12">
-								<select class="form-control form-select" name="year">
+								<select class="form-control form-select" name="year" required>
 									<option value="" disabled selected hidden >Pilihan</option>
 									<option value="2021">2021</option>
 									<option value="2022">2022</option>
@@ -61,7 +61,7 @@
 							<div class="form-group row">
 								<div class="col-sm-4"><small>Ada/Tidak Ada</small></div>
 								<div class="col-sm-8">
-									<select class="form-control form-select" name="existing_control_1">
+									<select class="form-control form-select" name="existing_control_1" required>
 										<option value="" disabled selected hidden >Pilihan</option>
 										<option value="Ada">Ada</option>
 										<option value="Tidak Ada">Tidak Ada</option>
@@ -71,7 +71,7 @@
 							<div class="form-group row">
 								<div class="col-sm-4"><small>Memadai/Tidak Memadai</small></div>
 								<div class="col-sm-8">
-									<select class="form-control form-select" name="existing_control_2">
+									<select class="form-control form-select" name="existing_control_2" required>
 										<option value="" disabled selected hidden >Pilihan</option>
 										<option value="Memadai">Memadai</option>
 										<option value="Tidak Memadai">Tidak Memadai</option>
@@ -81,7 +81,7 @@
 							<div class="form-group row">
 								<div class="col-sm-4"><small>Dijalankan/Belum Dijalankan</small></div>
 								<div class="col-sm-8">
-									<select class="form-control form-select" name="existing_control_3">
+									<select class="form-control form-select" name="existing_control_3" required>
 										<option value="" disabled selected hidden >Pilihan</option>
 										<option value="Dijalankan">Dijalankan</option>
 										<option value="Belum Dijalankan">Belum Dijalankan</option>
@@ -97,7 +97,7 @@
 								<div class="col-sm-6">
 									<small>Tingkat Kemungkinan</small>
 									<div class="col-sm-12">
-										<select class="form-control form-select" name="probability_level">
+										<select class="form-control form-select" name="probability_level" required>
 											<option value="" disabled selected hidden >Pilihan</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
@@ -110,7 +110,7 @@
 								<div class="col-sm-6">
 									<small>Tingkat Dampak</small>
 									<div class="col-sm-12">
-										<select class="form-control form-select" name="impact_level">
+										<select class="form-control form-select" name="impact_level" required>
 											<option value="" disabled selected hidden >Pilihan</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
@@ -130,7 +130,7 @@
 							<div class="col-sm-6">
 									<small>Tingkat Kemungkinan</small>
 									<div class="col-sm-12">
-										<select class="form-control form-select" name="target_probability_level">
+										<select class="form-control form-select" name="target_probability_level" required>
 											<option value="" disabled selected hidden >Pilihan</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
@@ -144,7 +144,7 @@
 								<div class="col-sm-6">
 									<small>Tingkat Dampak</small>
 									<div class="col-sm-12">
-										<select class="form-control form-select" name="target_impact_level">
+										<select class="form-control form-select" name="target_impact_level" required>
 											<option value="" disabled selected hidden >Pilihan</option>
 											<option value="1">1</option>
 											<option value="2">2</option>

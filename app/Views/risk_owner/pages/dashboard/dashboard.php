@@ -5,7 +5,7 @@
                <div class="flex-wrap d-flex justify-content-between align-items-center">
                   <div>
                         <h1>Hello, <?=session()->get('name')?>!</h1>
-                        <p>Welcome to Risk Register Apps !</p>
+                        <p>Welcome to Risk Management Application !</p>
                         <?php
                            $this->session = \Config\Services::session();
                            $this->session->start(); 
@@ -84,7 +84,6 @@
                            </div>
                         </div>
                   </div>
-                  
                   </li>
                <?php } ?>
            
@@ -103,7 +102,7 @@
                   </div>
                   
                   <div class="dropdown"> 
-                     <select class="form-control" id="year" name="year" onchange="update_matrix()">
+                     <select class="form-control form-control form-select" id="year" name="year" onchange="update_matrix()">
                         <option value="2021">2021</option>
                         <option value="2022" selected>2022</option>
                      </select>

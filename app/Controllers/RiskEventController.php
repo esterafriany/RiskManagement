@@ -103,7 +103,6 @@ class RiskEventController extends BaseController
             "aaData" => $data,
             "token" => csrf_hash() // New token hash
         );
-        
         return $this->response->setJSON($response);
     }
 

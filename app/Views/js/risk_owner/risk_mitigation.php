@@ -98,7 +98,7 @@
 				zeroRecords: "Tidak ada Data Risiko Utama ditemukan.",
 			},
 			'ajax': {
-				'url': "<?=site_url('RiskMitigationController/getRiskMitigation/')?>" + year_selected,
+				'url': "<?=site_url('RiskOwner/RiskMitigationController/getRiskMitigation/')?>" + year_selected,
 				'data': function(data) {
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name

@@ -7,19 +7,15 @@
                   <h4 class="card-title">Data Risiko Utama</h4>
                </div>
                <div class="d-flex align-items-center flex-wrap">
-                        <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2">
-                           <path d="M15.8325 8.17463L10.109 13.9592L3.59944 9.88767C2.66675 9.30414 2.86077 7.88744 3.91572 7.57893L19.3712 3.05277C20.3373 2.76963 21.2326 3.67283 20.9456 4.642L16.3731 20.0868C16.0598 21.1432 14.6512 21.332 14.0732 20.3953L10.106 13.9602" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                                                   
-                        Tahun &nbsp;
-                     
-                     <div class="dropdown">
-                     <select class="form-control" id="year_selected" name="year_selected" onchange="update_risk_table()">
-                        <option value="2021">2021</option>
-                        <option value="2022" selected>2022</option>
-                     </select>
-                     </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><rect width="416" height="384" x="48" y="80" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" rx="48"/><circle cx="296" cy="232" r="24" fill="currentColor"/><circle cx="376" cy="232" r="24" fill="currentColor"/><circle cx="296" cy="312" r="24" fill="currentColor"/><circle cx="376" cy="312" r="24" fill="currentColor"/><circle cx="136" cy="312" r="24" fill="currentColor"/><circle cx="216" cy="312" r="24" fill="currentColor"/><circle cx="136" cy="392" r="24" fill="currentColor"/><circle cx="216" cy="392" r="24" fill="currentColor"/><circle cx="296" cy="392" r="24" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M128 48v32m256-32v32"/><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" d="M464 160H48"/></svg>
+                     &nbsp;
+                  <div class="dropdown">
+                  <select class="form-control form-select" id="year_selected" name="year_selected" onchange="update_risk_table()">
+                     <option value="2021">2021</option>
+                     <option value="2022" selected>2022</option>
+                  </select>
                   </div>
+               </div>
 			   </div>
             <div class="card-body">
 				 <div class="table-responsive">

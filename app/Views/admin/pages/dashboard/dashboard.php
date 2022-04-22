@@ -151,8 +151,8 @@
                      <h4 class="mb-2 card-title">Risk Map Sebelum Mitigasi - Inherent</h4>    
                   </div>
                   
-                  <div class="dropdown"> 
-                     <select class="form-control" id="year" name="year" onchange="update_matrix()">
+                  <div class="dropdown">
+                     <select class="form-control form-select" id="year" name="year" onchange="update_matrix()">
                         <option value="2021">2021</option>
                         <option value="2022" selected>2022</option>
                      </select>

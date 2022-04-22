@@ -1,6 +1,3 @@
-<?= $this->include('admin/template/_partials/js')?>
-
-
 <?php 
 $session = session();
 if($session->get('state_message')){

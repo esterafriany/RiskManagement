@@ -16,7 +16,7 @@
                            <tr>
                            <th>Risk Owner</th>
                            <th>Status</th>
-                           <th>Aksi <i class="fas fa-user"></i></th>
+                           <th>Aksi</th>
                         </tr>
                      </thead> 
                   </table>

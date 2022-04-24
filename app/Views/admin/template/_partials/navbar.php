@@ -1,6 +1,11 @@
         <!--Nav Start-->
         <nav class="nav navbar navbar-expand-lg navbar-light iq-navbar">
           <div class="container-fluid navbar-inner">
+          <a href="" class="navbar-brand">
+                <!--Logo start-->
+                <img src="<?=base_url()?>/assets/images/Flag/icon_ppd.jpg" style="height: 50px; min-width: 40px; width: 40px;">        
+                <h4 class="logo-title">Risk Management</h4>
+            </a>
             <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
                 <i class="icon">
                  <svg width="20px" height="20px" viewBox="0 0 24 24">

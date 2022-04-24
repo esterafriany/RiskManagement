@@ -58,8 +58,8 @@ class RiskEventController extends BaseController
 
         ## Total number of records with filtering
         $totalRecordwithFilter = $this->RiskEventModel->select('id')
+                ->where('year' , $year)
                 ->orLike('risk_event', $searchValue)
-                ->orLike('year', $searchValue)
                 ->countAllResults();
 
         ## Fetch records
@@ -67,6 +67,7 @@ class RiskEventController extends BaseController
                 ->where('year' , $year)
                 ->select('*')
                 ->orLike('risk_event', $searchValue)
+                ->orLike('is_active', $searchValue)
                 ->orderBy($columnName,$columnSortOrder)
                 ->findAll($rowperpage, $start);
 
@@ -74,10 +75,6 @@ class RiskEventController extends BaseController
                 ->join('kpis', 'kpis.id = risk_events.id_kpi')
                 ->select('risk_events.id as id, risk_events.objective, kpis.name as kpi_name, risk_number, risk_event, risk_events.is_active, risk_events.year')
                 ->orLike('risk_events.risk_event', $searchValue)
-                ->orLike('risk_events.year', $searchValue)
-                ->orLike('risk_number', $searchValue)
-                ->orLike('kpis.name', $searchValue)
-                ->orLike('risk_events.objective', $searchValue)
                 ->where('risk_events.year' , $year)
                 ->findAll($rowperpage, $start);
                 

@@ -88,6 +88,8 @@
                <?php } ?>
            
             </ul>
+            <div class="swiper-button swiper-button-next"></div>
+            <div class="swiper-button swiper-button-prev"></div>
          </div>
       </div>
    </div>

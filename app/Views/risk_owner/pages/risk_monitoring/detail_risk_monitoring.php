@@ -8,14 +8,14 @@
                </div>
 			</div>
             <div class="card-body">
-            <form id="form-edit-risk-event" enctype="multipart/form-data" action="<?php echo base_url('admin/RiskMonitoringController/onAddDetailMonitoring')?>" class="form-horizontal" method="POST">
+            <form id="form-edit-risk-event" enctype="multipart/form-data" action="<?php echo base_url('RiskOwner/RiskMonitoringController/onAddDetailMonitoring')?>" class="form-horizontal" method="POST">
                 <input type="hidden" value="<?=$id_detail_mitigation;?>" name="id_detail_mitigation">
                 <div class="row">
                     <div class="col">
                     <ul class="list-group">
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <small>Rencana Mitigasi</small>
                                         <textarea disabled name="risk_mitigation" class="form-control"><?=$risk_mitigation_data->risk_mitigation;?></textarea>

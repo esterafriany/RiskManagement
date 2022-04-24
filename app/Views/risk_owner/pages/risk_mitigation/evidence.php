@@ -1,4 +1,4 @@
-<form id="form-add-evidence" class="form-horizontal" method="POST" enctype="multipart/form-data" action="<?php echo base_url('admin/RiskMonitoringController/onUploadEvidence')?>">
+<form id="form-add-evidence" class="form-horizontal" method="POST" enctype="multipart/form-data" action="<?php echo base_url('RiskOwner/RiskMonitoringController/onUploadEvidence')?>">
 	<div class="modal-content">
 		<div class="modal-header">
 			<h5 class="modal-title" id="addGroupModalLabel">Tambah Evidence></h5>

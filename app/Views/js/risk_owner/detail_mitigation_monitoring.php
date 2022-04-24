@@ -1,4 +1,3 @@
-<?= $this->include('admin/template/_partials/js')?>
 
 
 <?php 

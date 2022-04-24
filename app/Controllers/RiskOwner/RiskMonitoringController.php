@@ -158,14 +158,13 @@ class RiskMonitoringController extends BaseController
             }
             
             //target monitoring
-            $this->RiskMitigationDetailMonitoringModel->delete_by_detail_mitigation_id($id_detail_mitigation);
+            //$this->RiskMitigationDetailMonitoringModel->delete_by_detail_mitigation_id($id_detail_mitigation);
             
             $target = $this->request->getPost('target[]');
             $notes = $this->request->getPost('notes[]');
             $monitoring = $this->request->getPost('monitoring[]');
 
             for($i = 0; $i < count($target); $i++){
-                
                 $data=[
                     'id_detail_mitigation' => $id_detail_mitigation,
                     'target_month' => date("Y")."-".$target[$i]."-01",
@@ -173,10 +172,14 @@ class RiskMonitoringController extends BaseController
                     'notes' => $notes[$i],
                 ];
 
-                $num_data = $this->RiskMitigationDetailMonitoringModel->get_data_by_month_target($id_detail_mitigation, $target[$i]);
-                if(!$num_data){
+                $existing_data = $this->RiskMitigationDetailMonitoringModel->get_data_by_month_target($id_detail_mitigation, $target[$i]);
+                //dd($not_deleted->t_month == (int)$target[$i]);
+                
+                if(!empty($existing_data)){
+                     $this->RiskMitigationDetailMonitoringModel->update($existing_data->id,$data);
+                }else{
                     $this->RiskMitigationDetailMonitoringModel->insert($data);
-                }               
+                }         
             }
 
             //update monitoring month

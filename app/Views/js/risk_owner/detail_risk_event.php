@@ -219,7 +219,8 @@
 				'target_probability_level':  document.getElementById('target_probability_level').value,
 				'target_impact_level':  document.getElementById('target_impact_level').value,
 				'target_final_level':  document.getElementById('target_final_level').value,
-				'risk_analysis':  document.getElementById('risk_analysis').value
+				'risk_analysis':  document.getElementById('risk_analysis').value,
+				'target_risk_analysis':  document.getElementById('target_risk_analysis').value
 			};
 			
 			//risk cause
@@ -258,7 +259,6 @@
 
 				success: function(response)
 				{
-
 					console.log(response);
 					swal({
 					  title: "Sukses!",
@@ -280,21 +280,6 @@
 			});
 		});
 	});
-	
-	function get_risk_assignment(id){
-		var a;
-		$.ajax({
-			url : "<?=site_url('RiskMitigationController/getRiskMitigationDivision')?>/" + id,
-			type: "GET",
-			dataType: "json",
-			async: false,
-			success: function(data)
-			{
-				a = data;
-			}
-		});
-		return a;
-	}
 
 	function get_list_division(){
 		var a;
@@ -337,44 +322,94 @@
 
 	function change_level(){
 		var final_level = document.getElementById("final_level");
+		var risk_analysis = document.getElementById("risk_analysis");
+
 		var probability_level = document.getElementById('probability_level').value;
 		var impact_level = document.getElementById('impact_level').value;
+		var level = parseInt(probability_level) * parseInt(impact_level);
 		
 		if(probability_level.value != ""){
-			final_level.value = parseInt(probability_level) * parseInt(impact_level);
+			final_level.value = level;
 		}
+
+		if(level == 1 || level == 2 || level == 3 || level == 4){
+            risk_analysis.value = "R";
+        }else if(level == 5 || level == 6 || level == 8 || level == 9){
+            risk_analysis.value = "M";
+        }else if(level == 10 || level == 12 || level == 15 || level == 16){
+            risk_analysis.value = "T";
+        }else if(level == 20 || level == 25){
+            risk_analysis.value = "E";
+        }
 
 	}
 
 	function change_level1(){
 		var final_level = document.getElementById("final_level");
+		var risk_analysis = document.getElementById("risk_analysis");
 		var probability_level = document.getElementById('probability_level').value;
 		var impact_level = document.getElementById('impact_level').value;
+		var level = parseInt(probability_level) * parseInt(impact_level);
 		
 		if(impact_level.value != ""){
-			final_level.value = parseInt(probability_level) * parseInt(impact_level);
+			final_level.value = level;
 		}
 
+		if(level == 1 || level == 2 || level == 3 || level == 4){
+            risk_analysis.value = "R";
+        }else if(level == 5 || level == 6 || level == 8 || level == 9){
+            risk_analysis.value = "M";
+        }else if(level == 10 || level == 12 || level == 15 || level == 16){
+            risk_analysis.value = "T";
+        }else if(level == 20 || level == 25){
+            risk_analysis.value = "E";
+        }
 	}
 
 	function change_level_target(){
 		var final_level = document.getElementById("target_final_level");
+		var risk_analysis_target = document.getElementById("target_risk_analysis");
 		var probability_level = document.getElementById('target_probability_level').value;
 		var impact_level = document.getElementById('target_impact_level').value;
 		
+		var level = parseInt(probability_level) * parseInt(impact_level);
+
 		if(probability_level.value != ""){
-			final_level.value = parseInt(probability_level) * parseInt(impact_level);
+			final_level.value = level;
 		}
+
+		if(level == 1 || level == 2 || level == 3 || level == 4){
+            risk_analysis_target.value = "R";
+        }else if(level == 5 || level == 6 || level == 8 || level == 9){
+            risk_analysis_target.value = "M";
+        }else if(level == 10 || level == 12 || level == 15 || level == 16){
+            risk_analysis_target.value = "T";
+        }else if(level == 20 || level == 25){
+            risk_analysis_target.value = "E";
+        }
 	}
 
 	function change_level_target1(){
 		var final_level = document.getElementById("target_final_level");
+		var risk_analysis_target = document.getElementById("target_risk_analysis");
 		var probability_level = document.getElementById('target_probability_level').value;
 		var impact_level = document.getElementById('target_impact_level').value;
 		
+		var level = parseInt(probability_level) * parseInt(impact_level);
+
 		if(impact_level.value != ""){
-			final_level.value = parseInt(probability_level) * parseInt(impact_level);
+			final_level.value = level;
 		}
+
+		if(level == 1 || level == 2 || level == 3 || level == 4){
+            risk_analysis_target.value = "R";
+        }else if(level == 5 || level == 6 || level == 8 || level == 9){
+            risk_analysis_target.value = "M";
+        }else if(level == 10 || level == 12 || level == 15 || level == 16){
+            risk_analysis_target.value = "T";
+        }else if(level == 20 || level == 25){
+            risk_analysis_target.value = "E";
+        }
 	}
 </script>
 

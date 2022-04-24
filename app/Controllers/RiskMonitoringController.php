@@ -292,7 +292,6 @@ class RiskMonitoringController extends BaseController
             //target monitoring
             //$this->RiskMitigationDetailMonitoringModel->delete_by_detail_mitigation_id($id_detail_mitigation);
             
-            
             $target = $this->request->getPost('target[]');
             $notes = $this->request->getPost('notes[]');
             $monitoring = $this->request->getPost('monitoring[]');

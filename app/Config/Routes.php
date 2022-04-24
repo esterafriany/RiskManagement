@@ -100,7 +100,7 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 });
 
 $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
-	//dashboard
+	//Dashboard
     $routes->add('dashboards', 'RiskOwner/DashboardController::index', ['as' => 'get-dashboard']);
 
 	//Risk Event
@@ -118,10 +118,13 @@ $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
 	//$routes->add('detail-risk-monitoring/(:num)', 'RiskOwner\RiskMonitoringController::getDetailRiskMonitoring/$1', ['as' => 'detail-risk-monitoring']);
 	$routes->add('view-detail-risk-monitoring/(:num)', 'RiskOwner\RiskMonitoringController::getDetailRiskMonitoring/$1', ['as' => 'aa-detail-risk-monitoring']);
 	
-	//risk terms
+	//Risk terms
 	$routes->add('view-probability-criteria', 'RiskOwner\DashboardController::view_probability_criteria', ['as' => 'aaa']);
 	$routes->add('view-impact-criteria', 'RiskOwner\DashboardController::view_impact_criteria', ['as' => 'bbb']);
 
+	//Risk Residual
+	$routes->add('get-risk-event-residual/(:num)', 'RiskOwner\RiskEventController::getDetailRiskResidual/$1', ['as' => 'get-risk-residual']);
+	
 });
 
 /*

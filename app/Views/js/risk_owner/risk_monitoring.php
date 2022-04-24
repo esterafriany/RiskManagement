@@ -2,6 +2,7 @@
 
 <script>
 	var table = $('#riskMonitoringTable');
+	
 	$(document).ready(function() {
 		var year = document.getElementById('year_selected').value;
 		var id_division = document.getElementById('id_division').value;
@@ -114,8 +115,9 @@
 				zeroRecords: "Tidak ada Data Risiko Utama ditemukan.",
 			},
 			'ajax': {
-				'url': "<?=site_url('RiskOwner/RiskMonitoringController/getRiskMonitoring/')?>" + year_selected,
+				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoring/')?>" + year_selected,
 				'data': function(data) {
+					console.log(data);
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
 					var csrfHash = $('.txt_csrfname').val(); // CSRF hash

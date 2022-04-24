@@ -245,14 +245,11 @@ class RiskEventController extends BaseController
             }
             //end of update risk number
 
-            //echo json_encode(array("status" => TRUE));
-            echo json_encode(array("status" => $array1));
+            echo json_encode(array("status" => TRUE));
         }catch (\Exception $e) {
             
         }
     }
-
-    
 
     public function getDetailRiskEvent($id) {
 		$data = [
@@ -299,5 +296,72 @@ class RiskEventController extends BaseController
         }catch (\Exception $e) {
           
         }
+    }
+
+    public function getDetailRiskResidual($id_risk_event){
+        $data = [
+            'title'=>'Risk Events',
+            'breadcrumb'=>'Home  <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Risk Register
+            <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Update Progress',
+            'content'=>'risk_owner/pages/risk_event/residual',
+            'kpi_list'=> $this->KPIModel->get_list_kpis(),
+            'id_risk_event'=> $id_risk_event,
+            'detail_risk_event' => $this->RiskEventModel->get_risk_event($id_risk_event)
+        ];
+        echo view('risk_owner/template/template',$data);
+    }
+
+    public function onAddRiskResidual(){
+        if (! $this->validate([
+            'probability_level_residual' => 'required',
+            'impact_level_residual' => 'required',
+            'final_level_residual' => 'required',
+        ])) {
+            throw new \Exception("Some message goes here");
+        }else{
+            //get inserted level
+            $residual_level_inserted = $this->request->getPost('probability_level_residual') * $this->request->getPost('impact_level_residual');
+            $id_risk_event = $this->request->getPost('id_risk_event');
+            try {
+                $data = [
+                        'probability_level_residual' => $this->request->getPost('probability_level_residual'),
+                        'impact_level_residual' => $this->request->getPost('impact_level_residual'),
+                        'final_level_residual' => $this->request->getPost('final_level_residual'),
+                        'risk_analysis_residual' => $this->request->getPost('risk_analysis_residual'),
+                        'risk_impact_quantitative' => $this->request->getPost('r'), //$this->request->getPost('risk_impact_quantitative'),
+                        'description' => $this->request->getPost('description'),
+                        ];
+
+                $this->RiskEventModel->update($id_risk_event,$data);
+            
+                /////////////////
+                ///update nomor risiko residual
+                //get all risk event in selected year
+                $data_risk_event = $this->RiskEventModel->get_list_risk_event_residual($this->request->getPost('year'));
+
+                $sort = array();
+                foreach($data_risk_event as $k=>$v) {
+                    $sort['final_level_residual'][$k] = $v['final_level_residual'];
+                    $sort['level'][$k] = $v['level'];
+                }
+                array_multisort($sort['final_level_residual'], SORT_DESC, $sort['level'], SORT_DESC,$data_risk_event);
+                
+                //update risk number
+                $risk_num = 1;
+                for($k=0; $k<count($data_risk_event); $k++) {
+                    
+                    $data_number['risk_number_residual'] = $risk_num;
+                    $this->RiskEventModel->update($data_risk_event[$k]['id'],$data_number);
+
+                    $risk_num +=1;
+                }
+                ///////////////
+                
+                echo json_encode(array("status" => $data));
+            }catch (\Exception $e) {
+                
+            }
+        }
+        
     }
 }

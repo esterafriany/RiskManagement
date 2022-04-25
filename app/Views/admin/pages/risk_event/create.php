@@ -69,22 +69,22 @@
 								</div>
 							</div>
 							<div class="form-group row">
-								<div class="col-sm-4"><small>Memadai/Tidak Memadai</small></div>
+								<div class="col-sm-4"><small>Memadai/Belum Memadai</small></div>
 								<div class="col-sm-8">
 									<select class="form-control form-select" name="existing_control_2" required>
 										<option value="" disabled selected hidden >Pilihan</option>
 										<option value="Memadai">Memadai</option>
-										<option value="Tidak Memadai">Tidak Memadai</option>
+										<option value="Belum Memadai">Belum Memadai</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group row">
-								<div class="col-sm-4"><small>Dijalankan/Belum Dijalankan</small></div>
+								<div class="col-sm-4"><small>Dijalankan 100%/Belum Dijalankan 100%</small></div>
 								<div class="col-sm-8">
 									<select class="form-control form-select" name="existing_control_3" required>
 										<option value="" disabled selected hidden >Pilihan</option>
-										<option value="Dijalankan">Dijalankan</option>
-										<option value="Belum Dijalankan">Belum Dijalankan</option>
+										<option value="Dijalankan 100%">Dijalankan 100%</option>
+										<option value="Belum Dijalankan 100%">Belum Dijalankan 100%</option>
 									</select>
 								</div>
 							</div>

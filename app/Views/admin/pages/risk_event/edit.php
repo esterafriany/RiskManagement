@@ -112,7 +112,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-4"><small>Memadai/Tidak Memadai</small></div>
+                                            <div class="col-sm-4"><small>Memadai/Belum Memadai</small></div>
                                             <div class="col-sm-8">
                                                 <select class="form-control form-select" required id="existing_control_2" name="existing_control_2">
                                                     <option value="" disabled selected hidden >Pilihan</option>
@@ -122,30 +122,30 @@
                                                             <option value="Memadai">Memadai</option>
                                                         <?php } ?>
 
-                                                        <?php if($detail_risk_event->existing_control_2 == "Tidak Memadai"){?>
-                                                            <option value="Tidak Memadai" selected>Tidak Memadai</option>
+                                                        <?php if($detail_risk_event->existing_control_2 == "Belum Memadai"){?>
+                                                            <option value="Belum Memadai" selected>Belum Memadai</option>
                                                         <?php }else{ ?>
-                                                            <option value="Tidak Memadai">Tidak Memadai</option>
+                                                            <option value="Belum Memadai">Belum Memadai</option>
                                                         <?php } ?>
                                                         
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-4"><small>Dijalankan/Belum Dijalankan</small></div>
+                                            <div class="col-sm-4"><small>Dijalankan/Belum Dijalankan 100%</small></div>
                                             <div class="col-sm-8">
                                                 <select class="form-control form-select" required id="existing_control_3" name="existing_control_3">
                                                     <option value="" disabled selected hidden >Pilihan</option>
-                                                        <?php if($detail_risk_event->existing_control_3 == "Dijalankan"){?>
-                                                            <option value="Dijalankan" selected>Dijalankan</option>
+                                                        <?php if($detail_risk_event->existing_control_3 == "Dijalankan 100%"){?>
+                                                            <option value="Dijalankan 100%" selected>Dijalankan 100%</option>
                                                         <?php }else{ ?>
-                                                            <option value="Dijalankan">Dijalankan</option>
+                                                            <option value="Dijalankan 100%">Dijalankan 100%</option>
                                                         <?php } ?>
 
-                                                        <?php if($detail_risk_event->existing_control_2 == "Belum Dijalankan"){?>
-                                                            <option value="Belum Dijalankan" selected>Belum Dijalankan</option>
+                                                        <?php if($detail_risk_event->existing_control_3 == "Belum Dijalankan 100%"){?>
+                                                            <option value="Belum Dijalankan 100%" selected>Belum Dijalankan 100%</option>
                                                         <?php }else{ ?>
-                                                            <option value="Belum Dijalankan">Belum Dijalankan</option>
+                                                            <option value="Belum Dijalankan 100%">Belum Dijalankan 100%</option>
                                                         <?php } ?>
                                                         
                                                 </select>

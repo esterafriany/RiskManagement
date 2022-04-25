@@ -41,9 +41,7 @@
                            &nbsp;&nbsp;
                            <input class="toggle-vis" type="checkbox" value="" data-column="4">
                            <label class="form-check-label" for="flexCheckChecked11">Tahun</label>
-
                      </p>
-                     
                   </div>
                </li>
             </udl

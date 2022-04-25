@@ -195,14 +195,14 @@ class UserController extends BaseController
   
         ## Fetch records
         $records = $this->UserModel
-				->join('groups', 'groups.id = users.id_group')
-				->join('divisions', 'divisions.id = users.id_division')
-				->select('users.id as id, users.name as user_name, groups.name as group_name, users.is_active, email')
-                 ->orLike('users.name', $searchValue)
-				 ->orLike('email', $searchValue)
-                 ->orLike('users.is_active', $searchValue)
-                 //->orderBy($columnName,$columnSortOrder)
-                 ->findAll($rowperpage, $start);
+                ->join('groups', 'groups.id = users.id_group')
+                ->join('divisions', 'divisions.id = users.id_division', 'left')
+                ->select('users.id as id, users.name as user_name, groups.name as group_name, users.is_active, email')
+                ->orLike('users.name', $searchValue)
+				        ->orLike('email', $searchValue)
+                ->orLike('users.is_active', $searchValue)
+                //->orderBy($columnName,$columnSortOrder)
+                ->findAll($rowperpage, $start);
 	 
 		$data = array();
  

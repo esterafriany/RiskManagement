@@ -189,7 +189,6 @@
 		if(probability_level.value != ""){
 			final_level.value = parseInt(probability_level) * parseInt(impact_level);
 		}
-
 	}
 
 	function change_level1(){

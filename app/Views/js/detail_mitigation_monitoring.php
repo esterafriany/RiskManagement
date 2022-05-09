@@ -207,7 +207,6 @@ if($session->get('state_message')){
 	}
 
 	function show_notes(id, month){
-		
 		$("#div"+month).toggle(); 
 		$.ajax({
 			url : "<?=site_url('RiskMonitoringController/onShowNotes')?>/" + id +"/" + month,

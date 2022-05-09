@@ -294,7 +294,6 @@ class RiskMonitoringController extends BaseController
             
             $target = $this->request->getPost('target[]');
             $notes = $this->request->getPost('notes[]');
-            $monitoring = $this->request->getPost('monitoring[]');
 
             for($i = 0; $i < count($target); $i++){
                 $data=[
@@ -314,9 +313,12 @@ class RiskMonitoringController extends BaseController
                 }         
             }
 
-            //update monitoring month
-            for($i = 0; $i < count($monitoring); $i++){
-                $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$i]);
+            if($this->request->getPost('monitoring[]')){
+                $monitoring = $this->request->getPost('monitoring[]');
+                //update monitoring month
+                for($i = 0; $i < count($monitoring); $i++){
+                    $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$i]);
+                }
             }
             
             return redirect()->back()->with('state_message', 'success');

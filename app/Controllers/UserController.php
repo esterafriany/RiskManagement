@@ -244,6 +244,7 @@ class UserController extends BaseController
 						'email' => $this->request->getPost('email'),
 						'password' => md5($this->request->getPost('password')),
 						'id_group' => $this->request->getPost('id_group'),
+						'id_division' => $this->request->getPost('id_division'),
 						'is_active' => $this->request->getPost('is_active'),
 						];
 				$this->UserModel->insert($data);
@@ -273,6 +274,7 @@ class UserController extends BaseController
 						'name' => $this->request->getPost('name'),
 						'email' => $this->request->getPost('email'),
 						'password' => md5($this->request->getPost('password')),
+						'id_division' => $this->request->getPost('id_division'),
 						'id_group' => $this->request->getPost('id_group'),
 						'is_active' => $this->request->getPost('is_active'),
 						];

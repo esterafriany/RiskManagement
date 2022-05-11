@@ -2,6 +2,9 @@
 <script>
 	$(document).ready(function() {
 		
+
+		
+
 		var $btn_edit_risk_event = $("#btn-edit-risk-event");
 		var site_url = window.location.pathname;
         var arr = site_url.split("/");
@@ -85,7 +88,6 @@
 						data:list_division
 					}).select2('val',temp2);
 					$('#selectedID-'+k).val(temp2);
-
 
 					temp2=[];
 					

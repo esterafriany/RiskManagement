@@ -73,14 +73,14 @@ class RiskEventController extends BaseController
 
         $records = $this->RiskEventModel
                 ->join('kpis', 'kpis.id = risk_events.id_kpi')
-                ->select('risk_events.id as id, risk_events.objective, kpis.name as kpi_name, risk_number, risk_event, risk_events.is_active, risk_events.year')
+                ->select('risk_events.id as id, risk_events.objective, kpis.name as kpi_name, risk_number,  risk_number_residual, risk_event, risk_events.is_active, risk_events.year')
                 ->orLike('risk_events.risk_event', $searchValue)
                 ->orLike('risk_events.objective', $searchValue)
                 ->orLike('kpis.name', $searchValue)
                 ->where('risk_events.year' , $year)
                 ->orderBy('risk_events.id')
-                ->findAll($rowperpage, $start);
-                
+                ->findAll($rowperpage, $start);  
+        
         $data = array();
 
         foreach($records as $record ){
@@ -89,6 +89,7 @@ class RiskEventController extends BaseController
                 "objective"=>$record['objective'],
                 "kpi_name"=>$record['kpi_name'],
                 "risk_number"=>$record['risk_number'],
+                "risk_number_residual"=>$record['risk_number_residual'],
                 "risk_event"=>$record['risk_event'],
                 "year"=>$record['year'],
                 "is_active"=>$record['is_active']

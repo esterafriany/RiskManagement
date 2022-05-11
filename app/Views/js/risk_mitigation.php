@@ -42,7 +42,14 @@
 					data: 'kpi_name'
 				},
 				{
-					data: 'risk_number'
+					data: 'id',
+					render: function (data, type, item) {
+						return 'R'+item.id
+						
+					},
+				},
+				{
+					data: 'risk_number_residual'
 				},
 				{
 					data: 'risk_event'
@@ -86,7 +93,6 @@
 			scrollX: 				true,
 			scrollCollapse: true,
 			scroller:       true,
-
 			'fixedColumns': true,
 			'processing': true,
 			'serverSide': true,
@@ -100,6 +106,7 @@
 			'ajax': {
 				'url': "<?=site_url('RiskMitigationController/getRiskMitigation/')?>" + year_selected,
 				'data': function(data) {
+					//console.log(data.aaData);
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
 					var csrfHash = $('.txt_csrfname').val(); // CSRF hash
@@ -119,17 +126,28 @@
 				}
 			},
 			'columns': [
-				
 				{
+					Title: 'KPI',
 					data: 'kpi_name'
 				},
 				{
-					data: 'risk_number'
+					Title: 'No. Risiko',
+					data: 'id',
+					render: function (data, type, item) {
+						return 'R'+item.id
+						
+					},
 				},
 				{
+					Title: 'Ranking Risiko Progress',
+					data: 'risk_number_residual'
+				},
+				{
+					Title: 'Risiko Utama',
 					data: 'risk_event'
 				},
 				{
+					Title: 'Aksi',
 					data: 'is_active',
 					render: function (data, type, item) {
 						return '<div class="flex align-items-center list-user-action">'+

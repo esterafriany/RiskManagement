@@ -45,8 +45,14 @@
 					data: 'kpi_name'
 				},
 				{
-					title: "Nomor Risiko",
-					data: 'risk_number'
+					data: 'id',
+					render: function (data, type, item) {
+						return 'R'+item.id
+						
+					},
+				},
+				{
+					data: 'risk_number_residual'
 				},
 				{
 					title: "Risiko Utama",
@@ -91,7 +97,7 @@
         
 		if ( $.fn.dataTable.isDataTable('#riskEventsTable') ) {
 			$('#riskEventsTable').DataTable().destroy();
-			$('#riskEventsTable').empty();
+			//$('#riskEventsTable').empty();
 		}
 		
 		$('#riskEventsTable').DataTable({
@@ -136,7 +142,15 @@
 				},
 				{
 					title: "Nomor Risiko",
-					data: 'risk_number'
+					data: 'id',
+					render: function (data, type, item) {
+						return 'R'+item.id
+						
+					},
+				},
+				{
+					title: "Ranking Risiko Progress",
+					data: 'risk_number_residual'
 				},
 				{
 					title: "Risiko Utama",

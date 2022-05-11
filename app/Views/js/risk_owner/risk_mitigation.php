@@ -42,7 +42,15 @@
 					data: 'kpi_name'
 				},
 				{
-					data: 'risk_number'
+					data: 'id',
+					render: function (data, type, item) {
+						return 'R'+item.id
+						
+					},
+				},
+				{
+					Title: 'Ranking Risiko Progress',
+					data: 'risk_number_residual'
 				},
 				{
 					data: 'risk_event'
@@ -124,7 +132,16 @@
 					data: 'kpi_name'
 				},
 				{
-					data: 'risk_number'
+					Title: 'No. Risiko',
+					data: 'id',
+					render: function (data, type, item) {
+						return 'R'+item.id
+						
+					},
+				},
+				{
+					Title: 'Ranking Risiko Progress',
+					data: 'risk_number_residual'
 				},
 				{
 					data: 'risk_event'

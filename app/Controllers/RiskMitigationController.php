@@ -97,7 +97,7 @@ class RiskMitigationController extends BaseController
                 ->orLike('risk_events.risk_event', $searchValue)
                 ->orLike('risk_number', $searchValue)
                 ->where('risk_events.year' , $year)
-                ->select('risk_events.id as id, kpis.name as kpi_name, risk_number, risk_event, risk_events.is_active')
+                ->select('risk_events.id as id, kpis.name as kpi_name, risk_number, risk_number_residual, risk_event, risk_events.is_active')
                 ->orderBy($columnName,$columnSortOrder)
                 ->findAll($rowperpage, $start);
                 
@@ -108,6 +108,7 @@ class RiskMitigationController extends BaseController
                 "id"=>$record['id'],
                 "kpi_name"=>$record['kpi_name'],
                 "risk_number"=>$record['risk_number'],
+                "risk_number_residual"=>$record['risk_number_residual'],
                 "risk_event"=>$record['risk_event'],
                 "is_active"=>$record['is_active']
             ); 

@@ -55,7 +55,7 @@
 					},
 				},
 				{
-					data: 'risk_number'
+					data: 'risk_number_residual'
 				},
 				{
 					data: 'risk_event'
@@ -260,7 +260,15 @@
 				},
 				{
 					title: "Nomor Risiko",
-					data: 'risk_number'
+					data: 'id',
+					render: function (data, type, item) {
+						return 'R'+item.id
+						
+					},
+				},
+				{
+					title: "Ranking Risiko Progress",
+					data: 'risk_number_residual'
 				},
 				{
 					title: "Risiko Utama",
@@ -300,7 +308,7 @@
                     render: function (data, type, full, meta) {
                         return "<div class='text-wrap width-200'>" + data + "</div>";
                     },
-                    targets: [0,3]
+                    targets: [0,1,3]
                 }
             ]
 		});

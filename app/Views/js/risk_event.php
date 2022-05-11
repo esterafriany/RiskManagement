@@ -48,6 +48,13 @@
 					data: 'kpi_name'
 				},
 				{
+					data: 'id',
+					render: function (data, type, item) {
+						return 'R'+item.id
+						
+					},
+				},
+				{
 					data: 'risk_number'
 				},
 				{
@@ -85,7 +92,7 @@
                     render: function (data, type, full, meta) {
                         return "<div class='text-wrap width-200'>" + data + "</div>";
                     },
-                    targets: [0,3]
+                    targets: [0,1,3]
                 }
             ]
 			

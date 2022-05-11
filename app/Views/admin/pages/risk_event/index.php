@@ -52,7 +52,8 @@
                      <tr>
                         <th>Sasaran</th>
                         <th>KPI</th>
-                        <th>Nomor Risiko</th>
+                        <th>No. Risiko</th>
+                        <th>Ranking Risiko</th>
                         <th>Risiko Utama</th>
                         <th>Tahun</th>
                         <th>Aksi</th>

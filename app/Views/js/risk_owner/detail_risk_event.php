@@ -62,7 +62,6 @@
 							<td>
 							<input type="hidden" id="selectedID-${i}" name="assignment_division[]">
 							</td>
-							<td><button type="button" id="" class="btn btn-outline-danger btn-sm removes" name="removes" ><i class="fas fa-trash-alt"></i></button></td>
 						</tr>
 						</table>`;
 					id_risk_mitigation.push(result['risk_mitigation_list'][i]['id']);

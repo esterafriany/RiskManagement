@@ -75,7 +75,10 @@ class RiskEventController extends BaseController
                 ->join('kpis', 'kpis.id = risk_events.id_kpi')
                 ->select('risk_events.id as id, risk_events.objective, kpis.name as kpi_name, risk_number, risk_event, risk_events.is_active, risk_events.year')
                 ->orLike('risk_events.risk_event', $searchValue)
+                ->orLike('risk_events.objective', $searchValue)
+                ->orLike('kpis.name', $searchValue)
                 ->where('risk_events.year' , $year)
+                ->orderBy('risk_events.id')
                 ->findAll($rowperpage, $start);
                 
         $data = array();
@@ -364,6 +367,18 @@ class RiskEventController extends BaseController
                 $not_deleted_id= implode(",",$not_deleted_id_array);;
                 $this->RiskMitigationModel->delete_not_in($not_deleted_id, $id_risk_event);
                 
+            }else{
+                $id_risk_mitigation = $this->RiskMitigationModel
+                    ->where('id_risk_event',$id_risk_event)
+                    ->select('id')->first();
+                            
+                $this->RiskMitigationDivisionModel
+                    ->where('id_risk_mitigation',$id_risk_mitigation)
+                    ->delete();
+
+                $this->RiskMitigationModel
+                    ->where('id_risk_event',$id_risk_event)
+                    ->delete();
             }
 
             //risk category
@@ -426,7 +441,7 @@ class RiskEventController extends BaseController
             ///////////////
 
             echo json_encode(array("status" => TRUE));
-            //echo json_encode(array("status" => $not_deleted_id));
+            //echo json_encode(array("status" => $arr[2]));
         }catch (\Exception $e) {
             
         }

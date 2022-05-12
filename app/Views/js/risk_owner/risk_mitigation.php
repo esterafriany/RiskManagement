@@ -49,10 +49,6 @@
 					},
 				},
 				{
-					Title: 'Ranking Risiko Progress',
-					data: 'risk_number_residual'
-				},
-				{
 					data: 'risk_event'
 				},
 				{
@@ -76,7 +72,7 @@
                     render: function (data, type, full, meta) {
                         return "<div class='text-wrap width-200'>" + data + "</div>";
                     },
-                    targets: 2
+                    targets: [0,2]
                 }
             ]
 		});
@@ -140,10 +136,6 @@
 					},
 				},
 				{
-					Title: 'Ranking Risiko Progress',
-					data: 'risk_number_residual'
-				},
-				{
 					data: 'risk_event'
 				},
 				{
@@ -167,7 +159,7 @@
                     render: function (data, type, full, meta) {
                         return "<div class='text-wrap width-200'>" + data + "</div>";
                     },
-                    targets: 2
+                    targets: [0,2]
                 }
             ]
 		});

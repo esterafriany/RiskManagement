@@ -94,7 +94,7 @@
         
 		if ( $.fn.dataTable.isDataTable('#riskMonitoringTable') ) {
 			$('#riskMonitoringTable').DataTable().destroy();
-			//$('#riskMitigationTable').empty();
+			$('#riskMitigationTable').empty();
 		}
 		
 		$('#riskMonitoringTable').DataTable({

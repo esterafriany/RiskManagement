@@ -2,10 +2,11 @@
 
 <script>
 	var table = $('#riskMonitoringTable');
-	
+	var year = document.getElementById('year_selected').value;
+	var id_division = document.getElementById('id_division').value;
+
 	$(document).ready(function() {
-		var year = document.getElementById('year_selected').value;
-		var id_division = document.getElementById('id_division').value;
+		
 
 		table = $('#riskMonitoringTable').DataTable({
 			
@@ -24,7 +25,6 @@
 			'ajax':{
 				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoringByRiskOwner')?>/" + year +"/"+ id_division,
 				'data': function(data) {
-					console.log(data);
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
 					var csrfHash = $('.txt_csrfname').val(); // CSRF hash
@@ -94,9 +94,11 @@
 
 	function update_risk_table(){
         year_selected = document.getElementById('year_selected').value;
+		id_division = document.getElementById('id_division').value;
         
 		if ( $.fn.dataTable.isDataTable('#riskMonitoringTable') ) {
 			$('#riskMonitoringTable').DataTable().destroy();
+			// $('#riskMitigationTable').empty();
 		}
 		
 		$('#riskMonitoringTable').DataTable({
@@ -111,13 +113,14 @@
 			lengthMenu: [5, 10, 20, 50, 100],
 			"iDisplayLength": 5,
 			language: {
-				emptyTable: "Belum ada Risiko Utama.",
-				zeroRecords: "Tidak ada Data Risiko Utama ditemukan.",
+				emptyTable: "Belum ada Risiko.",
+				zeroRecords: "Tidak ada Data Risiko ditemukan.",
 			},
 			'ajax': {
-				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoring/')?>" + year_selected,
+				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoringByRiskOwner')?>/" + year_selected +"/"+ id_division,
 				'data': function(data) {
-					console.log(data);
+
+					console.log(id_division);
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
 					var csrfHash = $('.txt_csrfname').val(); // CSRF hash
@@ -176,14 +179,6 @@
 		});
 
 
-		$('.toggle-vis').on( 'change', function (e) {
-			e.preventDefault();
-			// Get the column API object
-			var column = $('#riskMonitoringTable').DataTable().column( $(this).attr('data-column') );
-	
-			// Toggle the visibility
-			column.visible( ! column.visible() );
-		});
     }
 
 </script>

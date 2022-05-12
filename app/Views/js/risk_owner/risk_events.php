@@ -51,9 +51,9 @@
 						
 					},
 				},
-				{
-					data: 'risk_number_residual'
-				},
+				// {
+				// 	data: 'risk_number_residual'
+				// },
 				{
 					title: "Risiko Utama",
 					data: 'risk_event'
@@ -149,14 +149,9 @@
 					},
 				},
 				{
-					title: "Ranking Risiko Progress",
-					data: 'risk_number_residual'
-				},
-				{
 					title: "Risiko Utama",
 					data: 'risk_event'
 				},
-				
 				{
 					title: "Tahun",
 					data: 'year'

@@ -43,9 +43,9 @@
 				{
 					data: 'description'
 				},
-				{
-					data: 'level'
-				},
+				// {
+				// 	data: 'level'
+				// },
 				{
 					data:  'is_active',
 					render: function (data, type, item) {

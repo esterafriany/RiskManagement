@@ -19,7 +19,7 @@
                      <tr>
                         <th>KPI</th>
                         <th>Deskripsi</th>
-                        <th>Urutan</th>
+                        <!-- <th>Urutan</th> -->
                         <th>Status</th>
                         <th>Aksi</i></th>
                      </tr>

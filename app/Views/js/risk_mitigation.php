@@ -49,9 +49,6 @@
 					},
 				},
 				{
-					data: 'risk_number_residual'
-				},
-				{
 					data: 'risk_event'
 				},
 				{
@@ -137,10 +134,6 @@
 						return 'R'+item.id
 						
 					},
-				},
-				{
-					Title: 'Ranking Risiko Progress',
-					data: 'risk_number_residual'
 				},
 				{
 					Title: 'Risiko Utama',

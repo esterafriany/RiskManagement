@@ -55,9 +55,6 @@
 					},
 				},
 				{
-					data: 'risk_number_residual'
-				},
-				{
 					data: 'risk_event'
 				},
 				
@@ -92,7 +89,7 @@
                     render: function (data, type, full, meta) {
                         return "<div class='text-wrap width-200'>" + data + "</div>";
                     },
-                    targets: [0,1,4]
+                    targets: [0,1,3]
                 }
             ]
 			
@@ -267,10 +264,6 @@
 					},
 				},
 				{
-					title: "Ranking Risiko Progress",
-					data: 'risk_number_residual'
-				},
-				{
 					title: "Risiko Utama",
 					data: 'risk_event'
 				},
@@ -308,7 +301,7 @@
                     render: function (data, type, full, meta) {
                         return "<div class='text-wrap width-200'>" + data + "</div>";
                     },
-                    targets: [0,1,4]
+                    targets: [0,1,3]
                 }
             ]
 		});

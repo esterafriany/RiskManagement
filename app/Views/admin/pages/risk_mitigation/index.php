@@ -24,7 +24,6 @@
                      <tr>
                         <th>KPI</th>
                         <th>No. Risiko</th>
-                        <th>Ranking Risiko Progress</th>
                         <th>Risiko Utama</th>
                         <th>Aksi</th>
                      </tr>

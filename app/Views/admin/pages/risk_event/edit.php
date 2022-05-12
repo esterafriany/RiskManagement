@@ -19,6 +19,12 @@
                                 <li class="list-group-item">
                                     <div class="row">
                                         <div class="col-md-6">
+                                            
+                                            <div class="form-group">
+                                                <small><b>Nomor Risiko</b></small>
+                                                <input type="text" class="form-control" id="risk_number" name="id_risk" value="R<?php echo $detail_risk_event->id;?>" disabled>
+                                            </div>
+
                                             <div class="form-group">
                                                 <small><b>Sasaran</b></small>
                                                 <input type="text" required class="form-control" id="objective" name="objective" value="<?php echo $detail_risk_event->objective;?>">
@@ -43,16 +49,11 @@
                                                     ?>
                                                 </select>
                                             </div>
-                                            
-                                            <div class="form-group">
-                                                <small><b>Nomor Risiko</b></small>
-                                                <input type="text" class="form-control" id="risk_number" name="id_risk" value="R<?php echo $detail_risk_event->id;?>" disabled>
-                                            </div>
 
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <small><b>Perankingan Risiko Progress</b></small>
                                                 <input type="text" class="form-control" id="risk_number" name="risk_number" value="<?php echo $detail_risk_event->risk_number_residual;?>" disabled>
-                                            </div>
+                                            </div> -->
                                             
                                             <div class="form-group">
                                                 <small><b>Risiko Utama</b></small>

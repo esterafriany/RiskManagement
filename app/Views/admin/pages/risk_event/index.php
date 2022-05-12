@@ -34,10 +34,10 @@
                            <label class="form-check-label" for="flexCheckChecked11">KPI</label>
                            &nbsp;&nbsp;
                            <input class="toggle-vis" type="checkbox" value="" data-column="2">
-                           <label class="form-check-label" for="flexCheckChecked11">No. Resiko</label>
+                           <label class="form-check-label" for="flexCheckChecked11">No. Risiko</label>
                            &nbsp;&nbsp;
                            <input class="toggle-vis" type="checkbox" value="" data-column="3">
-                           <label class="form-check-label" for="flexCheckChecked11">Resiko Utama</label>
+                           <label class="form-check-label" for="flexCheckChecked11">Risiko Utama</label>
                            &nbsp;&nbsp;
                            <input class="toggle-vis" type="checkbox" value="" data-column="4">
                            <label class="form-check-label" for="flexCheckChecked11">Tahun</label>
@@ -53,7 +53,6 @@
                         <th>Sasaran</th>
                         <th>KPI</th>
                         <th>No. Risiko</th>
-                        <th>Ranking Risiko Progress</th>
                         <th>Risiko Utama</th>
                         <th>Tahun</th>
                         <th>Aksi</th>

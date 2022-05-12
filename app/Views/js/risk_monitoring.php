@@ -45,13 +45,13 @@
 				},
 				{
 					data: 'risk_mitigation',
-					render: function (data, type, item) {
-						if(item.risk_mitigation != null){
-							return item.risk_mitigation;
-						}else{
-							return '';
-						}
-					},
+					// render: function (data, type, item) {
+					// 	if(item.risk_mitigation != null){
+					// 		return item.risk_mitigation;
+					// 	}else{
+					// 		return '';
+					// 	}
+					// },
 				},
 				{
 					data: 'risk_mitigation_detail',
@@ -83,7 +83,7 @@
                     render: function (data, type, full, meta) {
                         return "<div class='text-wrap width-200'>" + data + "</div>";
                     },
-                    targets: [0,1,3]
+                    targets: [0,1,2,3]
                 }
             ]
 		});
@@ -94,26 +94,25 @@
         
 		if ( $.fn.dataTable.isDataTable('#riskMonitoringTable') ) {
 			$('#riskMonitoringTable').DataTable().destroy();
+			//$('#riskMitigationTable').empty();
 		}
 		
 		$('#riskMonitoringTable').DataTable({
 			scrollX: 				true,
-			scrollCollapse: true,
-			scroller:       true,
-
-			'fixedColumns': true,
+			paging: 				true,
 			'processing': true,
 			'serverSide': true,
 			'serverMethod': 'post',
 			lengthMenu: [5, 10, 20, 50, 100],
 			"iDisplayLength": 5,
 			language: {
-				emptyTable: "Belum ada Risiko Utama.",
-				zeroRecords: "Tidak ada Data Risiko Utama ditemukan.",
+				emptyTable: "Belum ada Data Risiko.",
+				zeroRecords: "Tidak ada Data Risiko ditemukan.",
 			},
 			'ajax': {
-				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoring/')?>" + year_selected,
+				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoring')?>/" + year_selected,
 				'data': function(data) {
+					console.log(data);
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
 					var csrfHash = $('.txt_csrfname').val(); // CSRF hash
@@ -124,7 +123,7 @@
 					};
 				},
 				dataSrc: function(data) {
-					
+
 					// Update token hash
 					$('.txt_csrfname').val(data.token);
 
@@ -133,53 +132,55 @@
 				}
 			},
 			'columns': [
-				
 				{
 					data: 'risk_event'
 				},
 				{
-					data: 'risk_mitigation'
-				},
-				{
-					data: 'id',
-					render: function (data, type, item) {
-						if(item.id > 0){
-							return '<a href="" class="badge rounded-pill bg-primary text-white">'+item.id+'</a>';
-						}else{
-							return '';
-						}
-					},
+					data: 'risk_mitigation',
+					// render: function (data, type, item) {
+					// 	if(item.risk_mitigation != null){
+					// 		return item.risk_mitigation;
+					// 	}else{
+					// 		return '';
+					// 	}
+					// },
 				},
 				{
 					data: 'risk_mitigation_detail',
 					render: function (data, type, item) {
-						if(item.risk_mitigation_detail != ""){
-							return item.risk_mitigation_detail;
+						if(item.risk_mitigation_detail != null){
+							return '<a href="<?=base_url()?>/admin/detail-risk-monitoring/'+item.id+'">'+item.risk_mitigation_detail+'</a>';
+
 						}else{
-							return '';
+							return '-';
 						}
 					},
 				},
+				{
+					data: 'division_name'
+				},
+				{
+					data: 'progress_percentage',
+					render: function (data, type, item) {
+						if(item.progress_percentage != null){
+							return item.progress_percentage + ' %';
+						}else{
+							return '-';
+						}
+					},
+				}
 			],
 			columnDefs: [
                 {
                     render: function (data, type, full, meta) {
                         return "<div class='text-wrap width-200'>" + data + "</div>";
                     },
-                    targets: [0,1,3]
+                    targets: [0,1,2,3]
                 }
             ]
 		});
 
 
-		$('.toggle-vis').on( 'change', function (e) {
-			e.preventDefault();
-			// Get the column API object
-			var column = $('#riskMonitoringTable').DataTable().column( $(this).attr('data-column') );
-	
-			// Toggle the visibility
-			column.visible( ! column.visible() );
-		});
     }
 
 </script>

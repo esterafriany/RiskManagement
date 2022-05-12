@@ -74,7 +74,6 @@
 				var temp2 = [];
 				y = id_risk_mitigation.length;
 				for(k = 0; k < id_risk_mitigation.length; k++){
-				
 					var list_risk_mitigation = get_risk_assignment(id_risk_mitigation[k]);
 					
 					for(j = 0; j < list_risk_mitigation.length; j++){
@@ -87,7 +86,8 @@
 						placeholder: "Pilih Divisi",
 						data:list_division
 					}).select2('val',temp2);
-					$('#selectedID-'+k).val(temp2);
+
+					$('#selectedID-'+k).val(temp2).trigger('change');
 
 					temp2=[];
 					

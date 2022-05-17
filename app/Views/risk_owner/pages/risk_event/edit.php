@@ -51,14 +51,9 @@
                                             
                                             <div class="form-group">
                                                 <small><b>Nomor Risiko</b></small>
-                                                <input type="text" class="form-control" id="risk_number" name="id_risk" value="R<?php echo $detail_risk_event->id;?>" disabled>
+                                                <input type="text" class="form-control" id="risk_number" name="id_risk" value="<?php echo $detail_risk_event->risk_number_manual;?>" disabled>
                                             </div>
 
-                                            <div class="form-group">
-                                                <small><b>Perankingan Risiko Progress</b></small>
-                                                <input type="text" class="form-control" id="risk_number" name="risk_number" value="<?php echo $detail_risk_event->risk_number_residual;?>" disabled>
-                                            </div>
-                                            
                                             <div class="form-group">
                                                 <small><b>Risiko Utama</b></small>
                                                 <textarea class="form-control" required id="risk_event" name="risk_event"  rows="2"><?php echo $detail_risk_event->risk_event;?></textarea>

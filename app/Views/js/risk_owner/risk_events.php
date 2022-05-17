@@ -45,11 +45,7 @@
 					data: 'kpi_name'
 				},
 				{
-					data: 'id',
-					render: function (data, type, item) {
-						return 'R'+item.id
-						
-					},
+					data: 'risk_number_manual',
 				},
 				// {
 				// 	data: 'risk_number_residual'
@@ -112,7 +108,7 @@
 				zeroRecords: "Tidak ada Data Risiko Utama ditemukan.",
 			},
 			'ajax': {
-				'url': "<?=site_url('RiskOwner/RiskEventController/getRiskEvent/')?>" + year_selected,
+				'url': "<?=site_url('RiskEventController/getRiskEvent/')?>" + year_selected,
 				'data': function(data) {
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
@@ -142,11 +138,7 @@
 				},
 				{
 					title: "Nomor Risiko",
-					data: 'id',
-					render: function (data, type, item) {
-						return 'R'+item.id
-						
-					},
+					data: 'risk_number_manual',
 				},
 				{
 					title: "Risiko Utama",

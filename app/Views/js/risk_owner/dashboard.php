@@ -27,26 +27,26 @@
                     if(jQuery.inArray(data['all_data_matrix'][i]['id'], myarray) !== -1){
                         //in array
                         //risk map before mitigation
-                        document.getElementById(data['all_data_matrix'][i]['td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data['all_data_matrix'][i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data['all_data_matrix'][i]['id']}</b></a>` ;             
+                        document.getElementById(data['all_data_matrix'][i]['td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data['all_data_matrix'][i]['id']}" class="badge rounded-pill bg-primary text-white"><b>${data['all_data_matrix'][i]['risk_number_manual']}</b></a>` ;             
                         
                         //risk map after mitigation
-                        document.getElementById("target_"+ data['all_data_matrix'][i]['target_td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data['all_data_matrix'][i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data['all_data_matrix'][i]['id']}</b></a>` ;             
+                        document.getElementById("target_"+ data['all_data_matrix'][i]['target_td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data['all_data_matrix'][i]['id']}" class="badge rounded-pill bg-primary text-white"><b>${data['all_data_matrix'][i]['idrisk_number_manual']}</b></a>` ;             
 
                         //risk map progress mitigation
                         if(data['all_data_matrix'][i]['risk_number_residual'] != 0){
-                            document.getElementById("residual_"+ data['all_data_matrix'][i]['residual_td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data['all_data_matrix'][i]['id']}" class="badge rounded-pill bg-primary text-white"><b> R${data['all_data_matrix'][i]['id']}</b></a>` ;             
+                            document.getElementById("residual_"+ data['all_data_matrix'][i]['residual_td_id']).innerHTML += `<a href="<?=base_url()?>/risk_owner/get-detail-risk-mitigation/${data['all_data_matrix'][i]['id']}" class="badge rounded-pill bg-primary text-white"><b> ${data['all_data_matrix'][i]['risk_number_manual']}</b></a>` ;             
                         }
                     }else{
                         //not in array
                         //risk map before mitigation
-                        document.getElementById(data['all_data_matrix'][i]['td_id']).innerHTML += `<a onClick="show_alert()" class="badge rounded-pill bg-danger text-white"><b>R${data['all_data_matrix'][i]['id']}</b></a>` ;             
+                        document.getElementById(data['all_data_matrix'][i]['td_id']).innerHTML += `<a onClick="show_alert()" class="badge rounded-pill bg-danger text-white"><b>${data['all_data_matrix'][i]['risk_number_manual']}</b></a>` ;             
                         
                         //risk map after mitigation
-                        document.getElementById("target_"+ data['all_data_matrix'][i]['target_td_id']).innerHTML += `<a onClick="show_alert()" class="badge rounded-pill bg-danger text-white"><b>R${data['all_data_matrix'][i]['id']}</b></a>` ;             
+                        document.getElementById("target_"+ data['all_data_matrix'][i]['target_td_id']).innerHTML += `<a onClick="show_alert()" class="badge rounded-pill bg-danger text-white"><b>${data['all_data_matrix'][i]['risk_number_manual']}</b></a>` ;             
 
                         //risk map progress mitigation
                         if(data['all_data_matrix'][i]['risk_number_residual'] != 0){
-                            document.getElementById("residual_"+ data['all_data_matrix'][i]['residual_td_id']).innerHTML += `<a onClick="show_alert()" class="badge rounded-pill bg-danger text-white"><b> R${data['all_data_matrix'][i]['id']}</b></a>` ;             
+                            document.getElementById("residual_"+ data['all_data_matrix'][i]['residual_td_id']).innerHTML += `<a onClick="show_alert()" class="badge rounded-pill bg-danger text-white"><b> ${data['all_data_matrix'][i]['risk_number_manual']}</b></a>` ;             
                         }
                     }
                     

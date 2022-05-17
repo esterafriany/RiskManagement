@@ -48,11 +48,7 @@
 					data: 'kpi_name'
 				},
 				{
-					data: 'id',
-					render: function (data, type, item) {
-						return 'R'+item.id
-						
-					},
+					data: 'risk_number_manual'
 				},
 				{
 					data: 'risk_event'
@@ -257,11 +253,8 @@
 				},
 				{
 					title: "Nomor Risiko",
-					data: 'id',
-					render: function (data, type, item) {
-						return 'R'+item.id
-						
-					},
+					data: 'risk_number_manual',
+					
 				},
 				{
 					title: "Risiko Utama",

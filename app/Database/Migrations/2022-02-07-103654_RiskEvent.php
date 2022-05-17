@@ -23,6 +23,10 @@ class RiskEvent extends Migration
                 'type'           => 'INT',
                 'constraint'     => '4',
             ],
+            'risk_number_manual'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '4',
+            ],
             'risk_number_residual'       => [
                 'type'           => 'INT',
                 'constraint'     => '4',

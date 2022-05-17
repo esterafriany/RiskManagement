@@ -33,10 +33,16 @@
 								</div>
 							</div>
 							<div class="form-group row">
+								<small><b>Nomor Risiko</b></small>
+								<div class="col-sm-12">
+									<input type="text" class="form-control" id="risk_number_manual" name="risk_number_manual"  rows="3" required></textarea>
+								</div>
+							</div>
+							<div class="form-group row">
 								<small><b>Risiko Utama</b></small>
 								<div class="col-sm-12">
-								<textarea class="form-control" id="risk_event" name="risk_event"  rows="3" required></textarea>
-							</div>
+									<textarea class="form-control" id="risk_event" name="risk_event"  rows="3" required></textarea>
+								</div>
 							</div>
 							<div class="form-group row">
 								<small><b>Year</b></small>

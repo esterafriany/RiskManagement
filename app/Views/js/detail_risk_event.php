@@ -235,6 +235,7 @@
 				'risk_event':  document.getElementById('risk_event').value,
 				'year':  document.getElementById('year').value,
 				'id_kpi':  document.getElementById('id_kpi').value,
+				'risk_number_manual':  document.getElementById('risk_number_manual').value,
 				'existing_control_1':  document.getElementById('existing_control_1').value,
 				'existing_control_2':  document.getElementById('existing_control_2').value,
 				'existing_control_3':  document.getElementById('existing_control_3').value,

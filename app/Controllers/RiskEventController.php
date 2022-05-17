@@ -63,17 +63,10 @@ class RiskEventController extends BaseController
                 ->countAllResults();
 
         ## Fetch records
-        $records = $this->RiskEventModel
-                ->where('year' , $year)
-                ->select('*')
-                ->orLike('risk_event', $searchValue)
-                ->orLike('is_active', $searchValue)
-                ->orderBy($columnName,$columnSortOrder)
-                ->findAll($rowperpage, $start);
 
         $records = $this->RiskEventModel
                 ->join('kpis', 'kpis.id = risk_events.id_kpi')
-                ->select('risk_events.id as id, risk_events.objective, kpis.name as kpi_name, risk_number,  risk_number_residual, risk_event, risk_events.is_active, risk_events.year')
+                ->select('risk_events.id as id, risk_events.objective, risk_events.risk_number_manual, kpis.name as kpi_name, risk_number,  risk_number_residual, risk_event, risk_events.is_active, risk_events.year')
                 ->orLike('risk_events.risk_event', $searchValue)
                 ->orLike('risk_events.objective', $searchValue)
                 ->orLike('kpis.name', $searchValue)
@@ -90,6 +83,7 @@ class RiskEventController extends BaseController
                 "kpi_name"=>$record['kpi_name'],
                 "risk_number"=>$record['risk_number'],
                 "risk_number_residual"=>$record['risk_number_residual'],
+                "risk_number_manual"=>$record['risk_number_manual'],
                 "risk_event"=>$record['risk_event'],
                 "year"=>$record['year'],
                 "is_active"=>$record['is_active']
@@ -114,6 +108,7 @@ class RiskEventController extends BaseController
             'id_kpi' => 'required',
             'risk_event' => 'required',
             'year' => 'required',
+            'risk_number_manual' => 'required',
             'existing_control_1' => 'required',
             'existing_control_2' => 'required',
             'existing_control_3' => 'required', 
@@ -155,6 +150,7 @@ class RiskEventController extends BaseController
                         'risk_number' => '0',
                         'objective' => $this->request->getPost('objective'),
                         'risk_event' => $this->request->getPost('risk_event'),
+                        'risk_number_manual' => $this->request->getPost('risk_number_manual'),
                         'year' => $this->request->getPost('year'),
                         'existing_control_1' => $this->request->getPost('existing_control_1'),
                         'existing_control_2' => $this->request->getPost('existing_control_2'),
@@ -168,6 +164,8 @@ class RiskEventController extends BaseController
                         'risk_analysis' => $risk_analysis,
                         'target_risk_analysis' => $target_risk_analysis,
                         ];
+
+                        
 
                 $this->RiskEventModel->insert($data);
                 
@@ -214,7 +212,8 @@ class RiskEventController extends BaseController
                 /////////////////
 
                 
-                echo json_encode(array("status" => TRUE));
+                //echo json_encode(array("status" => TRUE));
+                echo json_encode(array("status" => $data));
             }catch (\Exception $e) {
                 
             }

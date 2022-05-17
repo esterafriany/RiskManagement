@@ -19,6 +19,7 @@ class RiskEvents extends Model
         "risk_number",
         "risk_number_residual",
         "risk_number_target",
+        "risk_number_manual",
         "risk_event",
         "year",
         "objective",
@@ -73,7 +74,7 @@ class RiskEvents extends Model
     public function get_data_matrix($year)
     {	
 		  return $this->db->query("SELECT id
-                                , risk_number, risk_number_target, risk_number_residual
+                                , risk_number, risk_number_target, risk_number_residual, risk_number_manual
                                 , probability_level, impact_level
                                 , target_probability_level, target_impact_level
                                 , probability_level_residual, impact_level_residual

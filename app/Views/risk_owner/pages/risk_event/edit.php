@@ -51,7 +51,7 @@
                                             
                                             <div class="form-group">
                                                 <small><b>Nomor Risiko</b></small>
-                                                <input type="text" class="form-control" id="risk_number" name="id_risk" value="<?php echo $detail_risk_event->risk_number_manual;?>" disabled>
+                                                <input type="text" class="form-control" id="risk_number" name="id_risk" value="R<?php echo $detail_risk_event->risk_number_manual;?>" disabled>
                                             </div>
 
                                             <div class="form-group">

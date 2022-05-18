@@ -71,7 +71,7 @@
                     render: function (data, type, full, meta) {
                         return "<div class='text-wrap width-200'>" + data + "</div>";
                     },
-                    targets: 3
+                    targets: [0,2]
                 }
             ]
 		});
@@ -160,7 +160,7 @@
                     render: function (data, type, full, meta) {
                         return "<div class='text-wrap width-200'>" + data + "</div>";
                     },
-                    targets: 3
+                    targets: [0,2]
                 }
             ]
 		});

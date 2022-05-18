@@ -86,7 +86,7 @@
                     render: function (data, type, full, meta) {
                         return "<div class='text-wrap width-200'>" + data + "</div>";
                     },
-                    targets: [1]
+                    targets: [0,1]
                 }
             ]
 		});

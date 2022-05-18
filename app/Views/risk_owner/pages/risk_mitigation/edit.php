@@ -28,7 +28,7 @@
                                         <div class="col-md-6">
 											<div class="form-group">
                                                 <small>Nomor Risiko</small>
-                                                <input type="text" class="form-control" id="risk_number" name="risk_number" value="<?php echo $detail_risk_event->risk_number;?>" disabled>
+                                                <input type="text" class="form-control" id="risk_number" name="risk_number" value="R<?php echo $detail_risk_event->risk_number_manual;?>" disabled>
                                             </div>
                                             <div class="form-group">
                                                 <small>KPI</small>

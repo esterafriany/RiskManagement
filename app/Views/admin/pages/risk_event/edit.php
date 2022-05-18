@@ -49,12 +49,18 @@
                                                 <input type="text" class="form-control" id="risk_number" name="risk_number" value="<?php echo $detail_risk_event->risk_number_residual;?>" disabled>
                                             </div> -->
                                             
-                                            <div class="form-group">
+                                            <div class="form-group row">
                                                 <small><b>Nomor Risiko</b></small>
-									            <input type="text" class="form-control" id="risk_number_manual" name="risk_number_manual"  rows="3" value="<?php echo $detail_risk_event->risk_number_manual;?>" required>
-                                                
+                                                <div class="col-sm-3">
+                                                    <div style="padding-top: 10px; padding-left: 5px;text-align: right; padding-right: 0px;">R
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-9" style="padding-left: 0px;">
+									                <input type="text" class="form-control" id="risk_number_manual" name="risk_number_manual"  rows="3" value="<?php echo $detail_risk_event->risk_number_manual;?>" required>
+                                                        
+                                                </div>
                                             </div>
-
+                         
                                             <div class="form-group">
                                                 <small><b>Risiko Utama</b></small>
                                                 <textarea class="form-control" required id="risk_event" name="risk_event"  rows="2"><?php echo $detail_risk_event->risk_event;?></textarea>

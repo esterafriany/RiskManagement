@@ -14,14 +14,14 @@
                 var i = 0;
                 for(i = 0; data.length ; i++){
                     //risk map before mitigation
-                    document.getElementById(data[i]['td_id']).innerHTML += `<a href="<?=base_url()?>/admin/detail-risk-mitigations/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b>${data[i]['risk_number_manual']}</b></a>` ;             
+                    document.getElementById(data[i]['td_id']).innerHTML += `<a href="<?=base_url()?>/admin/detail-risk-mitigations/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data[i]['risk_number_manual']}</b></a>` ;             
                 
                     //risk map after mitigation
-                    document.getElementById("target_"+ data[i]['target_td_id']).innerHTML += `<a href="<?=base_url()?>/admin/detail-risk-mitigations/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b>${data[i]['risk_number_manual']}</b></a>` ;             
+                    document.getElementById("target_"+ data[i]['target_td_id']).innerHTML += `<a href="<?=base_url()?>/admin/detail-risk-mitigations/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data[i]['risk_number_manual']}</b></a>` ;             
 
                     //risk map progress mitigation
                     if(data[i]['risk_number_residual'] != 0){
-                        document.getElementById("residual_"+ data[i]['residual_td_id']).innerHTML += `<a href="<?=base_url()?>/admin/detail-risk-mitigations/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b> ${data[i]['risk_number_manual']}</b></a>` ;             
+                        document.getElementById("residual_"+ data[i]['residual_td_id']).innerHTML += `<a href="<?=base_url()?>/admin/detail-risk-mitigations/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data[i]['risk_number_manual']}</b></a>` ;             
                     }
                     
                 }
@@ -101,9 +101,8 @@
             document.getElementById('51').innerHTML = "";
             var i = 0;
             for(i = 0; data.length ; i++){
-				
                 document.getElementById(data[i]['td_id']).innerHTML += `
-                <a class="badge rounded-pill bg-primary text-white">R${data[i]['risk_number']}</a>` ;         
+                <a class="badge rounded-pill bg-primary text-white">R${data[i]['risk_number_manual']}</a>` ;         
             }
 		},
 		error: function (jqXHR, textStatus, errorThrown)

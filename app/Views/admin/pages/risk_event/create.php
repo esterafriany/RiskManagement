@@ -34,7 +34,11 @@
 							</div>
 							<div class="form-group row">
 								<small><b>Nomor Risiko</b></small>
-								<div class="col-sm-12">
+								<div class="col-sm-3">
+									<div style="padding-top: 10px; padding-left: 5px;text-align: right; padding-right: 0px;">R
+									</div>
+								</div>
+								<div class="col-sm-9" style="padding-left: 0px;">
 									<input type="text" class="form-control" id="risk_number_manual" name="risk_number_manual"  rows="3" required></textarea>
 								</div>
 							</div>

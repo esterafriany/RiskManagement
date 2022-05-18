@@ -43,6 +43,9 @@
 				},
 				{
 					data: 'risk_number_manual',
+					render: function (data, type, item) {
+						return 'R'+item.risk_number_manual;
+					},
 				},
 				{
 					data: 'risk_event'
@@ -126,6 +129,9 @@
 				{
 					Title: 'No. Risiko',
 					data: 'risk_number_manual',
+					render: function (data, type, item) {
+						return 'R'+item.risk_number_manual;
+					},
 					
 				},
 				{

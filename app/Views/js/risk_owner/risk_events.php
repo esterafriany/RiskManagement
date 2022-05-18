@@ -46,6 +46,9 @@
 				},
 				{
 					data: 'risk_number_manual',
+					render: function (data, type, item) {
+						return 'R'+item.risk_number_manual;
+					},
 				},
 				// {
 				// 	data: 'risk_number_residual'
@@ -139,6 +142,9 @@
 				{
 					title: "Nomor Risiko",
 					data: 'risk_number_manual',
+					render: function (data, type, item) {
+						return 'R'+item.risk_number_manual;
+					},
 				},
 				{
 					title: "Risiko Utama",

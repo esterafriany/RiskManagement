@@ -19,12 +19,6 @@
                                 <li class="list-group-item">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            
-                                            <div class="form-group">
-                                                <small><b>Nomor Risiko</b></small>
-                                                <input type="text" class="form-control" id="risk_number" name="id_risk" value="R<?php echo $detail_risk_event->id;?>" disabled>
-                                            </div>
-
                                             <div class="form-group">
                                                 <small><b>Sasaran</b></small>
                                                 <input type="text" required class="form-control" id="objective" name="objective" value="<?php echo $detail_risk_event->objective;?>">

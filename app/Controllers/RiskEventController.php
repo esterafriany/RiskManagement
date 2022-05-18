@@ -71,7 +71,7 @@ class RiskEventController extends BaseController
                 ->orLike('risk_events.objective', $searchValue)
                 ->orLike('kpis.name', $searchValue)
                 ->where('risk_events.year' , $year)
-                ->orderBy('risk_events.id')
+                ->orderBy('risk_events.risk_number_manual')
                 ->findAll($rowperpage, $start);  
         
         $data = array();

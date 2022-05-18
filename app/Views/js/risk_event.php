@@ -48,7 +48,10 @@
 					data: 'kpi_name'
 				},
 				{
-					data: 'risk_number_manual'
+					data: 'risk_number_manual',
+					render: function (data, type, item) {
+						return 'R'+item.risk_number_manual;
+					},
 				},
 				{
 					data: 'risk_event'
@@ -254,6 +257,9 @@
 				{
 					title: "Nomor Risiko",
 					data: 'risk_number_manual',
+					render: function (data, type, item) {
+						return 'R'+item.risk_number_manual;
+					},
 					
 				},
 				{

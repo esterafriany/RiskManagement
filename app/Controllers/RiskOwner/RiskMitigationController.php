@@ -323,6 +323,7 @@ class RiskMitigationController extends BaseController
         try {
             $data = [
                 'risk_mitigation_detail' => $this->request->getPost('risk_mitigation_detail'),
+                'id_division' => session()->get('id_division'),
                 ];
             $this->RiskMitigationDetailModel->update($id, $data);
               

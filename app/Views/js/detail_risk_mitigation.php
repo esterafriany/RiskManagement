@@ -50,6 +50,9 @@
 					data: 'risk_mitigation_detail'
 				},
 				{
+					data: 'division_name'
+				},
+				{
 					data: 'id',
 					render: function (data, type, item) {
 						return `<div class="flex align-items-center list-user-action">

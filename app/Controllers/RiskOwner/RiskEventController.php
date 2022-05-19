@@ -154,7 +154,7 @@ class RiskEventController extends BaseController
             if(count($risk_mitigation) > 0){
                 $not_deleted_id_array = array();
                 for($j = 0; $j < count($risk_mitigation); $j++){
-                    $arr = explode(".",$risk_mitigation[$j]);
+                    $arr = explode("#",$risk_mitigation[$j]);
                         
                     if($arr[1]){
                         array_push($not_deleted_id_array,$arr[2]);  

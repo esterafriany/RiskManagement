@@ -2,11 +2,12 @@
 
 <script>
 	$(document).ready(function() {
-		
 		var $btn_edit_risk_detail = $("#btn-edit-risk-detail");
 		var site_url = window.location.pathname;
         var arr = site_url.split("/");
         var id_risk_event = arr[arr.length - 1];
+		var cause_number = 1;
+		var mitigation_number = 1;
 		let y = 0;
 		
 		var id_risk_owner = document.getElementById('id_division').value;
@@ -22,10 +23,12 @@
 				
 				for(i = 0; i < count; i++){
 					
-					penampung += `<table width="100%"><tr><td><input type="text" name="risk_cause[]" value="${result[i]['risk_cause']}" class="form-control" placeholder="Masukkan Penyebab Risiko">
+					penampung += `<table width="100%"><tr><td>${cause_number}.</td><td><input type="text" name="risk_cause[]" value="${result[i]['risk_cause']}" class="form-control" placeholder="Masukkan Penyebab Risiko">
 						</td><td>
 						<button type="button" id="" class="btn btn-outline-danger btn-sm remove" 
 						name="remove" ><i class="fas fa-trash-alt"></i></button></td></tr></table>`;
+					
+						cause_number++;
 				}
 				
 				document.getElementById("riskCauseList").innerHTML = penampung;
@@ -53,6 +56,7 @@
 				for(i = 0; i < count1; i++){
 					penampung += `<table width="100%">
 						<tr>
+							<td>${mitigation_number}.</td>
 							<td width="100%">
 								<input type="text" name="risk_mitigation[]" value="${result['risk_mitigation_list'][i]['risk_mitigation']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 								<input type="hidden" name="risk_mitigation_division_id[]" value="${result['risk_mitigation_list'][i]['id_risk_mitigation_division']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
@@ -64,6 +68,7 @@
 								</td>
 						</tr>
 						</table>`;
+						mitigation_number++;
 					id_risk_mitigation.push(result['risk_mitigation_list'][i]['id']);
 				}
 			
@@ -78,10 +83,11 @@
 
 		$("#add-more-cause").click(function () {
 			$("#riskCauseList").last().append(
-				'<table width="100%" id="riskCauseTable"><tr><td><input type="text" name="risk_cause[]" value="" class="form-control" placeholder="Masukkan Penyebab Risiko">' +
-				'</td><td><button type="button" name="remove" id="" class="btn btn-outline-primary btn-sm remove" ><i class="fas fa-trash-alt"></i></button></td></tr></table>'+
-				''
+				`<table width="100%" id="riskCauseTable"><tr><td>${cause_number}.</td><td><input type="text" name="risk_cause[]" value="" class="form-control" placeholder="Masukkan Penyebab Risiko">
+				</td><td><button type="button" name="remove" id="" class="btn btn-outline-primary btn-sm remove" ><i class="fas fa-trash-alt"></i></button></td></tr></table>`
+				
 			);
+			cause_number++;
 		});
 
 		$("#add-more-mitigation").click(function () {
@@ -89,6 +95,8 @@
 			$("#riskMitigationList").last().append(
 				`<table width="100%">
 					<tr>
+						<td>${mitigation_number}.</td>
+
 						<td width="100%">
 							<input type="text" name="risk_mitigation[]" value="" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 							<input type="hidden" name="risk_mitigation_division_id[]" value="" class="form-control" placeholder="Masukkan Mitigasi Risiko">
@@ -100,14 +108,18 @@
 					</tr>
 				</table>`
 			);
+			mitigation_number++;
 		});
 
 		$(document).on('click', '.remove', function () {
 			$(this).parents('tr').remove();
+			cause_number = cause_number - 1 ;
 		});
 
 		$(document).on('click', '.removes', function () {
 			$(this).parents('tr').remove();
+			mitigation_number = mitigation_number - 1 ;
+
 		});
 
 		// edit risk
@@ -134,7 +146,7 @@
 			
 			var risk_mitigation = new Array();
 			for (var i = 0; i < input1.length; i++) {
-				risk_mitigation[i]= input1[i].value+"."+input2[i].value+"."+input3[i].value;
+				risk_mitigation[i]= input1[i].value+"#"+input2[i].value+"#"+input3[i].value;
             }
 			
 			var id_risk = document.getElementById('id_risk_event').value;

@@ -103,6 +103,7 @@ class RiskMitigationController extends BaseController
                 ->join('kpis', 'kpis.id = risk_events.id_kpi')
                 ->where('risk_events.year' , $year)
                 ->select('risk_events.id as id, kpis.name as kpi_name, risk_number, risk_number_residual, risk_event, risk_events.is_active')
+                ->orderBy('risk_events.risk_number_manual')
                 ->orderBy($columnName,$columnSortOrder)
                 ->findAll($rowperpage, $start);
                 
@@ -244,7 +245,7 @@ class RiskMitigationController extends BaseController
             //risk mitigation
             $not_deleted_id_array = array();
             for($j = 0; $j < count($risk_mitigation); $j++){
-                $arr = explode(".",$risk_mitigation[$j]);
+                $arr = explode("#",$risk_mitigation[$j]);
                     
                 if($arr[1]){
                     array_push($not_deleted_id_array,$arr[2]);  

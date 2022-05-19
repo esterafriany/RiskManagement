@@ -247,7 +247,7 @@
 			
 			var risk_mitigation = new Array();
 			for (var i = 0; i < input1.length; i++) {
-				risk_mitigation[i]= input1[i].value+"."+input2[i].value+"."+input3[i].value;
+				risk_mitigation[i]= input1[i].value+"#"+input2[i].value+"#"+input3[i].value;
             }
 
 			//risk category

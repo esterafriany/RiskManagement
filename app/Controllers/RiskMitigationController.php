@@ -95,6 +95,7 @@ class RiskMitigationController extends BaseController
                 ->join('kpis', 'kpis.id = risk_events.id_kpi')
                 ->where('risk_events.year' , $year)
                 ->select('risk_events.id as id, kpis.name as kpi_name, risk_number, risk_events.risk_number_manual, risk_number_residual, risk_event, risk_events.is_active')
+                //->orderBy('risk_events.risk_number_manual')
                 ->orderBy($columnName,$columnSortOrder)
                 ->findAll($rowperpage, $start);
                 
@@ -253,7 +254,7 @@ class RiskMitigationController extends BaseController
 
                 //re-add risk mit
                 for($j = 0; $j < $division_assignment_num; $j++){
-                    $arr = explode(".",$division_assignment[$j]);
+                    $arr = explode("#",$division_assignment[$j]);
                     $risk_mitigation_name = $arr[0];
                     
                     //add risk mitigation tabel get inserted id

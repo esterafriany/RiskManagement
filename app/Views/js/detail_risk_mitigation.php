@@ -2,7 +2,6 @@
 
 <script>
 	$(document).ready(function() {
-		
 		if ( window.history.replaceState ) {
 			window.history.replaceState( null, null, window.location.href );
 		}
@@ -13,6 +12,7 @@
 		var site_url = window.location.pathname;
         var arr = site_url.split("/");
         var id_risk_mitigation = arr[arr.length - 1];
+		
 		let y = 0;
 		
 		$('#riskDetailMitigationTable').DataTable({

@@ -8,7 +8,7 @@
 		var year = document.getElementById('year_selected').value;
 		
 		table = $('#riskEventTable').DataTable({
-			scrollX: 				true,
+			scrollX: 	true,
 			scrollCollapse: true,
 			scroller:       true,
 			'processing': true,
@@ -16,6 +16,7 @@
 			'serverMethod': 'post',
 			lengthMenu: [5, 10, 20, 50, 100],
 			"iDisplayLength": 5,
+			order: [[2, 'asc']],
 			language: {
 				emptyTable: "Belum ada Risiko Utama.",
 				zeroRecords: "Tidak ada Data Risiko Utama ditemukan.",

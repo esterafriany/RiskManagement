@@ -71,7 +71,8 @@ class RiskEventController extends BaseController
                 ->orLike('risk_events.objective', $searchValue)
                 ->orLike('kpis.name', $searchValue)
                 ->where('risk_events.year' , $year)
-                ->orderBy('risk_events.risk_number_manual')
+                //->orderBy('risk_events.risk_number_manual')
+                ->orderBy($columnName,$columnSortOrder)
                 ->findAll($rowperpage, $start);  
         
         $data = array();
@@ -282,7 +283,7 @@ class RiskEventController extends BaseController
                 $not_deleted_id_array=array();
 
                 for($j = 0; $j < $division_assignment_num; $j++){
-                    $arr = explode(".",$division_assignment[$j]);
+                    $arr = explode("#",$division_assignment[$j]);
                     
                     
                     //cek whether updated or inserted

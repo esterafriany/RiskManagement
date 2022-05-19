@@ -12,6 +12,8 @@
 			'serverMethod': 'post',
 			lengthMenu: [5, 10, 20, 50, 100],
 			"iDisplayLength": 5,
+			order: [[1, 'asc']],
+
 			language: {
 				emptyTable: "Belum ada Data Risiko.",
 				zeroRecords: "Tidak ada Data Risiko ditemukan.",

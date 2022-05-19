@@ -2,13 +2,12 @@
 <script>
 	$(document).ready(function() {
 		
-
-		
-
 		var $btn_edit_risk_event = $("#btn-edit-risk-event");
 		var site_url = window.location.pathname;
         var arr = site_url.split("/");
         var id_risk_event = arr[arr.length - 1];
+		var cause_number = 1;
+		var mitigation_number = 1;
 		let y = 0;
 
 		$.ajax({
@@ -22,10 +21,16 @@
 				
 				for(i = 0; i < count; i++){
 					
-					penampung += `<table width="100%"><tr><td><input type="text" name="risk_cause[]" value="${result[i]['risk_cause']}" class="form-control" placeholder="Masukkan Penyebab Risiko">
-						</td><td>
-						<button type="button" id="" class="btn btn-outline-danger btn-sm remove" 
-						name="remove" ><i class="fas fa-trash-alt"></i></button></td></tr></table>`;
+					penampung += `<table width="100%">
+								<tr>
+									<td>${cause_number}.</td><td><input type="text" name="risk_cause[]" value="${result[i]['risk_cause']}" class="form-control" placeholder="Masukkan Penyebab Risiko">
+									</td>
+									<td><button type="button" id="" class="btn btn-outline-danger btn-sm remove" name="remove" ><i class="fas fa-trash-alt"></i></button>
+									</td>
+								</tr>
+							</table>`;
+						
+					cause_number = cause_number + 1;
 				}
 				
 				document.getElementById("riskCauseList").innerHTML = penampung;
@@ -53,6 +58,7 @@
 				for(i = 0; i < count1; i++){
 					penampung += `<table width="100%">
 						<tr>
+							<td>${mitigation_number}.</td>
 							<td width="50%">
 								<input type="text" name="risk_mitigation[]" value="${result['risk_mitigation_list'][i]['risk_mitigation']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 								<input type="hidden" name="risk_mitigation_id[]" value="${result['risk_mitigation_list'][i]['id']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
@@ -66,6 +72,7 @@
 							<td><button type="button" id="" class="btn btn-outline-danger btn-sm removes" name="removes" ><i class="fas fa-trash-alt"></i></button></td>
 						</tr>
 						</table>`;
+						mitigation_number++;
 					id_risk_mitigation.push(result['risk_mitigation_list'][i]['id']);
 				}
 			
@@ -148,10 +155,11 @@
 
 		$("#add-more-cause").click(function () {
 			$("#riskCauseList").last().append(
-				'<table width="100%" id="riskCauseTable"><tr><td><input type="text" name="risk_cause[]" value="" class="form-control" placeholder="Masukkan Penyebab Risiko">' +
-				'</td><td><button type="button" name="remove" id="" class="btn btn-outline-primary btn-sm remove" ><i class="fas fa-trash-alt"></i></button></td></tr></table>'+
-				''
+				`<table width="100%" id="riskCauseTable"><tr><tr><td>${cause_number}.</td><td><input type="text" name="risk_cause[]" value="" class="form-control" placeholder="Masukkan Penyebab Risiko">
+				</td><td><button type="button" name="remove" id="" class="btn btn-outline-primary btn-sm remove" ><i class="fas fa-trash-alt"></i></button></td></tr></table>`
+				
 			);
+			cause_number++;
 		});
 
 		$("#add-more-mitigation").click(function () {
@@ -159,6 +167,7 @@
 			$("#riskMitigationList").last().append(
 				`<table width="100%">
 					<tr>
+						<td>${mitigation_number}.</td>
 						<td width="50%">
 							<input type="text" name="risk_mitigation[]" value="" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 							<input type="hidden" name="risk_mitigation_id[]" value="" class="form-control" >
@@ -176,6 +185,7 @@
 				</table>`
 			);
 			
+				mitigation_number++;
 				var list_division = get_list_division();
 				var elm = $('#division-'+y);
 				var prevSelect = $(elm).select2({
@@ -216,10 +226,12 @@
 
 		$(document).on('click', '.remove', function () {
 			$(this).parents('tr').remove();
+			cause_number = cause_number - 1;
 		});
 
 		$(document).on('click', '.removes', function () {
 			$(this).parents('tr').remove();
+			mitigation_number = mitigation_number-1;
 		});
 
 		$(document).on('click', '.remove1', function () {
@@ -263,7 +275,7 @@
 			var input3 = document.getElementsByName('risk_mitigation_id[]');
 			var division_assignment = new Array();
 			for (var i = 0; i < input1.length; i++) {
-				division_assignment[i]= input1[i].value +"."+input2[i].value+"."+input3[i].value;
+				division_assignment[i]= input1[i].value +"#"+input2[i].value+"#"+input3[i].value;
             }
 
 			//risk category

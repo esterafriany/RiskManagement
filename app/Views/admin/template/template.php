@@ -2,7 +2,9 @@
 <!doctype html>
 <html lang="en" dir="ltr">
   <head>
-      <?= $this->include('admin/template/_partials/head')?>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <?= $this->include('admin/template/_partials/head')?>
   </head>
   <body class="  ">
   <?= $this->include('admin/template/_partials/loader')?>
@@ -16,7 +18,7 @@
         <?= $this->include('admin/template/_partials/content')?>
       <?= $this->include('admin/template/_partials/footer')?>
     </main>
-    <?= $this->include('admin/template/_partials/button-setting')?>
+    <?php //$this->include('admin/template/_partials/button-setting')?>
     <!-- Wrapper End-->
     <!-- offcanvas start -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" data-bs-scroll="true" data-bs-backdrop="true" aria-labelledby="offcanvasExampleLabel">

@@ -112,7 +112,7 @@
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="<?php echo base_url();?>/dashboard/app/user-profile.html">Profile</a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url();?>">Profile</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="<?=base_url('process-logout');?>">Logout</a></li>
                   </ul>

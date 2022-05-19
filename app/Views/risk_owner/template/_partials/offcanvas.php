@@ -1,4 +1,4 @@
-<div class="offcanvas-header">
+<!-- <div class="offcanvas-header">
   <div class="d-flex align-items-center">
     <h3 class="offcanvas-title me-3" id="offcanvasExampleLabel">Settings</h3>
   </div>
@@ -183,4 +183,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

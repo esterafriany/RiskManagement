@@ -16,7 +16,8 @@
         <?= $this->include('risk_owner/template/_partials/content')?>
       <?= $this->include('risk_owner/template/_partials/footer')?>
     </main>
-    <?= $this->include('risk_owner/template/_partials/button-setting')?>
+    <?php //$this->include('risk_owner/template/_partials/button-setting')?>
+
     <!-- Wrapper End-->
     <!-- offcanvas start -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" data-bs-scroll="true" data-bs-backdrop="true" aria-labelledby="offcanvasExampleLabel">

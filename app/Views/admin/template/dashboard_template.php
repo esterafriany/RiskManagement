@@ -16,7 +16,7 @@
         <?= $this->include('admin/template/_partials/content')?>
       <?= $this->include('admin/template/_partials/footer')?>
     </main>
-    <?= $this->include('admin/template/_partials/button-setting')?>
+    <?php //$this->include('admin/template/_partials/button-setting')?>
     <!-- Wrapper End-->
     <!-- offcanvas start -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" data-bs-scroll="true" data-bs-backdrop="true" aria-labelledby="offcanvasExampleLabel">

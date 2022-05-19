@@ -6,8 +6,7 @@ use CodeIgniter\Database\Migration;
 
 class RiskMitigationDetail extends Migration
 {
-    public function up()
-    {
+    public function up(){
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
@@ -26,6 +25,10 @@ class RiskMitigationDetail extends Migration
             'risk_mitigation_detail'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '500',
+            ],
+            'id_division'       => [
+                'type'           => 'INT',
+                'constraint'     => '4',
             ],
 			'is_active'       => [
                 'type'              => 'ENUM',

@@ -124,7 +124,6 @@ $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
 
 	//Risk Residual
 	$routes->add('get-risk-event-residual/(:num)', 'RiskOwner\RiskEventController::getDetailRiskResidual/$1', ['as' => 'get-risk-residual']);
-	
 });
 
 /*

@@ -2,11 +2,9 @@
 
 <script>
 	$(document).ready(function() {
-		
 		if ( window.history.replaceState ) {
 			window.history.replaceState( null, null, window.location.href );
 		}
-
 		var $btn_add_risk_detail = $("#btn-add-detail-mitigation");
 		var $btn_edit_risk_detail = $("#btn-edit-detail_mitigation");
 
@@ -28,7 +26,6 @@
 			'ajax': {
 				'url': "<?=site_url('RiskOwner/RiskMitigationController/getDetailMitigation')?>/"+id_risk_mitigation,
 				'data': function(data) {
-					
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
 					var csrfHash = $('.txt_csrfname').val(); // CSRF hash
@@ -48,6 +45,9 @@
 			},
 			'columns': [{
 					data: 'risk_mitigation_detail'
+				},
+				{
+					data: 'division_name'
 				},
 				{
 					data: 'id',
@@ -91,6 +91,7 @@
 
 					success: function(response)
 					{
+						console.log(response);
 						//if success close modal and reload ajax table
 						//$('body').removeClass('modal-open');
 						$('.modal-backdrop.show').css('opacity','0');

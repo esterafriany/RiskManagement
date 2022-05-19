@@ -188,17 +188,19 @@ class RiskMitigationController extends BaseController
 
         ## Fetch records
         $records = $this->RiskMitigationDetailModel
-                ->select('*')
+                ->join('divisions', 'divisions.id = risk_mitigation_details.id_division')
+                ->select('risk_mitigation_details.id, id_risk_mitigation, risk_mitigation_detail, id_division, divisions.name, division_code, risk_mitigation_details.is_active')
                 ->orLike('risk_mitigation_detail', $searchValue)
                 ->orderBy($columnName,$columnSortOrder)
                 ->where('id_risk_mitigation' , $id_risk_mitigation)
                 ->findAll($rowperpage, $start);
-                 
+
         $data = array();
 
         foreach($records as $record ){
             $data[] = array( 
                 "id"=>$record['id'],
+                "division_name"=>$record['name'],
                 "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
                 "is_active"=>$record['is_active']
             ); 
@@ -260,8 +262,6 @@ class RiskMitigationController extends BaseController
                             'is_active' => "1",
                         ];
                         $this->RiskMitigationModel->update($arr[2],$data);
-
-
                     }
                 }else{
                     //do insert
@@ -281,7 +281,6 @@ class RiskMitigationController extends BaseController
                         'is_active' => "1",
                     ];
                     $this->RiskMitigationDivisionModel->insert($data2);
-
                 }
             }
 
@@ -305,12 +304,14 @@ class RiskMitigationController extends BaseController
 			try {
 				$data = [
 						'risk_mitigation_detail' => $this->request->getPost('risk_mitigation_detail'),
+						'id_division' => session()->get('id_division'),
 						'id_risk_mitigation' => $this->request->getPost('id_risk_mitigation'),
-						];
+				];
+                
 
 				$this->RiskMitigationDetailModel->insert($data);
 					
-				echo json_encode(array("status" => $data));
+				echo json_encode(array("status" => session()->get('id_division')));
 			}catch (\Exception $e) {
 				
 			}

@@ -18,6 +18,7 @@ class RiskMitigationDetails extends Model
         "id_risk_mitigation",	
         "progress_percentage",
         "risk_mitigation_detail",
+        "id_division",
         "is_active"	
     ];
 

@@ -31,6 +31,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Detail Mitigasi</th>
+                                                <th>Divisi</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead> 

@@ -47,7 +47,14 @@
 					data: 'risk_mitigation_detail'
 				},
 				{
-					data: 'division_name'
+					data: 'name',
+					render: function (data, type, item) {
+						if(item.name != null){
+							return item.name;
+						}else{
+							return '-';
+						}
+					}
 				},
 				{
 					data: 'id',

@@ -187,7 +187,7 @@ class RiskMitigationController extends BaseController
 
         ## Fetch records
         $records = $this->RiskMitigationDetailModel
-                    ->join('divisions', 'divisions.id = risk_mitigation_details.id_division')
+                    ->join('divisions', 'divisions.id = risk_mitigation_details.id_division','left')
                     ->select('risk_mitigation_details.id, id_risk_mitigation, risk_mitigation_detail, id_division, divisions.name, division_code, risk_mitigation_details.is_active')
                     ->orLike('risk_mitigation_detail', $searchValue)
                     ->orderBy($columnName,$columnSortOrder)
@@ -199,7 +199,7 @@ class RiskMitigationController extends BaseController
         foreach($records as $record ){
             $data[] = array( 
                 "id"=>$record['id'],
-                "division_name"=>$record['name'],
+                "name"=>$record['name'],
                 "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
                 "is_active"=>$record['is_active']
             ); 

@@ -176,14 +176,21 @@ class RiskMitigationController extends BaseController
         $searchValue = $dtpostData['search']['value']; // Search value
 
         ## Total number of records without filtering
-        $totalRecords = $this->RiskMitigationDetailModel->select('id')
-                ->where('id_risk_mitigation' , $id_risk_mitigation)
+        $totalRecords = $this->RiskMitigationDetailModel
+        ->join('divisions', 'divisions.id = risk_mitigation_details.id_division')
+        ->select('risk_mitigation_details.id, id_risk_mitigation, risk_mitigation_detail, id_division, divisions.name, division_code, risk_mitigation_details.is_active')
+        ->orLike('risk_mitigation_detail', $searchValue)
+        ->orderBy($columnName,$columnSortOrder)
+        ->where('id_risk_mitigation' , $id_risk_mitigation)
                 ->countAllResults();
 
         ## Total number of records with filtering
-        $totalRecordwithFilter = $this->RiskMitigationDetailModel->select('id')
-                ->where('id_risk_mitigation' , $id_risk_mitigation)
+        $totalRecordwithFilter = $this->RiskMitigationDetailModel
+                ->join('divisions', 'divisions.id = risk_mitigation_details.id_division')
+                ->select('risk_mitigation_details.id, id_risk_mitigation, risk_mitigation_detail, id_division, divisions.name, division_code, risk_mitigation_details.is_active')
                 ->orLike('risk_mitigation_detail', $searchValue)
+                ->orderBy($columnName,$columnSortOrder)
+                ->where('id_risk_mitigation' , $id_risk_mitigation)
                 ->countAllResults();
 
         ## Fetch records
@@ -192,6 +199,7 @@ class RiskMitigationController extends BaseController
                 ->select('risk_mitigation_details.id, id_risk_mitigation, risk_mitigation_detail, id_division, divisions.name, division_code, risk_mitigation_details.is_active')
                 ->orLike('risk_mitigation_detail', $searchValue)
                 ->orderBy($columnName,$columnSortOrder)
+                ->orderBy('risk_mitigation_details.id')
                 ->where('id_risk_mitigation' , $id_risk_mitigation)
                 ->findAll($rowperpage, $start);
 
@@ -200,7 +208,7 @@ class RiskMitigationController extends BaseController
         foreach($records as $record ){
             $data[] = array( 
                 "id"=>$record['id'],
-                "division_name"=>$record['name'],
+                "name"=>$record['name'],
                 "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
                 "is_active"=>$record['is_active']
             ); 

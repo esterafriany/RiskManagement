@@ -23,7 +23,8 @@
 				
 				for(i = 0; i < count; i++){
 					
-					penampung += `<table width="100%"><tr><td>${cause_number}.</td><td width="100%"><input type="text" name="risk_cause[]" value="${result[i]['risk_cause']}" class="form-control" placeholder="Masukkan Penyebab Risiko">
+					penampung += `<table width="100%"><tr><td width="30px">${cause_number}.</td>
+						<td width="90%"><input type="text" name="risk_cause[]" value="${result[i]['risk_cause']}" class="form-control" placeholder="Masukkan Penyebab Risiko">
 						</td><td>
 						<button type="button" id="" class="btn btn-outline-danger btn-sm remove" 
 						name="remove" ><i class="fas fa-trash-alt"></i></button></td></tr></table>`;
@@ -56,8 +57,8 @@
 				for(i = 0; i < count1; i++){
 					penampung += `<table width="100%">
 						<tr>
-							<td>${mitigation_number}.</td>
-							<td width="100%">
+							<td width="30px">${mitigation_number}.</td>
+							<td width="50%">
 								<input type="text" name="risk_mitigation[]" value="${result['risk_mitigation_list'][i]['risk_mitigation']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 								<input type="hidden" name="risk_mitigation_division_id[]" value="${result['risk_mitigation_list'][i]['id_risk_mitigation_division']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 								<input type="hidden" name="risk_mitigation_id[]" value="${result['risk_mitigation_list'][i]['id_risk_mitigation']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">

@@ -60,7 +60,8 @@ class RiskMitigations extends Model
                               , risk_mitigations.risk_mitigation
                               FROM risk_mitigations
                               JOIN risk_mitigation_divisions ON risk_mitigations.id = risk_mitigation_divisions.id_risk_mitigation
-                              WHERE id_risk_event='".$id_risk."' AND risk_mitigation_divisions.id_division = '".$id_risk_owner."'")->getResultArray();
+                              WHERE id_risk_event='".$id_risk."' AND risk_mitigation_divisions.id_division = '".$id_risk_owner."'
+                              ORDER BY risk_mitigations.id ASC")->getResultArray();
     }
 
     public function get_risk_mitigation($id_risk_mitigation)

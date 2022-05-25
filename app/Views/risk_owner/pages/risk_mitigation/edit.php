@@ -8,9 +8,9 @@
                </div>
 			</div>
             <?php 
-                    $this->session = \Config\Services::session();
-                    $this->session->start(); 
-                    ?>
+                $this->session = \Config\Services::session();
+                $this->session->start(); 
+            ?>
             <div class="card-body">
             <form id="form-edit-risk-event" action="" class="form-horizontal" method="POST">
             <input type="hidden" class="form-control" id="id_risk_event" name="id_risk_event" value="<?php echo $detail_risk_event->id;?>">

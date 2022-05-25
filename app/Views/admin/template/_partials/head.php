@@ -32,6 +32,9 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/animate.css" type="text/css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/animate.min.css" type="text/css">
 
-<!--dropdown select --> 
-<link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/select2.min.css"> 
+<!--dropdown select 
+<link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/select2.min.css">-->  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css"> 
+
+
       

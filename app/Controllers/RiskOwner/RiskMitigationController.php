@@ -197,9 +197,9 @@ class RiskMitigationController extends BaseController
         $records = $this->RiskMitigationDetailModel
                 ->join('divisions', 'divisions.id = risk_mitigation_details.id_division')
                 ->select('risk_mitigation_details.id, id_risk_mitigation, risk_mitigation_detail, id_division, divisions.name, division_code, risk_mitigation_details.is_active')
-                ->orLike('risk_mitigation_detail', $searchValue)
+                ->orLike('divisions.name', $searchValue)
+                ->orderBy('risk_mitigation_details.id', 'asc')
                 ->orderBy($columnName,$columnSortOrder)
-                ->orderBy('risk_mitigation_details.id')
                 ->where('id_risk_mitigation' , $id_risk_mitigation)
                 ->findAll($rowperpage, $start);
 
@@ -209,6 +209,7 @@ class RiskMitigationController extends BaseController
             $data[] = array( 
                 "id"=>$record['id'],
                 "name"=>$record['name'],
+                "id_division"=>$record['id_division'],
                 "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
                 "is_active"=>$record['is_active']
             ); 

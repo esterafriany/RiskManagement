@@ -116,7 +116,6 @@
 
 				success: function(response)
 				{
-					console.log(response);
 					$('.modal-backdrop.show').css('opacity','0');
 					$('.modal-backdrop').css('z-index','-1');
 					$('#modal-add-group').modal("hide");

@@ -1,12 +1,10 @@
-
-
 <?php 
 $session = session();
 if($session->get('state_message')){
 	if($session->get('state_message') == 'error'){ ?>
 	<script>
 		$(document).ready(function() {
-		swal("Error","Data gagal ditambahkan. Pastikan Data Output, Target dan Realisasi tidak kosong.","error");
+		swal("Error","Data gagal ditambahkan. Pastikan Data Output tidak kosong.","error");
 		});
 	</script>
 <?php }else if($session->get('state_message') == 'success'){ ?>
@@ -22,8 +20,8 @@ if($session->get('state_message')){
 		});
 	</script>
 <?php }
-}?>
-
+}
+?>
 
 <script>
 	//bar percentage
@@ -77,6 +75,9 @@ if($session->get('state_message')){
 			dataType: "JSON",
 			success: function(result)
 			{
+				//var count1 = result['risk_mitigation_list'].length;
+				//var count2 = result['risk_division_list'].length;
+
 				var count = result.length;
 				var monitoring_sum = 0;
 				var percentage = 0;
@@ -88,10 +89,11 @@ if($session->get('state_message')){
 					$("#t"+target_month).prop("checked", true );
 					$('#n'+target_month).val(result[i]['notes']);
 					$('#e'+target_month).prop('disabled', false);
-
+		
 					var arr1 = result[i]['monitoring_month'].split("-");
         			var monitoring_month = arr1[arr1.length - 2];
-					
+					$('#e'+monitoring_month).prop('disabled', false);
+
 					if(monitoring_month != "00"){
 						monitoring_sum = monitoring_sum + 1;
 						$("#m"+monitoring_month).prop( "checked", true );

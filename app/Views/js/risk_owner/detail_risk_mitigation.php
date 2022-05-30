@@ -106,7 +106,7 @@
 
 					success: function(response)
 					{
-						console.log(response);
+						
 						//if success close modal and reload ajax table
 						//$('body').removeClass('modal-open');
 						$('.modal-backdrop.show').css('opacity','0');

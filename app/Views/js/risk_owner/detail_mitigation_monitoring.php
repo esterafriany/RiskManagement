@@ -48,7 +48,6 @@ if($session->get('state_message')){
 					
 					penampung += `<table width="100%">
 							<tr>
-								
 								<td width="50%">
 									<input type="text" name="output[]" value="${result[i]['output']}" class="form-control" placeholder="Masukkan Output">
 									<input type="hidden" name="output_id[]" value="${result[i]['id']}" class="form-control" >
@@ -100,10 +99,8 @@ if($session->get('state_message')){
 					}
 				}
 
-				percentage = (target_number / monitoring_number) * 100;
-
+				percentage = (monitoring_number / target_number) * 100;
 				document.getElementById("progress-bar").style.width = percentage+"%";
-
 				document.getElementById("progress_percentage").value = percentage.toFixed(2);
 				document.getElementById("text-percentage").innerHTML = percentage.toFixed(2)+"%";
 
@@ -187,7 +184,6 @@ if($session->get('state_message')){
 		}
 		percentage = (monitoring_number / target_number) * 100;
 		document.getElementById("progress-bar").style.width = percentage+"%";
-		
 		document.getElementById("progress_percentage").value = percentage.toFixed(2);
 		document.getElementById("text-percentage").innerHTML = percentage.toFixed(2)+"%";
 	}

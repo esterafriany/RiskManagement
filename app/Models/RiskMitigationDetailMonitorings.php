@@ -67,11 +67,30 @@ class RiskMitigationDetailMonitorings extends Model
         $result = $this->db->query($sql);
     }
 
+    public function update_data_monitoring_2($id_detail_mitigation, $monitoring_month){
+        $month = "0000-00-00";
+        $monitoring_month = date("Y")."-".$monitoring_month."-01";
+        $sql = "UPDATE risk_mitigation_detail_monitorings 
+                SET monitoring_month = '".$month."'
+                WHERE id_detail_mitigation='".$id_detail_mitigation."'and monitoring_month = '".$monitoring_month."'";
+        $result = $this->db->query($sql);
+    }
+
     public function update_data_target($id_detail_mitigation, $target_month){
         $month = date("Y")."-".$target_month."-01";
         $sql = "UPDATE risk_mitigation_detail_monitorings 
                 SET target_month = '".$month."'
                 WHERE id_detail_mitigation='".$id_detail_mitigation."'and target_month = '".$month."'";
+        $result = $this->db->query($sql);
+    }
+
+    public function update_data_target_2($id_detail_mitigation, $target_month){
+        $month = "0000-00-00";
+        $target_month = date("Y")."-".$target_month."-01";
+
+        $sql = "UPDATE risk_mitigation_detail_monitorings 
+                SET target_month = '".$month."'
+                WHERE id_detail_mitigation='".$id_detail_mitigation."'and target_month = '".$target_month."'";
         $result = $this->db->query($sql);
     }
 

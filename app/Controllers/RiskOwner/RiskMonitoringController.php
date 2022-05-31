@@ -159,10 +159,22 @@ class RiskMonitoringController extends BaseController
             
             $target = $this->request->getPost('target[]');
             $notes = $this->request->getPost('notes[]');
+            $arr_existing = array();
+            $arr_checked = array();
             
-            //update target
+            //existing target
+            $get_existing_target = $this->RiskMitigationDetailMonitoringModel->get_list_monitoring_by_id_detail_mitigation($id_detail_mitigation);
+        
+            foreach($get_existing_target as $k=>$v) {
+                $tm = substr($v['target_month'], 5, -3);
+                array_push($arr_existing, $tm);
+            }
+
+            //update target month
             if($target){
                 for($i = 0; $i < count($target); $i++){
+                    array_push($arr_checked,$target[$i]);  
+            
                     $existing_data = $this->RiskMitigationDetailMonitoringModel->get_data_by_month_target($id_detail_mitigation, $target[$i]);
                     if($existing_data){
                         //update existing data
@@ -193,20 +205,32 @@ class RiskMonitoringController extends BaseController
                                 'monitoring_month' => "0000-00-00",
                                 'notes' => $notes[$i],
                             ];
-
                             $this->RiskMitigationDetailMonitoringModel->insert($data);
-                        } 
+                        }
                     }         
                 }
-            }else{
-                //delete existing monitoring data, evidence
-                
             }
-            
+
+            //delete not relevan target month
+            //looping existing array  
+            $arr_deleted = array();       
+            for($i = 0 ; $i < count($arr_existing); $i++){
+                if (!in_array($arr_existing[$i], $arr_checked)){
+                    array_push($arr_deleted,$arr_existing[$i]);
+                }
+            }
+            for($i = 0 ; $i < count($arr_deleted); $i++){
+                //update to 0000-00-00 where id_detail_mitigation and target_month
+                $a = $this->RiskMitigationDetailMonitoringModel->update_data_target_2($id_detail_mitigation, $arr_deleted[$i]);
+               
+            }
+
+            $arr_checked_monitoring = array();
             //update monitoring month
             $monitoring = $this->request->getPost('monitoring[]');
             if($monitoring){
                 for($j = 0; $j < count($monitoring); $j++){
+                    array_push($arr_checked_monitoring,$monitoring[$j]);  
                     //get data with target month = monitoring month
                     $target_data = $this->RiskMitigationDetailMonitoringModel->where('target_month', date("Y")."-".$monitoring[$j]."-01")->findAll();
                     // dd($target_data);
@@ -231,11 +255,32 @@ class RiskMonitoringController extends BaseController
                                 'notes' => $notes[$i],
                             ];
                             $this->RiskMitigationDetailMonitoringModel->insert($data); 
-                        }
-                         
+                        } 
                     }
-                    
                 }
+            }
+
+            $arr_existing_monitoring = array();
+
+            foreach($get_existing_target as $k=>$v) {
+                $mm = substr($v['monitoring_month'], 5, -3);
+                if($mm != "00"){
+                    array_push($arr_existing_monitoring, $mm);
+                }
+                
+            }
+            //delete not relevan monitoring month
+            //looping existing array  
+            $arr_deleted_monitoring = array();       
+            for($i = 0 ; $i < count($arr_existing_monitoring); $i++){
+                if (!in_array($arr_existing_monitoring[$i], $arr_checked_monitoring)){
+                    array_push($arr_deleted_monitoring,$arr_existing_monitoring[$i]);
+                }
+            }
+            
+            for($i = 0 ; $i < count($arr_deleted_monitoring); $i++){
+                //update to 0000-00-00 where id_detail_mitigation and target_month
+                $a=$this->RiskMitigationDetailMonitoringModel->update_data_monitoring_2($id_detail_mitigation, $arr_deleted_monitoring[$i]);
             }
 
             // if($target){

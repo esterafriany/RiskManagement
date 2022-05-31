@@ -75,11 +75,7 @@ if($session->get('state_message')){
 			dataType: "JSON",
 			success: function(result)
 			{
-				//var count1 = result['risk_mitigation_list'].length;
-				//var count2 = result['risk_division_list'].length;
-
 				var count = result.length;
-				var monitoring_sum = 0;
 				var percentage = 0;
 				
 				for(i = 0; i < count; i++){
@@ -95,19 +91,23 @@ if($session->get('state_message')){
 					$('#e'+monitoring_month).prop('disabled', false);
 
 					if(monitoring_month != "00"){
-						monitoring_sum = monitoring_sum + 1;
+						monitoring_number = monitoring_number + 1;
 						$("#m"+monitoring_month).prop( "checked", true );
 					}
+
+					if(target_month != "00"){
+						target_number = target_number + 1;
+					}
 				}
-				
-				percentage = (monitoring_sum / count) * 100;
+
+				percentage = (target_number / monitoring_number) * 100;
 
 				document.getElementById("progress-bar").style.width = percentage+"%";
+
 				document.getElementById("progress_percentage").value = percentage.toFixed(2);
 				document.getElementById("text-percentage").innerHTML = percentage.toFixed(2)+"%";
 
-				target_number = count;
-				monitoring_number = monitoring_sum;
+			
 			},
 			error: function (jqXHR, textStatus, errorThrown)
 			{
@@ -176,11 +176,9 @@ if($session->get('state_message')){
 			});
 			
 		});
-		
 	}
 
 	function calculate_progress_by_target(id) {
-		console.log(id);
 		var checkBox = document.getElementById(id);
 		if (checkBox.checked == true){
 			target_number = target_number + 1;

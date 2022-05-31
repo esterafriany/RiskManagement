@@ -3,8 +3,8 @@
 		<div class="modal-header">
 			<h5 class="modal-title" id="addGroupModalLabel">Tambah Evidence</h5>
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            <input type="text" name="id_detail_mitigation"/>
-            <input type="text" name="month"/>
+            <input type="hidden" name="id_detail_mitigation"/>
+            <input type="hidden" name="month"/>
         </div>
 		<div class="modal-body">
         <ul class="list-group">

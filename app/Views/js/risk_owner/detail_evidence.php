@@ -1,4 +1,4 @@
-<?= $this->include('admin/template/_partials/js')?>
+<?= $this->include('risk_owner/template/_partials/js')?>
 
 <script>
 	$(document).ready(function() {

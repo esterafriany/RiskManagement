@@ -319,7 +319,7 @@ class RiskMonitoringController extends BaseController
 
     public function onUploadEvidence(){
         $id_detail_monitoring = $this->RiskMitigationDetailMonitoringModel->get_id_monitoring($this->request->getPost('month'),$this->request->getPost('id_detail_mitigation'));
-
+       
         if($id_detail_monitoring){
             if($this->request->getFileMultiple('evidence')){
                 $i = 1;
@@ -327,12 +327,12 @@ class RiskMonitoringController extends BaseController
                     //$fileName = "evidence_".$i.".".$file->getClientExtension();
                     $fileName = $file->getName();
                     
-                    $file->move(FCPATH . 'uploads', $fileName);
+                    $file->move(FCPATH .DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.$id_detail_monitoring->id.'/', $fileName);
                     
                     $data_evidence = [
                         'id_detail_monitoring' => $id_detail_monitoring->id,
                         'filename' => $fileName,
-                        'pathname' => FCPATH . 'uploads' ,
+                        'pathname' => FCPATH . DIRECTORY_SEPARATOR."uploads". DIRECTORY_SEPARATOR.$id_detail_monitoring->id,
                     ];
                     
                     $this->RiskMitigationDetailEvidenceModel->insert($data_evidence);
@@ -344,8 +344,8 @@ class RiskMonitoringController extends BaseController
         return redirect()->back()->with('state_message', 'file');
     }
 
-    public function download($filename){
-        return $this->response->download(FCPATH.'/uploads/'.$filename, null);
+    public function download($id_detail_monitoring,$filename){
+        return $this->response->download(FCPATH . DIRECTORY_SEPARATOR .'uploads'.$id_detail_monitoring.'/'.$filename, null);
     }
 
     public function onDeleteEvidence($id){

@@ -338,12 +338,13 @@ class RiskMonitoringController extends BaseController
                     //$fileName = "evidence_".$i.".".$file->getClientExtension();
                     $fileName = $file->getName();
                     
-                    $file->move(FCPATH . 'uploads', $fileName);
-                    
+                    $file->move(FCPATH . 'uploads/'.$id_detail_monitoring->id.'/', $fileName);
+
                     $data_evidence = [
                         'id_detail_monitoring' => $id_detail_monitoring->id,
                         'filename' => $fileName,
-                        'pathname' => FCPATH . 'uploads' ,
+                        'pathname' => FCPATH . "/uploads/".$id_detail_monitoring->id,
+                        
                     ];
                     
                     $this->RiskMitigationDetailEvidenceModel->insert($data_evidence);
@@ -356,8 +357,8 @@ class RiskMonitoringController extends BaseController
 
     }
 
-    public function download($filename){
-        return $this->response->download(FCPATH.'/uploads/'.$filename, null);
+    public function download($id_detail_monitoring, $filename){
+        return $this->response->download(FCPATH . DIRECTORY_SEPARATOR .'uploads'.DIRECTORY_SEPARATOR.$id_detail_monitoring.'/'.$filename, null);
     }
 
     public function onDeleteEvidence($id){

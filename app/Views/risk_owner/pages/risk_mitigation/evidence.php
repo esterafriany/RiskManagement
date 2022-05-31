@@ -1,10 +1,10 @@
 <form id="form-add-evidence" class="form-horizontal" method="POST" enctype="multipart/form-data" action="<?php echo base_url('RiskOwner/RiskMonitoringController/onUploadEvidence')?>">
 	<div class="modal-content">
 		<div class="modal-header">
-			<h5 class="modal-title" id="addGroupModalLabel">Tambah Evidence></h5>
+			<h5 class="modal-title" id="addGroupModalLabel">Tambah Evidence</h5>
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            <input type="hidden" name="id_detail_mitigation"/>
-            <input type="hidden" name="month"/>
+            <input type="text" name="id_detail_mitigation"/>
+            <input type="text" name="month"/>
         </div>
 		<div class="modal-body">
         <ul class="list-group">

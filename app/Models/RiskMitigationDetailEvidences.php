@@ -59,7 +59,8 @@ class RiskMitigationDetailEvidences extends Model
                               JOIN(
                                   SELECT risk_mitigation_detail_monitorings.id
                                   FROM risk_mitigation_detail_monitorings
-                                  WHERE id_detail_mitigation = '".$id_detail_mitigation."' AND MONTH(target_month) = '".$month_target."'
+                                  WHERE (id_detail_mitigation = '".$id_detail_mitigation."' AND MONTH(target_month) = '".$month_target."') OR
+                                  (id_detail_mitigation = '".$id_detail_mitigation."' AND MONTH(monitoring_month) = '".$month_target."')
                                 ) _tb ON risk_mitigation_detail_evidences.id_detail_monitoring = _tb.id")->getResultArray();
     }
 }

@@ -136,7 +136,7 @@ if($session->get('state_message')){
 		
 	});
 
-	function delete_evidence(id){
+	function delete_evidence(id,id_detail_monitoring){
 		swal({
 			title: "Apakah anda yakin ingin hapus?",
 			text: "Data akan dihapus tidak dapat di-recover!",
@@ -149,7 +149,7 @@ if($session->get('state_message')){
 		function () {
 			// ajax delete data from database
 			  $.ajax({
-				url : "<?=site_url('RiskMonitoringController/onDeleteEvidence')?>/" + id,
+				url : "<?=site_url('RiskMonitoringController/onDeleteEvidence')?>/" + id + "/" + id_detail_monitoring,
 				type: "POST",
 				dataType: "JSON",
 				success: function(data)
@@ -236,20 +236,37 @@ if($session->get('state_message')){
 			{
 				var penampung = "";
 				var count = result.length;
+				penampung = '<table width="100%">';
+				var text_temp = "";
 				
 				for(i = 0; i < count; i++){
-					
-				penampung += `<table width="100%">
+					text_temp = result[i]['filename'].substring(0, 100);
+					penampung += `<table width="100%">
 									<tr>
 										<td width="100%"> 
-											<a href="<?=base_url('uploads')?>/${result[i]['filename']}" target="_blank">${result[i]['filename']}</a>
+											<a href="<?=base_url('uploads')?>/${result[i]['id_detail_monitoring']}/${result[i]['filename']}" target="_blank">${text_temp} &nbsp;</a>
 										</td>
 										<td>
-											<button type="button" onclick="delete_evidence('${result[i]['id']}')" class="btn btn-outline-primary btn-sm removes" ><i class="fas fa-trash-alt"></i></button>
+											<button type="button" onclick="delete_evidence('${result[i]['id']}','${result[i]['id_detail_monitoring']}')" class="btn btn-outline-danger btn-sm removes" ><i class="fas fa-trash-alt"></i></button>
 											<a type="button" href="<?php echo base_url('admin/download')?>/${result[i]['filename']}" class="btn btn-outline-success btn-sm" ><i class="fas fa-download"></i></a>
 										</td>
 									</tr>
 								</table>`;
+				}
+				penampung += '</table>';
+
+
+				for(i = 0; i < count; i++){
+					text_temp = result[i]['filename'].substring(0, 100);
+					penampung += `<tr>
+								<td width="50%"> 
+									<a>${text_temp} &nbsp;</a>
+								</td>
+								<td>
+									<button type="button" onclick="delete_evidence('${result[i]['id']}','${result[i]['id_detail_monitoring']}')" class="btn btn-outline-danger btn-sm removes" ><i class="fas fa-trash-alt"></i></button>
+									<a type="button" href="<?php echo base_url('admin/download')?>/${result[i]['id_detail_monitoring']}/${result[i]['filename']}" class="btn btn-outline-success btn-sm" ><i class="fas fa-download"></i></a>
+								</td>
+							</tr>`;
 				}
 				var monthName = "";
 				if(target_month == "01"){

@@ -340,8 +340,8 @@
    </div>
 </div>
 
-<div class="modal fade" id="modal-add-evidence" name="modal-add-evidence" tabindex="-1" aria-labelledby="addGroupEvidenceModal" style="display: none;" aria-hidden="true">
-	<div class="modal-dialog"><?= $this->include("admin/pages/risk_mitigation/evidence")?></div>
+<div class="modal fade bd-example-modal-lg" id="modal-add-evidence" name="modal-add-evidence" tabindex="-1" aria-labelledby="addGroupEvidenceModal" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog modal-lg"><?= $this->include("admin/pages/risk_mitigation/evidence")?></div>
 </div>
 
 <?= $this->include("js/detail_mitigation_monitoring")?>

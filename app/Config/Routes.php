@@ -73,11 +73,12 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('RiskEventController/onAddRiskEvent', 'RiskEventController::onAddRiskEvent', ['as' => 'add-risk-event']);
 	$routes->add('detail-risk-event/(:num)', 'RiskEventController::getDetailRiskEvent/$1', ['as' => 'detail-risk-event']);
 	$routes->add('RiskEventController/onAddDetailRisk', 'RiskEventController::onAddDetailRisk', ['as' => 'add-risk-event-detail']);
-	
+
 	//Risk Monitoring
 	$routes->add('risk-monitoring', 'RiskMonitoringController::index', ['as' => 'get-risk-monitorings']);
 	$routes->add('detail-risk-monitoring/(:num)', 'RiskMonitoringController::getDetailRiskMonitoring/$1', ['as' => 'detail-risk-monitoring']);
 	$routes->add('RiskMonitoringController/onAddDetailMonitoring', 'RiskMonitoringController::onAddDetailMonitoring', ['as' => 'add-risk-monitoring']);
+	$routes->add('download-risk-monitoring/(:num)', 'RiskMonitoringController::onDownloadReportExcelBreakdown/$1', ['as' => 'download-breakdown-risk-monitoring']);
 	
 	//Risk Mitigation 
 	$routes->add('risk-mitigation', 'RiskMitigationController::index', ['as' => 'get-risk-mitigations']);

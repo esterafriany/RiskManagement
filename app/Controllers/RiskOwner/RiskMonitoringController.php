@@ -347,13 +347,13 @@ class RiskMonitoringController extends BaseController
     }
 
     public function download($id_detail_monitoring,$filename){
-        return $this->response->download(FCPATH . DIRECTORY_SEPARATOR .'uploads'.$id_detail_monitoring.'/'.$filename, null);
+        return $this->response->download(FCPATH . DIRECTORY_SEPARATOR .'uploads'.DIRECTORY_SEPARATOR.$id_detail_monitoring.'/'.$filename, null);
     }
 
-    public function onDeleteEvidence($id){
+    public function onDeleteEvidence($id, $id_detail_monitoring){
         $filename = $this->RiskMitigationDetailEvidenceModel->find($id);
         
-        unlink (FCPATH . 'uploads\\'.$filename['filename']);
+        unlink (FCPATH .DIRECTORY_SEPARATOR. 'uploads'.DIRECTORY_SEPARATOR.$id_detail_monitoring.DIRECTORY_SEPARATOR.$filename['filename']);
         $this->RiskMitigationDetailEvidenceModel->delete($id);
 
         echo json_encode(array("status" => TRUE));

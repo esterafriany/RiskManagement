@@ -3,6 +3,8 @@
 namespace App\Controllers;
 use App\Controllers\BaseController;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 //Model
 use App\Models\RiskEvents;
@@ -357,17 +359,17 @@ class RiskMonitoringController extends BaseController
                
             }
 
-            $arr_checked_monitoring = array();
             //update monitoring month
+            $arr_checked_monitoring = array();
             $monitoring = $this->request->getPost('monitoring[]');
-            
+                   
             if($monitoring){
                 for($j = 0; $j < count($monitoring); $j++){
                     array_push($arr_checked_monitoring,$monitoring[$j]);  
                     //get data with target month = monitoring month
-                    $target_data = $this->RiskMitigationDetailMonitoringModel->get_data_by_month_monitoring($id_detail_mitigation, $monitoring[$j]);
-                   
-                   //update
+                    $target_data = $this->RiskMitigationDetailMonitoringModel->get_data_by_month_target($id_detail_mitigation, $monitoring[$j]);
+                    
+                    //update
                     if($target_data){
                         $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$j]);  
                     }else{
@@ -378,8 +380,11 @@ class RiskMonitoringController extends BaseController
                         if($monitoring_data){
                             //update
                             $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$j]);  
-                             
                         }else{
+                            //if exist target then update
+                            
+
+                            //if not exist target insert new data
                             //add new row with target == null
                             $data=[
                                 'id_detail_mitigation' => $id_detail_mitigation,
@@ -387,6 +392,7 @@ class RiskMonitoringController extends BaseController
                                 'monitoring_month' => date("Y")."-".$monitoring[$j]."-01",
                                 'notes' => $notes[$i],
                             ];
+                           
                             $this->RiskMitigationDetailMonitoringModel->insert($data); 
                         } 
                     }
@@ -519,7 +525,7 @@ class RiskMonitoringController extends BaseController
             if($this->request->getFileMultiple('evidence')){
                 $i = 1;
                 foreach($this->request->getFileMultiple('evidence') as $file){
-                    //$fileName = "evidence_".$i.".".$file->getClientExtension();
+                    
                     $fileName = $file->getName();
                     
                     $file->move(FCPATH . 'uploads/'.$id_detail_monitoring->id.'/', $fileName);
@@ -536,19 +542,18 @@ class RiskMonitoringController extends BaseController
                 }
             }
         }
-
         return redirect()->back()->with('state_message', 'file');
-
     }
 
     public function download($id_detail_monitoring, $filename){
         return $this->response->download(FCPATH . DIRECTORY_SEPARATOR .'uploads'.DIRECTORY_SEPARATOR.$id_detail_monitoring.'/'.$filename, null);
     }
 
-    public function onDeleteEvidence($id){
+    public function onDeleteEvidence($id,$id_detail_monitoring){
         $filename = $this->RiskMitigationDetailEvidenceModel->find($id);
         
-        unlink (FCPATH . 'uploads\\'.$filename['filename']);
+        unlink (FCPATH .DIRECTORY_SEPARATOR. 'uploads'.DIRECTORY_SEPARATOR.$id_detail_monitoring.DIRECTORY_SEPARATOR.$filename['filename']);
+
         $this->RiskMitigationDetailEvidenceModel->delete($id);
 
         echo json_encode(array("status" => TRUE));
@@ -565,4 +570,40 @@ class RiskMonitoringController extends BaseController
 		
 		echo json_encode($data);
 	}
+
+    public function onDownloadReportExcelBreakdown()
+    {
+        // echo view('admin/pages/risk_monitoring/download_report');
+
+        $datas = $this->RiskEventModel->findAll();
+
+        $spreadsheet = new Spreadsheet();
+
+        // tulis header/nama kolom 
+        $spreadsheet->setActiveSheetIndex(0)
+        ->setCellValue('A1', 'No')
+        ->setCellValue('B1', 'Risk Event')
+        ->setCellValue('C1', 'Rencana Mitigasi')
+        ->setCellValue('D1', 'PIC')
+        ->setCellValue('E1', 'Output');
+
+        $column = 2;
+        // tulis data mobil ke cell
+        foreach($datas as $data) {
+            $spreadsheet->setActiveSheetIndex(0)
+                        ->setCellValue('A' . $column, $data['id'])
+                        ->setCellValue('B' . $column, $data['id']);
+            $column++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $fileName = 'Data';
+
+        // Redirect hasil generate xlsx ke web client
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename='.$fileName.'.xlsx');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+    }
 }

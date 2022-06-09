@@ -135,5 +135,72 @@ class RiskEvents extends Model
                                 WHERE risk_events.year = '".$year."'")->getResultArray();
     }
 
+    public function get_data_report()
+    {
+        return $this->db->query("
+                         SELECT CONCAT('R',risk_number_manual) as risk_number
+                        , risk_event
+                        , risk_mitigation
+                        , risk_mitigation_details.risk_mitigation_detail
+                        , risk_mitigation_details.id as id_detail_mitigation
+                        , divisions.name
+                        , risk_mitigation_detail_outputs.output
+                        FROM risk_events JOIN risk_mitigations on risk_events.id = risk_mitigations.id_risk_event
+                        JOIN risk_mitigation_details on risk_mitigations.id = risk_mitigation_details.id_risk_mitigation
+                        JOIN divisions ON divisions.id = risk_mitigation_details.id_division
+                        JOIN risk_mitigation_detail_outputs on risk_mitigation_detail_outputs.id_detail_mitigation = risk_mitigation_details.id
+                        ORDER BY risk_events.id ASC, risk_mitigations.id ASC, risk_mitigation_details.id ASC;")->getResultArray();
+    }
+
+    public function get_data_target()
+    {
+        return $this->db->query("
+                        SELECT id_detail_mitigation
+                        , (case when target_month = '2022-01-01' then 1 else 0 end) as Januari
+                        , (case when target_month = '2022-02-01' then 1 else 0 end) as Februari
+                        , (case when target_month = '2022-03-01' then 1 else 0 end)  as Maret
+                        , (case when target_month = '2022-04-01' then 1 else 0 end)  as April
+                        , (case when target_month = '2022-05-01' then 1 else 0 end)  as Mei
+                        , (case when target_month = '2022-06-01' then 1 else 0 end)  as Juni
+                        , (case when target_month = '2022-07-01' then 1 else 0 end)  as Juli
+                        , (case when target_month = '2022-08-01' then 1 else 0 end)  as Agustus
+                        , (case when target_month = '2022-09-01' then 1 else 0 end)  as September
+                        , (case when target_month = '2022-10-01' then 1 else 0 end)  as Oktober
+                        , (case when target_month = '2022-11-01' then 1 else 0 end)  as November
+                        , (case when target_month = '2022-12-01' then 1 else 0 end)  as Desember
+                        FROM
+                        (
+                            SELECT id_detail_mitigation, target_month, monitoring_month, notes, risk_mitigation_detail
+                            FROM risk_mitigation_detail_monitorings JOIN risk_mitigation_details ON risk_mitigation_details.id = risk_mitigation_detail_monitorings.id_detail_mitigation
+                        ) _tb
+                        GROUP BY id_detail_mitigation, target_month")->getResultArray();
+    }
+
+    public function get_data_monitoring()
+    {
+        return $this->db->query("
+                                SELECT id_detail_mitigation
+                                , (case when monitoring_month = '2022-01-01' then 1 else 0 end) as Januari
+                                , (case when monitoring_month = '2022-02-01' then 1 else 0 end) as Februari
+                                , (case when monitoring_month = '2022-03-01' then 1 else 0 end)  as Maret
+                                , (case when monitoring_month = '2022-04-01' then 1 else 0 end)  as April
+                                , (case when monitoring_month = '2022-05-01' then 1 else 0 end)  as Mei
+                                , (case when monitoring_month = '2022-06-01' then 1 else 0 end)  as Juni
+                                , (case when monitoring_month = '2022-07-01' then 1 else 0 end)  as Juli
+                                , (case when monitoring_month = '2022-08-01' then 1 else 0 end)  as Agustus
+                                , (case when monitoring_month = '2022-09-01' then 1 else 0 end)  as September
+                                , (case when monitoring_month = '2022-10-01' then 1 else 0 end)  as Oktober
+                                , (case when monitoring_month = '2022-11-01' then 1 else 0 end)  as November
+                                , (case when monitoring_month = '2022-12-01' then 1 else 0 end)  as Desember
+                                FROM
+                                (
+                                    SELECT id_detail_mitigation, target_month, monitoring_month, notes, risk_mitigation_detail
+                                    FROM risk_mitigation_detail_monitorings JOIN risk_mitigation_details ON risk_mitigation_details.id = risk_mitigation_detail_monitorings.id_detail_mitigation
+                                ) _tb
+                                
+                                GROUP BY id_detail_mitigation, monitoring_month;")->getResultArray();
+    }
+
+    
     
 }

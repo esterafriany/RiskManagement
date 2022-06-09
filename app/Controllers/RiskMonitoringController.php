@@ -575,7 +575,9 @@ class RiskMonitoringController extends BaseController
     {
         // echo view('admin/pages/risk_monitoring/download_report');
 
-        $datas = $this->RiskEventModel->findAll();
+        $datas = $this->RiskEventModel->get_data_report();
+        $data_target = $this->RiskEventModel->get_data_target();
+        $data_monitoring = $this->RiskEventModel->get_data_monitoring();
 
         $spreadsheet = new Spreadsheet();
 
@@ -584,20 +586,127 @@ class RiskMonitoringController extends BaseController
         ->setCellValue('A1', 'No')
         ->setCellValue('B1', 'Risk Event')
         ->setCellValue('C1', 'Rencana Mitigasi')
-        ->setCellValue('D1', 'PIC')
-        ->setCellValue('E1', 'Output');
+        ->setCellValue('d1', 'Detail Mitigasi')
+        ->setCellValue('E1', 'PIC')
+        ->setCellValue('F1', 'Output');
 
         $column = 2;
-        // tulis data mobil ke cell
+        $column1 = 3;
+        
         foreach($datas as $data) {
             $spreadsheet->setActiveSheetIndex(0)
-                        ->setCellValue('A' . $column, $data['id'])
-                        ->setCellValue('B' . $column, $data['id']);
-            $column++;
+                        ->setCellValue('A' . $column, $data['risk_number'])
+                        ->setCellValue('B' . $column, $data['risk_event'])
+                        ->setCellValue('C' . $column, $data['risk_mitigation'])
+                        ->setCellValue('D' . $column, $data['risk_mitigation_detail'])
+                        ->setCellValue('E' . $column, $data['name'])
+                        ->setCellValue('F' . $column, $data['output']);
+
+            //target
+            foreach($data_target as $data1) {
+                $styleArray = [
+                    'font' => [
+                        'bold' => true,
+                    ],
+                    'alignment' => [
+                        'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
+                    ],
+                    'fill' => [
+                        'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_GRADIENT_LINEAR,
+                        'rotation' => 90,
+                        'startColor' => [
+                            'argb' => 'BDD6EE',
+                        ],
+                        'endColor' => [
+                            'argb' => 'BDD6EE',
+                        ],
+                    ],
+                ];
+                if($data['id_detail_mitigation'] == $data1['id_detail_mitigation']){
+                    if($data1['Januari'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('G' . $column)->applyFromArray($styleArray);
+                    }else if($data1['Februari'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('H' . $column)->applyFromArray($styleArray);
+                    }else if($data1['Maret'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('I' . $column)->applyFromArray($styleArray);
+                    }else if($data1['April'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('J' . $column)->applyFromArray($styleArray);
+                    }else if($data1['Mei'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('K' . $column)->applyFromArray($styleArray);
+                    }else if($data1['Juni'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('L' . $column)->applyFromArray($styleArray); 
+                    }else if($data1['Juli'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('M' . $column)->applyFromArray($styleArray);
+                    }else if($data1['Agustus'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('N' . $column)->applyFromArray($styleArray);
+                    }else if($data1['September'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('O' . $column)->applyFromArray($styleArray);
+                    }else if($data1['Oktober'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('P' . $column)->applyFromArray($styleArray);
+                    }else if($data1['November'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('Q' . $column)->applyFromArray($styleArray);
+                    }else if($data1['Desember'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('R' . $column)->applyFromArray($styleArray);  
+                    }
+                }
+            }
+
+            //monitoring
+            foreach($data_monitoring as $data2) {
+                $styleArray1 = [
+                    'font' => [
+                        'bold' => true,
+                    ],
+                    'alignment' => [
+                        'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
+                    ],
+                    'fill' => [
+                        'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_GRADIENT_LINEAR,
+                        'rotation' => 90,
+                        'startColor' => [
+                            'argb' => 'C5E0B3',
+                        ],
+                        'endColor' => [
+                            'argb' => 'C5E0B3',
+                        ],
+                    ],
+                ];
+                if($data['id_detail_mitigation'] == $data2['id_detail_mitigation']){
+                    if($data2['Januari'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('G' . $column1)->applyFromArray($styleArray1);
+                    }else if($data2['Februari'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('H' . $column1)->applyFromArray($styleArray1);
+                    }else if($data2['Maret'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('I' . $column1)->applyFromArray($styleArray1);
+                    }else if($data2['April'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('J' . $column1)->applyFromArray($styleArray1);
+                    }else if($data2['Mei'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('K' . $column1)->applyFromArray($styleArray1);
+                    }else if($data2['Juni'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('L' . $column1)->applyFromArray($styleArray1); 
+                    }else if($data2['Juli'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('M' . $column1)->applyFromArray($styleArray1);
+                    }else if($data2['Agustus'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('N' . $column1)->applyFromArray($styleArray1);
+                    }else if($data2['September'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('O' . $column1)->applyFromArray($styleArray1);
+                    }else if($data2['Oktober'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('P' . $column1)->applyFromArray($styleArray1);
+                    }else if($data2['November'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('Q' . $column1)->applyFromArray($styleArray1);
+                    }else if($data2['Desember'] == '1'){
+                        $spreadsheet->getActiveSheet()->getStyle('R' . $column1)->applyFromArray($styleArray1);  
+                    }
+                }
+            }
+            $column += 2;
+            $column1 += 2;
         }
 
+
+
         $writer = new Xlsx($spreadsheet);
-        $fileName = 'Data';
+        $fileName = 'Data_Report_Breakdown';
 
         // Redirect hasil generate xlsx ke web client
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

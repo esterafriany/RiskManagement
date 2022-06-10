@@ -165,43 +165,43 @@
                            <tr>
                               <td rowspan="6" width="5%" style="writing-mode: vertical-rl;">Tingkat Kemungkinan</td>
                               <td width="10%">Sangat Besar<br/>(5)</td>
-                              <td id="15" name="td" style="background-color:#f6e65a;" width="17%"></td>
-                              <td id="25" name="td" style="background-color:#ecd4e0;" width="17%"></td>
-                              <td id="35" name="td" style="background-color:#ecd4e0;" width="17%"></td>
-                              <td id="45" name="td" style="background-color:#ff1e00;" width="17%"></td>
+                              <td id="51" name="td" style="background-color:#f6e65a;" width="17%"></td>
+                              <td id="52" name="td" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="53" name="td" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="54" name="td" style="background-color:#ff1e00;" width="17%"></td>
                               <td id="55" name="td" style="background-color:#ff1e00;" width="17%"></td>
                            </tr>
                            <tr>
                               <td>Besar<br/>(4)</td>
-                              <td id="14" name="td" style="background-color:#5ce878;"></td>
-                              <td id="24" name="td" style="background-color:#f6e65a;"></td>
-                              <td id="34" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="41" name="td" style="background-color:#5ce878;"></td>
+                              <td id="42" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="43" name="td" style="background-color:#ecd4e0;"></td>
                               <td id="44" name="td" style="background-color:#ecd4e0;"></td>
-                              <td id="54" name="td" style="background-color:#ff1e00;"></td>
+                              <td id="45" name="td" style="background-color:#ff1e00;"></td>
                            </tr>
                            <tr>
                               <td>Sedang<br/>(3)</td>
-                              <td id="13" name="td" style="background-color:#5ce878;"></td>
-                              <td id="23" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="31" name="td" style="background-color:#5ce878;"></td>
+                              <td id="32" name="td" style="background-color:#f6e65a;"></td>
                               <td id="33" name="td" style="background-color:#f6e65a;"></td>
-                              <td id="43" name="td" style="background-color:#ecd4e0;"></td>
-                              <td id="53" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="34" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="35" name="td" style="background-color:#ecd4e0;"></td>
                            </tr>
                            <tr>
                               <td>Kecil<br/>(2)</td>
-                              <td id="12" name="td" style="background-color:#5ce878;"></td>
+                              <td id="21" name="td" style="background-color:#5ce878;"></td>
                               <td id="22" name="td" style="background-color:#5ce878;"></td>
-                              <td id="32" name="td" style="background-color:#f6e65a;"></td>
-                              <td id="42" name="td" style="background-color:#f6e65a;"></td>
-                              <td id="52" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="23" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="24" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="25" name="td" style="background-color:#ecd4e0;"></td>
                            </tr>
                            <tr>
                               <td>Sangat Kecil<br/>(1)</td>
                               <td id="11" name="td" style="background-color:#5ce878;"></td>
-                              <td id="21" name="td" style="background-color:#5ce878;"></td>
-                              <td id="31" name="td" style="background-color:#5ce878;"></td>
-                              <td id="41" name="td" style="background-color:#5ce878;"></td>
-                              <td id="51" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="12" name="td" style="background-color:#5ce878;"></td>
+                              <td id="13" name="td" style="background-color:#5ce878;"></td>
+                              <td id="14" name="td" style="background-color:#5ce878;"></td>
+                              <td id="15" name="td" style="background-color:#f6e65a;"></td>
                            </tr>
                            <tr>
                               <td></td>
@@ -244,43 +244,43 @@
                            <tr>
                               <td rowspan="6" width="5%" style="writing-mode: vertical-rl;">Tingkat Kemungkinan</td>
                               <td width="10%">Sangat Besar<br/>(5)</td>
-                              <td id="residual_15" name="residual_15" style="background-color:#f6e65a;" width="17%"></td>
-                              <td id="residual_25" name="residual_25" style="background-color:#ecd4e0;" width="17%"></td>
-                              <td id="residual_35" name="residual_35" style="background-color:#ecd4e0;" width="17%"></td>
-                              <td id="residual_45" name="residual_45" style="background-color:#ff1e00;" width="17%"></td>
+                              <td id="residual_51" name="residual_15" style="background-color:#f6e65a;" width="17%"></td>
+                              <td id="residual_52" name="residual_25" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="residual_53" name="residual_35" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="residual_54" name="residual_45" style="background-color:#ff1e00;" width="17%"></td>
                               <td id="residual_55" name="residual_55" style="background-color:#ff1e00;" width="17%"></td>
                            </tr>
                            <tr>
                               <td>Besar<br/>(4)</td>
-                              <td id="residual_14" name="residual_14" style="background-color:#5ce878;"></td>
-                              <td id="residual_24" name="residual_24" style="background-color:#f6e65a;"></td>
-                              <td id="residual_34" name="residual_34" style="background-color:#ecd4e0;"></td>
+                              <td id="residual_41" name="residual_14" style="background-color:#5ce878;"></td>
+                              <td id="residual_42" name="residual_24" style="background-color:#f6e65a;"></td>
+                              <td id="residual_43" name="residual_34" style="background-color:#ecd4e0;"></td>
                               <td id="residual_44" name="residual_44" style="background-color:#ecd4e0;"></td>
-                              <td id="residual_54" name="residual_54" style="background-color:#ff1e00;"></td>
+                              <td id="residual_45" name="residual_54" style="background-color:#ff1e00;"></td>
                            </tr>
                            <tr>
                               <td>Sedang<br/>(3)</td>
-                              <td id="residual_13" name="residual_13" style="background-color:#5ce878;"></td>
-                              <td id="residual_23" name="residual_23" style="background-color:#f6e65a;"></td>
+                              <td id="residual_31" name="residual_13" style="background-color:#5ce878;"></td>
+                              <td id="residual_32" name="residual_23" style="background-color:#f6e65a;"></td>
                               <td id="residual_33" name="residual_33" style="background-color:#f6e65a;"></td>
-                              <td id="residual_43" name="residual_43" style="background-color:#ecd4e0;"></td>
-                              <td id="residual_53" name="residual_53" style="background-color:#ecd4e0;"></td>
+                              <td id="residual_34" name="residual_43" style="background-color:#ecd4e0;"></td>
+                              <td id="residual_35" name="residual_53" style="background-color:#ecd4e0;"></td>
                            </tr>
                            <tr>
                               <td>Kecil<br/>(2)</td>
-                              <td id="residual_12" name="residual_12" style="background-color:#5ce878;"></td>
+                              <td id="residual_21" name="residual_12" style="background-color:#5ce878;"></td>
                               <td id="residual_22" name="residual_22" style="background-color:#5ce878;"></td>
-                              <td id="residual_32" name="residual_32" style="background-color:#f6e65a;"></td>
-                              <td id="residual_42" name="residual_42" style="background-color:#f6e65a;"></td>
-                              <td id="residual_52" name="residual_52" style="background-color:#ecd4e0;"></td>
+                              <td id="residual_23" name="residual_32" style="background-color:#f6e65a;"></td>
+                              <td id="residual_24" name="residual_42" style="background-color:#f6e65a;"></td>
+                              <td id="residual_25" name="residual_52" style="background-color:#ecd4e0;"></td>
                            </tr>
                            <tr>
                               <td>Sangat Kecil<br/>(1)</td>
                               <td id="residual_11" name="residual_11" style="background-color:#5ce878;"></td>
-                              <td id="residual_21" name="residual_21" style="background-color:#5ce878;"></td>
-                              <td id="residual_31" name="residual_31" style="background-color:#5ce878;"></td>
-                              <td id="residual_41" name="residual_41" style="background-color:#5ce878;"></td>
-                              <td id="residual_51" name="residual_51" style="background-color:#f6e65a;"></td>
+                              <td id="residual_12" name="residual_21" style="background-color:#5ce878;"></td>
+                              <td id="residual_13" name="residual_31" style="background-color:#5ce878;"></td>
+                              <td id="residual_14" name="residual_41" style="background-color:#5ce878;"></td>
+                              <td id="residual_15" name="residual_51" style="background-color:#f6e65a;"></td>
                            </tr>
                            <tr>
                               <td></td>
@@ -322,43 +322,43 @@
                            <tr>
                               <td rowspan="6" width="5%" style="writing-mode: vertical-rl;">Tingkat Kemungkinan</td>
                               <td width="10%">Sangat Besar<br/>(5)</td>
-                              <td id="target_15" name="td" style="background-color:#f6e65a;" width="17%"></td>
-                              <td id="target_25" name="td" style="background-color:#ecd4e0;" width="17%"></td>
-                              <td id="target_35" name="td" style="background-color:#ecd4e0;" width="17%"></td>
-                              <td id="target_45" name="td" style="background-color:#ff1e00;" width="17%"></td>
+                              <td id="target_51" name="td" style="background-color:#f6e65a;" width="17%"></td>
+                              <td id="target_52" name="td" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="target_53" name="td" style="background-color:#ecd4e0;" width="17%"></td>
+                              <td id="target_54" name="td" style="background-color:#ff1e00;" width="17%"></td>
                               <td id="target_55" name="td" style="background-color:#ff1e00;" width="17%"></td>
                            </tr>
                            <tr>
                               <td>Besar<br/>(4)</td>
-                              <td id="target_14" name="td" style="background-color:#5ce878;"></td>
-                              <td id="target_24" name="td" style="background-color:#f6e65a;"></td>
-                              <td id="target_34" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="target_41" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_42" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_43" name="td" style="background-color:#ecd4e0;"></td>
                               <td id="target_44" name="td" style="background-color:#ecd4e0;"></td>
-                              <td id="target_54" name="td" style="background-color:#ff1e00;"></td>
+                              <td id="target_45" name="td" style="background-color:#ff1e00;"></td>
                            </tr>
                            <tr>
                               <td>Sedang<br/>(3)</td>
-                              <td id="target_13" name="td" style="background-color:#5ce878;"></td>
-                              <td id="target_23" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_31" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_32" name="td" style="background-color:#f6e65a;"></td>
                               <td id="target_33" name="td" style="background-color:#f6e65a;"></td>
-                              <td id="target_43" name="td" style="background-color:#ecd4e0;"></td>
-                              <td id="target_53" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="target_34" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="target_35" name="td" style="background-color:#ecd4e0;"></td>
                            </tr>
                            <tr>
                               <td>Kecil<br/>(2)</td>
-                              <td id="target_12" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_21" name="td" style="background-color:#5ce878;"></td>
                               <td id="target_22" name="td" style="background-color:#5ce878;"></td>
-                              <td id="target_32" name="td" style="background-color:#f6e65a;"></td>
-                              <td id="target_42" name="td" style="background-color:#f6e65a;"></td>
-                              <td id="target_52" name="td" style="background-color:#ecd4e0;"></td>
+                              <td id="target_23" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_24" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_25" name="td" style="background-color:#ecd4e0;"></td>
                            </tr>
                            <tr>
                               <td>Sangat Kecil<br/>(1)</td>
                               <td id="target_11" name="td" style="background-color:#5ce878;"></td>
-                              <td id="target_21" name="td" style="background-color:#5ce878;"></td>
-                              <td id="target_31" name="td" style="background-color:#5ce878;"></td>
-                              <td id="target_41" name="td" style="background-color:#5ce878;"></td>
-                              <td id="target_51" name="td" style="background-color:#f6e65a;"></td>
+                              <td id="target_12" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_13" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_14" name="td" style="background-color:#5ce878;"></td>
+                              <td id="target_15" name="td" style="background-color:#f6e65a;"></td>
                            </tr>
                            <tr>
                               <td></td>

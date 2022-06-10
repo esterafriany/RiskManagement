@@ -237,7 +237,7 @@ class RiskMonitoringController extends BaseController
                     array_push($arr_checked_monitoring,$monitoring[$j]);  
                     //get data with target month = monitoring month
                     $target_data = $this->RiskMitigationDetailMonitoringModel->get_data_by_month_monitoring($id_detail_mitigation, $monitoring[$j]);
-                   
+                   dd($target_data);
                    //update
                     if($target_data){
                         $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$j]);  
@@ -268,13 +268,11 @@ class RiskMonitoringController extends BaseController
             }
 
             $arr_existing_monitoring = array();
-
             foreach($get_existing_target as $k=>$v) {
                 $mm = substr($v['monitoring_month'], 5, -3);
                 if($mm != "00"){
                     array_push($arr_existing_monitoring, $mm);
                 }
-                
             }
 
             //delete not relevan monitoring month
@@ -288,12 +286,14 @@ class RiskMonitoringController extends BaseController
             
             for($i = 0 ; $i < count($arr_deleted_monitoring); $i++){
                 //update to 0000-00-00 where id_detail_mitigation and target_month
-                $a=$this->RiskMitigationDetailMonitoringModel->update_data_monitoring_2($id_detail_mitigation, $arr_deleted_monitoring[$i]);
+                $this->RiskMitigationDetailMonitoringModel->update_data_monitoring_2($id_detail_mitigation, $arr_deleted_monitoring[$i]);
             }
-            
+
+
+            //check mandatory evidence
             for($i = 0 ; $i < count($arr_id_monitoring); $i++){
                 $evidence_data = $this->RiskMitigationDetailEvidenceModel->select('*')
-                                    ->where('id_detail_monitoring', $arr_id_monitoring[$i])->countAllResults();
+                                ->where('id_detail_monitoring', $arr_id_monitoring[$i])->countAllResults();
                 if($evidence_data == 0){
                     return redirect()->back()->with('state_message', 'error');
                 }

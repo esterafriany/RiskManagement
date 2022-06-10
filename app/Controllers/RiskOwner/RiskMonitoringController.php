@@ -237,7 +237,7 @@ class RiskMonitoringController extends BaseController
                     array_push($arr_checked_monitoring,$monitoring[$j]);  
                     //get data with target month = monitoring month
                     $target_data = $this->RiskMitigationDetailMonitoringModel->get_data_by_month_monitoring($id_detail_mitigation, $monitoring[$j]);
-                   dd($target_data);
+                   
                    //update
                     if($target_data){
                         $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$j]);  
@@ -245,7 +245,7 @@ class RiskMonitoringController extends BaseController
                     }else{
                         $monitoring_data = $this->RiskMitigationDetailMonitoringModel
                         ->where('id_detail_mitigation', $id_detail_mitigation)
-                        ->where('monitoring_month', date("Y")."-".$monitoring[$j]."-01")->findAll();
+                        ->where('target_month', date("Y")."-".$monitoring[$j]."-01")->findAll();
                         
                         if($monitoring_data){
                             //update

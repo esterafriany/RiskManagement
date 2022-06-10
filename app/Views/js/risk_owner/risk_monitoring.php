@@ -51,7 +51,7 @@
 					data: 'risk_mitigation',
 					render: function (data, type, item) {
 						if(item.risk_mitigation != null){
-							return item.risk_mitigation;
+							return "<div class='text-wrap width-200'>" + item.risk_mitigation + "</div>";
 						}else{
 							return '';
 						}
@@ -61,7 +61,7 @@
 					data: 'risk_mitigation_detail',
 					render: function (data, type, item) {
 						if(item.id != null){
-							return '<a href="<?=base_url()?>/risk_owner/view-detail-risk-monitoring/'+item.id+'">'+item.risk_mitigation_detail+'</a>';
+							return '<a class="text-wrap width-200" href="<?=base_url()?>/risk_owner/view-detail-risk-monitoring/'+item.id+'">'+item.risk_mitigation_detail+'</a>';
 						}else{
 							return '-';
 						}
@@ -86,7 +86,7 @@
                     render: function (data, type, full, meta) {
                         return "<div class='text-wrap width-200'>" + data + "</div>";
                     },
-                    targets: [0,1,2,3]
+                    targets: [0,1,3]
                 }
             ]
 		});
@@ -173,7 +173,7 @@
                     render: function (data, type, full, meta) {
                         return "<div class='text-wrap width-200'>" + data + "</div>";
                     },
-                    targets: [0,1,2,3]
+                    targets: [0,1,3]
                 }
             ]
 		});

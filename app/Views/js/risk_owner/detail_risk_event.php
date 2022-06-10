@@ -58,7 +58,7 @@
 					penampung += `<table width="100%">
 						<tr>
 							<td width="30px">${mitigation_number}.</td>
-							<td width="50%">
+							<td width="90%">
 								<input type="text" name="risk_mitigation[]" value="${result['risk_mitigation_list'][i]['risk_mitigation']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 								<input type="hidden" name="risk_mitigation_division_id[]" value="${result['risk_mitigation_list'][i]['id_risk_mitigation_division']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 								<input type="hidden" name="risk_mitigation_id[]" value="${result['risk_mitigation_list'][i]['id_risk_mitigation']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">

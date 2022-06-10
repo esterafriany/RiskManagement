@@ -53,7 +53,7 @@ if($session->get('state_message')){
 									<input type="hidden" name="output_id[]" value="${result[i]['id']}" class="form-control" >
 								</td>
 								<td>
-									<button type="button" name="remove" id="" class="btn btn-outline-primary btn-sm remove" ><i class="fas fa-trash-alt"></i></button>
+									<button type="button" name="remove" id="" class="btn btn-outline-danger btn-sm remove" ><i class="fas fa-trash-alt"></i></button>
 								</td>
 							</tr>
 						</table>`;

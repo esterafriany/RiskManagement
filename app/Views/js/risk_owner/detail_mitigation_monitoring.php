@@ -4,7 +4,7 @@ if($session->get('state_message')){
 	if($session->get('state_message') == 'error'){ ?>
 	<script>
 		$(document).ready(function() {
-		swal("Error","Data gagal ditambahkan. Pastikan Data Output tidak kosong.","error");
+		swal("Gagal","Pastikan Evidence pada Bulan Realisasi diupload. Pastikan data Output tidak kosong.","error");
 		});
 	</script>
 <?php }else if($session->get('state_message') == 'success'){ ?>
@@ -53,7 +53,7 @@ if($session->get('state_message')){
 									<input type="hidden" name="output_id[]" value="${result[i]['id']}" class="form-control" >
 								</td>
 								<td>
-									<button type="button" name="remove" id="" class="btn btn-outline-primary btn-sm remove" ><i class="fas fa-trash-alt"></i></button>
+									<button type="button" name="remove" id="" class="btn btn-outline-danger btn-sm remove" ><i class="fas fa-trash-alt"></i></button>
 								</td>
 							</tr>
 						</table>`;

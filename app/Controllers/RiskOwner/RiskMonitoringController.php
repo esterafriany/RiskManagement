@@ -138,13 +138,14 @@ class RiskMonitoringController extends BaseController
     public function onAddDetailMonitoring(){
         helper(['form', 'url', 'filesystem']);
         $id_detail_mitigation =  $this->request->getPost('id_detail_mitigation');
+        $arr_id_monitoring = array();
         
         try{
             //update progress_percentage
             $percentage['progress_percentage']=$this->request->getPost('progress_percentage');
             $this->RiskMitigationDetailModel->update($id_detail_mitigation, $percentage);
 
-            //output
+            //update output
             $outputs = $this->request->getPost('output');
             //delete current output
             $this->RiskMitigationDetailOutputModel->delete_by_detail_mitigation_id($id_detail_mitigation);
@@ -164,7 +165,6 @@ class RiskMonitoringController extends BaseController
             
             //existing target
             $get_existing_target = $this->RiskMitigationDetailMonitoringModel->get_list_monitoring_by_id_detail_mitigation($id_detail_mitigation);
-        
             foreach($get_existing_target as $k=>$v) {
                 $tm = substr($v['target_month'], 5, -3);
                 array_push($arr_existing, $tm);
@@ -184,6 +184,8 @@ class RiskMonitoringController extends BaseController
                             'notes' => $notes[$i],
                         ];
                         $this->RiskMitigationDetailMonitoringModel->update($existing_data->id,$data);
+                        
+
                     }else{
                         //check if new added or update based on monitoring
                         $monitoring_datas = $this->RiskMitigationDetailMonitoringModel->get_data_by_month_monitoring($id_detail_mitigation, $target[$i]);
@@ -196,7 +198,7 @@ class RiskMonitoringController extends BaseController
                                 'notes' => $notes[$i],
                             ];
                             $this->RiskMitigationDetailMonitoringModel->update($monitoring_datas->id,$data);
-
+                            
                         }else{
                             //insert new data
                             $data=[
@@ -205,7 +207,8 @@ class RiskMonitoringController extends BaseController
                                 'monitoring_month' => "0000-00-00",
                                 'notes' => $notes[$i],
                             ];
-                            $this->RiskMitigationDetailMonitoringModel->insert($data);
+                            $inserted_id = $this->RiskMitigationDetailMonitoringModel->insert($data);
+                          
                         }
                     }         
                 }
@@ -238,6 +241,7 @@ class RiskMonitoringController extends BaseController
                    //update
                     if($target_data){
                         $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$j]);  
+                        array_push($arr_id_monitoring,$target_data->id);
                     }else{
                         $monitoring_data = $this->RiskMitigationDetailMonitoringModel
                         ->where('id_detail_mitigation', $id_detail_mitigation)
@@ -255,7 +259,9 @@ class RiskMonitoringController extends BaseController
                                 'monitoring_month' => date("Y")."-".$monitoring[$j]."-01",
                                 'notes' => $notes[$i],
                             ];
-                            $this->RiskMitigationDetailMonitoringModel->insert($data); 
+                            $inserted_id = $this->RiskMitigationDetailMonitoringModel->insert($data); 
+                        
+                            
                         } 
                     }
                 }
@@ -284,7 +290,14 @@ class RiskMonitoringController extends BaseController
                 //update to 0000-00-00 where id_detail_mitigation and target_month
                 $a=$this->RiskMitigationDetailMonitoringModel->update_data_monitoring_2($id_detail_mitigation, $arr_deleted_monitoring[$i]);
             }
-
+            
+            for($i = 0 ; $i < count($arr_id_monitoring); $i++){
+                $evidence_data = $this->RiskMitigationDetailEvidenceModel->select('*')
+                                    ->where('id_detail_monitoring', $arr_id_monitoring[$i])->countAllResults();
+                if($evidence_data == 0){
+                    return redirect()->back()->with('state_message', 'error');
+                }
+            }
             // if($target){
             //     for($i = 0; $i < count($target); $i++){
             //         $data=[
@@ -318,6 +331,26 @@ class RiskMonitoringController extends BaseController
             return redirect()->back()->with('state_message', 'error');
         }
     }
+
+    // public function onSubmitDetailMonitoring(){
+    //     helper(['form', 'url', 'filesystem']);
+    //     $id_detail_mitigation =  $this->request->getPost('id_detail_mitigation');
+
+    //     //check mandatory evidence based on realisasi month
+    //     //get list monitoring month
+    //     $monitoring_data = $this->RiskMitigationDetailMonitoringModel->select('*')
+    //                             ->where('id_detail_mitigation', $id_detail_mitigation)
+    //                             ->where('monitoring_month <>', '0000-00-00')
+    //                             ->findAll();
+        
+    //     for($i = 0 ; $i < count($monitoring_data); $i++){
+    //         $evidence_data = $this->RiskMitigationDetailEvidenceModel->select('*')
+    //                             ->where('id_detail_monitoring', $monitoring_data[$i]['id'])->countAllResults();
+    //         if($evidence_data == 0){
+    //             return redirect()->back()->with('state_message', 'error');
+    //         }
+    //     }
+    // }
 
     public function onUploadEvidence(){
         $id_detail_monitoring = $this->RiskMitigationDetailMonitoringModel->get_id_monitoring($this->request->getPost('month'),$this->request->getPost('id_detail_mitigation'));

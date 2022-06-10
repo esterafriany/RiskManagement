@@ -78,7 +78,7 @@
                                     <div id="riskCauseList">
                     
                                     </div><br/>
-                                    <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-cause"><i class="fas fa-plus-circle"></i> Tambah Risiko</button>
+                                    <!-- <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-cause"><i class="fas fa-plus-circle"></i> Tambah Risiko</button> -->
                                 
                                 </li>
                             </ul>
@@ -96,7 +96,7 @@
                                     <div id="riskMitigationList" name="riskMitigationList">
                                     
                                     </div><br/>
-                                    <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-mitigation"><i class="fas fa-plus-circle"></i> Tambah Mitigasi</button>
+                                    <!-- <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-mitigation"><i class="fas fa-plus-circle"></i> Tambah Mitigasi</button> -->
                                 </li>
                             </ul>
                         </div>

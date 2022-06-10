@@ -45,19 +45,19 @@
 				},
 				{
 					data: 'risk_mitigation',
-					// render: function (data, type, item) {
-					// 	if(item.risk_mitigation != null){
-					// 		return item.risk_mitigation;
-					// 	}else{
-					// 		return '';
-					// 	}
-					// },
+					render: function (data, type, item) {
+						if(item.risk_mitigation != null){
+							return "<div class='text-wrap width-200'>" + item.risk_mitigation + "</div>";
+						}else{
+							return '';
+						}
+					},
 				},
 				{
 					data: 'risk_mitigation_detail',
 					render: function (data, type, item) {
 						if(item.risk_mitigation_detail != null){
-							return '<a href="<?=base_url()?>/admin/detail-risk-monitoring/'+item.id+'">'+item.risk_mitigation_detail+'</a>';
+							return '<a class="text-wrap width-200" href="<?=base_url()?>/admin/detail-risk-monitoring/'+item.id+'">'+item.risk_mitigation_detail+'</a>';
 
 						}else{
 							return '-';

@@ -124,7 +124,7 @@ $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
 	$routes->add('view-impact-criteria', 'RiskOwner\DashboardController::view_impact_criteria', ['as' => 'bbb']);
 
 	//Risk Residual
-	$routes->add('get-risk-event-residual/(:num)', 'RiskOwner\RiskEventController::getDetailRiskResidual/$1', ['as' => 'get-risk-residual']);
+	$routes->add('get-risk-event-residual/(:num)/(:num)', 'RiskOwner\RiskEventController::getDetailRiskResidual/$1/$2', ['as' => 'get-risk-residual']);
 });
 
 /*

@@ -15,6 +15,10 @@ class RiskMitigationProgressRiskOwner extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'id_risk_event'   => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+            ],
             'id_division'   => [
                 'type'           => 'INT',
                 'constraint'     => 11,

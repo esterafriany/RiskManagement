@@ -4,12 +4,16 @@
 	
 	$(document).ready(function() {
 		var $btn_edit_risk_residual = $("#btn-edit-risk-residual");
-			
+        var id_division = document.getElementById('id_division').value;
+        var action = document.getElementById('action').value;
+        var id_progress = document.getElementById('id_progress').value;
+        var id_risk_event = document.getElementById('id_risk_event').value;
+
 		// add risk event
 		$btn_edit_risk_residual.on("click", function (e) {
 			
         $.ajax({
-				url : "<?php echo base_url('RiskOwner/RiskEventController/onAddRiskResidual')?>",
+				url : "<?php echo base_url('RiskOwner/RiskEventController/onAddRiskResidual')?>" + "/" + action + '/' +id_division + '/' + id_progress + '/' + id_risk_event,
 				type: "POST",
 				data: $('#form-add-risk-residual').serialize(),
 				dataType: "JSON",

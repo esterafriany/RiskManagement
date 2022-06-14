@@ -12,6 +12,8 @@ use App\Models\RiskMitigations;
 use App\Models\RiskEventCategories;
 use App\Models\RiskMitigationDivisions;
 use App\Models\KPIs;
+use App\Models\RiskMitigationProgressRiskOwners;
+
 
 class RiskEventController extends BaseController
 {
@@ -24,7 +26,7 @@ class RiskEventController extends BaseController
         $this->RiskCategoryModel = new RiskCategories();
         $this->RiskEventCategoryModel = new RiskEventCategories();
         $this->RiskMitigationDivisionModel = new RiskMitigationDivisions();
- 
+        $this->RiskMitigationProgressRiskOwnersModel = new RiskMitigationProgressRiskOwners(); 
     }
     
     public function index(){
@@ -296,7 +298,7 @@ class RiskEventController extends BaseController
         }
     }
 
-    public function getDetailRiskResidual($id_risk_event){
+    public function getDetailRiskResidual($id_risk_event,$id_division){
         $data = [
             'title'=>'Risk Events',
             'breadcrumb'=>'Home  <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Risk Register
@@ -304,12 +306,13 @@ class RiskEventController extends BaseController
             'content'=>'risk_owner/pages/risk_event/residual',
             'kpi_list'=> $this->KPIModel->get_list_kpis(),
             'id_risk_event'=> $id_risk_event,
-            'detail_risk_event' => $this->RiskEventModel->get_risk_event($id_risk_event)
+            'detail_risk_event' => $this->RiskEventModel->get_risk_event($id_risk_event),
+            'detail_risk_progress' => $this->RiskMitigationProgressRiskOwnersModel->get_risk_progress_by_id_division($id_risk_event,$id_division)
         ];
         echo view('risk_owner/template/template',$data);
     }
 
-    public function onAddRiskResidual(){
+    public function onAddRiskResidual($action, $id_division, $id_progress, $id_risk_event){
         if (! $this->validate([
             'probability_level_residual' => 'required',
             'impact_level_residual' => 'required',
@@ -322,38 +325,45 @@ class RiskEventController extends BaseController
             $id_risk_event = $this->request->getPost('id_risk_event');
             try {
                 $data = [
+                        'id_division' => $id_division,
+                        'id_risk_event' => $id_risk_event,
                         'probability_level_residual' => $this->request->getPost('probability_level_residual'),
                         'impact_level_residual' => $this->request->getPost('impact_level_residual'),
                         'final_level_residual' => $this->request->getPost('final_level_residual'),
                         'risk_analysis_residual' => $this->request->getPost('risk_analysis_residual'),
                         'risk_impact_quantitative' => $this->request->getPost('r'), //$this->request->getPost('risk_impact_quantitative'),
                         'description' => $this->request->getPost('description'),
-                        ];
+                        'created_at' => date('Y-m-d'),
+                ];
 
-                $this->RiskEventModel->update($id_risk_event,$data);
-            
-                /////////////////
-                ///update nomor risiko residual
-                //get all risk event in selected year
-                $data_risk_event = $this->RiskEventModel->get_list_risk_event_residual($this->request->getPost('year'));
-
-                $sort = array();
-                foreach($data_risk_event as $k=>$v) {
-                    $sort['final_level_residual'][$k] = $v['final_level_residual'];
-                    $sort['level'][$k] = $v['level'];
+                if($action == 'insert'){
+                    $this->RiskMitigationProgressRiskOwnersModel->insert($data);
+                }else if($action == 'update'){
+                    $this->RiskMitigationProgressRiskOwnersModel->update($id_progress,$data);
                 }
-                array_multisort($sort['final_level_residual'], SORT_DESC, $sort['level'], SORT_DESC,$data_risk_event);
+
+                // /////////////////
+                // ///update nomor risiko residual
+                // //get all risk event in selected year
+                // $data_risk_event = $this->RiskEventModel->get_list_risk_event_residual($this->request->getPost('year'));
+
+                // $sort = array();
+                // foreach($data_risk_event as $k=>$v) {
+                //     $sort['final_level_residual'][$k] = $v['final_level_residual'];
+                //     $sort['level'][$k] = $v['level'];
+                // }
+                // array_multisort($sort['final_level_residual'], SORT_DESC, $sort['level'], SORT_DESC,$data_risk_event);
                 
-                //update risk number
-                $risk_num = 1;
-                for($k=0; $k<count($data_risk_event); $k++) {
+                // //update risk number
+                // $risk_num = 1;
+                // for($k=0; $k<count($data_risk_event); $k++) {
                     
-                    $data_number['risk_number_residual'] = $risk_num;
-                    $this->RiskEventModel->update($data_risk_event[$k]['id'],$data_number);
+                //     $data_number['risk_number_residual'] = $risk_num;
+                //     $this->RiskEventModel->update($data_risk_event[$k]['id'],$data_number);
 
-                    $risk_num +=1;
-                }
-                ///////////////
+                //     $risk_num +=1;
+                // }
+                // ///////////////
                 
                 echo json_encode(array("status" => $data));
             }catch (\Exception $e) {

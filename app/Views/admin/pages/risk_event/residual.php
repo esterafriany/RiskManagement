@@ -11,99 +11,230 @@
             <form id="form-add-risk-residual" action="" class="form-horizontal" method="POST">
                <input type="hidden" class="form-control" id="id_risk_event" name="id_risk_event" value="<?php echo $id_risk_event;?>">
                <input type="hidden" class="form-control" id="year" name="year" value="<?php echo $detail_risk_event->year;?>">
-        
+               
                <div class="row">
                   <div class="col-md-6">
-                     <div class="form-group row">
-                        <small><b>Tingkat Kemungkinan Residual</b></small>
-                        <div class="col-sm-12">
-                           <select class="form-control form-select" required name="probability_level_residual" id="probability_level_residual" onChange="change_level()">
-                                 <option value="" disabled selected hidden >Pilihan</option>
-                                 <?php
-                                    for($i=1;$i<6;$i++){ 
-                                       if($detail_risk_event->probability_level_residual == $i){ ?>
-                                             <option value="<?=$i?>"selected><?php echo $i;?></option>
-                                       <?php 
-                                       }else{?>
-                                             <option value="<?=$i?>"><?php echo $i;?></option>
-                                       <?php }
-                                    }
-                                 ?>
-                           </select>
-                        </div>
-                     </div>
+                     <ul class="list-group">
+                        <li class="list-group-item">
+                           <div class="row">
+                              <div class="col-md-5" style="text-align: right;padding-right: 0px;padding-top: 9px;">
+                                 <b>Risk Owner</b>
+                              </div>
+                              <div class="col-md-7">
+                              <div class="dropdown">
+                                 <select class="form-control form-select" id="year" name="year" onchange="update_matrix()">
+                                    <option value="" disabled selected>Pilih Risk Owner</option>
+                                    <?php foreach($division_list as $div){ ?>
+                                       <option value="<?=$div['id']?>"><?php echo $div['name'];?></option>
+                                    <?php } ?>
+                                 </select>
+                              </div>
+                              </div>
+                           </div>
+                           
+                        </li>
+                        <li class="list-group-item">
+                           <div class="row">
+                              
 
-                     <div class="form-group row">
-                        <small><b>Tingkat Dampak Residual</b></small>
-                        <div class="col-sm-12">
-                           <select class="form-control form-select" required name="impact_level_residual" id="impact_level_residual" onChange="change_level1()">
-                                 <option value="" disabled selected hidden >Pilihan</option>
-                                 <?php
-                                    for($i=1;$i<6;$i++){ 
-                                       if($detail_risk_event->impact_level_residual == $i){ ?>
-                                             <option value="<?=$i?>"selected><?php echo $i;?></option>
-                                       <?php 
-                                       }else{?>
-                                             <option value="<?=$i?>"><?php echo $i;?></option>
-                                       <?php }
-                                    }
-                                 ?>
-                           </select>
-                        </div>
-                     </div>
+                              <div class="col-md-12"></br>
+                                 <div class="form-group row">
+                                    <small><b>Tingkat Kemungkinan Residual</b></small>
+                                    <div class="col-sm-12">
+                                       <select class="form-control form-select" required name="ro_probability_level_residual" id="ro_probability_level_residual" onChange="change_level()">
+                                             <option value="" disabled selected hidden >Pilihan</option>
+                                             <?php
+                                                for($i=1;$i<6;$i++){ 
+                                                   if($detail_risk_event->probability_level_residual == $i){ ?>
+                                                         <option value="<?=$i?>"selected><?php echo $i;?></option>
+                                                   <?php 
+                                                   }else{?>
+                                                         <option value="<?=$i?>"><?php echo $i;?></option>
+                                                   <?php }
+                                                }
+                                             ?>
+                                       </select>
+                                    </div>
+                                 </div>
 
-                     <div class="form-group">
-                        <small><b>Level Residual</b></small>
-                        <input type="text" required class="form-control" id="final_level_residual" name="final_level_residual" value="<?php echo $detail_risk_event->final_level_residual;?>">
-                     </div>
+                                 <div class="form-group row">
+                                    <small><b>Tingkat Dampak Residual</b></small>
+                                    <div class="col-sm-12">
+                                       <select class="form-control form-select" required name="ro_impact_level_residual" id="_ro_impact_level_residual" onChange="change_level1()">
+                                             <option value="" disabled selected hidden >Pilihan</option>
+                                             <?php
+                                                for($i=1;$i<6;$i++){ 
+                                                   if($detail_risk_event->impact_level_residual == $i){ ?>
+                                                         <option value="<?=$i?>"selected><?php echo $i;?></option>
+                                                   <?php 
+                                                   }else{?>
+                                                         <option value="<?=$i?>"><?php echo $i;?></option>
+                                                   <?php }
+                                                }
+                                             ?>
+                                       </select>
+                                    </div>
+                                 </div>
 
-                     <div class="form-group row">
-                        <small><b>Analisis Risiko Residual</b></small>
-                        <div class="col-sm-12">
-                           <select class="form-control form-select" required id="risk_analysis_residual" name="risk_analysis_residual">
-                                 <option value="" disabled selected hidden >Pilihan</option>
+                                 <div class="form-group">
+                                    <small><b>Level Residual</b></small>
+                                    <input type="text" required class="form-control" id="ro_final_level_residual" name="ro_final_level_residual" value="<?php echo $detail_risk_event->final_level_residual;?>">
+                                 </div>
 
-                                 <?php if($detail_risk_event->risk_analysis_residual == "R"){?>
-                                    <option value="R" selected>Rendah</option>
-                                 <?php }else{ ?>
-                                    <option value="R">Rendah</option>
-                                 <?php } ?>
+                                 <div class="form-group row">
+                                    <small><b>Analisis Risiko Residual</b></small>
+                                    <div class="col-sm-12">
+                                       <select class="form-control form-select" required id="ro_risk_analysis_residual" name="ro_risk_analysis_residual">
+                                             <option value="" disabled selected hidden >Pilihan</option>
 
-                                 <?php if($detail_risk_event->risk_analysis_residual == "M"){?>
-                                    <option value="M" selected>Menengah</option>
-                                 <?php }else{ ?>
-                                    <option value="M">Menengah</option>
-                                 <?php } ?>
+                                             <?php if($detail_risk_event->risk_analysis_residual == "R"){?>
+                                                <option value="R" selected>Rendah</option>
+                                             <?php }else{ ?>
+                                                <option value="R">Rendah</option>
+                                             <?php } ?>
 
-                                 <?php if($detail_risk_event->risk_analysis_residual == "T"){?>
-                                    <option value="T" selected>Tinggi</option>
-                                 <?php }else{ ?>
-                                    <option value="T">Tinggi</option>
-                                 <?php } ?>
+                                             <?php if($detail_risk_event->risk_analysis_residual == "M"){?>
+                                                <option value="M" selected>Menengah</option>
+                                             <?php }else{ ?>
+                                                <option value="M">Menengah</option>
+                                             <?php } ?>
+
+                                             <?php if($detail_risk_event->risk_analysis_residual == "T"){?>
+                                                <option value="T" selected>Tinggi</option>
+                                             <?php }else{ ?>
+                                                <option value="T">Tinggi</option>
+                                             <?php } ?>
+                                             
+                                             <?php if($detail_risk_event->risk_analysis_residual == "E"){?>
+                                                <option value="E" selected>Ekstrem</option>
+                                             <?php }else{ ?>
+                                                <option value="E">Ekstrem</option>
+                                             <?php } ?>
+                                       </select>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                    <small><b>Dampak Risiko Kuantitatif</b></small>
+                                    <textarea class="form-control" name="ro_r" id="ro_r" rows="3"><?=$detail_risk_event->risk_impact_quantitative?></textarea>
+                                          
+
+                                 </div>
+
+                                 <div class="form-group">
+                                    <small><b>Keterangan</b></small>
+                                    <textarea class="form-control" name="ro_description" id="ro_description" rows="2"><?=$detail_risk_event->description?></textarea>
+                                 </div>
                                  
-                                 <?php if($detail_risk_event->risk_analysis_residual == "E"){?>
-                                    <option value="E" selected>Ekstrem</option>
-                                 <?php }else{ ?>
-                                    <option value="E">Ekstrem</option>
-                                 <?php } ?>
-                           </select>
-                        </div>
-                     </div>
+                              </div>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
 
-                     <div class="form-group">
-                        <small><b>Dampak Risiko Kuantitatif</b></small>
-                         <textarea class="form-control" name="r" id="r" rows="3"><?=$detail_risk_event->risk_impact_quantitative?></textarea>
-                                
+                  <div class="col-md-6">
+                     <ul class="list-group">
+                        <li class="list-group-item">
+                           <input type="text" required class="form-control" value="Update Progress By PSMR">
+                        </li>
+                        <li class="list-group-item">
+                        <div class="col-md-12"></br>
+                                 <div class="form-group row">
+                                    <small><b>Tingkat Kemungkinan Residual</b></small>
+                                    <div class="col-sm-12">
+                                       <select class="form-control form-select" required name="probability_level_residual" id="probability_level_residual" onChange="change_level()">
+                                             <option value="" disabled selected hidden >Pilihan</option>
+                                             <?php
+                                                for($i=1;$i<6;$i++){ 
+                                                   if($detail_risk_event->probability_level_residual == $i){ ?>
+                                                         <option value="<?=$i?>"selected><?php echo $i;?></option>
+                                                   <?php 
+                                                   }else{?>
+                                                         <option value="<?=$i?>"><?php echo $i;?></option>
+                                                   <?php }
+                                                }
+                                             ?>
+                                       </select>
+                                    </div>
+                                 </div>
 
-                     </div>
+                                 <div class="form-group row">
+                                    <small><b>Tingkat Dampak Residual</b></small>
+                                    <div class="col-sm-12">
+                                       <select class="form-control form-select" required name="impact_level_residual" id="impact_level_residual" onChange="change_level1()">
+                                             <option value="" disabled selected hidden >Pilihan</option>
+                                             <?php
+                                                for($i=1;$i<6;$i++){ 
+                                                   if($detail_risk_event->impact_level_residual == $i){ ?>
+                                                         <option value="<?=$i?>"selected><?php echo $i;?></option>
+                                                   <?php 
+                                                   }else{?>
+                                                         <option value="<?=$i?>"><?php echo $i;?></option>
+                                                   <?php }
+                                                }
+                                             ?>
+                                       </select>
+                                    </div>
+                                 </div>
 
-                     <div class="form-group">
-                        <small><b>Keterangan</b></small>
-                        <textarea class="form-control" name="description" id="description" rows="2"><?=$detail_risk_event->description?></textarea>
-                     </div>
-                     
+                                 <div class="form-group">
+                                    <small><b>Level Residual</b></small>
+                                    <input type="text" required class="form-control" id="final_level_residual" name="final_level_residual" value="<?php echo $detail_risk_event->final_level_residual;?>">
+                                 </div>
+
+                                 <div class="form-group row">
+                                    <small><b>Analisis Risiko Residual</b></small>
+                                    <div class="col-sm-12">
+                                       <select class="form-control form-select" required id="risk_analysis_residual" name="risk_analysis_residual">
+                                             <option value="" disabled selected hidden >Pilihan</option>
+
+                                             <?php if($detail_risk_event->risk_analysis_residual == "R"){?>
+                                                <option value="R" selected>Rendah</option>
+                                             <?php }else{ ?>
+                                                <option value="R">Rendah</option>
+                                             <?php } ?>
+
+                                             <?php if($detail_risk_event->risk_analysis_residual == "M"){?>
+                                                <option value="M" selected>Menengah</option>
+                                             <?php }else{ ?>
+                                                <option value="M">Menengah</option>
+                                             <?php } ?>
+
+                                             <?php if($detail_risk_event->risk_analysis_residual == "T"){?>
+                                                <option value="T" selected>Tinggi</option>
+                                             <?php }else{ ?>
+                                                <option value="T">Tinggi</option>
+                                             <?php } ?>
+                                             
+                                             <?php if($detail_risk_event->risk_analysis_residual == "E"){?>
+                                                <option value="E" selected>Ekstrem</option>
+                                             <?php }else{ ?>
+                                                <option value="E">Ekstrem</option>
+                                             <?php } ?>
+                                       </select>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                    <small><b>Dampak Risiko Kuantitatif</b></small>
+                                    <textarea class="form-control" name="r" id="r" rows="3"><?=$detail_risk_event->risk_impact_quantitative?></textarea>
+                                          
+
+                                 </div>
+
+                                 <div class="form-group">
+                                    <small><b>Keterangan</b></small>
+                                    <textarea class="form-control" name="description" id="description" rows="2"><?=$detail_risk_event->description?></textarea>
+                                 </div>
+                                 
+                              </div>
+                        </li>
+                     </ul>
                   </div>
                </div>
+               
+
+              
             
             </div>
             <div class="card-footer">

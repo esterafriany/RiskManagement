@@ -12,6 +12,7 @@ use App\Models\RiskMitigations;
 use App\Models\RiskEventCategories;
 use App\Models\RiskMitigationDivisions;
 use App\Models\KPIs;
+use App\Models\Divisions;
 
 class RiskEventController extends BaseController
 {
@@ -24,6 +25,7 @@ class RiskEventController extends BaseController
         $this->RiskCategoryModel = new RiskCategories();
         $this->RiskEventCategoryModel = new RiskEventCategories();
         $this->RiskMitigationDivisionModel = new RiskMitigationDivisions();
+        $this->DivisionModel = new Divisions();
  
     }
     
@@ -560,7 +562,8 @@ class RiskEventController extends BaseController
             'content'=>'admin/pages/risk_event/residual',
             'kpi_list'=> $this->KPIModel->get_list_kpis(),
             'id_risk_event'=> $id_risk_event,
-            'detail_risk_event' => $this->RiskEventModel->get_risk_event($id_risk_event)
+            'detail_risk_event' => $this->RiskEventModel->get_risk_event($id_risk_event),
+            'division_list' => $this->DivisionModel->get_list_divisions()
         ];
         echo view('admin/template/template',$data);
     }

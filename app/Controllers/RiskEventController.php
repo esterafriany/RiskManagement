@@ -13,6 +13,7 @@ use App\Models\RiskEventCategories;
 use App\Models\RiskMitigationDivisions;
 use App\Models\KPIs;
 use App\Models\Divisions;
+use App\Models\RiskMitigationProgressRiskOwners;
 
 class RiskEventController extends BaseController
 {
@@ -26,7 +27,7 @@ class RiskEventController extends BaseController
         $this->RiskEventCategoryModel = new RiskEventCategories();
         $this->RiskMitigationDivisionModel = new RiskMitigationDivisions();
         $this->DivisionModel = new Divisions();
- 
+        $this->RiskMitigationProgressRiskOwnerModel = new RiskMitigationProgressRiskOwners();
     }
     
     public function index(){
@@ -463,13 +464,13 @@ class RiskEventController extends BaseController
             $id_risk_event = $this->request->getPost('id_risk_event');
             try {
                 $data = [
-                        'probability_level_residual' => $this->request->getPost('probability_level_residual'),
-                        'impact_level_residual' => $this->request->getPost('impact_level_residual'),
-                        'final_level_residual' => $this->request->getPost('final_level_residual'),
-                        'risk_analysis_residual' => $this->request->getPost('risk_analysis_residual'),
-                        'risk_impact_quantitative' => $this->request->getPost('r'), //$this->request->getPost('risk_impact_quantitative'),
-                        'description' => $this->request->getPost('description'),
-                        ];
+                    'probability_level_residual' => $this->request->getPost('probability_level_residual'),
+                    'impact_level_residual' => $this->request->getPost('impact_level_residual'),
+                    'final_level_residual' => $this->request->getPost('final_level_residual'),
+                    'risk_analysis_residual' => $this->request->getPost('risk_analysis_residual'),
+                    'risk_impact_quantitative' => $this->request->getPost('r'), //$this->request->getPost('risk_impact_quantitative'),
+                    'description' => $this->request->getPost('description'),
+                ];
 
                 $this->RiskEventModel->update($id_risk_event,$data);
             
@@ -566,6 +567,12 @@ class RiskEventController extends BaseController
             'division_list' => $this->DivisionModel->get_list_divisions()
         ];
         echo view('admin/template/template',$data);
+    }
+
+    public function onGetDataProgress($id_division, $id_risk_event){
+        $data = $this->RiskMitigationProgressRiskOwnerModel->get_risk_progress_by_id_division($id_risk_event, $id_division);
+		
+		echo json_encode($data);
     }
 
 }

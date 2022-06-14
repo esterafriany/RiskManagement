@@ -22,7 +22,7 @@
                               </div>
                               <div class="col-md-7">
                               <div class="dropdown">
-                                 <select class="form-control form-select" id="year" name="year" onchange="update_matrix()">
+                                 <select class="form-control form-select" id="id_division" name="id_division" onchange="update_progress()">
                                     <option value="" disabled selected>Pilih Risk Owner</option>
                                     <?php foreach($division_list as $div){ ?>
                                        <option value="<?=$div['id']?>"><?php echo $div['name'];?></option>
@@ -60,7 +60,7 @@
                                  <div class="form-group row">
                                     <small><b>Tingkat Dampak Residual</b></small>
                                     <div class="col-sm-12">
-                                       <select class="form-control form-select" required name="ro_impact_level_residual" id="_ro_impact_level_residual" onChange="change_level1()">
+                                       <select class="form-control form-select" required name="ro_impact_level_residual" id="ro_impact_level_residual" onChange="change_level1()">
                                              <option value="" disabled selected hidden >Pilihan</option>
                                              <?php
                                                 for($i=1;$i<6;$i++){ 
@@ -237,7 +237,7 @@
               
             
             </div>
-            <div class="card-footer">
+            <div class="card-footer" style="text-align: center;">
                 <a href="<?=base_url('admin/detail-risk-event/'.$id_risk_event)?>" type="button" class="btn btn-secondary"> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><circle cx="256" cy="256" r="208" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="m108.92 108.92l294.16 294.16"/></svg> Batal</a>
                 <button type="button" id="btn-edit-risk-residual"  class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M380.93 57.37A32 32 0 0 0 358.3 48H94.22A46.21 46.21 0 0 0 48 94.22v323.56A46.21 46.21 0 0 0 94.22 464h323.56A46.36 46.36 0 0 0 464 417.78V153.7a32 32 0 0 0-9.37-22.63ZM256 416a64 64 0 1 1 64-64a63.92 63.92 0 0 1-64 64Zm48-224H112a16 16 0 0 1-16-16v-64a16 16 0 0 1 16-16h192a16 16 0 0 1 16 16v64a16 16 0 0 1-16 16Z"/></svg> Simpan</button>
             </div>

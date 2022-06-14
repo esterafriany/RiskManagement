@@ -78,6 +78,7 @@ class RiskEvents extends Model
                                 , probability_level, impact_level
                                 , target_probability_level, target_impact_level
                                 , probability_level_residual, impact_level_residual
+                                , final_level_residual
                                 , concat(probability_level,impact_level)  as td_id
                                 , concat(target_probability_level,target_impact_level) as target_td_id
                                 , concat(probability_level_residual,impact_level_residual) as residual_td_id

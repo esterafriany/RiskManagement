@@ -7,8 +7,7 @@
 			
 		// add risk event
 		$btn_edit_risk_residual.on("click", function (e) {
-			
-        $.ajax({
+        	$.ajax({
 				url : "<?php echo base_url('admin/RiskEventController/onAddRiskResidual')?>",
 				type: "POST",
 				data: $('#form-add-risk-residual').serialize(),
@@ -86,7 +85,44 @@
         }else if(level == 20 || level == 25){
             risk_analysis_residual.value = "E";
         }
+	}
 
+	function update_progress(){
+		var id_division = document.getElementById('id_division').value;
+		var id_risk_event = document.getElementById('id_risk_event').value;
+		
+		$.ajax({
+            url : "<?=site_url('RiskEventController/onGetDataProgress')?>/" + id_division + '/' + id_risk_event,
+            type: "GET",
+            dataType: "JSON",
+            success: function(data)
+            {
+                console.log(data);
+
+				if(data != null){
+					$("#ro_probability_level_residual").val(data.probability_level_residual);
+					$("#ro_impact_level_residual").val(data.impact_level_residual);
+					$("#ro_final_level_residual").val(data.final_level_residual);
+					$("#ro_risk_analysis_residual").val(data.risk_analysis_residual);
+					$("#ro_r").val(data.risk_impact_quantitative);
+					$("#ro_description").val(data.description);
+			
+				}else{
+					$("#ro_probability_level_residual").val("");
+					$("#ro_impact_level_residual").val("");
+					$("#ro_final_level_residual").val("");
+					$("#ro_risk_analysis_residual").val("");
+					$("#ro_r").val("");
+					$("#ro_description").val("");
+				}
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                swal('Data tidak ditemukan.');
+            }
+	    });
+
+		
 	}
 	
 </script>

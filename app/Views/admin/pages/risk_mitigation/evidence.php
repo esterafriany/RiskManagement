@@ -11,12 +11,10 @@
             <li class="list-group-item"> <small>Upload File </small></li>
             <li class="list-group-item">   
                 <div class="form-group">
-                    
                     <div id="evidenceList">
                         
                     </div><br/>
                     <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-evidence"><i class="fas fa-plus-circle"></i> Tambah File</button>
-                    
                 </div>       
             </li>
         </ul>

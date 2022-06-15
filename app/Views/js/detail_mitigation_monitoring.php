@@ -4,7 +4,7 @@ if($session->get('state_message')){
 	if($session->get('state_message') == 'error'){ ?>
 	<script>
 		$(document).ready(function() {
-		swal("Error","Data gagal ditambahkan. Pastikan Data Output, Target dan Realisasi tidak kosong.","error");
+		swal("Gagal","Pastikan Evidence pada Bulan Realisasi diupload. Pastikan data Output tidak kosong.","error");
 		});
 	</script>
 <?php }else if($session->get('state_message') == 'success'){ ?>
@@ -20,7 +20,8 @@ if($session->get('state_message')){
 		});
 	</script>
 <?php }
-}?>
+}
+?>
 
 
 <script>

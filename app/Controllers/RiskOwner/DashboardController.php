@@ -42,8 +42,6 @@ class DashboardController extends BaseController
 	}
 
     public function onGetDataMatrixRiskOwner($year, $id_division) {		
-        //$data = $this->RiskEventModel->get_data_matrix($year);
-
         $data = [
             'all_data_matrix' => $this->RiskEventModel->get_data_matrix($year),
             'data_matrix_risk_owner'=> $this->RiskEventModel->get_data_matrix_risk_owner($year, $id_division),

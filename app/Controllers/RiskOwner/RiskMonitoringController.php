@@ -375,7 +375,6 @@ class RiskMonitoringController extends BaseController
                 }
             }
         }
-
         return redirect()->back()->with('state_message', 'file');
     }
 

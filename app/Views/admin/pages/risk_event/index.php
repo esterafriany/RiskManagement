@@ -46,7 +46,7 @@
                      </p>
                   </div>
                </li>
-            </udl
+            </ul>
                <br/><br/>
 				<div class="table-responsive">
                <table id="riskEventTable" class="table" width="100%">

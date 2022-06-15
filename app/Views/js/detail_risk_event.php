@@ -1,7 +1,6 @@
 <?= $this->include('admin/template/_partials/js')?>
 <script>
 	$(document).ready(function() {
-		
 		var $btn_edit_risk_event = $("#btn-edit-risk-event");
 		var site_url = window.location.pathname;
         var arr = site_url.split("/");

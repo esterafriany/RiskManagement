@@ -6,13 +6,8 @@
 	var id_division = document.getElementById('id_division').value;
 
 	$(document).ready(function() {
-		
 
 		table = $('#riskMonitoringTable').DataTable({
-			
-			scrollX: 				true,
-			paging: 				true,
-
 			'processing': true,
 			'serverSide': true,
 			'serverMethod': 'post',
@@ -61,7 +56,8 @@
 					data: 'risk_mitigation_detail',
 					render: function (data, type, item) {
 						if(item.id != null){
-							return '<a class="text-wrap width-200" href="<?=base_url()?>/risk_owner/view-detail-risk-monitoring/'+item.id+'">'+item.risk_mitigation_detail+'</a>';
+							//return '<a class="text-wrap width-200" href="<?=base_url()?>/risk_owner/view-detail-risk-monitoring/'+item.id+'">'+item.risk_mitigation_detail+'</a>';
+							return '<div class="text-wrap width-200" >'+item.risk_mitigation_detail+'</div>';
 						}else{
 							return '-';
 						}

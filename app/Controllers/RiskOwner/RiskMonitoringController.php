@@ -54,7 +54,18 @@ class RiskMonitoringController extends BaseController
         $searchValue = $dtpostData['search']['value']; // Search value
 
         ## Total number of records without filtering
-        $totalRecords = $this->RiskMitigationModel->select('id')
+        $totalRecords = $this->RiskEventModel
+        ->join('risk_mitigations', 'risk_mitigations.id_risk_event = risk_events.id', 'left')
+        ->join('risk_mitigation_details', 'risk_mitigation_details.id_risk_mitigation = risk_mitigations.id', 'left')
+        ->select('risk_events.risk_event
+            , risk_mitigations.risk_mitigation
+            , risk_mitigation_details.id
+            , risk_mitigation_details.risk_mitigation_detail')
+            ->where('risk_events.year' , $year)
+            ->orLike('risk_events.risk_event', $searchValue)
+            ->orLike('risk_mitigations.risk_mitigation', $searchValue)
+            ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
+            ->orLike('division_name', $searchValue)
                 ->countAllResults();
 
         ## Total number of records with filtering
@@ -66,8 +77,11 @@ class RiskMonitoringController extends BaseController
             , risk_mitigation_details.id
             , risk_mitigation_details.risk_mitigation_detail')
             ->where('risk_events.year' , $year)
-                ->orLike('risk_mitigation', $searchValue)
-                ->countAllResults();
+            ->orLike('risk_events.risk_event', $searchValue)
+            ->orLike('risk_mitigations.risk_mitigation', $searchValue)
+            ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
+            ->orLike('division_name', $searchValue)
+            ->countAllResults();
 
         ## Fetch records
         $records = $this->RiskEventModel
@@ -82,6 +96,9 @@ class RiskMonitoringController extends BaseController
                     , GROUP_CONCAT(divisions.name) as division_name
                     , progress_percentage')
                 ->orLike('risk_events.risk_event', $searchValue)
+                ->orLike('risk_mitigations.risk_mitigation', $searchValue)
+                ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
+                ->orLike('division_name', $searchValue)
                 ->where('risk_events.year' , $year)
                 ->groupBy('risk_mitigation_details.id, risk_mitigations.id')
                 ->findAll($rowperpage, $start);

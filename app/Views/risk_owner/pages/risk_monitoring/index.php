@@ -43,9 +43,7 @@
       </div>
    </div>
 </div>
-
 <?= $this->include("js/risk_owner/risk_monitoring")?>
-
 <style>
    .text-wrap{
       white-space:normal;

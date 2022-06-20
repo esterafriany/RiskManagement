@@ -11,6 +11,7 @@
 			'processing': true,
 			'serverSide': true,
 			'serverMethod': 'post',
+			order: [[0, 'asc']],
 			lengthMenu: [5, 10, 20, 50, 100],
 			"iDisplayLength": 5,
 			language: {
@@ -18,7 +19,7 @@
 				zeroRecords: "Tidak ada Data Risiko ditemukan.",
 			},
 			'ajax':{
-				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoringByRiskOwner')?>/" + year +"/"+ id_division,
+				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoringByRiskOwner')?>/" + year,
 				'data': function(data) {
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name

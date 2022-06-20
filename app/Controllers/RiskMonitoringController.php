@@ -137,7 +137,8 @@ class RiskMonitoringController extends BaseController
         return $this->response->setJSON($response);
     }
 
-    public function getRiskMonitoringByRiskOwner($year, $id_division){
+    public function getRiskMonitoringByRiskOwner($year){
+        
         $request = service('request');
         $postData = $request->getPost();
         $dtpostData = $postData['data'];
@@ -165,7 +166,6 @@ class RiskMonitoringController extends BaseController
                                     , GROUP_CONCAT(divisions.name) as division_name
                                     , progress_percentage')
                                 ->where('risk_events.year' , $year)
-                                ->where('risk_mitigation_divisions.id_division' , $id_division)
                                 ->groupBy('risk_mitigation_details.id, risk_mitigations.id')
                                 ->orLike('risk_events.risk_event', $searchValue)
                                 ->orLike('risk_mitigations.risk_mitigation', $searchValue)
@@ -184,15 +184,13 @@ class RiskMonitoringController extends BaseController
                                     , risk_mitigation_details.id
                                     , risk_mitigation_details.risk_mitigation_detail
                                     , GROUP_CONCAT(divisions.name) as division_name
-                                    , progress_percentage
-                                    , risk_mitigation_divisions.id_division')
+                                    , progress_percentage')
                                 ->where('risk_events.year' , $year)
-                                ->whereIn('risk_mitigation_divisions.id_division' , [$id_division])
                                 ->orLike('risk_event', $searchValue)
                                 ->orLike('risk_mitigation', $searchValue)
-                                // ->orLike('risk_mitigation_detail', $searchValue)
-                                // ->orLike('progress_percentage', $searchValue)
-                                // ->orLike('divisions.name', $searchValue)
+                                ->orLike('risk_mitigation_detail', $searchValue)
+                                ->orLike('progress_percentage', $searchValue)
+                                ->orLike('divisions.name', $searchValue)
                                 ->groupBy('risk_mitigation_details.id, risk_mitigations.id')
                                 ->countAllResults();
 
@@ -207,17 +205,15 @@ class RiskMonitoringController extends BaseController
                         , risk_mitigation_details.id
                         , risk_mitigation_details.risk_mitigation_detail
                         , GROUP_CONCAT(divisions.name) as division_name
-                        , progress_percentage
-                        , risk_mitigation_divisions.id_division')
+                        , progress_percentage')
                     ->where('risk_events.year' , $year)
-                    ->whereIn('risk_mitigation_divisions.id_division' , [$id_division])
                     ->orLike('risk_event', $searchValue)
                     ->orLike('risk_mitigation', $searchValue)
-                    // ->orLike('risk_mitigation_detail', $searchValue)
-                    // ->orLike('progress_percentage', $searchValue)
-                    // ->orLike('divisions.name', $searchValue)
+                    ->orLike('risk_mitigation_detail', $searchValue)
+                    ->orLike('progress_percentage', $searchValue)
+                    ->orLike('divisions.name', $searchValue)
                     ->groupBy('risk_mitigation_details.id, risk_mitigations.id')
-                    ->orderBy($columnName,$columnSortOrder)
+                    //->orderBy($columnName,$columnSortOrder)
                     ->findAll($rowperpage, $start);
 
         $data = array();
@@ -230,7 +226,6 @@ class RiskMonitoringController extends BaseController
                 "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
                 "division_name"=>$record['division_name'],
                 "progress_percentage"=>$record['progress_percentage'],
-                "id_division"=>$record['id_division'],
                 
             ); 
         }

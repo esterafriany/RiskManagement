@@ -31,7 +31,7 @@
 <div class="row">
    <div class="col-md-12 col-lg-12">
       <div class="row row-cols-1">
-         <div class="overflow-hidden d-slider1 ">
+         <!-- <div class="overflow-hidden d-slider1 ">
             <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
             <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="700">
                <div class="card">
@@ -90,7 +90,7 @@
             </ul>
             <div class="swiper-button swiper-button-next"></div>
             <div class="swiper-button swiper-button-prev"></div>
-         </div>
+         </div> -->
       </div>
    </div>
      

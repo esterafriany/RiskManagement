@@ -245,7 +245,7 @@ if($session->get('state_message')){
 								</td>
 								<td>
 									<button type="button" onclick="delete_evidence('${result[i]['id']}','${result[i]['id_detail_monitoring']}')" class="btn btn-outline-danger btn-sm removes" ><i class="fas fa-trash-alt"></i></button>
-									<a type="button" href="<?php echo base_url('admin/download')?>/${result[i]['id_detail_monitoring']}/${result[i]['filename']}" class="btn btn-outline-success btn-sm" ><i class="fas fa-download"></i></a>
+									<a type="button" href="<?php echo base_url('risk_owner/download')?>/${result[i]['id_detail_monitoring']}/${result[i]['filename']}" class="btn btn-outline-success btn-sm" ><i class="fas fa-download"></i></a>
 								</td>
 							</tr>`;
 				}

@@ -167,9 +167,7 @@ class RiskEventController extends BaseController
                         'target_final_level' => $target_level_inserted,
                         'risk_analysis' => $risk_analysis,
                         'target_risk_analysis' => $target_risk_analysis,
-                        ];
-
-                        
+                        ];    
 
                 $this->RiskEventModel->insert($data);
                 
@@ -223,8 +221,6 @@ class RiskEventController extends BaseController
             }
 
           }
-
-        
     }
     public function display_data(){
         /////////////////

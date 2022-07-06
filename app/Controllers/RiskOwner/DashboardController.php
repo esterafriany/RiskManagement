@@ -63,7 +63,11 @@ class DashboardController extends BaseController
     public function view_probability_criteria()
     {
         $data = [
-            'title'=>'title here',
+            'title'=>'Kriteria Kemungkinan',
+            'breadcrumb'=>
+                '<a href='.base_url('risk_owner/dashboards').'>Home</a>  
+                    <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>                                  <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                Kriteria Kemungkinan',
             'content'=>'risk_owner/pages/risk_terms/probability_criteria',
         ];
 
@@ -73,7 +77,11 @@ class DashboardController extends BaseController
     public function view_impact_criteria()
     {
         $data = [
-            'title'=>'title here',
+            'title'=>'Kriteria Impact',
+            'breadcrumb'=>
+                '<a href='.base_url('risk_owner/dashboards').'>Home</a>  
+                    <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>                                  <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                Kriteria Kemungkinan',
             'content'=>'risk_owner/pages/risk_terms/impact_criteria',
         ];
 

@@ -22,7 +22,6 @@
 				var count = result.length;
 				
 				for(i = 0; i < count; i++){
-					
 					penampung += `<table width="100%"><tr>
 						<td width="30px">${cause_number}.</td><td><input type="text" name="risk_cause[]" value="${result[i]['risk_cause']}" class="form-control" placeholder="Masukkan Penyebab Risiko">
 						</td><td>
@@ -65,7 +64,7 @@
 							</td>
 							<td>
 								<button type="button" id="" class="btn btn-outline-danger btn-sm removes" name="removes" ><i class="fas fa-trash-alt"></i></button>
-								<a href="<?=base_url()?>/risk_owner/detail-mitigation-risk/${result['risk_mitigation_list'][i]['id_risk_mitigation']}" type="button" id="" class="btn btn-outline-success btn-sm"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="currentColor" d="M64 384h384v-42.67H64Zm0-106.67h384v-42.66H64ZM64 128v42.67h384V128Z"/></svg> Detail Mitigasi</a>
+								<a href="<?=base_url()?>/risk_owner/detail-mitigation-risk/${result['risk_mitigation_list'][i]['id_risk_mitigation']}/${id_risk_event}" type="button" id="" class="btn btn-outline-success btn-sm"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="currentColor" d="M64 384h384v-42.67H64Zm0-106.67h384v-42.66H64ZM64 128v42.67h384V128Z"/></svg> Detail Mitigasi</a>
 								</td>
 						</tr>
 						</table>`;

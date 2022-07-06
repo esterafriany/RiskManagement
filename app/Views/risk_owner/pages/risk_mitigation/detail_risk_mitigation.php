@@ -4,7 +4,7 @@
          <div class="card">
             <div class="card-header d-flex justify-content-between">
                <div class="header-title">
-                <h4 class="card-title">Detail Mitigasi Risiko</h4>
+                <h4 class="card-title">Detail Mitigasi</h4>
                </div>
 			</div>
             <?php 
@@ -12,6 +12,7 @@
                 $this->session->start(); 
             ?>
             <input type="hidden" id="id_division" name="id_division" value="<?=$this->session->get("id_division")?>">
+            <input type="hidden" id="id_risk_event" name="id_risk_event" value="<?=$id_risk_event?>">
                
             <div class="card-body">
             <form id="form-edit-risk-event" action="" class="form-horizontal" method="POST">

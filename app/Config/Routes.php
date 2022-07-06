@@ -112,12 +112,12 @@ $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
 	$routes->add('get-risk-mitigations', 'RiskOwner\RiskMitigationController::index', ['as' => 'risk-mitigations']);
 	//$routes->add('RiskOwner\RiskMitigationController::getRiskMitigationListRiskOwner', 'RiskOwner\RiskMitigationController::getRiskMitigationListRiskOwner', ['as' => 'risk-mitigations-risk_owner']);
 	$routes->add('get-detail-risk-mitigation/(:num)', 'RiskOwner\RiskMitigationController::getDetailRiskMitigations/$1', ['as' => 'get-detail-risk-mitigation']);
-	$routes->add('detail-mitigation-risk/(:num)', 'RiskOwner\RiskMitigationController::getDetailRiskMitigation/$1', ['as' => 'aa']);
+	$routes->add('detail-mitigation-risk/(:num)/(:num)', 'RiskOwner\RiskMitigationController::getDetailRiskMitigation/$1/$2', ['as' => 'aa']);
 
 	//Risk Monitoring
 	$routes->add('risk-monitoring', 'RiskOwner\RiskMonitoringController::index', ['as' => 'get-risk-monitoring']);
 	//$routes->add('detail-risk-monitoring/(:num)', 'RiskOwner\RiskMonitoringController::getDetailRiskMonitoring/$1', ['as' => 'detail-risk-monitoring']);
-	$routes->add('view-detail-risk-monitoring/(:num)', 'RiskOwner\RiskMonitoringController::getDetailRiskMonitoring/$1', ['as' => 'aa-detail-risk-monitoring']);
+	$routes->add('view-detail-risk-monitoring/(:num)/(:num)/(:num)', 'RiskOwner\RiskMonitoringController::getDetailRiskMonitoring/$1/$2/$3', ['as' => 'aa-detail-risk-monitoring']);
 	
 	//Risk terms
 	$routes->add('view-probability-criteria', 'RiskOwner\DashboardController::view_probability_criteria', ['as' => 'aaa']);

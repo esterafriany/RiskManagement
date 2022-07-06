@@ -32,7 +32,7 @@ if($session->get('state_message')){
 		var $btn_edit_detail_monitoring = $("#btn-add-detail-monitoring1");
 		var site_url = window.location.pathname;
         var arr = site_url.split("/");
-        var id_detail_mitigation = arr[arr.length - 1];
+        var id_detail_mitigation = arr[arr.length - 3];
 		let y = 0;
 		
 		$.ajax({

@@ -24,8 +24,11 @@ class UserController extends BaseController
 	
 	public function group_list(){
 		$data = [
-            'title'=>'title here',
-            'breadcrumb' => 'User Management <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Group User',
+            'title'=>'Groups',
+            'breadcrumb' => '
+            <a href='.base_url().'>Home</a>
+            <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            User Management <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Group User',
             
             'content'=>'admin/pages/group/index'
         ];
@@ -154,9 +157,10 @@ class UserController extends BaseController
 	public function user_list() {
 
 		$data = [
-            'title'=>'title here',
-            'breadcrumb' => 'User Management<svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>User',
-
+            'title'=>'Users',
+            'breadcrumb' => '<a href='.base_url().'>Home</a>
+            <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            User Management<svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>User',
             'content'=>'admin/pages/user/index',
             'group_list'=> $this->GroupModel->get_list_groups(),
             'division_list'=> $this->DivisionModel->get_list_divisions()
@@ -300,8 +304,13 @@ class UserController extends BaseController
 	
     public function division_list(){
       $data = [
-              'title'=>'title here',
-              'breadcrumb' => 'Master Data<svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Risk Owner',
+              'title'=>'Risk Owner',
+              'breadcrumb' => 
+              '<a href='.base_url().'>Home</a>
+              <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              Master Data
+              <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              Risk Owner',
 
               'content'=>'admin/pages/division/index'
           ];

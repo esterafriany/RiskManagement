@@ -37,8 +37,11 @@ class RiskMitigationController extends BaseController
     public function index()
     {
         $data = [
-            'title'=>'Risk Mitigation',
-            'breadcrumb' => 'Home<svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Risk Mitigation',
+            'title'=>'Risk Mitigations',
+            'breadcrumb' => 
+            '<a href='.base_url().'>Home</a>  
+                <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            Risk Mitigation',
             'content'=>'admin/pages/risk_mitigation/index'
         ];
         echo view('admin/template/template',$data);
@@ -127,8 +130,14 @@ class RiskMitigationController extends BaseController
 
     public function getDetailRiskMitigations($id) {
 		$data = [
-            'title'=>'Risk Mitigation',
-            'breadcrumb' => 'Home<svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Risk Mitigation&nbsp;<svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Detail Risiko',
+            'title'=>'Detail Risk Mitigation',
+            'breadcrumb' => 
+            '<a href='.base_url().'>Home</a>  
+                <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <a href='.base_url('admin/risk-mitigation').'>Risk Mitigation</a>
+                <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            Detail Risk Mitigation',
+            
             'content'=>'admin/pages/risk_mitigation/edit',
             'detail_risk_event'=> $this->RiskEventModel->get_risk_event($id),
             'risk_cause'=> $this->RiskCauseModel->get_list_risk_cause($id),
@@ -138,17 +147,27 @@ class RiskMitigationController extends BaseController
         echo view('admin/template/template',$data);
 	}
 
-    public function getDetailRiskMitigation($id) {
+    public function getDetailRiskMitigation($id,$id_risk_event) {
 		$data = [
-            'title'=>'Risk Mitigation',
-            'breadcrumb' => 'Home<svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            'title'=>'Detail Mitigation',
+            'breadcrumb' => 
+            '<a href='.base_url().'>Home</a>  
+                <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <a href='.base_url('admin/risk-mitigation').'>Risk Mitigation</a>
+                <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <a href='.base_url('admin/detail-risk-mitigations').'/'.$id_risk_event.'>Detail Risk Mitigation</a> 
+                <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            Detail Mitigation',
+            
+            'Home<svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
              Risk Mitigation&nbsp;<svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
              Detail Risiko&nbsp;<svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
              Detail Mitigasi Risiko',
             
             'content'=>'admin/pages/risk_mitigation/detail_risk_mitigation',
             'risk_mitigation' => $this->RiskMitigationModel->get_risk_mitigation($id),
-            'id_risk_mitigation' => $id, 
+            'id_risk_mitigation' => $id,
+            'id_risk_event' => $id_risk_event
         ];
         echo view('admin/template/template',$data);
 	}

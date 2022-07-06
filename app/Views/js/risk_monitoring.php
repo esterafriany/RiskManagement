@@ -57,8 +57,7 @@
 					data: 'risk_mitigation_detail',
 					render: function (data, type, item) {
 						if(item.risk_mitigation_detail != null){
-							return '<a class="text-wrap width-200" href="<?=base_url()?>/admin/detail-risk-monitoring/'+item.id+'">'+item.risk_mitigation_detail+'</a>';
-
+							return '<a class="text-wrap width-200" href="<?=base_url()?>/admin/detail-risk-monitoring/'+item.id+'/'+item.id_risk_mitigation+'/'+item.id_risk_event+'">'+item.risk_mitigation_detail+'</a>';
 						}else{
 							return '-';
 						}

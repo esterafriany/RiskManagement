@@ -76,14 +76,14 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 
 	//Risk Monitoring
 	$routes->add('risk-monitoring', 'RiskMonitoringController::index', ['as' => 'get-risk-monitorings']);
-	$routes->add('detail-risk-monitoring/(:num)', 'RiskMonitoringController::getDetailRiskMonitoring/$1', ['as' => 'detail-risk-monitoring']);
+	$routes->add('detail-risk-monitoring/(:num)/(:num)/(:num)', 'RiskMonitoringController::getDetailRiskMonitoring/$1/$2/$3', ['as' => 'detail-risk-monitoring']);
 	$routes->add('RiskMonitoringController/onAddDetailMonitoring', 'RiskMonitoringController::onAddDetailMonitoring', ['as' => 'add-risk-monitoring']);
 	$routes->add('download-risk-monitoring/(:num)', 'RiskMonitoringController::onDownloadReportExcelBreakdown/$1', ['as' => 'download-breakdown-risk-monitoring']);
 	
 	//Risk Mitigation 
 	$routes->add('risk-mitigation', 'RiskMitigationController::index', ['as' => 'get-risk-mitigations']);
 	$routes->add('detail-risk-mitigations/(:num)', 'RiskMitigationController::getDetailRiskMitigations/$1', ['as' => 'detail-risk-mitigations']);
-	$routes->add('detail-risk-mitigation/(:num)', 'RiskMitigationController::getDetailRiskMitigation/$1', ['as' => 'detail-risk-mitigation']);
+	$routes->add('detail-risk-mitigation/(:num)/(:num)', 'RiskMitigationController::getDetailRiskMitigation/$1/$2', ['as' => 'detail-risk-mitigation']);
 	$routes->add('RiskMitigationController/onAddDetailMitigation', 'RiskMitigationController::onAddDetailMitigation', ['as' => 'add-detail-mitigation']);
 	
 	//Risk Residual

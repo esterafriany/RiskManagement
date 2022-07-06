@@ -20,7 +20,8 @@
                                         <small>Rencana Mitigasi</small>
                                         <textarea disabled name="risk_mitigation" class="form-control"><?=$risk_mitigation->risk_mitigation?></textarea>
                                     </div>
-                                    
+                                    <input type="hidden" name="id_risk_mitigation" id="id_risk_mitigation" value="<?=$id_risk_mitigation?>">
+                                    <input type="hidden" name="id_risk_event" id="id_risk_event" value="<?=$id_risk_event?>">
                                 </div>
                                 <div class="col-md-12">
                                     <div align="right">

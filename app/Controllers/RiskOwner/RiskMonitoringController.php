@@ -132,6 +132,12 @@ class RiskMonitoringController extends BaseController
     public function getDetailRiskMonitoring($id_detail_mitigation){
         $data = [
             'title'=>'Risk Monitoring Detail',
+            'breadcrumb'=>
+                '<a href='.base_url().'>Home</a>  
+                    <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <a href='.base_url('risk_owner/get-risk-mitigations').'>Risk Mitigations</a>  
+                    <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                Detail Risk Mitigations',
             'content'=>'risk_owner/pages/risk_monitoring/detail_risk_monitoring',
             'id_detail_mitigation' => $id_detail_mitigation,
             'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation),

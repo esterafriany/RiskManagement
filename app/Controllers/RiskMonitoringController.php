@@ -100,6 +100,8 @@ class RiskMonitoringController extends BaseController
                     ->join('divisions', 'divisions.id = risk_mitigation_divisions.id_division')
                     ->select('risk_events.risk_event
                         , risk_mitigations.risk_mitigation
+                        , risk_mitigations.id as id_risk_mitigation
+                        , risk_events.id as id_risk_event
                         , risk_mitigation_details.id
                         , risk_mitigation_details.risk_mitigation_detail
                         , GROUP_CONCAT(divisions.name) as division_name
@@ -117,6 +119,8 @@ class RiskMonitoringController extends BaseController
             $data[] = array( 
                 "id"=>$record['id'],
                 "risk_event"=>$record['risk_event'],
+                "id_risk_event"=>$record['id_risk_event'],
+                "id_risk_mitigation"=>$record['id_risk_mitigation'],
                 "risk_mitigation"=>$record['risk_mitigation'],
                 "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
                 "division_name"=>$record['division_name'],
@@ -242,14 +246,20 @@ class RiskMonitoringController extends BaseController
         return $this->response->setJSON($response);
     }
 
-    public function getDetailRiskMonitoring($id_detail_mitigation){
+    public function getDetailRiskMonitoring($id_detail_mitigation, $id_risk_mit, $id_risk_event){
         $data = [
             'title'=>'Risk Monitoring Detail',
-            'breadcrumb' => 'Home<svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-             Risk Mitigation&nbsp;<svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-             Detail Risiko&nbsp;<svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-             Detail Mitigasi Risiko&nbsp;<svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-             Monitoring Mitigasi Risiko',
+            'breadcrumb' => 
+            '<a href='.base_url().'>Home</a>  
+                <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <a href='.base_url('admin/risk-mitigation').'>Risk Mitigation</a>
+                <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <a href='.base_url('admin/detail-risk-mitigations').'/'.$id_detail_mitigation.'>Detail Risk Mitigation</a> 
+                <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <a href='.base_url('admin/detail-risk-mitigation').'/'.$id_risk_mit.'/'.$id_risk_event.'>Detail Mitigation</a> 
+                <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            Monitoring Mitigasi Risiko',
+            
             'content'=>'admin/pages/risk_monitoring/detail_risk_monitoring',
             'id_detail_mitigation' => $id_detail_mitigation,
             'risk_mitigation_data'=> $this->RiskMitigationDetailModel->get_mitigation_with_detail($id_detail_mitigation),

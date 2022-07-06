@@ -33,7 +33,10 @@ class RiskEventController extends BaseController
     public function index(){
         $data = [
             'title'=>'Risk Events',
-            'breadcrumb'=>'Home  <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Risk Register',
+            'breadcrumb'=>
+                '<a href='.base_url().'>Home</a>  
+                    <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                Risk Register',
             'content'=>'admin/pages/risk_event/index',
             'kpi_list'=> $this->KPIModel->get_list_kpis()
         ];
@@ -503,10 +506,13 @@ class RiskEventController extends BaseController
 
     public function getDetailRiskEvent($id) {
 		$data = [
-            'title'=>'Risk Events',
-            'breadcrumb'=>' Home  <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                            Risk Register <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                            Detail Risiko',
+            'title'=>'Detail Risk Event',
+            'breadcrumb'=>
+                '<a href='.base_url().'>Home</a>  
+                    <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <a href='.base_url('admin/risk-event').'>Risk Register </a>
+                    <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                Detail Risiko',
             'content'=>'admin/pages/risk_event/edit',
             'kpi_list'=> $this->KPIModel->get_list_kpis(),
             'risk_category_list'=> $this->RiskCategoryModel->get_list_risk_category(),
@@ -553,9 +559,15 @@ class RiskEventController extends BaseController
 
     public function getDetailRiskResidual($id_risk_event){
         $data = [
-            'title'=>'Risk Events',
-            'breadcrumb'=>'Home  <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Risk Register
-            <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Update Progress',
+            'title'=>'Update Progress Risiko',
+            'breadcrumb'=>
+                '<a href='.base_url().'>Home</a>  
+                    <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <a href='.base_url('admin/risk-event').'>Risk Register </a>
+                    <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <a href='.base_url('admin/detail-risk-event').'/'.$id_risk_event.'>Detail Risiko </a>
+                    <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                Update Progress Risiko',
             'content'=>'admin/pages/risk_event/residual',
             'kpi_list'=> $this->KPIModel->get_list_kpis(),
             'id_risk_event'=> $id_risk_event,

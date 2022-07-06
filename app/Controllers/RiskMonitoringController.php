@@ -283,6 +283,8 @@ class RiskMonitoringController extends BaseController
 
     public function onAddDetailMonitoring(){
         helper(['form', 'url', 'filesystem']);
+        
+        
         $id_detail_mitigation =  $this->request->getPost('id_detail_mitigation');
         $arr_id_monitoring = array();
         
@@ -435,7 +437,6 @@ class RiskMonitoringController extends BaseController
                 $this->RiskMitigationDetailMonitoringModel->update_data_monitoring_2($id_detail_mitigation, $arr_deleted_monitoring[$i]);
             }
 
-
             //check mandatory evidence
             for($i = 0 ; $i < count($arr_id_monitoring); $i++){
                 $evidence_data = $this->RiskMitigationDetailEvidenceModel->select('*')
@@ -444,33 +445,7 @@ class RiskMonitoringController extends BaseController
                     return redirect()->back()->with('state_message', 'error');
                 }
             }
-            // if($target){
-            //     for($i = 0; $i < count($target); $i++){
-            //         $data=[
-            //             'id_detail_mitigation' => $id_detail_mitigation,
-            //             'target_month' => date("Y")."-".$target[$i]."-01",
-            //             'monitoring_month' => "0000-00-00",
-            //             'notes' => $notes[$i],
-            //         ];
-    
-            //         $existing_data = $this->RiskMitigationDetailMonitoringModel->get_data_by_month_target($id_detail_mitigation, $target[$i]);
-            //         //dd($not_deleted->t_month == (int)$target[$i]);
-                    
-            //         if(!empty($existing_data)){
-            //              $this->RiskMitigationDetailMonitoringModel->update($existing_data->id,$data);
-            //         }else{
-            //             $this->RiskMitigationDetailMonitoringModel->insert($data);
-            //         }         
-            //     }
-            // }
             
-            // //update monitoring month
-            // $monitoring = $this->request->getPost('monitoring[]');
-            // if($monitoring){
-            //     for($j = 0; $j < count($monitoring); $j++){
-            //         $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$j]);
-            //     }
-            // }
             return redirect()->back()->with('state_message', 'success');
 
         }catch (\Exception $e) {

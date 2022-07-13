@@ -215,7 +215,7 @@ class RiskMonitoringController extends BaseController
                                 $data = [
                                     'id_detail_mitigation' => $id_detail_mitigation,
                                     'target_month' => date("Y")."-".$target[$i]."-01",
-                                    'notes' => $notes[$i],
+                                    'notes' => $notes[$i+1],
                                 ];
                                 $this->RiskMitigationDetailMonitoringModel->update($existing_data->id,$data);
                                 
@@ -229,7 +229,7 @@ class RiskMonitoringController extends BaseController
                                     $data=[
                                         'id_detail_mitigation' => $id_detail_mitigation,
                                         'target_month' => date("Y")."-".$target[$i]."-01",
-                                        'notes' => $notes[$i],
+                                        //'notes' => $notes[$i+1],
                                     ];
                                     $this->RiskMitigationDetailMonitoringModel->update($monitoring_datas->id,$data);
                                 }else{
@@ -238,7 +238,7 @@ class RiskMonitoringController extends BaseController
                                         'id_detail_mitigation' => $id_detail_mitigation,
                                         'target_month' => date("Y")."-".$target[$i]."-01",
                                         'monitoring_month' => "0000-00-00",
-                                        'notes' => $notes[$i],
+                                        //'notes' => $notes[$i+1],
                                     ];
                                     
                                     $inserted_id = $this->RiskMitigationDetailMonitoringModel->insert($data);
@@ -295,7 +295,7 @@ class RiskMonitoringController extends BaseController
                                         'id_detail_mitigation' => $id_detail_mitigation,
                                         'target_month' => "0000-00-00",
                                         'monitoring_month' => date("Y")."-".$monitoring[$j]."-01",
-                                        'notes' => $notes[$j],
+                                        //'notes' => $notes[$j+1],
                                     ];
                                     $inserted_id = $this->RiskMitigationDetailMonitoringModel->insert($data); 
                                 
@@ -340,7 +340,7 @@ class RiskMonitoringController extends BaseController
                                 'id_detail_mitigation' => $id_detail_mitigation,
                                 'target_month' => date("Y")."-".$target[$i]."-01",
                                 'monitoring_month' => "0000-00-00",
-                                'notes' => $notes[$i+1],
+                                //'notes' => $notes[$i+1],
                             ];
 
                             
@@ -363,8 +363,7 @@ class RiskMonitoringController extends BaseController
                             $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$j]);
                         }
                     }
-                    //return redirect()->back()->with('state_message', 'success');
-
+                    return redirect()->back()->with('state_message', 'success');
                 }catch (\Exception $e) {
                     return redirect()->back()->with('state_message', 'error');
                 }
@@ -412,7 +411,7 @@ class RiskMonitoringController extends BaseController
                         $data = [
                             'id_detail_mitigation' => $id_detail_mitigation,
                             'target_month' => date("Y")."-".$target[$i]."-01",
-                            'notes' => $notes[$i],
+                            //'notes' => $notes[$i],
                         ];
                         $this->RiskMitigationDetailMonitoringModel->update($existing_data->id,$data);
                         
@@ -426,7 +425,7 @@ class RiskMonitoringController extends BaseController
                             $data=[
                                 'id_detail_mitigation' => $id_detail_mitigation,
                                 'target_month' => date("Y")."-".$target[$i]."-01",
-                                'notes' => $notes[$i],
+                                //'notes' => $notes[$i],
                             ];
                             $this->RiskMitigationDetailMonitoringModel->update($monitoring_datas->id,$data);
                         }else{
@@ -435,7 +434,7 @@ class RiskMonitoringController extends BaseController
                                 'id_detail_mitigation' => $id_detail_mitigation,
                                 'target_month' => date("Y")."-".$target[$i]."-01",
                                 'monitoring_month' => "0000-00-00",
-                                'notes' => $notes[$i],
+                                //'notes' => $notes[$i],
                             ];
                             
                             $inserted_id = $this->RiskMitigationDetailMonitoringModel->insert($data);
@@ -492,7 +491,7 @@ class RiskMonitoringController extends BaseController
                                 'id_detail_mitigation' => $id_detail_mitigation,
                                 'target_month' => "0000-00-00",
                                 'monitoring_month' => date("Y")."-".$monitoring[$j]."-01",
-                                'notes' => $notes[$j],
+                                //'notes' => $notes[$j],
                             ];
                             $inserted_id = $this->RiskMitigationDetailMonitoringModel->insert($data); 
                            
@@ -570,6 +569,16 @@ class RiskMonitoringController extends BaseController
                 }
             }
         }
+        return redirect()->back()->with('state_message', 'file');
+    }
+
+    public function onAddNotes(){
+        $id_detail_monitoring = $this->RiskMitigationDetailMonitoringModel->get_id_monitoring($this->request->getPost('month'),$this->request->getPost('id_detail_mitigation'));
+       
+        if($id_detail_monitoring){
+            $this->RiskMitigationDetailMonitoringModel->update_notes($id_detail_monitoring->id, $this->request->getPost('notes'));
+        }
+
         return redirect()->back()->with('state_message', 'file');
     }
 

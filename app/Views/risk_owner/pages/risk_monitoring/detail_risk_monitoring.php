@@ -354,5 +354,9 @@
 	<div class="modal-dialog modal-lg"><?= $this->include("risk_owner/pages/risk_mitigation/evidence")?></div>
 </div>
 
+<div class="modal fade bd-example-modal" id="modal-add-notes" name="modal-add-notes" tabindex="-1" aria-labelledby="addGroupEvidenceModal" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog"><?= $this->include("risk_owner/pages/risk_mitigation/notes")?></div>
+</div>
+
 <?= $this->include("js/risk_owner/detail_mitigation_monitoring")?>
 

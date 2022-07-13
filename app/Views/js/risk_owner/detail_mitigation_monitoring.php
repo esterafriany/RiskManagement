@@ -204,17 +204,47 @@ if($session->get('state_message')){
 
 	function show_notes(id, month){
 		
-		$("#div"+month).toggle(); 
+		//$("#div"+month).toggle(); 
 		$.ajax({
 			url : "<?=site_url('RiskMonitoringController/onShowNotes')?>/" + id +"/" + month,
 			type: "GET",
 			dataType: "JSON",
 			success: function(data)
 			{
-				if(data == null){
-					$('#n'+month).val();
+				console.log(data);
+				var monthName = "";
+				if(month == "01"){
+					monthName = "Januari";
+				}else if(month == "02"){
+					monthName = "Februari";
+				}else if(month == "03"){
+					monthName = "Maret";
+				}else if(month == "04"){
+					monthName = "April";
+				}else if(month == "05"){
+					monthName = "Mei";
+				}else if(month == "06"){
+					monthName = "Juni";
+				}else if(month == "07"){
+					monthName = "Juli";
+				}else if(month == "08"){
+					monthName = "Agustus";
+				}else if(month == "09"){
+					monthName = "September";
+				}else if(month == "10"){
+					monthName = "Oktober";
+				}else if(month == "11"){
+					monthName = "November";
+				}else if(month == "12"){
+					monthName = "Desember";
 				}
-				 
+
+				$('[name="notes"]').val(data.notes);
+				$('[name="month"]').val(month);
+				$('[name="id_detail_mitigation"]').val(id);
+
+				$('.modal-title').text('Catatan - Bulan '+monthName); 
+				$('#modal-add-notes').modal('show');
 			},
 			error: function (jqXHR, textStatus, errorThrown)
 			{

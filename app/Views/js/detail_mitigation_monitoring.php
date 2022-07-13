@@ -23,7 +23,6 @@ if($session->get('state_message')){
 }
 ?>
 
-
 <script>
 	//bar percentage
 	let monitoring_number = 0;

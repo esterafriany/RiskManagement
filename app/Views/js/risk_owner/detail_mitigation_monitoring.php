@@ -16,7 +16,7 @@ if($session->get('state_message')){
 <?php }else if($session->get('state_message') == 'file'){ ?>
 	<script>
 		$(document).ready(function() {
-		swal("Success","File berhasil di-upload.","success");
+		swal("Success","Data berhasil ditambahkan.","success");
 		});
 	</script>
 <?php }
@@ -128,8 +128,6 @@ if($session->get('state_message')){
 						$('#btnAdd').prop('disabled', false);
 					}
 				}
-
-				
 			},
 			error: function (jqXHR, textStatus, errorThrown)
 			{

@@ -33,6 +33,7 @@
                             <div class="form-group">
                                 <small><b>Output</b></small>
                                 <div id="outputList">
+                                    
                                 </div><br/>
                                 <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-output"><i class="fas fa-plus-circle"></i> Tambah Output</button>
                             </div>
@@ -165,92 +166,14 @@
                                             <input type="checkbox" id="m12" name="monitoring[]" onclick="calculate_progress_by_monitoring('m12')"  value="12">
                                         </td>
                                     </tr>
+
                                     <tr>
-                                        <th scope="row">Catatan</th>
-                                        <td class="text-center child-cell">
-                                            <button type="button" id="btn_notes01" class="btn btn-sm btn-icon btn-warning" onclick="show_notes(<?=$id_detail_mitigation?>,'01')">
-                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
-                                            </button>
-                                            
-                                            <div id='div01' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n01" name="notes[]" placeholder="Masukkan Catatan"></div>
-                                        </td>
-                                        <td class="text-center child-cell">
-                                            <button type="button" id="btn_notes02" class="btn btn-sm btn-icon btn-warning" onclick="show_notes(<?=$id_detail_mitigation?>,'02')">
-                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
-                                            </button>
-                                            <div id='div02' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n02" name="notes[]" placeholder="Masukkan Catatan"></div>
-                                            
-                                        </td>
-                                        <td class="text-center child-cell">
-                                            <button type="button" id="btn_notes03" class="btn btn-sm btn-icon btn-warning" onclick="show_notes(<?=$id_detail_mitigation?>,'03')">
-                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
-                                            </button>
-                                            <div id='div03' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n03" name="notes[]" placeholder="Masukkan Catatan"></div>
-                                        </td>
-                                        <td class="text-center child-cell">
-                                            <button type="button" id="btn_notes04" class="btn btn-sm btn-icon btn-warning" onclick="show_notes(<?=$id_detail_mitigation?>,'04')">
-                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
-                                            </button>
-                                            <div id='div04' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n04" name="notes[]" placeholder="Masukkan Catatan"></div>
-
-                                        </td>
-                                        <td class="text-center child-cell">
-                                            <button type="button" id="btn_notes05" class="btn btn-sm btn-icon btn-warning" onclick="show_notes(<?=$id_detail_mitigation?>,'05')">
-                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
-                                            </button>
-                                            <div id='div05' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n05" name="notes[]" placeholder="Masukkan Catatan"></div>
-
-                                        </td>
-                                        <td class="text-center child-cell">
-                                            <button type="button" id="btn_notes06" class="btn btn-sm btn-icon btn-warning" onclick="show_notes(<?=$id_detail_mitigation?>,'06')">
-                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
-                                            </button>
-                                            
-                                            <div id='div06' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n06" name="notes[]" placeholder="Masukkan Catatan"></div>
-                                        </td>
-                                        <td class="text-center child-cell">
-                                            <button type="button" id="btn_notes07" class="btn btn-sm btn-icon btn-warning" onclick="show_notes(<?=$id_detail_mitigation?>,'07')">
-                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
-                                            </button>
-                                            <div id='div07' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n07" name="notes[]" placeholder="Masukkan Catatan"></div>
-                                        </td>
-                                        <td class="text-center child-cell">
-                                            <button type="button" id="btn_notes08" class="btn btn-sm btn-icon btn-warning" onclick="show_notes(<?=$id_detail_mitigation?>,'08')">
-                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
-                                            </button>
-                                            <div id='div08' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n08" name="notes[]" placeholder="Masukkan Catatan"></div>
-
-                                        </td>
-                                        <td class="text-center child-cell">
-                                            <button type="button" id="btn_notes09" class="btn btn-sm btn-icon btn-warning" onclick="show_notes(<?=$id_detail_mitigation?>,'09')">
-                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
-                                            </button>
-                                            <div id='div09' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n09" name="notes[]" placeholder="Masukkan Catatan"></div>
-
-                                        </td>
-                                        <td class="text-center child-cell">
-                                            <button type="button" id="btn_notes10" class="btn btn-sm btn-icon btn-warning" onclick="show_notes(<?=$id_detail_mitigation?>,'10')">
-                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
-                                            </button>
-                                            <div id='div10' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n10" name="notes[]" placeholder="Masukkan Catatan"></div>
-
-                                        </td>
-                                        <td class="text-center child-cell">
-                                            <button type="button" id="btn_notes11" class="btn btn-sm btn-icon btn-warning" onclick="show_notes(<?=$id_detail_mitigation?>,'11')">
-                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
-                                            </button>
-                                            <div id='div11' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n11" name="notes[]" placeholder="Masukkan Catatan"></div>
-
-                                        </td>
-                                        <td class="text-center child-cell">
-                                            <button type="button" id="btn_notes12" class="btn btn-sm btn-icon btn-warning" onclick="show_notes(<?=$id_detail_mitigation?>,'12')">
-                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
-                                            </button>
-                                            <div id='div12' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n12" name="notes[]" placeholder="Masukkan Catatan"></div>
-
+                                        <td></td><td></td><td></td><td></td><td></td><td></td>
+                                        <td>
+                                            <button type="submit" name="btn-add-monitoring" id="btn-add-monitoring"  value="activate_evidence" class="btn btn-success btn-sm">Aktifkan Evidence</button>
                                         </td>
                                     </tr>
-                                        
+
                                     <tr>
                                         <th>Evidence</th>
                                         <td class="text-center child-cell">
@@ -318,12 +241,96 @@
                                             </button>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <th scope="row">Catatan</th>
+                                        <td class="text-center child-cell">
+                                            <button type="button" id="btn_notes01" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'01')">
+                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
+                                            </button>
+                                            
+                                            <div id='div01' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n01" name="notes[]" placeholder="Masukkan Catatan"></div>
+                                        </td>
+                                        <td class="text-center child-cell">
+                                            <button type="button" id="btn_notes02" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'02')">
+                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
+                                            </button>
+                                            <div id='div02' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n02" name="notes[]" placeholder="Masukkan Catatan"></div>
+                                            
+                                        </td>
+                                        <td class="text-center child-cell">
+                                            <button type="button" id="btn_notes03" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'03')">
+                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
+                                            </button>
+                                            <div id='div03' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n03" name="notes[]" placeholder="Masukkan Catatan"></div>
+                                        </td>
+                                        <td class="text-center child-cell">
+                                            <button type="button" id="btn_notes04" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'04')">
+                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
+                                            </button>
+                                            <div id='div04' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n04" name="notes[]" placeholder="Masukkan Catatan"></div>
+
+                                        </td>
+                                        <td class="text-center child-cell">
+                                            <button type="button" id="btn_notes05" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'05')">
+                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
+                                            </button>
+                                            <div id='div05' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n05" name="notes[]" placeholder="Masukkan Catatan"></div>
+
+                                        </td>
+                                        <td class="text-center child-cell">
+                                            <button type="button" id="btn_notes06" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'06')">
+                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
+                                            </button>
+                                            
+                                            <div id='div06' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n06" name="notes[]" placeholder="Masukkan Catatan"></div>
+                                        </td>
+                                        <td class="text-center child-cell">
+                                            <button type="button" id="btn_notes07" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'07')">
+                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
+                                            </button>
+                                            <div id='div07' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n07" name="notes[]" placeholder="Masukkan Catatan"></div>
+                                        </td>
+                                        <td class="text-center child-cell">
+                                            <button type="button" id="btn_notes08" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'08')">
+                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
+                                            </button>
+                                            <div id='div08' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n08" name="notes[]" placeholder="Masukkan Catatan"></div>
+
+                                        </td>
+                                        <td class="text-center child-cell">
+                                            <button type="button" id="btn_notes09" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'09')">
+                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
+                                            </button>
+                                            <div id='div09' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n09" name="notes[]" placeholder="Masukkan Catatan"></div>
+
+                                        </td>
+                                        <td class="text-center child-cell">
+                                            <button type="button" id="btn_notes10" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'10')">
+                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
+                                            </button>
+                                            <div id='div10' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n10" name="notes[]" placeholder="Masukkan Catatan"></div>
+
+                                        </td>
+                                        <td class="text-center child-cell">
+                                            <button type="button" id="btn_notes11" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'11')">
+                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
+                                            </button>
+                                            <div id='div11' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n11" name="notes[]" placeholder="Masukkan Catatan"></div>
+
+                                        </td>
+                                        <td class="text-center child-cell">
+                                            <button type="button" id="btn_notes12" class="btn btn-sm btn-icon btn-primary" onclick="show_notes(<?=$id_detail_mitigation?>,'12')">
+                                                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9946 16V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>                                    <path d="M11.9896 8.2041H11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>                                </svg>                            
+                                            </button>
+                                            <div id='div12' style="display: none;"><br/><input class="form-control" style="width:150px" type="text" id="n12" name="notes[]" placeholder="Masukkan Catatan"></div>
+
+                                        </td>
+                                    </tr>
+                                        
                                 </tbody>
                             </table>
                         </div>
-                        
                         </li>
-
                     </ul>
                     </div>
                 </div>
@@ -331,7 +338,7 @@
             </div>
             <div class="card-footer">
                 <a href="<?=base_url('admin/risk-mitigation')?>"type="button" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><circle cx="256" cy="256" r="208" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="m108.92 108.92l294.16 294.16"/></svg> Batal</a>
-                <button type="submit" id="btn-add-detail-monitoring"  class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M380.93 57.37A32 32 0 0 0 358.3 48H94.22A46.21 46.21 0 0 0 48 94.22v323.56A46.21 46.21 0 0 0 94.22 464h323.56A46.36 46.36 0 0 0 464 417.78V153.7a32 32 0 0 0-9.37-22.63ZM256 416a64 64 0 1 1 64-64a63.92 63.92 0 0 1-64 64Zm48-224H112a16 16 0 0 1-16-16v-64a16 16 0 0 1 16-16h192a16 16 0 0 1 16 16v64a16 16 0 0 1-16 16Z"/></svg> Simpan Perubahan</button>
+                <button type="submit" id="btnAdd" name="btnAdd" value="final_add" disabled class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M380.93 57.37A32 32 0 0 0 358.3 48H94.22A46.21 46.21 0 0 0 48 94.22v323.56A46.21 46.21 0 0 0 94.22 464h323.56A46.36 46.36 0 0 0 464 417.78V153.7a32 32 0 0 0-9.37-22.63ZM256 416a64 64 0 1 1 64-64a63.92 63.92 0 0 1-64 64Zm48-224H112a16 16 0 0 1-16-16v-64a16 16 0 0 1 16-16h192a16 16 0 0 1 16 16v64a16 16 0 0 1-16 16Z"/></svg> Final Submit</button>
             </div>
             
          </div>
@@ -342,6 +349,10 @@
 
 <div class="modal fade bd-example-modal-lg" id="modal-add-evidence" name="modal-add-evidence" tabindex="-1" aria-labelledby="addGroupEvidenceModal" style="display: none;" aria-hidden="true">
 	<div class="modal-dialog modal-lg"><?= $this->include("admin/pages/risk_mitigation/evidence")?></div>
+</div>
+
+<div class="modal fade bd-example-modal" id="modal-add-notes" name="modal-add-notes" tabindex="-1" aria-labelledby="addGroupEvidenceModal" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog"><?= $this->include("admin/pages/risk_mitigation/notes")?></div>
 </div>
 
 <?= $this->include("js/detail_mitigation_monitoring")?>

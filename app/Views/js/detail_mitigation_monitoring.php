@@ -32,7 +32,7 @@ if($session->get('state_message')){
 		var $btn_edit_detail_monitoring = $("#btn-add-detail-monitoring1");
 		var site_url = window.location.pathname;
         var arr = site_url.split("/");
-        var id_detail_mitigation = arr[arr.length - 1];
+        var id_detail_mitigation = arr[arr.length - 3];
 		let y = 0;
 		
 		$.ajax({
@@ -43,9 +43,8 @@ if($session->get('state_message')){
 			{
 				var penampung = "";
 				var count = result.length;
-				
+
 				for(i = 0; i < count; i++){
-					
 					penampung += `<table width="100%">
 							<tr>
 								<td width="50%">
@@ -75,7 +74,6 @@ if($session->get('state_message')){
 			success: function(result)
 			{
 				var count = result.length;
-				var monitoring_sum = 0;
 				var percentage = 0;
 				
 				for(i = 0; i < count; i++){
@@ -85,27 +83,50 @@ if($session->get('state_message')){
 					$("#t"+target_month).prop("checked", true );
 					$('#n'+target_month).val(result[i]['notes']);
 					$('#e'+target_month).prop('disabled', false);
-					if(result[i]['notes'] != ""){
-						$('#btn_notes'+target_month).removeClass("btn btn-sm btn-icon btn-warning").addClass("btn btn-sm btn-icon btn-primary");      
-					}
-					
+		
 					var arr1 = result[i]['monitoring_month'].split("-");
         			var monitoring_month = arr1[arr1.length - 2];
-					
+					$('#e'+monitoring_month).prop('disabled', false);
+
 					if(monitoring_month != "00"){
-						monitoring_sum = monitoring_sum + 1;
+						monitoring_number = monitoring_number + 1;
 						$("#m"+monitoring_month).prop( "checked", true );
 					}
-				}
-				
-				percentage = (monitoring_sum / count) * 100;
 
+					if(target_month != "00"){
+						target_number = target_number + 1;
+					}
+				}
+
+				percentage = (monitoring_number / target_number) * 100;
 				document.getElementById("progress-bar").style.width = percentage+"%";
 				document.getElementById("progress_percentage").value = percentage.toFixed(2);
 				document.getElementById("text-percentage").innerHTML = percentage.toFixed(2)+"%";
 
-				target_number = count;
-				monitoring_number = monitoring_sum;
+			
+			},
+			error: function (jqXHR, textStatus, errorThrown)
+			{
+				console.log(jqXHR);
+				alert('Error get data from ajax');
+			}
+		});
+
+		$.ajax({
+			url : "<?=site_url('RiskMonitoringController/getEvidenceStatus')?>/" + id_detail_mitigation,
+			type: "GET",
+			dataType: "JSON",
+			success: function(result)
+			{
+				if(result.monitoring_data.length == 0){
+					$('#btnAdd').prop('disabled', true);
+				}else{
+					if(result.evidence_status.length > 0){
+						$('#btnAdd').prop('disabled', true);
+					}else{
+						$('#btnAdd').prop('disabled', false);
+					}
+				}
 			},
 			error: function (jqXHR, textStatus, errorThrown)
 			{
@@ -178,7 +199,6 @@ if($session->get('state_message')){
 	}
 
 	function calculate_progress_by_target(id) {
-		console.log(id);
 		var checkBox = document.getElementById(id);
 		if (checkBox.checked == true){
 			target_number = target_number + 1;
@@ -207,17 +227,45 @@ if($session->get('state_message')){
 	}
 
 	function show_notes(id, month){
-		$("#div"+month).toggle(); 
 		$.ajax({
 			url : "<?=site_url('RiskMonitoringController/onShowNotes')?>/" + id +"/" + month,
 			type: "GET",
 			dataType: "JSON",
 			success: function(data)
 			{
-				if(data == null){
-					$('#n'+month).val();
+				var monthName = "";
+				if(month == "01"){
+					monthName = "Januari";
+				}else if(month == "02"){
+					monthName = "Februari";
+				}else if(month == "03"){
+					monthName = "Maret";
+				}else if(month == "04"){
+					monthName = "April";
+				}else if(month == "05"){
+					monthName = "Mei";
+				}else if(month == "06"){
+					monthName = "Juni";
+				}else if(month == "07"){
+					monthName = "Juli";
+				}else if(month == "08"){
+					monthName = "Agustus";
+				}else if(month == "09"){
+					monthName = "September";
+				}else if(month == "10"){
+					monthName = "Oktober";
+				}else if(month == "11"){
+					monthName = "November";
+				}else if(month == "12"){
+					monthName = "Desember";
 				}
-				 
+
+				$('[name="notes"]').val(data.notes);
+				$('[name="month"]').val(month);
+				$('[name="id_detail_mitigation"]').val(id);
+
+				$('.modal-title').text('Catatan - Bulan '+monthName); 
+				$('#modal-add-notes').modal('show');
 			},
 			error: function (jqXHR, textStatus, errorThrown)
 			{

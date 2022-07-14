@@ -590,7 +590,7 @@ class RiskMonitoringController extends BaseController
             $this->RiskMitigationDetailMonitoringModel->update_notes($id_detail_monitoring->id, $this->request->getPost('notes'));
         }
 
-        return redirect()->back()->with('state_message', 'file');
+        return redirect()->back()->with('state_message', 'success');
     }
 
     public function download($id_detail_monitoring,$filename){

@@ -112,6 +112,31 @@ if($session->get('state_message')){
 				alert('Error get data from ajax');
 			}
 		});
+
+		$.ajax({
+			url : "<?=site_url('RiskMonitoringController/getEvidenceStatus')?>/" + id_detail_mitigation,
+			type: "GET",
+			dataType: "JSON",
+			success: function(result)
+			{
+				if(result.monitoring_data.length == 0){
+					$('#btnAdd').prop('disabled', true);
+				}else{
+					if(result.evidence_status.length > 0){
+						$('#btnAdd').prop('disabled', true);
+					}else{
+						$('#btnAdd').prop('disabled', false);
+					}
+				}
+
+				
+			},
+			error: function (jqXHR, textStatus, errorThrown)
+			{
+				console.log(jqXHR);
+				alert('Error get data from ajax');
+			}
+		});
 		
 		$("#add-more-output").click(function () {
 			$("#outputList").last().append(
@@ -203,7 +228,6 @@ if($session->get('state_message')){
 	}
 
 	function show_notes(id, month){
-		
 		//$("#div"+month).toggle(); 
 		$.ajax({
 			url : "<?=site_url('RiskMonitoringController/onShowNotes')?>/" + id +"/" + month,

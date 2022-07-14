@@ -170,6 +170,7 @@ class RiskMonitoringController extends BaseController
         helper(['form', 'url', 'filesystem']);
         $id_detail_mitigation =  $this->request->getPost('id_detail_mitigation');
         $arr_id_monitoring = array();
+
         if($this->request->getPost('btn-add-monitoring') == 'final_add'){
                 try{
                     //update progress_percentage
@@ -189,7 +190,7 @@ class RiskMonitoringController extends BaseController
                         ];
                         $this->RiskMitigationDetailOutputModel->insert($data_output);
                     }
-
+                
                     $target = $this->request->getPost('target[]');
                     $notes = $this->request->getPost('notes[]');
                     
@@ -342,8 +343,6 @@ class RiskMonitoringController extends BaseController
                                 'monitoring_month' => "0000-00-00",
                                 //'notes' => $notes[$i+1],
                             ];
-
-                            
  
                             $existing_data = $this->RiskMitigationDetailMonitoringModel->get_data_by_month_target($id_detail_mitigation, $target[$i]);
                             //dd($not_deleted->t_month == (int)$target[$i]);
@@ -363,13 +362,18 @@ class RiskMonitoringController extends BaseController
                             $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$j]);
                         }
                     }
+
+                    //delete data with target and monitoring month 0000-00-00
+                    //$this->RiskMitigationDetailMonitoringModel->delete_null_target_monitoring();
+                    //delete data
+
                     return redirect()->back()->with('state_message', 'success');
                 }catch (\Exception $e) {
                     return redirect()->back()->with('state_message', 'error');
                 }
         }else{
             //update progress_percentage
-            $percentage['progress_percentage']=$this->request->getPost('progress_percentage');
+            $percentage['progress_percentage'] = $this->request->getPost('progress_percentage');
             $this->RiskMitigationDetailModel->update($id_detail_mitigation, $percentage);
 
             //update output
@@ -377,13 +381,16 @@ class RiskMonitoringController extends BaseController
             //delete current output
             $this->RiskMitigationDetailOutputModel->delete_by_detail_mitigation_id($id_detail_mitigation);
             
-            // re-add
-            foreach ($outputs as $key => $value){
-                $data_output = [
-                    'id_detail_mitigation' => $id_detail_mitigation,
-                    'output' => $outputs[$key],
-                ];
-                $this->RiskMitigationDetailOutputModel->insert($data_output);
+            if($outputs){
+
+                // re-add
+                foreach ($outputs as $key => $value){
+                    $data_output = [
+                        'id_detail_mitigation' => $id_detail_mitigation,
+                        'output' => $outputs[$key],
+                    ];
+                    $this->RiskMitigationDetailOutputModel->insert($data_output);
+                }
             }
 
             $target = $this->request->getPost('target[]');
@@ -521,6 +528,10 @@ class RiskMonitoringController extends BaseController
                 //update to 0000-00-00 where id_detail_mitigation and target_month
                 $this->RiskMitigationDetailMonitoringModel->update_data_monitoring_2($id_detail_mitigation, $arr_deleted_monitoring[$i]);
             }
+
+            //delete data with target and monitoring month 0000-00-00
+                $this->RiskMitigationDetailMonitoringModel->delete_null_target_monitoring();
+            //delete data
 
             return redirect()->back()->with('state_message', 'success');
         }

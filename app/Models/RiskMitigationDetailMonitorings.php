@@ -127,4 +127,11 @@ class RiskMitigationDetailMonitorings extends Model
         
         $result = $this->db->query($sql);
     }
+
+    public function delete_null_target_monitoring(){
+        $sql = "DELETE FROM risk_mitigation_detail_monitorings 
+        WHERE target_month LIKE '0000-00-00' AND monitoring_month LIKE '0000-00-00'";
+        
+        $result = $this->db->query($sql);
+    }
 }

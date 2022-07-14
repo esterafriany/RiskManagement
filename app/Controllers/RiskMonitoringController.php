@@ -275,6 +275,17 @@ class RiskMonitoringController extends BaseController
 		echo json_encode($data);
     }
 
+    public function getEvidenceStatus($id_detail_mitigation){
+        // $data = $this->RiskMitigationDetailEvidenceModel->get_evidence_status($id_detail_mitigation);
+		
+        $data = [
+            'evidence_status'=>$this->RiskMitigationDetailEvidenceModel->get_evidence_status($id_detail_mitigation),
+            'monitoring_data'=> $this->RiskMitigationDetailEvidenceModel->get_data_monitoring($id_detail_mitigation)
+        ];
+
+		echo json_encode($data);
+    }
+
     public function getEvidenceList($month,$id){
         $data = $this->RiskMitigationDetailEvidenceModel->get_list_evidence_by_month($month,$id);
 		
@@ -283,8 +294,6 @@ class RiskMonitoringController extends BaseController
 
     public function onAddDetailMonitoring(){
         helper(['form', 'url', 'filesystem']);
-        
-        
         $id_detail_mitigation =  $this->request->getPost('id_detail_mitigation');
         $arr_id_monitoring = array();
         

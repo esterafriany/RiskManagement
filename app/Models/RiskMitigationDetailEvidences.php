@@ -63,4 +63,18 @@ class RiskMitigationDetailEvidences extends Model
                                   (id_detail_mitigation = '".$id_detail_mitigation."' AND MONTH(monitoring_month) = '".$month_target."')
                                 ) _tb ON risk_mitigation_detail_evidences.id_detail_monitoring = _tb.id")->getResultArray();
     }
+
+    public function get_evidence_status($id_detail_mitigation){
+      return $this->db->query("SELECT risk_mitigation_detail_monitorings.id
+                            FROM risk_mitigation_detail_monitorings LEFT JOIN risk_mitigation_detail_evidences
+                            ON risk_mitigation_detail_monitorings.id = risk_mitigation_detail_evidences.id_detail_monitoring
+                            WHERE id_detail_mitigation = '".$id_detail_mitigation."' AND id_detail_monitoring IS NULL")->getResultArray();
+    }
+
+    public function get_data_monitoring($id_detail_mitigation){
+      return $this->db->query("SELECT risk_mitigation_detail_monitorings.id
+                            FROM risk_mitigation_detail_monitorings
+                            WHERE id_detail_mitigation = '".$id_detail_mitigation."'")->getResultArray();
+    }
+
 }

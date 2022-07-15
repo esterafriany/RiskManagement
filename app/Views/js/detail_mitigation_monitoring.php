@@ -274,7 +274,6 @@ if($session->get('state_message')){
 		});
 	}
 
-	
 	function upload_evidence(target_month, id_detail_mitigation){
 		$.ajax({
 			url : "<?=site_url('RiskMonitoringController/getEvidenceList')?>/" + target_month + "/" +id_detail_mitigation,

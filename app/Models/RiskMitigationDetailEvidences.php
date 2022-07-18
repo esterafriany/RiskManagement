@@ -68,7 +68,7 @@ class RiskMitigationDetailEvidences extends Model
       return $this->db->query("SELECT risk_mitigation_detail_monitorings.id
                             FROM risk_mitigation_detail_monitorings LEFT JOIN risk_mitigation_detail_evidences
                             ON risk_mitigation_detail_monitorings.id = risk_mitigation_detail_evidences.id_detail_monitoring
-                            WHERE id_detail_mitigation = '".$id_detail_mitigation."' AND id_detail_monitoring IS NULL")->getResultArray();
+                            WHERE (id_detail_mitigation = '".$id_detail_mitigation."' AND id_detail_monitoring IS NULL) AND monitoring_month NOT LIKE '0000-00-00'")->getResultArray();
     }
 
     public function get_data_monitoring($id_detail_mitigation){

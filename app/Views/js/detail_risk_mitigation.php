@@ -11,7 +11,7 @@
 
 		var site_url = window.location.pathname;
         var arr = site_url.split("/");
-        var id_risk_mitigation = arr[arr.length - 1];
+        var id_risk_mitigation = arr[arr.length - 2];
         var id_risk_mit = document.getElementById('id_risk_mitigation').value;
         var id_risk_event = document.getElementById('id_risk_event').value;
 		

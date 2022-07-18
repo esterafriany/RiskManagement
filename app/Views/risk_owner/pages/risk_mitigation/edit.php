@@ -27,39 +27,31 @@
                                     <div class="row">
                                         <div class="col-md-6">
 											<div class="form-group">
-                                                <small>Nomor Risiko</small>
-                                                <input type="text" class="form-control" id="risk_number" name="risk_number" value="R<?php echo $detail_risk_event->risk_number_manual;?>" disabled>
+                                                <small><b>Nomor Risiko</b></small>
+                                                <p>R<?php echo $detail_risk_event->risk_number_manual;?></p>
                                             </div>
                                             <div class="form-group">
-                                                <small>KPI</small>
-                                                <select class="form-control form-select" id="id_kpi" name="id_kpi">
-                                                    <option value="" selected hidden >Pilihan</option>
+                                                <small><b>KPI</b></small>
+                                                <p>
                                                     <?php
                                                         if($kpi_list){
                                                             foreach($kpi_list as $kpi){
                                                                 if($detail_risk_event->id_kpi == $kpi['id']){ 
                                                                 ?>
-                                                                    <option value="<?php echo $kpi['id'];?>" selected><?php echo $kpi['name'];?></option>
-                                                                <?php
-                                                                }else{?>
-                                                                    <option value="<?php echo $kpi['id'];?>"><?php echo $kpi['name'];?></option>
-                                                                
+                                                                    <?php echo $kpi['name'];?>
                                                                 <?php
                                                                 }
                                                             }	
                                                         }
                                                     ?>
-                                                </select>
+                                                </p>
                                             </div>
 
                                             <div class="form-group">
-                                                <small>Risiko Utama</small>
-                                                <textarea class="form-control" required id="risk_event" name="risk_event"  rows="2"><?php echo $detail_risk_event->risk_event;?></textarea>
+                                                <small><b>Risiko Utama</b></small>
+                                                <p><?php echo $detail_risk_event->risk_event;?></p>
                                             </div>
-
-                                            
                                         </div>
-
                                 </div>
                                 </li>
                             </ul>
@@ -78,8 +70,7 @@
                                     <div id="riskCauseList">
                     
                                     </div><br/>
-                                    <!-- <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-cause"><i class="fas fa-plus-circle"></i> Tambah Risiko</button> -->
-                                
+                                    
                                 </li>
                             </ul>
                         </div>

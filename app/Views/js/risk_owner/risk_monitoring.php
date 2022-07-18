@@ -31,7 +31,7 @@
 					};
 				},
 				dataSrc: function(data) {
-
+					
 					// Update token hash
 					$('.txt_csrfname').val(data.token);
 
@@ -57,8 +57,8 @@
 					data: 'risk_mitigation_detail',
 					render: function (data, type, item) {
 						if(item.id != null){
-							//return '<a class="text-wrap width-200" href="<?=base_url()?>/risk_owner/view-detail-risk-monitoring/'+item.id+'">'+item.risk_mitigation_detail+'</a>';
-							return '<div class="text-wrap width-200" >'+item.risk_mitigation_detail+'</div>';
+							return '<a class="text-wrap width-200" href="<?=base_url()?>/risk_owner/view-detail-risk-monitoring/'+item.id+'/'+item.id_risk_mitigation+'/'+item.id_risk_event+'">'+item.risk_mitigation_detail+'</a>';
+							//return '<div class="text-wrap width-200" >'+item.risk_mitigation_detail+'</div>';
 						}else{
 							return '-';
 						}

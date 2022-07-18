@@ -18,12 +18,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <small>Rencana Mitigasi</small>
-                                        <textarea disabled name="risk_mitigation" class="form-control"><?=$risk_mitigation_data->risk_mitigation;?></textarea>
+                                        <small><b>Rencana Mitigasi</b></small>
+                                        <p><?=$risk_mitigation_data->risk_mitigation;?></p>
                                     </div>
                                     <div class="form-group">
-                                        <small>Detail Mitigasi</small>
-                                        <textarea disabled name="risk_mitigation" class="form-control"><?=$risk_mitigation_data->risk_mitigation_detail;?></textarea>
+                                        <small><b>Detail Mitigasi</b></small>
+                                        <p><?=$risk_mitigation_data->risk_mitigation_detail;?></p>
                                     </div>
                                     
                                 </div>

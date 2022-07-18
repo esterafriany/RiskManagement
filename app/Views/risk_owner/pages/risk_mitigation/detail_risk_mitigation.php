@@ -24,11 +24,15 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <small>Rencana Mitigasi</small>
-                                        <textarea disabled name="risk_mitigation" class="form-control"><?=$risk_mitigation->risk_mitigation?></textarea>
+                                        <small><b>Rencana Mitigasi</b></small>
+                                        <p><?=$risk_mitigation->risk_mitigation?></p>
                                     </div>
                                     
                                 </div>
+                            </li>
+
+                        <li class="list-group-item">
+
                                 <div class="col-md-12">
                                     <div align="right">
                                         <a type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal-add-detail-mitigation"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-miterlimit="60" stroke-width="40" d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192s192-86 192-192Z"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 176v160m80-80H176"/></svg> Tambah</a>

@@ -20,10 +20,12 @@
 				
 				for(i = 0; i < count; i++){
 					
-					penampung += `<table width="100%"><tr>
-						<td width="30px">${cause_number}.</td>
-						<td width="95%">${result[i]['risk_cause']}
-						</td></tr></table>`;
+					penampung += `<table width="100%">
+						<tr>
+							<td width="30px">${cause_number}.</td>
+							<td width="95%">${result[i]['risk_cause']}
+							</td>
+						</tr></table>`;
 						cause_number++;
 				}
 				

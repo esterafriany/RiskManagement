@@ -72,6 +72,7 @@ class RiskMonitoringController extends BaseController
                                     , progress_percentage')
                                 ->orLike('risk_events.risk_event', $searchValue)
                                 ->orLike('risk_mitigations.risk_mitigation', $searchValue)
+                                ->orLike('divisions.name', $searchValue)
                                 ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
                                 ->where('risk_events.year' , $year)
                                 //->groupBy('risk_mitigation_details.risk_mitigation_detail')
@@ -93,6 +94,7 @@ class RiskMonitoringController extends BaseController
                                 ->orLike('risk_events.risk_event', $searchValue)
                                 ->orLike('risk_mitigations.risk_mitigation', $searchValue)
                                 ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
+                                ->orLike('divisions.name', $searchValue)
                                 ->where('risk_events.year' , $year)
                                 //->groupBy('risk_mitigation_details.risk_mitigation_detail')
                                 ->countAllResults();
@@ -113,11 +115,11 @@ class RiskMonitoringController extends BaseController
                     ->orLike('risk_events.risk_event', $searchValue)
                     ->orLike('risk_mitigations.risk_mitigation', $searchValue)
                     ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
+                    ->orLike('divisions.name', $searchValue)
                     ->where('risk_events.year' , $year)
                     //->groupBy('risk_mitigation_details.risk_mitigation_detail, id_risk_mitigation')
                     ->orderBy($columnName,$columnSortOrder)
                     ->findAll($rowperpage, $start);
-
 
         $data = array();
 
@@ -179,6 +181,7 @@ class RiskMonitoringController extends BaseController
                                 ->orLike('risk_events.risk_event', $searchValue)
                                 ->orLike('risk_mitigations.risk_mitigation', $searchValue)
                                 ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
+                                ->orLike('divisions.name', $searchValue)
                                 ->where('risk_events.year' , $year)
                                 //->groupBy('risk_mitigation_details.risk_mitigation_detail')
                                 ->countAllResults();
@@ -198,6 +201,7 @@ class RiskMonitoringController extends BaseController
                                     , progress_percentage')
                                 ->orLike('risk_events.risk_event', $searchValue)
                                 ->orLike('risk_mitigations.risk_mitigation', $searchValue)
+                                ->orLike('divisions.name', $searchValue)
                                 ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
                                 ->where('risk_events.year' , $year)
                                 //->groupBy('risk_mitigation_details.risk_mitigation_detail')
@@ -218,6 +222,7 @@ class RiskMonitoringController extends BaseController
                         , progress_percentage')
                     ->orLike('risk_events.risk_event', $searchValue)
                     ->orLike('risk_mitigations.risk_mitigation', $searchValue)
+                    ->orLike('divisions.name', $searchValue)
                     ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
                     ->where('risk_events.year' , $year)
                     //->groupBy('risk_mitigation_details.risk_mitigation_detail')
@@ -230,6 +235,8 @@ class RiskMonitoringController extends BaseController
             $data[] = array( 
                 "id"=>$record['id'],
                 "risk_event"=>$record['risk_event'],
+                "id_risk_event"=>$record['id_risk_event'],
+                "id_risk_mitigation"=>$record['id_risk_mitigation'],
                 "risk_mitigation"=>$record['risk_mitigation'],
                 "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
                 "division_name"=>$record['division_name'],

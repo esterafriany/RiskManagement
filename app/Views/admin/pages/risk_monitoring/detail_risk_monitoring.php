@@ -13,31 +13,34 @@
                 <div class="row">
                     <div class="col">
                     <ul class="list-group">
+                    <li class="list-group-item"><b>Data Mitigasi</b></li>
+
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <small><b>Rencana Mitigasi</b></small>
-                                        <textarea disabled name="risk_mitigation" class="form-control"><?=$risk_mitigation_data->risk_mitigation;?></textarea>
+                                        <p><?=$risk_mitigation_data->risk_mitigation;?></p>
                                     </div>
                                     <div class="form-group">
                                         <small><b>Detail Mitigasi</b></small>
-                                        <textarea disabled name="risk_mitigation" class="form-control"><?=$risk_mitigation_data->risk_mitigation_detail;?></textarea>
+                                        <p><?=$risk_mitigation_data->risk_mitigation_detail;?></p>
                                     </div>
-                                    
                                 </div>
                             </div>
                         </li>
+                        <li class="list-group-item"><b>Output</b></li>
                         
                         <li class="list-group-item">
                             <div class="form-group">
-                                <small><b>Output</b></small>
                                 <div id="outputList">
                                     
                                 </div><br/>
                                 <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-output"><i class="fas fa-plus-circle"></i> Tambah Output</button>
                             </div>
                         </li>
+                        <li class="list-group-item"><b>Monitoring</b></li>
+
                         <li class="list-group-item"><br/>
                         <input type="hidden" name="progress_percentage" id="progress_percentage">
                         <div class="progress">

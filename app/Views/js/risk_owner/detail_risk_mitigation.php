@@ -26,7 +26,7 @@
 				zeroRecords: "Tidak ada Detail Mitigasi.",
 			},
 			'ajax': {
-				'url': "<?=site_url('RiskOwner/RiskMitigationController/getDetailMitigation')?>/"+id_risk_mitigation,
+				'url': "<?=site_url('RiskMitigationController/getDetailMitigation')?>/"+id_risk_mitigation,
 				'data': function(data) {
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name

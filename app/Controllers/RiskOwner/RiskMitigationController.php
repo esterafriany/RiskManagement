@@ -203,6 +203,9 @@ class RiskMitigationController extends BaseController
         ->orderBy($columnName,$columnSortOrder)
         ->where('id_risk_mitigation' , $id_risk_mitigation)
                 ->countAllResults();
+        // $totalRecords = $this->RiskMitigationDetailModel->select('id')
+        //         ->where('id_risk_mitigation' , $id_risk_mitigation)
+        //         ->countAllResults();
 
         ## Total number of records with filtering
         $totalRecordwithFilter = $this->RiskMitigationDetailModel
@@ -213,15 +216,30 @@ class RiskMitigationController extends BaseController
                 ->where('id_risk_mitigation' , $id_risk_mitigation)
                 ->countAllResults();
 
+        // $totalRecordwithFilter = $this->RiskMitigationDetailModel->select('id')
+        //         ->orLike('risk_mitigation_detail', $searchValue)
+        //         ->where('id_risk_mitigation' , $id_risk_mitigation)
+        //         ->countAllResults();
+
         ## Fetch records
+        // $records = $this->RiskMitigationDetailModel
+        //         ->join('divisions', 'divisions.id = risk_mitigation_details.id_division')
+        //         ->select('risk_mitigation_details.id, id_risk_mitigation, risk_mitigation_detail, id_division, divisions.name, division_code, risk_mitigation_details.is_active')
+        //         ->orLike('risk_mitigation_detail', $searchValue)
+        //         ->orLike('divisions.name', $searchValue)
+        //         //->orderBy('risk_mitigation_details.id', 'asc')
+        //         ->orderBy($columnName,$columnSortOrder)
+        //         ->where('id_risk_mitigation' , $id_risk_mitigation)
+        //         ->findAll($rowperpage, $start);
+
         $records = $this->RiskMitigationDetailModel
-                ->join('divisions', 'divisions.id = risk_mitigation_details.id_division')
-                ->select('risk_mitigation_details.id, id_risk_mitigation, risk_mitigation_detail, id_division, divisions.name, division_code, risk_mitigation_details.is_active')
-                ->orLike('divisions.name', $searchValue)
-                ->orderBy('risk_mitigation_details.id', 'asc')
-                ->orderBy($columnName,$columnSortOrder)
-                ->where('id_risk_mitigation' , $id_risk_mitigation)
-                ->findAll($rowperpage, $start);
+            ->join('divisions', 'divisions.id = risk_mitigation_details.id_division','left')
+            ->select('risk_mitigation_details.id, id_risk_mitigation, risk_mitigation_detail, id_division, divisions.name, division_code, risk_mitigation_details.is_active')
+            ->orLike('risk_mitigation_detail', $searchValue)
+            ->orLike('divisions.name', $searchValue)
+            ->orderBy($columnName,$columnSortOrder)
+            ->where('id_risk_mitigation' , $id_risk_mitigation)
+            ->findAll($rowperpage, $start);
 
         $data = array();
 

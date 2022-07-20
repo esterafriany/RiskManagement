@@ -808,25 +808,87 @@ class RiskMonitoringController extends BaseController
 	}
 
     public function onDownloadReportExcelBreakdown(){
-        // echo view('admin/pages/risk_monitoring/download_report');
-
         $datas = $this->RiskEventModel->get_data_report();
         $data_target = $this->RiskEventModel->get_data_target();
         $data_monitoring = $this->RiskEventModel->get_data_monitoring();
+        $data_risk_count = $this->RiskEventModel->get_risk_number_count();
+        $data_risk_mitigation_count = $this->RiskEventModel->get_risk_mitigation_count();
 
         $spreadsheet = new Spreadsheet();
 
         // tulis header/nama kolom 
         $spreadsheet->setActiveSheetIndex(0)
-        ->setCellValue('A1', 'No')
-        ->setCellValue('B1', 'Risk Event')
-        ->setCellValue('C1', 'Rencana Mitigasi')
-        ->setCellValue('d1', 'Detail Mitigasi')
-        ->setCellValue('E1', 'PIC')
-        ->setCellValue('F1', 'Output');
+        //set column tittle
+        ->setCellValue('A4', 'NO')
+        ->setCellValue('B4', 'RISK EVENT')
+        ->setCellValue('C4', 'RENCANA MITIGASI')
+        ->setCellValue('D4', 'DETAIL MITIGASI')
+        ->setCellValue('E4', 'PIC')
+        ->setCellValue('F4', 'OUTPUT')
+        ->setCellValue('G4', 'WAKTU PELAKSANAAN  MITIGASI & REALISASI MITIGASI')
+        ->setCellValue('G5', 'TRIWULAN I ')
+        ->setCellValue('J5', 'TRIWULAN II')
+        ->setCellValue('M5', 'TRIWULAN III')
+        ->setCellValue('P5', 'TRIWULAN IV')
+        ->setCellValue('G6', 'JAN')
+        ->setCellValue('H6', 'FEB')
+        ->setCellValue('I6', 'MAR')
+        ->setCellValue('J6', 'APR')
+        ->setCellValue('K6', 'MEI')
+        ->setCellValue('L6', 'JUN')
+        ->setCellValue('M6', 'JUL')
+        ->setCellValue('N6', 'AGS')
+        ->setCellValue('O6', 'SEP')
+        ->setCellValue('P6', 'OKT')
+        ->setCellValue('Q6', 'NOV')
+        ->setCellValue('R6', 'DES')
+        ->setCellValue('D2', 'RISK MONITORING PERUM PPD')
+        //set merge cells
+        ->mergeCells('A4:A6')
+        ->mergeCells('B4:B6')
+        ->mergeCells('C4:C6')
+        ->mergeCells('D4:D6')
+        ->mergeCells('E4:E6')
+        ->mergeCells('F4:F6')
+        ->mergeCells('G5:I5')
+        ->mergeCells('G4:R4')
+        ->mergeCells('J5:L5')
+        ->mergeCells('M5:O5')
+        ->mergeCells('P5:R5');
 
-        $column = 2;
-        $column1 = 3;
+        $styleArray = [
+            'font' => [
+                'bold' => true,
+                'color' => array('rgb' => 'FFFFFF'),
+                'size'  => 11
+                
+            ],
+            'alignment' => [
+                'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
+            ],
+            'fill' => [
+                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_GRADIENT_LINEAR,
+                'rotation' => 90,
+                'startColor' => [
+                    'argb' => '191970',
+                ],
+                'endColor' => [
+                    'argb' => '191970',
+                ],
+            ],
+            'borders' => [
+                'allborders' => [
+                    'style' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN
+                ]
+            ]
+        ];
+        $spreadsheet->getActiveSheet()->getStyle('A4:R6')->applyFromArray($styleArray); 
+    
+        //rows target and monitoring
+        $column = 7; //target
+        $column1 = 8; //monitoring
+        $column_risk_number = 0;
         
         foreach($datas as $data) {
             $spreadsheet->setActiveSheetIndex(0)
@@ -837,14 +899,21 @@ class RiskMonitoringController extends BaseController
                         ->setCellValue('E' . $column, $data['name'])
                         ->setCellValue('F' . $column, $data['output']);
 
+            $spreadsheet->getActiveSheet()->mergeCells('D' . $column. ':D'. $column + 1); 
+            $spreadsheet->getActiveSheet()->mergeCells('E' . $column. ':E'. $column + 1); 
+            $spreadsheet->getActiveSheet()->mergeCells('F' . $column. ':F'. $column + 1); 
+
+
             //target
             foreach($data_target as $data1) {
                 $styleArray = [
                     'font' => [
                         'bold' => true,
+                        'size'  => 10
                     ],
                     'alignment' => [
-                        'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
+                        'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                        'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
                     ],
                     'fill' => [
                         'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_GRADIENT_LINEAR,
@@ -856,6 +925,11 @@ class RiskMonitoringController extends BaseController
                             'argb' => 'BDD6EE',
                         ],
                     ],
+                    'borders' => [
+                        'allborders' => [
+                            'style' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN
+                        ]
+                    ]
                 ];
                 if($data['id_detail_mitigation'] == $data1['id_detail_mitigation']){
                     if($data1['Januari'] == '1'){
@@ -891,6 +965,7 @@ class RiskMonitoringController extends BaseController
                 $styleArray1 = [
                     'font' => [
                         'bold' => true,
+                        'size'  => 10
                     ],
                     'alignment' => [
                         'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -905,6 +980,11 @@ class RiskMonitoringController extends BaseController
                             'argb' => 'C5E0B3',
                         ],
                     ],
+                    'borders' => [
+                        'allborders' => [
+                            'style' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN
+                        ]
+                    ]
                 ];
                 if($data['id_detail_mitigation'] == $data2['id_detail_mitigation']){
                     if($data2['Januari'] == '1'){
@@ -938,7 +1018,75 @@ class RiskMonitoringController extends BaseController
             $column1 += 2;
         }
 
+        //merge cell risk number and events
+        $count = 7;
+        $temp_count = 0;
+        foreach($data_risk_count as $data) {
+            $a = $temp_count + ($data['count']*2) + 3;
+            $spreadsheet->getActiveSheet()->mergeCells('A'.$count.':A'. $a); 
+            $spreadsheet->getActiveSheet()->mergeCells('B'.$count.':B'. $a); 
+            
+            $count = $a+1;
+            $temp_count = $a - 3;
+        }
 
+        foreach($data_risk_count as $data) {
+            $a = $temp_count + ($data['count']*2) + 3;
+            $spreadsheet->getActiveSheet()->mergeCells('C'.$count.':C'. $a); 
+            
+            $count = $a+1;
+            $temp_count = $a - 3;
+        }
+
+        //merge cell risk mitigations
+        $count = 7;
+        $temp_count = 0;
+        
+        foreach($data_risk_mitigation_count as $data) {
+            $a = $temp_count + ($data['count']*2) + 3;
+            $spreadsheet->getActiveSheet()->mergeCells('C'.$count.':C'. $a); 
+            
+            $count = $a+1;
+            $temp_count = $a - 3;
+        }
+
+        // $styleArray2 = [
+        //     'font' => [
+        //         'size'  => 10
+        //     ],
+        //     'alignment' => [
+        //         'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
+        //     ],
+        //     'borders' => [
+        //         'allborders' => [
+        //             'style' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK,
+        //             'color' => [
+        //                 'argb' => '191970',
+        //             ]
+        //         ]
+        //     ]
+        // ];
+        // $spreadsheet->getActiveSheet()->getStyle('A1:R113')->applyFromArray($styleArray2); 
+
+        $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+        $drawing->setPath('assets/images/logo_ppd.png'); /* put your path and image here */
+        $drawing->setCoordinates('A1');
+        $drawing->setOffsetX(90);
+        $drawing->getShadow()->setVisible(true);
+        $drawing->setHeight(30);
+        $drawing->setWidth(30);
+        $drawing->setWorksheet($spreadsheet->getActiveSheet());
+
+        $styleArray = [
+            'font' => [
+                'bold' => true,
+                'color' => array('rgb' => '000000'),
+                'size'  => 14
+                
+            ]
+            
+        ];
+        $spreadsheet->getActiveSheet()->getStyle('D2')->applyFromArray($styleArray); 
 
         $writer = new Xlsx($spreadsheet);
         $fileName = 'Data_Report_Breakdown';
@@ -947,7 +1095,7 @@ class RiskMonitoringController extends BaseController
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename='.$fileName.'.xlsx');
         header('Cache-Control: max-age=0');
-
+         
         $writer->save('php://output');
     }
 }

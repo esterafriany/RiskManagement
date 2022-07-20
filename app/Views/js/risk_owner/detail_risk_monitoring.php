@@ -57,9 +57,12 @@
 				for(i = 0; i < count1; i++){
 					penampung += `<table width="100%">
 						<tr>
-							<td width="30px">${mitigation_number}.</td>
+							<td width="30px" valign="top">${mitigation_number}.</td>
 							<td width="80%">
-							${result['risk_mitigation_list'][i]['risk_mitigation']}<input type="hidden" name="risk_mitigation_division_id[]" value="${result['risk_mitigation_list'][i]['id_risk_mitigation_division']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
+								<div class='text-wrap width-200'>
+									${result['risk_mitigation_list'][i]['risk_mitigation']}
+								</div>
+							<input type="hidden" name="risk_mitigation_division_id[]" value="${result['risk_mitigation_list'][i]['id_risk_mitigation_division']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 								<input type="hidden" name="risk_mitigation_id[]" value="${result['risk_mitigation_list'][i]['id_risk_mitigation']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 							</td>
 							<td>
@@ -90,7 +93,6 @@
 		});
 
 		$("#add-more-mitigation").click(function () {
-			
 			$("#riskMitigationList").last().append(
 				`<table width="100%">
 					<tr>

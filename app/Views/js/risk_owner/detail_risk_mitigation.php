@@ -38,6 +38,7 @@
 					};
 				},
 				dataSrc: function(data) {
+					
 					// Update token hash
 					$('.txt_csrfname').val(data.token);
 

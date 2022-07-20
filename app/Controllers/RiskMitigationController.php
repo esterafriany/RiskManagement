@@ -220,6 +220,7 @@ class RiskMitigationController extends BaseController
                 "id"=>$record['id'],
                 "name"=>$record['name'],
                 "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
+                "id_division"=>$record['id_division'],
                 "is_active"=>$record['is_active']
             ); 
         }

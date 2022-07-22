@@ -137,9 +137,9 @@ class RiskEvents extends Model
                                 WHERE risk_events.year = '".$year."'")->getResultArray();
     }
 
-    public function get_data_report(){
+    public function get_data_report($year){
         return $this->db->query("
-                         SELECT CONCAT('R',risk_number_manual) as risk_number
+                        SELECT CONCAT('R',risk_number_manual) as risk_number
                         , risk_event
                         , risk_mitigation
                         , risk_mitigation_details.risk_mitigation_detail
@@ -150,13 +150,14 @@ class RiskEvents extends Model
                         JOIN risk_mitigation_details on risk_mitigations.id = risk_mitigation_details.id_risk_mitigation
                         JOIN divisions ON divisions.id = risk_mitigation_details.id_division
                         JOIN risk_mitigation_detail_outputs on risk_mitigation_detail_outputs.id_detail_mitigation = risk_mitigation_details.id
+                        WHERE risk_events.year = '".$year."'
                         ORDER BY risk_events.id ASC, risk_mitigations.id ASC, risk_mitigation_details.id ASC;")->getResultArray();
     }
 
-    public function get_risk_number_count(){
-        return $this->db->query("SELECT _tb.risk_number, COUNT(_tb.risk_number) as count FROM 
+    public function get_risk_number_count($year){
+        return $this->db->query("SELECT CONCAT('R',_tb.risk_number), COUNT(_tb.risk_number) as count FROM 
                                 (
-                                    SELECT CONCAT('R',risk_number_manual) as risk_number
+                                    SELECT risk_number_manual as risk_number
                                                         , risk_event
                                                         , risk_mitigation
                                                         , risk_mitigation_details.risk_mitigation_detail
@@ -167,14 +168,16 @@ class RiskEvents extends Model
                                                         JOIN risk_mitigation_details on risk_mitigations.id = risk_mitigation_details.id_risk_mitigation
                                                         JOIN divisions ON divisions.id = risk_mitigation_details.id_division
                                                         JOIN risk_mitigation_detail_outputs on risk_mitigation_detail_outputs.id_detail_mitigation = risk_mitigation_details.id
+                                                        WHERE risk_events.year = '".$year."'
                                                         ORDER BY risk_events.id ASC, risk_mitigations.id ASC, risk_mitigation_details.id ASC
                                 ) _tb
+
                                 GROUP BY _tb.risk_number;")->getResultArray();
     }
 
-    public function get_risk_mitigation_count(){
-        return $this->db->query("SELECT _tb.risk_number, _tb.risk_mitigation, _tb.id_detail_mitigation, COUNT(_tb.risk_mitigation) as count FROM (
-                                SELECT CONCAT('R',risk_number_manual) as risk_number
+    public function get_risk_mitigation_count($year){
+        return $this->db->query("SELECT CONCAT('R',_tb.risk_number) as risk_number, _tb.risk_mitigation, _tb.id_detail_mitigation, COUNT(_tb.risk_mitigation) as count FROM (
+                                SELECT risk_number_manual as risk_number
                                     , risk_event
                                     , risk_mitigation
                                     , risk_mitigation_details.risk_mitigation_detail
@@ -185,59 +188,61 @@ class RiskEvents extends Model
                                 JOIN risk_mitigation_details on risk_mitigations.id = risk_mitigation_details.id_risk_mitigation
                                 JOIN divisions ON divisions.id = risk_mitigation_details.id_division
                                 JOIN risk_mitigation_detail_outputs on risk_mitigation_detail_outputs.id_detail_mitigation = risk_mitigation_details.id
+                                WHERE risk_events.year = '".$year."'
                                 ORDER BY risk_events.id ASC, risk_mitigations.id ASC, risk_mitigation_details.id ASC
                             ) _tb
                             GROUP BY _tb.risk_mitigation, _tb.risk_number
-                            ORDER BY _tb.id_detail_mitigation;")->getResultArray();
+                            ORDER BY _tb.risk_number,_tb.id_detail_mitigation;")->getResultArray();
     }
     
 
-    public function get_data_target()
+    public function get_data_target($year)
     {
         return $this->db->query("
                         SELECT id_detail_mitigation
-                        , (case when target_month = '2022-01-01' then 1 else 0 end) as Januari
-                        , (case when target_month = '2022-02-01' then 1 else 0 end) as Februari
-                        , (case when target_month = '2022-03-01' then 1 else 0 end)  as Maret
-                        , (case when target_month = '2022-04-01' then 1 else 0 end)  as April
-                        , (case when target_month = '2022-05-01' then 1 else 0 end)  as Mei
-                        , (case when target_month = '2022-06-01' then 1 else 0 end)  as Juni
-                        , (case when target_month = '2022-07-01' then 1 else 0 end)  as Juli
-                        , (case when target_month = '2022-08-01' then 1 else 0 end)  as Agustus
-                        , (case when target_month = '2022-09-01' then 1 else 0 end)  as September
-                        , (case when target_month = '2022-10-01' then 1 else 0 end)  as Oktober
-                        , (case when target_month = '2022-11-01' then 1 else 0 end)  as November
-                        , (case when target_month = '2022-12-01' then 1 else 0 end)  as Desember
+                        , (case when target_month = '".$year."-01-01' then 1 else 0 end) as Januari
+                        , (case when target_month = '".$year."-02-01' then 1 else 0 end) as Februari
+                        , (case when target_month = '".$year."-03-01' then 1 else 0 end)  as Maret
+                        , (case when target_month = '".$year."-04-01' then 1 else 0 end)  as April
+                        , (case when target_month = '".$year."-05-01' then 1 else 0 end)  as Mei
+                        , (case when target_month = '".$year."-06-01' then 1 else 0 end)  as Juni
+                        , (case when target_month = '".$year."-07-01' then 1 else 0 end)  as Juli
+                        , (case when target_month = '".$year."-08-01' then 1 else 0 end)  as Agustus
+                        , (case when target_month = '".$year."-09-01' then 1 else 0 end)  as September
+                        , (case when target_month = '".$year."-10-01' then 1 else 0 end)  as Oktober
+                        , (case when target_month = '".$year."-11-01' then 1 else 0 end)  as November
+                        , (case when target_month = '".$year."-12-01' then 1 else 0 end)  as Desember
                         FROM
                         (
                             SELECT id_detail_mitigation, target_month, monitoring_month, notes, risk_mitigation_detail
                             FROM risk_mitigation_detail_monitorings JOIN risk_mitigation_details ON risk_mitigation_details.id = risk_mitigation_detail_monitorings.id_detail_mitigation
+                            WHERE LEFT(target_month, 4) LIKE '".$year."' OR LEFT(monitoring_month, 4) LIKE '".$year."'
                         ) _tb
                         GROUP BY id_detail_mitigation, target_month")->getResultArray();
     }
 
-    public function get_data_monitoring()
-    {
+    public function get_data_monitoring($year){
         return $this->db->query("
                                 SELECT id_detail_mitigation
-                                , (case when monitoring_month = '2022-01-01' then 1 else 0 end) as Januari
-                                , (case when monitoring_month = '2022-02-01' then 1 else 0 end) as Februari
-                                , (case when monitoring_month = '2022-03-01' then 1 else 0 end)  as Maret
-                                , (case when monitoring_month = '2022-04-01' then 1 else 0 end)  as April
-                                , (case when monitoring_month = '2022-05-01' then 1 else 0 end)  as Mei
-                                , (case when monitoring_month = '2022-06-01' then 1 else 0 end)  as Juni
-                                , (case when monitoring_month = '2022-07-01' then 1 else 0 end)  as Juli
-                                , (case when monitoring_month = '2022-08-01' then 1 else 0 end)  as Agustus
-                                , (case when monitoring_month = '2022-09-01' then 1 else 0 end)  as September
-                                , (case when monitoring_month = '2022-10-01' then 1 else 0 end)  as Oktober
-                                , (case when monitoring_month = '2022-11-01' then 1 else 0 end)  as November
-                                , (case when monitoring_month = '2022-12-01' then 1 else 0 end)  as Desember
+                                , (case when monitoring_month = '".$year."-01-01' then 1 else 0 end) as Januari
+                                , (case when monitoring_month = '".$year."-02-01' then 1 else 0 end) as Februari
+                                , (case when monitoring_month = '".$year."-03-01' then 1 else 0 end)  as Maret
+                                , (case when monitoring_month = '".$year."-04-01' then 1 else 0 end)  as April
+                                , (case when monitoring_month = '".$year."-05-01' then 1 else 0 end)  as Mei
+                                , (case when monitoring_month = '".$year."-06-01' then 1 else 0 end)  as Juni
+                                , (case when monitoring_month = '".$year."-07-01' then 1 else 0 end)  as Juli
+                                , (case when monitoring_month = '".$year."-08-01' then 1 else 0 end)  as Agustus
+                                , (case when monitoring_month = '".$year."-09-01' then 1 else 0 end)  as September
+                                , (case when monitoring_month = '".$year."-10-01' then 1 else 0 end)  as Oktober
+                                , (case when monitoring_month = '".$year."-11-01' then 1 else 0 end)  as November
+                                , (case when monitoring_month = '".$year."-12-01' then 1 else 0 end)  as Desember
                                 FROM
                                 (
                                     SELECT id_detail_mitigation, target_month, monitoring_month, notes, risk_mitigation_detail
                                     FROM risk_mitigation_detail_monitorings JOIN risk_mitigation_details ON risk_mitigation_details.id = risk_mitigation_detail_monitorings.id_detail_mitigation
+                                    WHERE LEFT(target_month, 4) LIKE '".$year."' OR LEFT(monitoring_month, 4) LIKE '".$year."'
+                                    
                                 ) _tb
-                                
                                 GROUP BY id_detail_mitigation, monitoring_month;")->getResultArray();
     }
 

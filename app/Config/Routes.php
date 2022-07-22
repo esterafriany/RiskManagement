@@ -79,6 +79,8 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('detail-risk-monitoring/(:num)/(:num)/(:num)', 'RiskMonitoringController::getDetailRiskMonitoring/$1/$2/$3', ['as' => 'detail-risk-monitoring']);
 	$routes->add('RiskMonitoringController/onAddDetailMonitoring', 'RiskMonitoringController::onAddDetailMonitoring', ['as' => 'add-risk-monitoring']);
 	$routes->add('download-risk-monitoring/(:num)', 'RiskMonitoringController::onDownloadReportExcelBreakdown/$1', ['as' => 'download-breakdown-risk-monitoring']);
+	$routes->add('download-risk-monitoring-gabungan/(:num)', 'RiskMonitoringController::onDownloadReportExcelGabungan/$1', ['as' => 'download-gabungan-risk-monitoring']);
+	
 	
 	//Risk Mitigation 
 	$routes->add('risk-mitigation', 'RiskMitigationController::index', ['as' => 'get-risk-mitigations']);

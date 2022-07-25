@@ -17,7 +17,9 @@ class Divisions extends Model
     protected $allowedFields    = [
         "name",
         "division_code",
-		"is_active"
+		"is_active",
+        "created_at",
+        "updated_at"
     ];
 
     // Dates

@@ -17,7 +17,9 @@ class RiskCategories extends Model
     protected $allowedFields    = [
       "name",
       "description",
-      "is_active"
+      "is_active",
+      "created_at",
+      "updated_at"
     ];
 
     // Dates

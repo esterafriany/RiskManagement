@@ -19,7 +19,9 @@ class KPIs extends Model
 		"year",
 		"description",
 		"is_active",
-        "level"
+        "level",
+        "created_at",
+        "updated_at"
     ];
 
     // Dates

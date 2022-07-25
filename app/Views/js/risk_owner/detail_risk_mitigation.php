@@ -63,7 +63,6 @@
 					data: 'id',
 					render: function (data, type, item) {
 						if(item.id_division == document.getElementById('id_division').value){
-							
 							return `<div class="flex align-items-center list-user-action">
 								<button type="button" class="btn btn-sm btn-icon btn-warning" onclick="edit_detail_risk_mitigation(${item.id})">
 								    <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -84,6 +83,10 @@
 						}
 						
 					},					
+				},
+				{
+					data: 'updated_at',
+									
 				},
 			],
 			columnDefs: [

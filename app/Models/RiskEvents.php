@@ -40,7 +40,9 @@ class RiskEvents extends Model
         "risk_analysis_residual",
         "risk_impact_quantitative",
         "description",
-        "is_active"
+        "is_active",
+        "created_at",
+        "updated_at"
     ];
     // Dates
     protected $useTimestamps = false;

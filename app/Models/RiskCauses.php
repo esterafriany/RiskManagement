@@ -17,7 +17,9 @@ class RiskCauses extends Model
     protected $allowedFields    = [
         "id_risk_event",
         "risk_cause",
-        "is_active"
+        "is_active",
+        "created_at",
+        "updated_at"
     ];
 
     // Dates

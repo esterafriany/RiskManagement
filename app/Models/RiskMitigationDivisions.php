@@ -17,7 +17,9 @@ class RiskMitigationDivisions extends Model
     protected $allowedFields    = [
         "id",
         "id_risk_mitigation",
-        "id_division"
+        "id_division",
+        "created_at",
+        "updated_at"
     ];
 
     // Dates

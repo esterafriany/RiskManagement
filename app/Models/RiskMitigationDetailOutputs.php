@@ -16,7 +16,11 @@ class RiskMitigationDetailOutputs extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         "id_detail_mitigation",
-        "output"
+        "output",
+        "created_at",
+        "updated_at",
+        "created_at",
+        "updated_at"
 
     ];
 

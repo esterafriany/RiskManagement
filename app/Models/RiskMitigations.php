@@ -18,7 +18,9 @@ class RiskMitigations extends Model
         "id_risk_event",
         "risk_mitigation",
         "id_pic",
-        "is_active"
+        "is_active",
+        "created_at",
+        "updated_at"
     ];
 
     // Dates

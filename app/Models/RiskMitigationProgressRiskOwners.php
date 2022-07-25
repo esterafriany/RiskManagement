@@ -22,7 +22,9 @@ class RiskMitigationProgressRiskOwners extends Model
         'final_level_residual',
         'risk_analysis_residual',
         'risk_impact_quantitative',
-        'description'
+        'description',
+        'created_at',
+        'updated_at'
     ];
 
     // Dates

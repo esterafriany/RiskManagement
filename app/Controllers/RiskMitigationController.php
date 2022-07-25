@@ -207,7 +207,7 @@ class RiskMitigationController extends BaseController
         ## Fetch records
         $records = $this->RiskMitigationDetailModel
                     ->join('divisions', 'divisions.id = risk_mitigation_details.id_division','left')
-                    ->select('risk_mitigation_details.id, id_risk_mitigation, risk_mitigation_detail, id_division, divisions.name, division_code, risk_mitigation_details.is_active')
+                    ->select('risk_mitigation_details.id, risk_mitigation_details.updated_at, id_risk_mitigation, risk_mitigation_detail, id_division, divisions.name, division_code, risk_mitigation_details.is_active')
                     ->orLike('risk_mitigation_detail', $searchValue)
                     ->orderBy($columnName,$columnSortOrder)
                     ->where('id_risk_mitigation' , $id_risk_mitigation)
@@ -221,6 +221,7 @@ class RiskMitigationController extends BaseController
                 "name"=>$record['name'],
                 "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
                 "id_division"=>$record['id_division'],
+                "updated_at"=>$record['updated_at'],
                 "is_active"=>$record['is_active']
             ); 
         }
@@ -285,6 +286,9 @@ class RiskMitigationController extends BaseController
                             'id_risk_event' => $id_risk_event,
                             'risk_mitigation' =>$risk_mitigation_name,
                             'is_active' => "1",
+                            'updated_at' => date('Y-m-d h:i:s'),
+						    'created_at' => date('Y-m-d h:i:s'),
+
                     ];
 
                     $inserted_id = $this->RiskMitigationModel->insert($data);
@@ -320,6 +324,8 @@ class RiskMitigationController extends BaseController
 				$data = [
 						'risk_mitigation_detail' => $this->request->getPost('risk_mitigation_detail'),
 						'id_risk_mitigation' => $this->request->getPost('id_risk_mitigation'),
+						'updated_at' => date('Y-m-d h:i:s'),
+						'created_at' => date('Y-m-d h:i:s'),
 						];
 
 				$this->RiskMitigationDetailModel->insert($data);
@@ -341,7 +347,8 @@ class RiskMitigationController extends BaseController
             try {
                 $data = [
                     'risk_mitigation_detail' => $this->request->getPost('risk_mitigation_detail'),
-                    ];
+                    'updated_at' => date('Y-m-d h:i:s'),
+                ];
                 $this->RiskMitigationDetailModel->update($id, $data);
                     
                 echo json_encode(array("status" => TRUE));

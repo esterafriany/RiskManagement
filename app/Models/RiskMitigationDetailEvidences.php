@@ -18,6 +18,8 @@ class RiskMitigationDetailEvidences extends Model
         "id_detail_monitoring",
         "filename",
         "pathname",
+        "created_at",
+        "updated_at"
     ];
 
     // Dates

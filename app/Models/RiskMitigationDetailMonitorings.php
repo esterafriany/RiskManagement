@@ -18,7 +18,9 @@ class RiskMitigationDetailMonitorings extends Model
         "id_detail_mitigation",
         "target_month",
         "monitoring_month",
-        "notes"
+        "notes",
+        "created_at",
+        "updated_at"
     ];
 
     // Dates

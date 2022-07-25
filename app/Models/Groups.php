@@ -19,7 +19,9 @@ class Groups extends Model
 		"is_root",
 		"is_need_credential",
 		"can_approval_job",
-		"is_active"
+		"is_active",
+        "created_at",
+        "updated_at"
 	];
 
     // Dates

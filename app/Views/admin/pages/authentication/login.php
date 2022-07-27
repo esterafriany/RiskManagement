@@ -4,7 +4,7 @@
 		<div class="loader simple-loader">
 			<div class="loader-body"></div>
 		</div>    </div>
-    <!-- loader END -->
+   <!-- loader END -->
 	<div class="wrapper">
       <section class="login-content">
          <div class="row m-0 align-items-center bg-white vh-100">            

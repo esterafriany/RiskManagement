@@ -8,15 +8,40 @@
         </div>
 		<div class="modal-body">
         <ul class="list-group">
+            <li class="list-group-item"> 
+                <small>Upload File </small>
+            </li>
             <li class="list-group-item">   
                 <div class="form-group">
-                    <small>Upload File </small>
                     <div id="evidenceList">
                         
                     </div><br/>
                     <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-evidence"><i class="fas fa-plus-circle"></i> Tambah File</button>
                     
-                </div>       
+                </div>  
+            </li>
+            <li class="list-group-item"> 
+                Detail Mitigasi
+                <a class="badge rounded-pill bg-info text-white"><b> Melaksanakan kontrol anggaran di masing - masing Divisi </b></a>
+                juga terdapat pada : 
+                <table>
+                    <tr>
+                        <td>1.</td><td><a class="badge rounded-pill bg-primary text-white"><b>R1</b></a></td>
+                        <td><a href="">Copy Evidence</a></td>
+                    </tr>
+                    <tr>
+                        <td>2.</td><td><a class="badge rounded-pill bg-primary text-white"><b>R2</b></a></td>
+                        <td><a href="">Copy Evidence</a></td>
+                    </tr>
+                    <tr>
+                        <td>3.</td><td><a class="badge rounded-pill bg-primary text-white"><b>R5</b></a>
+                        <td><a href="">Copy Evidence</a></td>
+                    </tr>
+                    <tr>
+                        <td>4.</td><td><a class="badge rounded-pill bg-primary text-white"><b>R16</b></a></td>
+                        <td><a href="">Copy Evidence</a></td>
+                    </tr>
+                </table>
             </li>
         </ul>
 			

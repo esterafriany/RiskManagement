@@ -604,6 +604,7 @@ class RiskMonitoringController extends BaseController
                     $data_evidence = [
                         'id_detail_monitoring' => $id_detail_monitoring->id,
                         'filename' => $fileName,
+                        'flags' => '1',
                         'pathname' => FCPATH . DIRECTORY_SEPARATOR."uploads". DIRECTORY_SEPARATOR.$id_detail_monitoring->id,
                     ];
                     
@@ -630,11 +631,13 @@ class RiskMonitoringController extends BaseController
     }
 
     public function onDeleteEvidence($id, $id_detail_monitoring){
-        $filename = $this->RiskMitigationDetailEvidenceModel->find($id);
-        
-        unlink (FCPATH .DIRECTORY_SEPARATOR. 'uploads'.DIRECTORY_SEPARATOR.$id_detail_monitoring.DIRECTORY_SEPARATOR.$filename['filename']);
-        $this->RiskMitigationDetailEvidenceModel->delete($id);
+        $data["flags"] = '0'; 
+        $this->RiskMitigationDetailEvidenceModel->update($id, $data);
 
+        // $filename = $this->RiskMitigationDetailEvidenceModel->find($id);
+        // unlink (FCPATH .DIRECTORY_SEPARATOR. 'uploads'.DIRECTORY_SEPARATOR.$id_detail_monitoring.DIRECTORY_SEPARATOR.$filename['filename']);
+        // $this->RiskMitigationDetailEvidenceModel->delete($id);
+        
         echo json_encode(array("status" => TRUE));
     }
 

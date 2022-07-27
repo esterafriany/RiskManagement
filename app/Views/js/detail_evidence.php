@@ -4,14 +4,12 @@
 	$(document).ready(function() {
 		var $btn_add_kpi = $("#btn-add-kpi");
 		var $btn_edit_kpi = $("#btn-edit-kpi");
-	
 		$("#add-more-evidence").click(function () {
 			$("#evidenceList").last().append(
 				`<table width="100%">
 					<tr>
 						<td width="100%">
 							<input type="file" name="evidence[]" id="evidence" value="" class="form-control" placeholder="Browse File">
-						
 							<input type="hidden" name="evidenceId[]" value="" class="form-control" >
 						</td>
 						<td>
@@ -21,10 +19,8 @@
 				</table>`
 			);
 		});	
-		
 		$(document).on('click', '.removes', function () {
 			$(this).parents('tr').remove();
 		});
 	});
-
 </script>

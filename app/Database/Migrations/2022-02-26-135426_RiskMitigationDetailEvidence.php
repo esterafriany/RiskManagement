@@ -27,6 +27,10 @@ class RiskMitigationDetailEvidence extends Migration
                 'type'              => 'VARCHAR',
                 'constraint'        => '255',
             ],
+			'flags'       => [
+                'type'              => 'VARCHAR',
+                'constraint'        => '1',
+            ],
             'created_at' => [
                 'type'           => 'DATETIME',
                 'null'           => true,

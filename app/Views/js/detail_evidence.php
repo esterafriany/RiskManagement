@@ -25,10 +25,5 @@
 		});
 	});
 
-	function copy_evidence(){
-		//$('#modal-add-evidence').modal('toggle');
-		
-		$('#modal-edit-kpi').modal('show');
-		$('.modal-title').text('Edit KPI'); 
-	}
+	
 </script>

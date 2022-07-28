@@ -25,18 +25,30 @@
             <div class="modal fade" id="modal-edit-kpi" name="modal-edit-kpi" tabindex="-1" aria-labelledby="addGroupModal" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog"><?= $this->include("risk_owner/pages/risk_mitigation/copy_evidence")?></div>
             </div>
-            <li class="list-group-item"> 
-                Detail Mitigasi
-                <a class="badge rounded-pill bg-info text-white"><b id="detail_mitigation" name="detail_mitigation"> </b></a>
-                terdapat pada : 
-                <div id="riskEventList">
+            <br/>
+            <div class="col-md-12 col-lg-12">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="card credit-card-widget" data-aos="fade-up" data-aos-delay="900">
+                        <div class="pb-4 border-0 card-header">
+                            <div class="bd-example">
+                                <div class="alert alert-primary rounded-0 alert-dismissible fade show " role="alert">
+                                    <span> Detail Mitigasi <b id="detail_mitigation" name="detail_mitigation"> </b> terdapat pada :</span>
+                                </div>
+                            </div>
+                            <div class="p-4 border border-white rounded primary-gradient-card">
+                                <div id="riskEventList">
+                                    
+                                </div>
+                            </div>
+                        </div>
                     
+                        </div>
+                        
+                    </div>
                 </div>
-                
-                
-            </li>
+            </div> 
         </ul>
-			
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><circle cx="256" cy="256" r="208" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="m108.92 108.92l294.16 294.16"/></svg> Batal</button>

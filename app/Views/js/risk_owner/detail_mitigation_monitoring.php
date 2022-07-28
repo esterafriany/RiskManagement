@@ -147,16 +147,20 @@ if($session->get('state_message')){
 			{
 				var penampung = "";
 				var count = result.length;
-				
+				var num = 1;
 				for(i = 0; i < count; i++){
 					
 					penampung += `<table>
 									<tr>
-										<td width="20px">1.</td>
-										<td width="50px"><a class="badge rounded-pill bg-primary text-white"><b>R${result[i]['id_risk_event']}</b></a></td>
-										<td><a type="button" class="btn btn-xs btn-secondary" onclick="copy_evidence()">Copy Evidence</a></td>
+										<td width="15%">${num}.</td>
+										<td width="50px%"><a class="badge rounded-pill bg-primary text-white"><b>R${result[i]['id_risk_event']}</b></a></td>
+										<td width="59%">
+											<a type="button" id="copy_${result[i]['id_risk_event']}" class="btn btn-xs btn-info" onclick="copy_evidence(${result[i]['id_risk_event']})">Copy Evidence</a>
+											<a type="button" id="uncopy_${result[i]['id_risk_event']}" style="display:none;" class="btn btn-xs btn-success" onclick="uncopy_evidence(${result[i]['id_risk_event']})">Copied</a>
+										</td>
 									</tr>
 								</table>`;
+								num+=1;
 						
 				}
 				
@@ -322,18 +326,21 @@ if($session->get('state_message')){
 				var text_temp = "";
 				penampung = '<table width="100%">';
 				var risk_detail = "";
+				var num = 1;
 				for(i = 0; i < count; i++){
 					risk_detail = result[i]['risk_mitigation_detail'];
 					text_temp = result[i]['filename'].substring(0, 100);
 					penampung += `<tr>
-								<td width="50%"> 
+								<td width="5%">${num}.</td>
+								<td width="85%"> 
 									<a href="<?=base_url('uploads')?>/${result[i]['id_detail_monitoring']}/${result[i]['filename']}" target="_blank">${text_temp} &nbsp;</a>
 								</td>
-								<td>
-									<button type="button" onclick="delete_evidence('${result[i]['id']}','${result[i]['id_detail_monitoring']}')" class="btn btn-outline-danger btn-sm" ><i class="fas fa-trash-alt"></i></button>
+								<td width="20%">
 									<a type="button" href="<?php echo base_url('risk_owner/download')?>/${result[i]['id_detail_monitoring']}/${result[i]['filename']}" class="btn btn-outline-success btn-sm" ><i class="fas fa-download"></i></a>
+									<button type="button" onclick="delete_evidence('${result[i]['id']}','${result[i]['id_detail_monitoring']}')" class="btn btn-outline-danger btn-sm" ><i class="fas fa-trash-alt"></i></button>
 								</td>
 							</tr>`;
+							num+=1;
 				}
 				penampung += '</table>';
 
@@ -384,6 +391,50 @@ if($session->get('state_message')){
 			}
 		});
   	}
+
+	function copy_evidence(id_risk_event){
+		document.getElementById("copy_"+id_risk_event).style.display = "none";
+		document.getElementById("uncopy_"+id_risk_event).style.display = "block";
+
+		$.ajax({
+			url : "<?=site_url('RiskMonitoringController/copyEvidence')?>/" + target_month + "/" +id_detail_mitigation,
+			type: "GET",
+			dataType: "JSON",
+			success: function(result)
+			{
+				
+			},
+			error: function (jqXHR, textStatus, errorThrown)
+			{
+				console.log(jqXHR);
+				swal('Error get data from ajax');
+			}
+		});
+
+		//$('#modal-edit-kpi').modal('show');
+	}
+
+	function uncopy_evidence(id_risk_event){
+		document.getElementById("copy_"+id_risk_event).style.display = "block";
+		document.getElementById("uncopy_"+id_risk_event).style.display = "none";
+
+		$.ajax({
+			url : "<?=site_url('RiskMonitoringController/uncopyEvidence')?>/" + target_month + "/" +id_detail_mitigation,
+			type: "GET",
+			dataType: "JSON",
+			success: function(result)
+			{
+				
+			},
+			error: function (jqXHR, textStatus, errorThrown)
+			{
+				console.log(jqXHR);
+				swal('Error get data from ajax');
+			}
+		});
+
+		//$('#modal-edit-kpi').modal('show');
+	}
 
 </script>
 

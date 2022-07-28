@@ -129,6 +129,7 @@ $routes->group('risk_owner', ['filter'=>'auth_pic'] , function($routes){
 	$routes->add('get-risk-event-residual/(:num)/(:num)', 'RiskOwner\RiskEventController::getDetailRiskResidual/$1/$2', ['as' => 'get-risk-residual']);
 
 	$routes->add('download/(:any)', 'RiskOwner\RiskMonitoringController::download/$1', ['as' => 'download-evidences']);
+	$routes->add('RiskMitigationController/getListRiskEvent/$1', 'RiskMitigationController::getListRiskEvent/$1', ['as' => 'add-detail-mitigation']);
 
 });
 

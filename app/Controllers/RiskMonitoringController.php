@@ -777,9 +777,7 @@ class RiskMonitoringController extends BaseController
                 foreach($this->request->getFileMultiple('evidence') as $file){
                     //$fileName = "evidence_".$i.".".$file->getClientExtension();
                     $fileName = $file->getName();
-                    
                     $file->move(FCPATH .DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.$id_detail_monitoring->id.'/', $fileName);
-                    
                     $data_evidence = [
                         'id_detail_monitoring' => $id_detail_monitoring->id,
                         'filename' => $fileName,
@@ -1369,6 +1367,12 @@ class RiskMonitoringController extends BaseController
         header('Cache-Control: max-age=0');
         
         $writer->save('php://output');
+    }
+
+    public function getListRiskEvent($risk_detail){
+        $data = $this->RiskMitigationDetailModel->get_list_risk_event_by_risk_detail($risk_detail);
+		
+		echo json_encode($data);
     }
 
 

@@ -652,4 +652,6 @@ class RiskMonitoringController extends BaseController
 		
 		echo json_encode($data);
 	}
+
+   
 }

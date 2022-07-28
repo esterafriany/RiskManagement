@@ -57,11 +57,12 @@ class RiskMitigationDetailEvidences extends Model
     }
 
     public function get_list_evidence_by_month($month_target, $id_detail_mitigation){	
-		  return $this->db->query("SELECT risk_mitigation_detail_evidences.id, id_detail_monitoring, filename, pathname, flags
+		  return $this->db->query("SELECT risk_mitigation_detail_evidences.id, id_detail_monitoring, filename, pathname, flags, _tb.risk_mitigation_detail
                               FROM risk_mitigation_detail_evidences
                               JOIN(
-                                  SELECT risk_mitigation_detail_monitorings.id
+                                  SELECT risk_mitigation_detail_monitorings.id, risk_mitigation_details.risk_mitigation_detail
                                   FROM risk_mitigation_detail_monitorings
+                                  JOIN risk_mitigation_details ON risk_mitigation_details.id = risk_mitigation_detail_monitorings.id_detail_mitigation
                                   WHERE (id_detail_mitigation = '".$id_detail_mitigation."' AND MONTH(target_month) = '".$month_target."') OR
                                   (id_detail_mitigation = '".$id_detail_mitigation."' AND MONTH(monitoring_month) = '".$month_target."')
                                 ) _tb ON risk_mitigation_detail_evidences.id_detail_monitoring = _tb.id

@@ -41,7 +41,6 @@
 <?= $this->include("js/risk_owner/risk_mitigation")?>
 
 <style>
-
    .text-wrap{
       white-space:normal;
    }

@@ -4,6 +4,7 @@
 	$(document).ready(function() {
 		var $btn_add_kpi = $("#btn-add-kpi");
 		var $btn_edit_kpi = $("#btn-edit-kpi");
+
 		$("#add-more-evidence").click(function () {
 			$("#evidenceList").last().append(
 				`<table width="100%">
@@ -23,4 +24,11 @@
 			$(this).parents('tr').remove();
 		});
 	});
+
+	function copy_evidence(){
+		//$('#modal-add-evidence').modal('toggle');
+		
+		$('#modal-edit-kpi').modal('show');
+		$('.modal-title').text('Edit KPI'); 
+	}
 </script>

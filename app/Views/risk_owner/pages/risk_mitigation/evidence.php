@@ -7,6 +7,9 @@
             <input type="hidden" name="month"/>
         </div>
 		<div class="modal-body">
+        
+        <input type="hidden" id="risk_detail" name="risk_detail">
+        
         <ul class="list-group">
             <li class="list-group-item"> 
                 <small>Upload File </small>
@@ -17,31 +20,20 @@
                         
                     </div><br/>
                     <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-evidence"><i class="fas fa-plus-circle"></i> Tambah File</button>
-                    
                 </div>  
             </li>
+            <div class="modal fade" id="modal-edit-kpi" name="modal-edit-kpi" tabindex="-1" aria-labelledby="addGroupModal" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog"><?= $this->include("risk_owner/pages/risk_mitigation/copy_evidence")?></div>
+            </div>
             <li class="list-group-item"> 
                 Detail Mitigasi
-                <a class="badge rounded-pill bg-info text-white"><b> Melaksanakan kontrol anggaran di masing - masing Divisi </b></a>
-                juga terdapat pada : 
-                <table>
-                    <tr>
-                        <td>1.</td><td><a class="badge rounded-pill bg-primary text-white"><b>R1</b></a></td>
-                        <td><a href="">Copy Evidence</a></td>
-                    </tr>
-                    <tr>
-                        <td>2.</td><td><a class="badge rounded-pill bg-primary text-white"><b>R2</b></a></td>
-                        <td><a href="">Copy Evidence</a></td>
-                    </tr>
-                    <tr>
-                        <td>3.</td><td><a class="badge rounded-pill bg-primary text-white"><b>R5</b></a>
-                        <td><a href="">Copy Evidence</a></td>
-                    </tr>
-                    <tr>
-                        <td>4.</td><td><a class="badge rounded-pill bg-primary text-white"><b>R16</b></a></td>
-                        <td><a href="">Copy Evidence</a></td>
-                    </tr>
-                </table>
+                <a class="badge rounded-pill bg-info text-white"><b id="detail_mitigation" name="detail_mitigation"> </b></a>
+                terdapat pada : 
+                <div id="riskEventList">
+                    
+                </div>
+                
+                
             </li>
         </ul>
 			

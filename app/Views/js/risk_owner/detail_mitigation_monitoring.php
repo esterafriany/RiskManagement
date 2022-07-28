@@ -122,7 +122,7 @@ if($session->get('state_message')){
 				if(result.monitoring_data.length == 0){
 					$('#btnAdd').prop('disabled', true);
 				}else{
-					console.log(id_detail_mitigation);
+					
 					if(result.evidence_status.length > 0){
 						$('#btnAdd').prop('disabled', true);
 					}else{
@@ -136,6 +136,39 @@ if($session->get('state_message')){
 				alert('Error get data from ajax');
 			}
 		});
+
+
+		
+		$.ajax({
+			url : "<?=site_url('RiskMonitoringController/getListRiskEvent')?>/" + document.getElementById("risk_detail").value,
+			type: "GET",
+			dataType: "JSON",
+			success: function(result)
+			{
+				var penampung = "";
+				var count = result.length;
+				
+				for(i = 0; i < count; i++){
+					
+					penampung += `<table>
+									<tr>
+										<td width="20px">1.</td>
+										<td width="50px"><a class="badge rounded-pill bg-primary text-white"><b>R${result[i]['id_risk_event']}</b></a></td>
+										<td><a type="button" class="btn btn-xs btn-secondary" onclick="copy_evidence()">Copy Evidence</a></td>
+									</tr>
+								</table>`;
+						
+				}
+				
+				document.getElementById("riskEventList").innerHTML = penampung;
+			},
+			error: function (jqXHR, textStatus, errorThrown)
+			{
+				console.log(jqXHR);
+				alert('Error get data from ajax');
+			}
+		});
+
 		
 		$("#add-more-output").click(function () {
 			$("#outputList").last().append(
@@ -234,7 +267,7 @@ if($session->get('state_message')){
 			dataType: "JSON",
 			success: function(data)
 			{
-				console.log(data);
+				
 				var monthName = "";
 				if(month == "01"){
 					monthName = "Januari";
@@ -283,20 +316,21 @@ if($session->get('state_message')){
 			dataType: "JSON",
 			success: function(result)
 			{
-				console.log(result);
+				
 				var penampung = "";
 				var count = result.length;
 				var text_temp = "";
 				penampung = '<table width="100%">';
-
+				var risk_detail = "";
 				for(i = 0; i < count; i++){
+					risk_detail = result[i]['risk_mitigation_detail'];
 					text_temp = result[i]['filename'].substring(0, 100);
 					penampung += `<tr>
 								<td width="50%"> 
 									<a href="<?=base_url('uploads')?>/${result[i]['id_detail_monitoring']}/${result[i]['filename']}" target="_blank">${text_temp} &nbsp;</a>
 								</td>
 								<td>
-									<button type="button" onclick="delete_evidence('${result[i]['id']}','${result[i]['id_detail_monitoring']}')" class="btn btn-outline-danger btn-sm removes" ><i class="fas fa-trash-alt"></i></button>
+									<button type="button" onclick="delete_evidence('${result[i]['id']}','${result[i]['id_detail_monitoring']}')" class="btn btn-outline-danger btn-sm" ><i class="fas fa-trash-alt"></i></button>
 									<a type="button" href="<?php echo base_url('risk_owner/download')?>/${result[i]['id_detail_monitoring']}/${result[i]['filename']}" class="btn btn-outline-success btn-sm" ><i class="fas fa-download"></i></a>
 								</td>
 							</tr>`;
@@ -333,8 +367,15 @@ if($session->get('state_message')){
 				$('#modal-add-evidence').modal('show');
 				$('.modal-title').text('Tambah Evidence - Bulan '+monthName); 
 				$('[name="id_detail_mitigation"]').val(id_detail_mitigation);
+				$('[name="risk_detail"]').val(risk_detail);
+				document.getElementById("detail_mitigation").value = risk_detail;
+				
+				$('#detail_mitigation').html(risk_detail);
+
 				$('[name="month"]').val(target_month);
 				document.getElementById("evidenceList").innerHTML = penampung;
+
+		
 			},
 			error: function (jqXHR, textStatus, errorThrown)
 			{

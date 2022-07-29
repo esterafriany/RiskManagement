@@ -71,4 +71,34 @@ class RiskMitigationDetails extends Model
                             ) _tb;")->getResultArray();
     }
 
+    public function copy_evidence($risk_detail, $id_division, $month, $id_risk_event, $current_id_detail_monitoring)
+    {	
+		$data = $this->db->query("SELECT risk_events.id as id_risk_event
+                                    , risk_mitigations.id as id_risk_mitigation
+                                    , risk_mitigation_details.id as id_detail_mitigation
+                                    , risk_mitigation_details.risk_mitigation_detail
+                                    , risk_mitigation_detail_monitorings.id as id_detail_monitoring
+                                    FROM risk_mitigation_details 
+                                    JOIN risk_mitigations ON risk_mitigations.id = risk_mitigation_details.id_risk_mitigation
+                                    JOIN risk_events ON risk_events.id = risk_mitigations.id_risk_event
+                                    JOIN risk_mitigation_detail_monitorings ON risk_mitigation_details.id = risk_mitigation_detail_monitorings.id_detail_mitigation
+                                    WHERE risk_mitigation_detail = '".$risk_detail."'
+                                    AND risk_events.id = '".$id_risk_event."' AND risk_mitigation_details.id_division = '".$id_division."' AND (MONTH(target_month) = '".$month."' or MONTH(monitoring_month) = '".$month."');")->getRow();
+
+        $id_detail_monitoring = $data->id_detail_monitoring;
+
+        $data =  $this->db->query("SELECT *
+                                    FROM risk_mitigation_detail_evidences
+                                    WHERE id_detail_monitoring = '".$current_id_detail_monitoring."'")->getResultArray();
+
+        for($i = 0; $i < count($data); $i++){
+            $sql = "INSERT INTO risk_mitigation_detail_evidences (id_detail_monitoring, filename, pathname, flags, created_at)
+                    VALUES ('".$id_detail_monitoring."', '".$data[$i]['filename']."', '".$data[$i]['pathname']."', '".$data[$i]['flags']."', '".date("Y-m-d H:i:s")."')";
+    
+            $result = $this->db->query($sql);
+        }
+
+        return $result;
+    }
+
 }

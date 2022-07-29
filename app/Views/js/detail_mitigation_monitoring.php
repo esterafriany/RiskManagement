@@ -102,8 +102,6 @@ if($session->get('state_message')){
 				document.getElementById("progress-bar").style.width = percentage+"%";
 				document.getElementById("progress_percentage").value = percentage.toFixed(2);
 				document.getElementById("text-percentage").innerHTML = percentage.toFixed(2)+"%";
-
-			
 			},
 			error: function (jqXHR, textStatus, errorThrown)
 			{

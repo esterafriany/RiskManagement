@@ -4,7 +4,15 @@
 			<h5 class="modal-title" id="addGroupModalLabel">Tambah Evidence</h5>
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             <input type="hidden" name="id_detail_mitigation"/>
-            <input type="hidden" name="month"/>
+            <input type="hidden" name="month" id="month"/>
+            <input type="hidden" name="id_detail_monitoring" id="id_detail_monitoring"/>
+            
+            <?php 
+                $this->session = \Config\Services::session();
+                $this->session->start(); 
+            ?>
+
+            <input type="hidden" name="id_division" id="id_division" value="<?=$this->session->get("id_division")?>"/>
         </div>
 		<div class="modal-body">
         

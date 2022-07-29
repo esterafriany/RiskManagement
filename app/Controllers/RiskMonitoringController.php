@@ -1375,5 +1375,10 @@ class RiskMonitoringController extends BaseController
 		echo json_encode($data);
     }
 
+    public function copyEvidence($risk_detail, $id_division, $month, $id_risk_event, $current_id_detail_monitoring){
+        $data = $this->RiskMitigationDetailModel->copy_evidence($risk_detail, $id_division, $month, $id_risk_event, $current_id_detail_monitoring);
+		
+		echo json_encode($data);
+    }
 
 }

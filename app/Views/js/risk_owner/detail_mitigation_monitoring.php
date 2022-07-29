@@ -327,7 +327,9 @@ if($session->get('state_message')){
 				penampung = '<table width="100%">';
 				var risk_detail = "";
 				var num = 1;
+				var id_detail_monitoring = 0;
 				for(i = 0; i < count; i++){
+					id_detail_monitoring = result[i]['id_detail_monitoring'];
 					risk_detail = result[i]['risk_mitigation_detail'];
 					text_temp = result[i]['filename'].substring(0, 100);
 					penampung += `<tr>
@@ -376,10 +378,11 @@ if($session->get('state_message')){
 				$('[name="id_detail_mitigation"]').val(id_detail_mitigation);
 				$('[name="risk_detail"]').val(risk_detail);
 				document.getElementById("detail_mitigation").value = risk_detail;
-				
 				$('#detail_mitigation').html(risk_detail);
-
 				$('[name="month"]').val(target_month);
+				$('[name="id_detail_monitoring"]').val(id_detail_monitoring);
+
+
 				document.getElementById("evidenceList").innerHTML = penampung;
 
 		
@@ -396,13 +399,18 @@ if($session->get('state_message')){
 		document.getElementById("copy_"+id_risk_event).style.display = "none";
 		document.getElementById("uncopy_"+id_risk_event).style.display = "block";
 
+		var risk_detail = document.getElementById("risk_detail").value;
+		var id_division = document.getElementById("id_division").value;
+		var month = document.getElementById("month").value;
+		var current_id_detail_monitoring = document.getElementById("id_detail_monitoring").value;
+		
 		$.ajax({
-			url : "<?=site_url('RiskMonitoringController/copyEvidence')?>/" + target_month + "/" +id_detail_mitigation,
+			url : "<?=site_url('RiskMonitoringController/copyEvidence')?>/" + risk_detail + "/" + id_division + "/" + month + "/" + id_risk_event + "/" + current_id_detail_monitoring,
 			type: "GET",
 			dataType: "JSON",
 			success: function(result)
 			{
-				
+				console.log(result);
 			},
 			error: function (jqXHR, textStatus, errorThrown)
 			{

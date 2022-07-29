@@ -3,10 +3,10 @@
 		<div class="modal-header">
 			<h5 class="modal-title" id="addGroupModalLabel">Tambah Evidence</h5>
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            <input type="hidden" name="id_detail_mitigation"/>
+            <input type="hidden" name="id_detail_mitigation" id="id_detail_mitigation"/>
             <input type="hidden" name="month" id="month"/>
             <input type="hidden" name="id_detail_monitoring" id="id_detail_monitoring"/>
-            
+ 
             <?php 
                 $this->session = \Config\Services::session();
                 $this->session->start(); 

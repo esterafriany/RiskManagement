@@ -33,6 +33,8 @@ if($session->get('state_message')){
 		var site_url = window.location.pathname;
         var arr = site_url.split("/");
         var id_detail_mitigation = arr[arr.length - 3];
+        var id_risk_event = arr[arr.length - 1];
+		
 		let y = 0;
 		
 		$.ajax({
@@ -136,11 +138,9 @@ if($session->get('state_message')){
 				alert('Error get data from ajax');
 			}
 		});
-
-
 		
 		$.ajax({
-			url : "<?=site_url('RiskMonitoringController/getListRiskEvent')?>/" + document.getElementById("risk_detail").value,
+			url : "<?=site_url('RiskMonitoringController/getListRiskEvent')?>/" + document.getElementById("risk_detail").value + "/" + id_risk_event,
 			type: "GET",
 			dataType: "JSON",
 			success: function(result)
@@ -156,11 +156,12 @@ if($session->get('state_message')){
 										<td width="50px%"><a class="badge rounded-pill bg-primary text-white"><b>R${result[i]['id_risk_event']}</b></a></td>
 										<td width="59%">
 											<a type="button" id="copy_${result[i]['id_risk_event']}" class="btn btn-xs btn-info" onclick="copy_evidence(${result[i]['id_risk_event']})">Copy Evidence</a>
+											
 											<a type="button" id="uncopy_${result[i]['id_risk_event']}" style="display:none;" class="btn btn-xs btn-success" onclick="uncopy_evidence(${result[i]['id_risk_event']})">Copied</a>
 										</td>
 									</tr>
 								</table>`;
-								num+=1;
+								num += 1;
 						
 				}
 				
@@ -410,7 +411,7 @@ if($session->get('state_message')){
 			dataType: "JSON",
 			success: function(result)
 			{
-				console.log(result);
+				//console.log(result);
 			},
 			error: function (jqXHR, textStatus, errorThrown)
 			{

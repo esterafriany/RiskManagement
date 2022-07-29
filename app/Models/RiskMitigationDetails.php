@@ -61,13 +61,18 @@ class RiskMitigationDetails extends Model
                                     WHERE risk_mitigation_details.id ='".$id."'")->getRow();
     }
 
-    public function get_list_risk_event_by_risk_detail($risk_detail)
+    public function get_list_risk_event_by_risk_detail($risk_detail, $id_risk_event)
     {	
 		  return $this->db->query("SELECT DISTINCT(_tb.id_risk_event)
                             FROM (
-                                SELECT risk_mitigation_details.id as id_risk_mitigation_detail, risk_mitigation_details.risk_mitigation_detail, risk_mitigations.id_risk_event
+                                SELECT risk_mitigation_details.id as id_risk_mitigation_detail
+                                , risk_mitigation_details.risk_mitigation_detail
+                                , risk_mitigations.id_risk_event
+                                , risk_mitigation_detail_evidences.filename
                                 FROM risk_mitigation_details JOIN risk_mitigations ON risk_mitigation_details.id_risk_mitigation = risk_mitigations.id
-                                WHERE risk_mitigation_detail = '".$risk_detail."'
+                                JOIN risk_mitigation_detail_monitorings ON risk_mitigation_detail_monitorings.id_detail_mitigation = risk_mitigation_details.id 
+                                JOIN risk_mitigation_detail_evidences ON risk_mitigation_detail_evidences.id_detail_monitoring = risk_mitigation_detail_monitorings.id 
+                                WHERE risk_mitigation_detail = '".$risk_detail."' AND risk_mitigations.id_risk_event NOT LIKE '".$id_risk_event."'
                             ) _tb;")->getResultArray();
     }
 

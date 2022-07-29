@@ -1369,8 +1369,8 @@ class RiskMonitoringController extends BaseController
         $writer->save('php://output');
     }
 
-    public function getListRiskEvent($risk_detail){
-        $data = $this->RiskMitigationDetailModel->get_list_risk_event_by_risk_detail($risk_detail);
+    public function getListRiskEvent($risk_detail, $id_risk_event){
+        $data = $this->RiskMitigationDetailModel->get_list_risk_event_by_risk_detail($risk_detail, $id_risk_event);
 		
 		echo json_encode($data);
     }

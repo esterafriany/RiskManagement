@@ -152,7 +152,7 @@ class RiskMonitoringController extends BaseController
                     <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 <a href='.base_url('risk_owner/get-risk-mitigations').'>Risk Mitigations</a>  
                     <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                <a href='.base_url('risk_owner/get-detail-risk-mitigation/').$id_risk_event.'>Detail Risk Mitigations</a>  
+                <a href='.base_url('risk_owner/get-detail-risk-mitigation').'/'.$id_risk_event.'>Detail Risk Mitigations</a>  
                     <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 <a href='.base_url('risk_owner/detail-mitigation-risk').'/'.$id_risk_mitigation.'/'.$id_risk_event.'>Detail Mitigation</a>  
                     <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>

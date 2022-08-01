@@ -97,9 +97,15 @@ class RiskMitigationDetails extends Model
                                     WHERE id_detail_monitoring = '".$current_id_detail_monitoring."'")->getResultArray();
 
         for($i = 0; $i < count($data); $i++){
+            //copy file in folder
+            copy(FCPATH . 'uploads/'.$current_id_detail_monitoring.'/'. $data[$i]['filename'], FCPATH . 'uploads/'.$id_detail_monitoring.'/'.$data[$i]['filename']);
+
+            //delete from risk_mitigation_evidence where filename and current_id_detail_monitoring
+            $sql = "DELETE FROM risk_mitigation_detail_evidences WHERE filename ='".$data[$i]['filename']."' AND id_detail_monitoring = '".$id_detail_monitoring."'";
+            $this->db->query($sql);
+
             $sql = "INSERT INTO risk_mitigation_detail_evidences (id_detail_monitoring, filename, pathname, flags, created_at)
                     VALUES ('".$id_detail_monitoring."', '".$data[$i]['filename']."', '".$data[$i]['pathname']."', '".$data[$i]['flags']."', '".date("Y-m-d H:i:s")."')";
-    
             $result = $this->db->query($sql);
         }
 

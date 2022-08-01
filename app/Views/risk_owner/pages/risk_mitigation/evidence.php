@@ -6,18 +6,15 @@
             <input type="hidden" name="id_detail_mitigation" id="id_detail_mitigation"/>
             <input type="hidden" name="month" id="month"/>
             <input type="hidden" name="id_detail_monitoring" id="id_detail_monitoring"/>
- 
             <?php 
                 $this->session = \Config\Services::session();
                 $this->session->start(); 
             ?>
-
             <input type="hidden" name="id_division" id="id_division" value="<?=$this->session->get("id_division")?>"/>
+            <input type="hidden" name="filename" id="filename" value=""/>
         </div>
 		<div class="modal-body">
-        
         <input type="hidden" id="risk_detail" name="risk_detail">
-        
         <ul class="list-group">
             <li class="list-group-item"> 
                 <small>Upload File </small>

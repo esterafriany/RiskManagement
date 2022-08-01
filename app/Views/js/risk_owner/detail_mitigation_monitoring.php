@@ -33,7 +33,8 @@ if($session->get('state_message')){
 		var site_url = window.location.pathname;
         var arr = site_url.split("/");
         var id_detail_mitigation = arr[arr.length - 3];
-        var id_risk_event = arr[arr.length - 1];
+        
+		var id_risk_event = arr[arr.length - 1];
 		
 		let y = 0;
 		
@@ -138,42 +139,6 @@ if($session->get('state_message')){
 				alert('Error get data from ajax');
 			}
 		});
-		
-		$.ajax({
-			url : "<?=site_url('RiskMonitoringController/getListRiskEvent')?>/" + document.getElementById("risk_detail").value + "/" + id_risk_event,
-			type: "GET",
-			dataType: "JSON",
-			success: function(result)
-			{
-				var penampung = "";
-				var count = result.length;
-				var num = 1;
-				for(i = 0; i < count; i++){
-					
-					penampung += `<table>
-									<tr>
-										<td width="15%">${num}.</td>
-										<td width="50px%"><a class="badge rounded-pill bg-primary text-white"><b>R${result[i]['id_risk_event']}</b></a></td>
-										<td width="59%">
-											<a type="button" id="copy_${result[i]['id_risk_event']}" class="btn btn-xs btn-info" onclick="copy_evidence(${result[i]['id_risk_event']})">Copy Evidence</a>
-											
-											<a type="button" id="uncopy_${result[i]['id_risk_event']}" style="display:none;" class="btn btn-xs btn-success" onclick="uncopy_evidence(${result[i]['id_risk_event']})">Copied</a>
-										</td>
-									</tr>
-								</table>`;
-								num += 1;
-						
-				}
-				
-				document.getElementById("riskEventList").innerHTML = penampung;
-			},
-			error: function (jqXHR, textStatus, errorThrown)
-			{
-				console.log(jqXHR);
-				alert('Error get data from ajax');
-			}
-		});
-
 		
 		$("#add-more-output").click(function () {
 			$("#outputList").last().append(
@@ -321,7 +286,6 @@ if($session->get('state_message')){
 			dataType: "JSON",
 			success: function(result)
 			{
-				
 				var penampung = "";
 				var count = result.length;
 				var text_temp = "";
@@ -329,7 +293,9 @@ if($session->get('state_message')){
 				var risk_detail = "";
 				var num = 1;
 				var id_detail_monitoring = 0;
+				var filename = "";
 				for(i = 0; i < count; i++){
+					filename = result[i]['filename'];
 					id_detail_monitoring = result[i]['id_detail_monitoring'];
 					risk_detail = result[i]['risk_mitigation_detail'];
 					text_temp = result[i]['filename'].substring(0, 100);
@@ -346,6 +312,8 @@ if($session->get('state_message')){
 							num+=1;
 				}
 				penampung += '</table>';
+
+				document.getElementById("evidenceList").innerHTML = penampung;
 
 				var monthName = "";
 				if(target_month == "01"){
@@ -378,14 +346,12 @@ if($session->get('state_message')){
 				$('.modal-title').text('Tambah Evidence - Bulan '+monthName); 
 				$('[name="id_detail_mitigation"]').val(id_detail_mitigation);
 				$('[name="risk_detail"]').val(risk_detail);
+
 				document.getElementById("detail_mitigation").value = risk_detail;
 				$('#detail_mitigation').html(risk_detail);
 				$('[name="month"]').val(target_month);
 				$('[name="id_detail_monitoring"]').val(id_detail_monitoring);
-
-
-				document.getElementById("evidenceList").innerHTML = penampung;
-
+				$('[name="filename"]').val(filename);
 		
 			},
 			error: function (jqXHR, textStatus, errorThrown)
@@ -397,9 +363,8 @@ if($session->get('state_message')){
   	}
 
 	function copy_evidence(id_risk_event){
-		document.getElementById("copy_"+id_risk_event).style.display = "none";
-		document.getElementById("uncopy_"+id_risk_event).style.display = "block";
-
+		//document.getElementById("copy_"+id_risk_event).style.display = "none";
+		//document.getElementById("uncopy_"+id_risk_event).style.display = "block";
 		var risk_detail = document.getElementById("risk_detail").value;
 		var id_division = document.getElementById("id_division").value;
 		var month = document.getElementById("month").value;
@@ -416,34 +381,12 @@ if($session->get('state_message')){
 			error: function (jqXHR, textStatus, errorThrown)
 			{
 				console.log(jqXHR);
-				swal('Error get data from ajax');
+				swal("Gagal","Pastikan Ada Evidence yang di-upload.","error");
 			}
 		});
-
-		//$('#modal-edit-kpi').modal('show');
 	}
 
-	function uncopy_evidence(id_risk_event){
-		document.getElementById("copy_"+id_risk_event).style.display = "block";
-		document.getElementById("uncopy_"+id_risk_event).style.display = "none";
-
-		$.ajax({
-			url : "<?=site_url('RiskMonitoringController/uncopyEvidence')?>/" + target_month + "/" +id_detail_mitigation,
-			type: "GET",
-			dataType: "JSON",
-			success: function(result)
-			{
-				
-			},
-			error: function (jqXHR, textStatus, errorThrown)
-			{
-				console.log(jqXHR);
-				swal('Error get data from ajax');
-			}
-		});
-
-		//$('#modal-edit-kpi').modal('show');
-	}
+	
 
 </script>
 

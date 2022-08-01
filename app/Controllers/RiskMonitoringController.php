@@ -783,6 +783,7 @@ class RiskMonitoringController extends BaseController
                         'filename' => $fileName,
                         'flags' => '1',
                         'pathname' => FCPATH . DIRECTORY_SEPARATOR."uploads". DIRECTORY_SEPARATOR.$id_detail_monitoring->id,
+                        'created_at' => date("Y-md H:i:s")
                     ];
                     
                     $this->RiskMitigationDetailEvidenceModel->insert($data_evidence);

@@ -1372,8 +1372,8 @@ class RiskMonitoringController extends BaseController
 
     public function getListRiskEvent($risk_detail, $id_risk_event){
         $data = $this->RiskMitigationDetailModel->get_list_risk_event_by_risk_detail($risk_detail, $id_risk_event);
-		
 		echo json_encode($data);
+
     }
 
     public function copyEvidence($risk_detail, $id_division, $month, $id_risk_event, $current_id_detail_monitoring){

@@ -119,6 +119,24 @@ class RiskMitigations extends Model
       ")->getRow();
     }
 
+    public function get_count_target($id_division, $year, $target_month){
+      return $this->db->query("
+        SELECT COUNT(target_month) as target
+        FROM risk_mitigation_detail_monitorings 
+        JOIN risk_mitigation_details ON risk_mitigation_details.id = risk_mitigation_detail_monitorings.id_detail_mitigation
+        WHERE MONTH(target_month) = '".$target_month."' AND YEAR(target_month) = '".$year."' AND risk_mitigation_details.id_division = '".$id_division."'
+      ")->getRow();
+    }
+
+    public function get_count_monitoring($id_division, $year, $target_month){
+      return $this->db->query("
+                        SELECT COUNT(monitoring_month) as realisasi
+                        FROM risk_mitigation_detail_monitorings
+                        JOIN risk_mitigation_details ON risk_mitigation_details.id = risk_mitigation_detail_monitorings.id_detail_mitigation
+                        WHERE MONTH(monitoring_month) = '".$target_month."' AND YEAR(target_month) = '".$year."' AND risk_mitigation_details.id_division = '".$id_division."'
+      ")->getRow();
+    }
+
 
 
      

@@ -37,6 +37,30 @@ class DashboardController extends BaseController
             'progress_percentage_corporate'=> $this->RiskMitigationModel->get_progress_percentage_per_corporate('2022')
         ];
 
+        //get listDivisionId
+        $list_division = $this->DivisionModel->get_list_divisions();
+        
+        if(date('d') >= '1' && date('d') <='15'){
+            $month = date('m', strtotime('-2 month'));
+        }else if(date('d') >= '16' && date('d') <= date('t')){
+            $month = date('m', strtotime('-1 month'));
+        }
+        $year = '2022';
+
+        $array = array();
+        for($i=0; $i<count($list_division); $i++){
+            $temp_target = $this->RiskMitigationModel->get_count_target($list_division[$i]['id'], $year, $month);
+            $temp_realisasi = $this->RiskMitigationModel->get_count_monitoring($list_division[$i]['id'], $year, $month);
+            $percent = $temp_realisasi->realisasi /$temp_target->target * 100;
+            
+            $array[$i] = array($list_division[$i]['name'],$percent);
+        }
+
+        $data['percentage'] = $array;
+        // echo $array[2][0] .'-'. $array[8][1] ;
+        
+        //add to array 2 dimension based on div id
+
         echo view('admin/template/dashboard_template',$data);
     }
 

@@ -22,6 +22,7 @@
    </div>          <!-- Nav Header Component End -->
 <!--Nav End-->
 </div>
+
 <div class="conatiner-fluid content-inner mt-n5 py-0">
 <div class="row">
    <div class="col-md-12 col-lg-12">
@@ -109,15 +110,19 @@
                </div>
                </li>
 
-               <?php foreach($progress_percentage as $progress){ ?>
-                  <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="800">         
+
+               <?php for($x=0; $x<count($percentage);$x++){ 
+                     $data = $percentage[$x];
+                  ?>
+                     
+                     <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="800">         
                      <div class="card">
                         <div class="card-body">
                            <div class="d-flex justify-content-between">
                               <div>
-                                 <span><b><?=$progress['name']?></b></span>
+                                 <span><b><?=$percentage[$x][0]?></b></span>
                                  <div class="mt-2">
-                                    <h2 class="counter"><?= number_format((float)$progress['percentage_progress'], 2, '.', '');?>%</h2>
+                                    <h2 class="counter"><?= number_format((float)$percentage[$x][1], 2, '.', '');?>%</h2>
                                  </div>
                               </div>
                               <div>
@@ -128,13 +133,15 @@
                            </div>
                            <div class="mt-3">
                               <div class="progress bg-soft-primary shadow-none w-100" style="height: 6px">
-                                 <div class="progress-bar bg-primary" data-toggle="progress-bar" role="progressbar" aria-valuenow="<?=$progress['percentage_progress']?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                 <div class="progress-bar bg-primary" data-toggle="progress-bar" role="progressbar" aria-valuenow="<?=$percentage[$x][1]?>" aria-valuemin="0" aria-valuemax="100"></div>
                               </div>
                            </div>
                         </div>
                   </div>
                   </li>
-               <?php } ?>
+                       
+                  <?php }?>
+             
             </ul>
             <div class="swiper-button swiper-button-next"></div>
             <div class="swiper-button swiper-button-prev"></div>

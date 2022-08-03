@@ -41,8 +41,11 @@ class DashboardController extends BaseController
         
         if(date('d') >= '1' && date('d') <='15'){
             $month = date('m', strtotime('-2 month'));
+            
         }else if(date('d') >= '16' && date('d') <= date('t')){
             $month = date('m', strtotime('-1 month'));
+            
+
         }
         $year = '2022';
 
@@ -56,6 +59,34 @@ class DashboardController extends BaseController
         }
 
         $data['percentage'] = $array;
+
+        if($month == '01'){
+            $month_name = 'Januari';
+        }else if($month == '02'){
+            $month_name = 'Februari';
+        }else if($month == '03'){
+            $month_name = 'Maret';
+        }else if($month == '04'){
+            $month_name = 'April';
+        }else if($month == '05'){
+            $month_name = 'Mei';
+        }else if($month == '06'){
+            $month_name = 'Juni';
+        }else if($month == '07'){
+            $month_name = 'Juli';
+        }else if($month == '08'){
+            $month_name = 'Agustus';
+        }else if($month == '09'){
+            $month_name = 'September';
+        }else if($month == '10'){
+            $month_name = 'Oktober';
+        }else if($month == '11'){
+            $month_name = 'November';
+        }else if($month == '12'){
+            $month_name = 'Desember';
+        }
+
+        $data['month_name'] = $month_name;
       
 
         echo view('admin/template/dashboard_template',$data);

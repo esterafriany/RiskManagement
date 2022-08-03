@@ -99,26 +99,6 @@ class RiskMitigations extends Model
                   LEFT JOIN risk_mitigation_details ON risk_mitigation_details.id_risk_mitigation = risk_mitigations.id")->getResultArray();
     }
 
-    public function get_progress_percentage_per_risk_owner($year){
-      return $this->db->query("
-      SELECT risk_mitigation_divisions.id_division as id_division, divisions.name , AVG(risk_mitigation_details.progress_percentage) as percentage_progress 
-      FROM risk_mitigations 
-      JOIN risk_mitigation_details ON risk_mitigation_details.id_risk_mitigation = risk_mitigations.id 
-      JOIN risk_mitigation_divisions ON risk_mitigation_divisions.id_risk_mitigation = risk_mitigations.id 
-      JOIN divisions ON divisions.id = risk_mitigation_divisions.id_division 
-      JOIN risk_events ON risk_events.id = risk_mitigations.id_risk_event WHERE risk_events.year = '".$year."' 
-      GROUP BY risk_mitigation_divisions.id_division;
-      ")->getResultArray();
-    }
-
-    public function get_progress_percentage_per_corporate($year){
-      return $this->db->query("SELECT AVG(risk_mitigation_details.progress_percentage) as percentage_progress 
-        FROM risk_mitigation_details 
-        JOIN risk_mitigations ON risk_mitigations.id = risk_mitigation_details.id_risk_mitigation
-        JOIN risk_events ON risk_events.id = risk_mitigations.id_risk_event WHERE risk_events.year = '".$year."'
-      ")->getRow();
-    }
-
     public function get_count_target($id_division, $year, $target_month){
       return $this->db->query("
         SELECT COUNT(target_month) as target
@@ -133,8 +113,7 @@ class RiskMitigations extends Model
                         SELECT COUNT(monitoring_month) as realisasi
                         FROM risk_mitigation_detail_monitorings
                         JOIN risk_mitigation_details ON risk_mitigation_details.id = risk_mitigation_detail_monitorings.id_detail_mitigation
-                        WHERE MONTH(monitoring_month) = '".$target_month."' AND YEAR(target_month) = '".$year."' AND risk_mitigation_details.id_division = '".$id_division."'
-      ")->getRow();
+                        WHERE MONTH(monitoring_month) = '".$target_month."' AND YEAR(target_month) = '".$year."' AND risk_mitigation_details.id_division = '".$id_division."'")->getRow();
     }
 
 

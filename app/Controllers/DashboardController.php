@@ -33,8 +33,7 @@ class DashboardController extends BaseController
             'total_risk_category'=> $this->RiskCategoryModel->select('*')->countAllResults(),
             'total_division'=> $this->DivisionModel->select('*')->countAllResults(),
             'total_kpi'=> $this->KPIModel->select('*')->countAllResults(),
-            'progress_percentage'=> $this->RiskMitigationModel->get_progress_percentage_per_risk_owner('2022'),
-            'progress_percentage_corporate'=> $this->RiskMitigationModel->get_progress_percentage_per_corporate('2022')
+            
         ];
 
         //get listDivisionId
@@ -57,9 +56,7 @@ class DashboardController extends BaseController
         }
 
         $data['percentage'] = $array;
-        // echo $array[2][0] .'-'. $array[8][1] ;
-        
-        //add to array 2 dimension based on div id
+      
 
         echo view('admin/template/dashboard_template',$data);
     }

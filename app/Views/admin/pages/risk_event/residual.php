@@ -134,8 +134,10 @@
 
                   <div class="col-md-6">
                      <ul class="list-group">
-                        <li class="list-group-item">
-                           <input type="text" required class="form-control" value="Update Progress By PSMR">
+                        <li class="list-group-item" style="padding-bottom: 0px;">
+                           <p class="col-md-5" style="text-align: left;padding-right: 0px;padding-top: 10px;">
+                           <b>Update Progress Risiko Final</b>
+                           </p>
                         </li>
                         <li class="list-group-item">
                         <div class="col-md-12"></br>

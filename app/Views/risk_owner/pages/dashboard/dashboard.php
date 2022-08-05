@@ -6,11 +6,6 @@
                   <div>
                         <h1>Hello, <?=session()->get('name')?>!</h1>
                         <p>Welcome to Risk Management Application !</p>
-                        <?php
-                           $this->session = \Config\Services::session();
-                           $this->session->start(); 
-                        ?>
-                        <input type="hidden" id="id_division" name="id_division" value="<?=$this->session->get("id_division")?>">
                   </div>
                </div>
             </div>
@@ -24,51 +19,116 @@
          <img src="../assets/images/dashboard/top-header4.png" alt="header" class="theme-color-yellow-img img-fluid w-100 h-100 animated-scaleX">
          <img src="../assets/images/dashboard/top-header5.png" alt="header" class="theme-color-pink-img img-fluid w-100 h-100 animated-scaleX">
       </div>
-   </div><!-- Nav Header Component End -->
+   </div>          <!-- Nav Header Component End -->
 <!--Nav End-->
 </div>
+
 <div class="conatiner-fluid content-inner mt-n5 py-0">
 <div class="row">
-   <div class="col-md-12 col-lg-12">
+   <!-- <div class="col-md-12 col-lg-12">
       <div class="row row-cols-1">
-         <!-- <div class="overflow-hidden d-slider1 ">
+         <div class="overflow-hidden d-slider1 ">
             <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
-            <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="700">
-               <div class="card">
+               <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="700">
                   <div class="card-body">
-                     <div class="d-flex justify-content-between">
-                        <div>
-                           <span><b>Perum PPD</b></span>
-                           <div class="mt-2">
-                           <h2 class="counter"><?= number_format((float)$progress_percentage_corporate->percentage_progress, 2, '.', '');?>%</h2>
-                              
-                           </div>
+                     <div class="progress-widget">
+                        <div id="circle-progress-01" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="100" data-type="percent">
+                           <svg class="card-slie-arrow" width="24" height="24px" viewBox="0 0 24 24">
+                              <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
+                           </svg>
                         </div>
-                        <div>
-                           <span class="badge bg-warning">
-                              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="currentColor" d="m479.66 268.7l-32-151.81C441.48 83.77 417.68 64 384 64H128c-16.8 0-31 4.69-42.1 13.94s-18.37 22.31-21.58 38.89l-32 151.87A16.65 16.65 0 0 0 32 272v112a64 64 0 0 0 64 64h320a64 64 0 0 0 64-64V272a16.65 16.65 0 0 0-.34-3.3Zm-384-145.4v-.28c3.55-18.43 13.81-27 32.29-27H384c18.61 0 28.87 8.55 32.27 26.91c0 .13.05.26.07.39l26.93 127.88a4 4 0 0 1-3.92 4.82H320a15.92 15.92 0 0 0-16 15.82a48 48 0 1 1-96 0A15.92 15.92 0 0 0 192 256H72.65a4 4 0 0 1-3.92-4.82Z"/><path fill="currentColor" d="M368 160H144a16 16 0 0 1 0-32h224a16 16 0 0 1 0 32Zm16 64H128a16 16 0 0 1 0-32h256a16 16 0 0 1 0 32Z"/></svg>
-                           </span>
-                        </div>
-                     </div>
-                     
-                     <div class="mt-3">
-                        <div class="progress bg-soft-warning shadow-none w-100" style="height: 6px">
-                           <div class="progress-bar bg-warning" data-toggle="progress-bar" role="progressbar" aria-valuenow="<?=$progress_percentage_corporate->percentage_progress?>" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-detail">
+                           <p  class="mb-2">Total Kategori Risiko</p>
+                           <h4 class="counter"><?=$total_risk_category?></h4>
                         </div>
                      </div>
                   </div>
-               </div>
                </li>
+               <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="800">
+                  <div class="card-body">
+                     <div class="progress-widget">
+                        <div id="circle-progress-02" class="text-center circle-progress-01 circle-progress circle-progress-info" data-min-value="0" data-max-value="100" data-value="100" data-type="percent">
+                           <svg class="card-slie-arrow" width="24" height="24px" viewBox="0 0 24 24">
+                              <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
+                           </svg>
+                        </div>
+                        <div class="progress-detail">
+                           <p  class="mb-2">Total Risk Owner</p>
+                           <h4 class="counter"><?=$total_division?></h4>
+                        </div>
+                     </div>
+                  </div>
+               </li>
+               <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="900">
+                  <div class="card-body">
+                     <div class="progress-widget">
+                        <div id="circle-progress-03" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="100" data-type="percent">
+                           <svg class="card-slie-arrow" width="24" height="24px" viewBox="0 0 24 24">
+                              <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
+                           </svg>
+                        </div>
+                        <div class="progress-detail">
+                           <p  class="mb-2">Total KPI</p>
+                           <h4 class="counter"><?=$total_kpi?></h4>
+                        </div>
+                     </div>
+                  </div>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div> -->
 
-               <?php foreach($progress_percentage as $progress){ ?>
-                  <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="800">         
+   <div class="col-md-12">
+      <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between flex-wrap">
+                  <h6 class="mb-md-0 mb-2 d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="44" d="M102 304h308m-308-96h308m-308-96h308M102 400h308"/></svg>
+                     &nbsp;Persentase Realisasi Monitoring Risiko Bulan <?=$month_name?>
+                  </h6>
+
+                     <div class="d-flex align-items-center flex-wrap">
+                        <a class="text-body me-3 align-items-center d-flex">
+                           Bulan:
+                        </a>
+                        <div class="dropdown">
+                           <select class="form-control form-select" id="month" name="month" onchange="update_matrix()">
+                              <option value="01">Januari</option>
+                              <option value="02">Februari</option>
+                              <option value="03">Maret</option>
+                              <option value="04">April</option>
+                              <option value="05">Mei</option>
+                              <option value="06" selected>Juni</option>
+                              <option value="07">Juli</option>
+                              <option value="08">Agustus</option>
+                              <option value="09">September</option>
+                              <option value="10">Oktober</option>
+                              <option value="11">November</option>
+                              <option value="12">Desember</option>
+                           </select>
+                        </div>
+                    </div>
+                </div>
+				
+            </div>
+        </div>
+    </div>
+
+
+   <div class="col-md-12 col-lg-12">
+      <div class="row row-cols-1">
+         <div class="overflow-hidden d-slider1 ">
+            <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
+               <?php for($x=0; $x<count($percentage);$x++){ ?>
+                     <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="800">         
                      <div class="card">
                         <div class="card-body">
                            <div class="d-flex justify-content-between">
                               <div>
-                                 <span><b><?=$progress['name']?></b></span>
+                                 <span><?=$percentage[$x][0]?></span>
                                  <div class="mt-2">
-                                    <h2 class="counter"><?= number_format((float)$progress['percentage_progress'], 2, '.', '');?>%</h2>
+                                    <h2 class="counter"><?= number_format((float)$percentage[$x][1], 2, '.', '');?>%</h2>
                                  </div>
                               </div>
                               <div>
@@ -79,44 +139,65 @@
                            </div>
                            <div class="mt-3">
                               <div class="progress bg-soft-primary shadow-none w-100" style="height: 6px">
-                                 <div class="progress-bar bg-primary" data-toggle="progress-bar" role="progressbar" aria-valuenow="<?=$progress['percentage_progress']?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                 <div class="progress-bar bg-primary" data-toggle="progress-bar" role="progressbar" aria-valuenow="<?=$percentage[$x][1]?>" aria-valuemin="0" aria-valuemax="100"></div>
                               </div>
                            </div>
                         </div>
-                  </div>
-                  </li>
-               <?php } ?>
-           
+                     </div>
+                     </li>
+                       
+                  <?php }?>
+             
             </ul>
             <div class="swiper-button swiper-button-next"></div>
             <div class="swiper-button swiper-button-prev"></div>
-         </div> -->
+         </div>
       </div>
    </div>
-     
+
+   <div class="col-md-12">
+   <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
+
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between flex-wrap">
+                  <h6 class="mb-md-0 mb-2 d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="44" d="M102 304h308m-308-96h308m-308-96h308M102 400h308"/></svg>
+                  &nbsp;Risk Map
+                  </h6>
+                    <div class="d-flex align-items-center flex-wrap">
+                        <a class="text-body me-3 align-items-center d-flex">
+                           Tahun:
+                        </a>
+                        <div class="dropdown">
+                           <select class="form-control form-select" id="year" name="year" onchange="update_matrix()">
+                              <option value="2021">2021</option>
+                              <option value="2022" selected>2022</option>
+                           </select>
+                        </div>
+                    </div>
+                </div>
+				
+            </div>
+        </div>
+    </div>
+ 
    <div class="col-md-12 col-lg-12">
       <div class="row">
          <div class="col-md-12 col-lg-12">
             <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
             <div class="flex-wrap card-header d-flex justify-content-between">
                   <div class="header-title">
-                     <h4 class="mb-2 card-title">Risk Map Sebelum Mitigasi - Inherent</h4>    
+                     <h5 class="mb-2 card-title">
+                     Sebelum Mitigasi - Inherent
+                     </h5>    
                   </div>
-                  
-                  <div class="dropdown"> 
-                     <select class="form-control form-control form-select" id="year" name="year" onchange="update_matrix()">
-                        <option value="2021">2021</option>
-                        <option value="2022" selected>2022</option>
-                     </select>
-                  </div>
+               
                </div>
                <div class="p-0 card-body">
                </br>
-               
                   <div class="bd-example table-responsive" style="padding-right:20px;">
-                  
                      <table id="table" name="table" width="100%" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
-                     <tr>
+                           <tr>
                               <td rowspan="6" width="5%" style="writing-mode: vertical-rl;">Tingkat Kemungkinan</td>
                               <td width="10%">Sangat Besar<br/>(5)</td>
                               <td id="51" name="td" style="background-color:#f6e65a;" width="17%"></td>
@@ -185,7 +266,7 @@
             <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
             <div class="flex-wrap card-header d-flex justify-content-between">
                   <div class="header-title">
-                     <h4 class="mb-2 card-title">Risk Map Progress Mitigasi</h4>    
+                     <h5 class="mb-2 card-title">Progress Mitigasi</h5>    
                   </div>
                   
                </div>
@@ -195,7 +276,7 @@
                   <div class="bd-example table-responsive" style="padding-right:20px;">
                   
                      <table id="table" name="table" width="100%" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
-                     <tr>
+                           <tr>
                               <td rowspan="6" width="5%" style="writing-mode: vertical-rl;">Tingkat Kemungkinan</td>
                               <td width="10%">Sangat Besar<br/>(5)</td>
                               <td id="residual_51" name="residual_15" style="background-color:#f6e65a;" width="17%"></td>
@@ -263,7 +344,9 @@
             <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
             <div class="flex-wrap card-header d-flex justify-content-between">
                   <div class="header-title">
-                     <h4 class="mb-2 card-title">Risk Map Setelah Mitigasi - Residual Risk</h4>    
+                     <h5 class="mb-2 card-title">
+                     Setelah Mitigasi - Residual Risk
+                     </h5>    
                   </div>
                   
                </div>
@@ -273,7 +356,7 @@
                   <div class="bd-example table-responsive" style="padding-right:20px;">
                   
                      <table id="table" name="table" width="100%" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
-                     <tr>
+                           <tr>
                               <td rowspan="6" width="5%" style="writing-mode: vertical-rl;">Tingkat Kemungkinan</td>
                               <td width="10%">Sangat Besar<br/>(5)</td>
                               <td id="target_51" name="td" style="background-color:#f6e65a;" width="17%"></td>
@@ -352,4 +435,4 @@
    }
 </style>
 
-<?= $this->include("js/risk_owner/dashboard")?>
+<?= $this->include("js/dashboard")?>

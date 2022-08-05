@@ -86,8 +86,7 @@
                   <h6 class="mb-md-0 mb-2 d-flex align-items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="44" d="M102 304h308m-308-96h308m-308-96h308M102 400h308"/></svg>
                      &nbsp;Persentase Realisasi Monitoring Risiko Bulan <?=$month_name?>
-                  </h6>
-
+                     </h6>
                      <div class="d-flex align-items-center flex-wrap">
                         <a class="text-body me-3 align-items-center d-flex">
                            Bulan:
@@ -145,7 +144,6 @@
                         </div>
                      </div>
                      </li>
-                       
                   <?php }?>
              
             </ul>
@@ -156,30 +154,28 @@
    </div>
 
    <div class="col-md-12">
-   <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
-
-            <div class="card-body">
-                <div class="d-flex align-items-center justify-content-between flex-wrap">
-                  <h6 class="mb-md-0 mb-2 d-flex align-items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="44" d="M102 304h308m-308-96h308m-308-96h308M102 400h308"/></svg>
-                  &nbsp;Risk Map
-                  </h6>
-                    <div class="d-flex align-items-center flex-wrap">
-                        <a class="text-body me-3 align-items-center d-flex">
-                           Tahun:
-                        </a>
-                        <div class="dropdown">
-                           <select class="form-control form-select" id="year" name="year" onchange="update_matrix()">
-                              <option value="2021">2021</option>
-                              <option value="2022" selected>2022</option>
-                           </select>
-                        </div>
-                    </div>
-                </div>
-				
-            </div>
-        </div>
-    </div>
+      <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
+         <div class="card-body">
+               <div class="d-flex align-items-center justify-content-between flex-wrap">
+               <h6 class="mb-md-0 mb-2 d-flex align-items-center">
+               <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="44" d="M102 304h308m-308-96h308m-308-96h308M102 400h308"/></svg>
+               &nbsp;Risk Map
+               </h6>
+                  <div class="d-flex align-items-center flex-wrap">
+                     <a class="text-body me-3 align-items-center d-flex">
+                        Tahun:
+                     </a>
+                     <div class="dropdown">
+                        <select class="form-control form-select" id="year" name="year" onchange="update_matrix()">
+                           <option value="2021">2021</option>
+                           <option value="2022" selected>2022</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+         </div>
+      </div>
+   </div>
  
    <div class="col-md-12 col-lg-12">
       <div class="row">
@@ -191,7 +187,6 @@
                      Sebelum Mitigasi - Inherent
                      </h5>    
                   </div>
-               
                </div>
                <div class="p-0 card-body">
                </br>

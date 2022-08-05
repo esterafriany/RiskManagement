@@ -32,9 +32,60 @@ class DashboardController extends BaseController
             'total_risk_category'=> $this->RiskCategoryModel->select('*')->countAllResults(),
             'total_division'=> $this->DivisionModel->select('*')->countAllResults(),
             'total_kpi'=> $this->KPIModel->select('*')->countAllResults(),
-            'progress_percentage'=> $this->RiskMitigationModel->get_progress_percentage_per_risk_owner('2022'),
-            'progress_percentage_corporate'=> $this->RiskMitigationModel->get_progress_percentage_per_corporate('2022')
+            
         ];
+
+        //get listDivisionId
+        $list_division = $this->DivisionModel->get_list_divisions();
+        
+        if(date('d') >= '1' && date('d') <='15'){
+            $month = date('m', strtotime('-2 month'));
+            
+        }else if(date('d') >= '16' && date('d') <= date('t')){
+            $month = date('m', strtotime('-1 month'));
+            
+
+        }
+        $year = '2022';
+
+        $array = array();
+        for($i=0; $i<count($list_division); $i++){
+            $temp_target = $this->RiskMitigationModel->get_count_target($list_division[$i]['id'], $year, $month);
+            $temp_realisasi = $this->RiskMitigationModel->get_count_monitoring($list_division[$i]['id'], $year, $month);
+            $percent = $temp_realisasi->realisasi /$temp_target->target * 100;
+            
+            $array[$i] = array($list_division[$i]['name'],$percent);
+        }
+
+        $data['percentage'] = $array;
+
+        if($month == '01'){
+            $month_name = 'Januari';
+        }else if($month == '02'){
+            $month_name = 'Februari';
+        }else if($month == '03'){
+            $month_name = 'Maret';
+        }else if($month == '04'){
+            $month_name = 'April';
+        }else if($month == '05'){
+            $month_name = 'Mei';
+        }else if($month == '06'){
+            $month_name = 'Juni';
+        }else if($month == '07'){
+            $month_name = 'Juli';
+        }else if($month == '08'){
+            $month_name = 'Agustus';
+        }else if($month == '09'){
+            $month_name = 'September';
+        }else if($month == '10'){
+            $month_name = 'Oktober';
+        }else if($month == '11'){
+            $month_name = 'November';
+        }else if($month == '12'){
+            $month_name = 'Desember';
+        }
+
+        $data['month_name'] = $month_name;
 
         echo view('risk_owner/template/dashboard_template',$data);
     }

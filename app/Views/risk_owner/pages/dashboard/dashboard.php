@@ -122,7 +122,7 @@
             <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
                <?php for($x=0; $x<count($percentage);$x++){ ?>
                      <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="800">         
-                     <div class="card">
+                     
                         <div class="card-body">
                            <div class="d-flex justify-content-between">
                               <div>
@@ -143,7 +143,6 @@
                               </div>
                            </div>
                         </div>
-                     </div>
                      </li>
                        
                   <?php }?>

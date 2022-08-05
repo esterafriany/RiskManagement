@@ -830,6 +830,7 @@ class RiskMonitoringController extends BaseController
         $data_risk_mitigation_count = $this->RiskEventModel->get_risk_mitigation_count($year);
         $spreadsheet = new Spreadsheet();
 
+        
         //column header name
         $spreadsheet->setActiveSheetIndex(0)
         //set column tittle
@@ -856,6 +857,7 @@ class RiskMonitoringController extends BaseController
         ->setCellValue('P6', 'OKT')
         ->setCellValue('Q6', 'NOV')
         ->setCellValue('R6', 'DES')
+        ->setCellValue('S4', 'CATATAN')
         ->setCellValue('D2', 'RISK MONITORING PERUM PPD '.$year)
         //set merge cells
         ->mergeCells('A4:A6')
@@ -868,7 +870,8 @@ class RiskMonitoringController extends BaseController
         ->mergeCells('G4:R4')
         ->mergeCells('J5:L5')
         ->mergeCells('M5:O5')
-        ->mergeCells('P5:R5');
+        ->mergeCells('P5:R5')
+        ->mergeCells('S4:S6');
 
         $styleArray = [
             'font' => [
@@ -897,7 +900,7 @@ class RiskMonitoringController extends BaseController
                 ]
             ]
         ];
-        $spreadsheet->getActiveSheet()->getStyle('A4:R6')->applyFromArray($styleArray); 
+        $spreadsheet->getActiveSheet()->getStyle('A4:S6')->applyFromArray($styleArray); 
     
         //rows target and monitoring
         $column = 7; //target
@@ -911,15 +914,16 @@ class RiskMonitoringController extends BaseController
                         ->setCellValue('C' . $column, $data['risk_mitigation'])
                         ->setCellValue('D' . $column, $data['risk_mitigation_detail'])
                         ->setCellValue('E' . $column, $data['name'])
-                        ->setCellValue('F' . $column, $data['output']);
-
+                        ->setCellValue('F' . $column, $data['output'])
+                        ->setCellValue('S' . $column, $data['notes']);
             $spreadsheet->getActiveSheet()->mergeCells('D' . $column. ':D'. $column + 1); 
             $spreadsheet->getActiveSheet()->mergeCells('E' . $column. ':E'. $column + 1); 
             $spreadsheet->getActiveSheet()->mergeCells('F' . $column. ':F'. $column + 1); 
 
-
+            
             //target
             foreach($data_target as $data1) {
+                
                 $styleArray = [
                     'font' => [
                         'bold' => true,
@@ -945,6 +949,8 @@ class RiskMonitoringController extends BaseController
                         ]
                     ]
                 ];
+                
+                
                 if($data['id_detail_mitigation'] == $data1['id_detail_mitigation']){
                     if($data1['Januari'] == '1'){
                         $spreadsheet->getActiveSheet()->getStyle('G' . $column)->applyFromArray($styleArray);
@@ -972,6 +978,8 @@ class RiskMonitoringController extends BaseController
                         $spreadsheet->getActiveSheet()->getStyle('R' . $column)->applyFromArray($styleArray);  
                     }
                 }
+                $notes = "";
+
             }
 
             //monitoring
@@ -1329,17 +1337,17 @@ class RiskMonitoringController extends BaseController
             $temp_count = $a - 6;
         }
 
-        // //merge cell risk mitigations
-        // $count = 7;
-        // $temp_count = 0;
+        //merge cell risk mitigations
+        $count = 7;
+        $temp_count = 0;
         
-        // foreach($data_risk_mitigation_count as $data) {
-        //     $a = $temp_count + ($data['count']*2) + 6;
-        //     $spreadsheet->getActiveSheet()->mergeCells('C'.$count.':C'. $a); 
+        foreach($data_risk_mitigation_count as $data) {
+            $a = $temp_count + ($data['count']*2) + 6;
+            $spreadsheet->getActiveSheet()->mergeCells('C'.$count.':C'. $a); 
             
-        //     $count = $a+1;
-        //     $temp_count = $a - 6;
-        // }
+            $count = $a+1;
+            $temp_count = $a - 6;
+        }
 
         $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
         $drawing->setPath('assets/images/logo_ppd.png'); /* put your path and image here */

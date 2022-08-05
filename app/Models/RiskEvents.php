@@ -148,11 +148,14 @@ class RiskEvents extends Model
                         , risk_mitigation_details.id as id_detail_mitigation
                         , divisions.name
                         , risk_mitigation_detail_outputs.output
+                        , GROUP_CONCAT(notes) as notes
                         FROM risk_events JOIN risk_mitigations on risk_events.id = risk_mitigations.id_risk_event
                         JOIN risk_mitigation_details on risk_mitigations.id = risk_mitigation_details.id_risk_mitigation
                         JOIN divisions ON divisions.id = risk_mitigation_details.id_division
                         JOIN risk_mitigation_detail_outputs on risk_mitigation_detail_outputs.id_detail_mitigation = risk_mitigation_details.id
+                        LEFT JOIN risk_mitigation_detail_monitorings ON risk_mitigation_detail_monitorings.id_detail_mitigation = risk_mitigation_details.id
                         WHERE risk_events.year = '".$year."'
+                        GROUP BY risk_mitigation_details.id
                         ORDER BY risk_events.id ASC, risk_mitigations.id ASC, risk_mitigation_details.id ASC;")->getResultArray();
     }
 
@@ -214,6 +217,7 @@ class RiskEvents extends Model
                         , (case when target_month = '".$year."-10-01' then 1 else 0 end)  as Oktober
                         , (case when target_month = '".$year."-11-01' then 1 else 0 end)  as November
                         , (case when target_month = '".$year."-12-01' then 1 else 0 end)  as Desember
+                        , GROUP_CONCAT(notes) as notes
                         FROM
                         (
                             SELECT id_detail_mitigation, target_month, monitoring_month, notes, risk_mitigation_detail
@@ -238,6 +242,7 @@ class RiskEvents extends Model
                                 , (case when monitoring_month = '".$year."-10-01' then 1 else 0 end)  as Oktober
                                 , (case when monitoring_month = '".$year."-11-01' then 1 else 0 end)  as November
                                 , (case when monitoring_month = '".$year."-12-01' then 1 else 0 end)  as Desember
+                                , GROUP_CONCAT(notes) as notes
                                 FROM
                                 (
                                     SELECT id_detail_mitigation, target_month, monitoring_month, notes, risk_mitigation_detail

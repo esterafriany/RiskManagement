@@ -80,6 +80,7 @@ $routes->group('admin', ['filter'=>'auth'] , function($routes){
 	$routes->add('RiskMonitoringController/onAddDetailMonitoring', 'RiskMonitoringController::onAddDetailMonitoring', ['as' => 'add-risk-monitoring']);
 	$routes->add('download-risk-monitoring/(:num)', 'RiskMonitoringController::onDownloadReportExcelBreakdown/$1', ['as' => 'download-breakdown-risk-monitoring']);
 	$routes->add('download-risk-monitoring-gabungan/(:num)', 'RiskMonitoringController::onDownloadReportExcelGabungan/$1', ['as' => 'download-gabungan-risk-monitoring']);
+	$routes->add('excel/(:num)', 'RiskMonitoringController::excel/$1', ['as' => 'download-gabungan-risk-monitoringdd']);
 	
 	
 	//Risk Mitigation 

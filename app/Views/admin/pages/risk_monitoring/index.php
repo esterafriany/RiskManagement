@@ -25,7 +25,7 @@
                      </a>
                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton22">
                         <li><a class="dropdown-item" href="download-risk-monitoring/2022"> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="currentColor" d="M80 44v424a12 12 0 0 0 12 12h328a12 12 0 0 0 12-12V44a12 12 0 0 0-12-12H92a12 12 0 0 0-12 12Zm192 260H160v-32h112Zm80-80H160v-32h192Zm0-80H160v-32h192Z"/></svg> Risk Monitoring Breakdown</a></li>
-                        <li><a class="dropdown-item" href="download-risk-monitoring-gabungan/2022"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="currentColor" d="M80 44v424a12 12 0 0 0 12 12h328a12 12 0 0 0 12-12V44a12 12 0 0 0-12-12H92a12 12 0 0 0-12 12Zm192 260H160v-32h112Zm80-80H160v-32h192Zm0-80H160v-32h192Z"/></svg> Risk Monitoring Gabungan</a></li>
+                        <li><a class="dropdown-item" href="excel/2022"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="currentColor" d="M80 44v424a12 12 0 0 0 12 12h328a12 12 0 0 0 12-12V44a12 12 0 0 0-12-12H92a12 12 0 0 0-12 12Zm192 260H160v-32h112Zm80-80H160v-32h192Zm0-80H160v-32h192Z"/></svg> Risk Monitoring Gabungan</a></li>
                      </ul>
                   </div>
                </div>

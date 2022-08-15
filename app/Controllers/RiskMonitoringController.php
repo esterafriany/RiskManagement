@@ -4,7 +4,11 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xls;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Helper\Sample;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 //Model
 use App\Models\RiskEvents;
@@ -40,6 +44,17 @@ class RiskMonitoringController extends BaseController
             'kpi_list'=> $this->KPIModel->get_list_kpis()
         ];
         echo view('admin/template/template',$data);
+    }
+
+    public function excel($year){
+        $data = [
+            'title'=>'Risk Monitoring',
+            'breadcrumb' => '<a href='.base_url().'>Home</a>  
+            <svg width="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                    <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Risk Monitoring',
+            'content'=>'admin/pages/risk_monitoring/index',
+            'kpi_list'=> $this->RiskEventModel->get_data_report($year)
+        ];
+        echo view('admin/pages/index',$data);
     }
 
     public function getRiskMonitoring($year){
@@ -885,7 +900,7 @@ class RiskMonitoringController extends BaseController
                 'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
             ],
             'fill' => [
-                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_GRADIENT_LINEAR,
+                'fillType' => Fill::FILL_SOLID,
                 'rotation' => 90,
                 'startColor' => [
                     'argb' => '191970',
@@ -900,6 +915,7 @@ class RiskMonitoringController extends BaseController
                 ]
             ]
         ];
+
         $spreadsheet->getActiveSheet()->getStyle('A4:S6')->applyFromArray($styleArray); 
     
         //rows target and monitoring
@@ -934,7 +950,8 @@ class RiskMonitoringController extends BaseController
                         'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
                     ],
                     'fill' => [
-                        'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_GRADIENT_LINEAR,
+                        'fillType' => Fill::FILL_SOLID,
+                        
                         'rotation' => 90,
                         'startColor' => [
                             'argb' => 'BDD6EE',
@@ -953,6 +970,7 @@ class RiskMonitoringController extends BaseController
                 
                 if($data['id_detail_mitigation'] == $data1['id_detail_mitigation']){
                     if($data1['Januari'] == '1'){
+                        
                         $spreadsheet->getActiveSheet()->getStyle('G' . $column)->applyFromArray($styleArray);
                     }else if($data1['Februari'] == '1'){
                         $spreadsheet->getActiveSheet()->getStyle('H' . $column)->applyFromArray($styleArray);
@@ -993,7 +1011,7 @@ class RiskMonitoringController extends BaseController
                         'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
                     ],
                     'fill' => [
-                        'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_GRADIENT_LINEAR,
+                        'fillType' => Fill::FILL_SOLID,
                         'rotation' => 90,
                         'startColor' => [
                             'argb' => 'C5E0B3',
@@ -1094,14 +1112,16 @@ class RiskMonitoringController extends BaseController
         ];
         $spreadsheet->getActiveSheet()->getStyle('D2')->applyFromArray($styleArray); 
 
-        $writer = new Xlsx($spreadsheet);
+        $writer = new Xls($spreadsheet);
         $fileName = 'Data_Report_Breakdown';
 
         // Redirect hasil generate xlsx ke web client
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename='.$fileName.'.xlsx');
-        header('Cache-Control: max-age=1');
-        
+        // header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Type: application/vnd.ms-excel'); 
+        header('Content-Disposition: attachment;filename='.$fileName.'.xls');
+        header('Cache-Control: max-age=0');
+
+        // $writer = PHPExcel_IOFactory::createWriter($spreadsheet, 'Excel2010');  
         $writer->save('php://output');
     }
 
@@ -1367,12 +1387,12 @@ class RiskMonitoringController extends BaseController
         ];
         $spreadsheet->getActiveSheet()->getStyle('D2')->applyFromArray($styleArray); 
 
-        $writer = new Xlsx($spreadsheet);
+        $writer = new Xls($spreadsheet);
         $fileName = 'Data_Report_Gabungan';
 
         // Redirect hasil generate xlsx ke web client
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename='.$fileName.'.xlsx');
+        header('Content-Disposition: attachment;filename='.$fileName.'.xls');
         header('Cache-Control: max-age=0');
         
         $writer->save('php://output');

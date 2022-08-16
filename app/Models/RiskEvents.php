@@ -254,7 +254,6 @@ class RiskEvents extends Model
     }
 
     //report gabungan
-
     public function get_data_report_gabungan($year){
         return $this->db->query("
                     SELECT risk_mitigation_detail_monitorings.id as id_monitoring
@@ -264,13 +263,15 @@ class RiskEvents extends Model
                     , risk_mitigation_detail_monitorings.monitoring_month
                     , GROUP_CONCAT(risk_mitigation_detail_outputs.output) as output
                     , divisions.name as divisi
+                    , risk_mitigation_detail_monitorings.notes
                     FROM risk_mitigation_detail_monitorings
                     JOIN risk_mitigation_details on risk_mitigation_details.id = risk_mitigation_detail_monitorings.id_detail_mitigation
                     JOIN divisions on divisions.id = risk_mitigation_details.id_division
                     JOIN risk_mitigation_detail_outputs on risk_mitigation_detail_outputs.id_detail_mitigation = risk_mitigation_details.id
                     WHERE (target_month NOT LIKE '0000-00-00' OR monitoring_month NOT LIKE '0000-00-00') 
                     AND YEAR(target_month) = '".$year."' OR YEAR(monitoring_month) = '".$year."'
-                    GROUP BY risk_mitigation_detail_monitorings.id,risk_mitigation_detail_monitorings.id_detail_mitigation")->getResultArray();
+                    GROUP BY risk_mitigation_detail_monitorings.id,risk_mitigation_detail_monitorings.id_detail_mitigation
+                    ORDER BY risk_mitigation_details.id")->getResultArray();
     }
 
     public function get_data_report_gabungan_2($year){
@@ -280,13 +281,20 @@ class RiskEvents extends Model
                 , risk_mitigations.risk_mitigation
                 , risk_mitigation_details.id as id_detail_mitigation
                 , risk_mitigation_details.risk_mitigation_detail
+                , GROUP_CONCAT(divisions.name) as division
+                , GROUP_CONCAT(risk_mitigation_detail_monitorings.notes) as notes
                 FROM risk_events 
                 JOIN risk_mitigations on risk_mitigations.id_risk_event = risk_events.id
                 JOIN risk_mitigation_details ON risk_mitigation_details.id_risk_mitigation = risk_mitigations.id
+                JOIN divisions ON divisions.id = risk_mitigation_details.id_division
+                LEFT JOIN risk_mitigation_detail_monitorings ON risk_mitigation_detail_monitorings.id_detail_mitigation = risk_mitigation_details.id
                 WHERE risk_events.year = '".$year."'
-                ORDER BY risk_events.risk_number_manual")->getResultArray();
+                GROUP BY risk_mitigation_details.risk_mitigation_detail
+                ORDER BY risk_events.risk_number_manual, risk_mitigation_details.id")->getResultArray();
 
     }
+
+    
 
     
     

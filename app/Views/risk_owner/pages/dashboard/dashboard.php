@@ -9,6 +9,11 @@
                   </div>
                </div>
             </div>
+            <?php
+                           $this->session = \Config\Services::session();
+                           $this->session->start(); 
+                        ?>
+                        <input type="hidden" id="id_division" name="id_division" value="<?=$this->session->get("id_division")?>">
       </div>
    </div>
       <div class="iq-header-img">
@@ -434,4 +439,4 @@
    }
 </style>
 
-<?= $this->include("js/dashboard")?>
+<?= $this->include("js/risk_owner/dashboard")?>

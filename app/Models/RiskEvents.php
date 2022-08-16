@@ -176,7 +176,6 @@ class RiskEvents extends Model
                                                         WHERE risk_events.year = '".$year."'
                                                         ORDER BY risk_events.id ASC, risk_mitigations.id ASC, risk_mitigation_details.id ASC
                                 ) _tb
-
                                 GROUP BY _tb.risk_number;")->getResultArray();
     }
 
@@ -294,7 +293,54 @@ class RiskEvents extends Model
 
     }
 
-    
+    public function get_risk_number_count_gabungan($year){
+        return $this->db->query("SELECT CONCAT('R',_tb.risk_number), COUNT(_tb.risk_number) as count FROM 
+                                (
+                                    SELECT CONCAT('R', risk_events.risk_number_manual) as risk_number
+                                    , risk_events.risk_event
+                                    , risk_mitigations.risk_mitigation
+                                    , risk_mitigation_details.id as id_detail_mitigation
+                                    , risk_mitigation_details.risk_mitigation_detail
+                                    , GROUP_CONCAT(divisions.name) as division
+                                    , GROUP_CONCAT(risk_mitigation_detail_monitorings.notes) as notes
+                                    FROM risk_events 
+                                    JOIN risk_mitigations on risk_mitigations.id_risk_event = risk_events.id
+                                    JOIN risk_mitigation_details ON risk_mitigation_details.id_risk_mitigation = risk_mitigations.id
+                                    JOIN divisions ON divisions.id = risk_mitigation_details.id_division
+                                    LEFT JOIN risk_mitigation_detail_monitorings ON risk_mitigation_detail_monitorings.id_detail_mitigation = risk_mitigation_details.id
+                                    WHERE risk_events.year = '".$year."'
+                                    GROUP BY risk_mitigation_details.risk_mitigation_detail
+                                    ORDER BY risk_events.risk_number_manual, risk_mitigation_details.id
+                                    ) _tb
+                                GROUP BY _tb.risk_number;")->getResultArray();
+    }
+
+    public function get_risk_mitigation_count_gabungan($year){
+        return $this->db->query("
+                                SELECT CONCAT('R',_tb.risk_number) as risk_number
+                                , _tb.risk_mitigation, _tb.id_detail_mitigation
+                                , COUNT(_tb.risk_mitigation) as count 
+                                FROM
+                                (
+                                    SELECT CONCAT(risk_events.risk_number_manual) as risk_number
+                                    , risk_events.risk_event
+                                    , risk_mitigations.risk_mitigation
+                                    , risk_mitigation_details.id as id_detail_mitigation
+                                    , risk_mitigation_details.risk_mitigation_detail
+                                    , GROUP_CONCAT(divisions.name) as division
+                                    , GROUP_CONCAT(risk_mitigation_detail_monitorings.notes) as notes
+                                    FROM risk_events 
+                                    JOIN risk_mitigations on risk_mitigations.id_risk_event = risk_events.id
+                                    JOIN risk_mitigation_details ON risk_mitigation_details.id_risk_mitigation = risk_mitigations.id
+                                    JOIN divisions ON divisions.id = risk_mitigation_details.id_division
+                                    LEFT JOIN risk_mitigation_detail_monitorings ON risk_mitigation_detail_monitorings.id_detail_mitigation = risk_mitigation_details.id
+                                    WHERE risk_events.year = '".$year."'
+                                    GROUP BY risk_mitigation_details.risk_mitigation_detail
+                                    ORDER BY risk_events.risk_number_manual, risk_mitigation_details.id
+                                ) _tb
+                                GROUP BY _tb.risk_mitigation, _tb.risk_number
+                                ORDER BY _tb.risk_number,_tb.id_detail_mitigation")->getResultArray();
+    }
 
     
     

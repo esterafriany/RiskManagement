@@ -935,35 +935,60 @@ class RiskMonitoringController extends BaseController
             $spreadsheet->getActiveSheet()->mergeCells('E' . $column. ':E'. $column + 1); 
             $spreadsheet->getActiveSheet()->mergeCells('F' . $column. ':F'. $column + 1); 
 
+            $styleArray = [
+                'font' => [
+                    'bold' => true,
+                    'size'  => 10
+                ],
+                'alignment' => [
+                    'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                    'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
+                ],
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    
+                    'rotation' => 90,
+                    'startColor' => [
+                        'argb' => 'BDD6EE',
+                    ],
+                    'endColor' => [
+                        'argb' => 'BDD6EE',
+                    ],
+                ],
+                'borders' => [
+                    'allborders' => [
+                        'style' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN
+                    ]
+                ]
+            ];
+
+            $styleArray1 = [
+                'font' => [
+                    'bold' => true,
+                    'size'  => 10
+                ],
+                'alignment' => [
+                    'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
+                ],
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    'rotation' => 90,
+                    'startColor' => [
+                        'argb' => 'C5E0B3',
+                    ],
+                    'endColor' => [
+                        'argb' => 'C5E0B3',
+                    ],
+                ],
+                'borders' => [
+                    'allborders' => [
+                        'style' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN
+                    ]
+                ]
+            ];
+
             //target
             foreach($data_target as $data1) {
-                $styleArray = [
-                    'font' => [
-                        'bold' => true,
-                        'size'  => 10
-                    ],
-                    'alignment' => [
-                        'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
-                        'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
-                    ],
-                    'fill' => [
-                        'fillType' => Fill::FILL_SOLID,
-                        
-                        'rotation' => 90,
-                        'startColor' => [
-                            'argb' => 'BDD6EE',
-                        ],
-                        'endColor' => [
-                            'argb' => 'BDD6EE',
-                        ],
-                    ],
-                    'borders' => [
-                        'allborders' => [
-                            'style' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN
-                        ]
-                    ]
-                ];
-                
                 if($data['id_detail_mitigation'] == $data1['id_detail_mitigation']){
                     if($data1['Januari'] == '1'){
                         $spreadsheet->getActiveSheet()->getStyle('G' . $column)->applyFromArray($styleArray);
@@ -996,31 +1021,6 @@ class RiskMonitoringController extends BaseController
 
             //monitoring
             foreach($data_monitoring as $data2) {
-                $styleArray1 = [
-                    'font' => [
-                        'bold' => true,
-                        'size'  => 10
-                    ],
-                    'alignment' => [
-                        'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
-                    ],
-                    'fill' => [
-                        'fillType' => Fill::FILL_SOLID,
-                        'rotation' => 90,
-                        'startColor' => [
-                            'argb' => 'C5E0B3',
-                        ],
-                        'endColor' => [
-                            'argb' => 'C5E0B3',
-                        ],
-                    ],
-                    'borders' => [
-                        'allborders' => [
-                            'style' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN
-                        ]
-                    ]
-                ];
-
                 if($data['id_detail_mitigation'] == $data2['id_detail_mitigation']){
                     if($data2['Januari'] == '1'){
                         $spreadsheet->getActiveSheet()->getStyle('G' . $column1)->applyFromArray($styleArray1);
@@ -1114,13 +1114,14 @@ class RiskMonitoringController extends BaseController
         header('Content-Disposition: attachment;filename='.$fileName.'.xls');
         header('Cache-Control: max-age=0');
 
-        // $writer = PHPExcel_IOFactory::createWriter($spreadsheet, 'Excel2010');  
         $writer->save('php://output');
     }
 
     public function onDownloadReportExcelGabungan($year){
         $data1 = $this->RiskEventModel->get_data_report_gabungan($year);
         $data2 = $this->RiskEventModel->get_data_report_gabungan_2($year);
+        $data_risk_count = $this->RiskEventModel->get_risk_number_count_gabungan($year);
+        $data_risk_mitigation_count = $this->RiskEventModel->get_risk_mitigation_count_gabungan($year);
 
         $spreadsheet = new Spreadsheet();
         //column header name
@@ -1279,59 +1280,55 @@ class RiskMonitoringController extends BaseController
                     //set target color
                     if(substr($datas['target_month'],5,2) == '01'){
                         $spreadsheet->getActiveSheet()->getStyle('G' . $column)->applyFromArray($styleArray);
-                    }else if(substr($datas['target_month'],5,2) == '01'){
-                        $spreadsheet->getActiveSheet()->getStyle('H' . $column)->applyFromArray($styleArray);
                     }else if(substr($datas['target_month'],5,2) == '02'){
-                        $spreadsheet->getActiveSheet()->getStyle('I' . $column)->applyFromArray($styleArray);
+                        $spreadsheet->getActiveSheet()->getStyle('H' . $column)->applyFromArray($styleArray);
                     }else if(substr($datas['target_month'],5,2) == '03'){
-                        $spreadsheet->getActiveSheet()->getStyle('J' . $column)->applyFromArray($styleArray);
+                        $spreadsheet->getActiveSheet()->getStyle('I' . $column)->applyFromArray($styleArray);
                     }else if(substr($datas['target_month'],5,2) == '04'){
-                        $spreadsheet->getActiveSheet()->getStyle('K' . $column)->applyFromArray($styleArray);
+                        $spreadsheet->getActiveSheet()->getStyle('J' . $column)->applyFromArray($styleArray);
                     }else if(substr($datas['target_month'],5,2) == '05'){
-                        $spreadsheet->getActiveSheet()->getStyle('L' . $column)->applyFromArray($styleArray);
+                        $spreadsheet->getActiveSheet()->getStyle('K' . $column)->applyFromArray($styleArray);
                     }else if(substr($datas['target_month'],5,2) == '06'){
-                        $spreadsheet->getActiveSheet()->getStyle('M' . $column)->applyFromArray($styleArray);
+                        $spreadsheet->getActiveSheet()->getStyle('L' . $column)->applyFromArray($styleArray);
                     }else if(substr($datas['target_month'],5,2) == '07'){
-                        $spreadsheet->getActiveSheet()->getStyle('N' . $column)->applyFromArray($styleArray);
+                        $spreadsheet->getActiveSheet()->getStyle('M' . $column)->applyFromArray($styleArray);
                     }else if(substr($datas['target_month'],5,2) == '08'){
-                        $spreadsheet->getActiveSheet()->getStyle('O' . $column)->applyFromArray($styleArray);
+                        $spreadsheet->getActiveSheet()->getStyle('N' . $column)->applyFromArray($styleArray);
                     }else if(substr($datas['target_month'],5,2) == '09'){
-                        $spreadsheet->getActiveSheet()->getStyle('P' . $column)->applyFromArray($styleArray);
+                        $spreadsheet->getActiveSheet()->getStyle('O' . $column)->applyFromArray($styleArray);
                     }else if(substr($datas['target_month'],5,2) == '10'){
-                        $spreadsheet->getActiveSheet()->getStyle('Q' . $column)->applyFromArray($styleArray);
+                        $spreadsheet->getActiveSheet()->getStyle('P' . $column)->applyFromArray($styleArray);
                     }else if(substr($datas['target_month'],5,2) == '11'){
-                        $spreadsheet->getActiveSheet()->getStyle('R' . $column)->applyFromArray($styleArray);
+                        $spreadsheet->getActiveSheet()->getStyle('Q' . $column)->applyFromArray($styleArray);
                     }else if(substr($datas['target_month'],5,2) == '12'){
-
+                        $spreadsheet->getActiveSheet()->getStyle('R' . $column)->applyFromArray($styleArray);
                     }
 
                     //set monitoring color
                     if(substr($datas['monitoring_month'],5,2) == '01'){
                         $spreadsheet->getActiveSheet()->getStyle('G' . $column1)->applyFromArray($styleArray1);
-                    }else if(substr($datas['monitoring_month'],5,2) == '01'){
-                        $spreadsheet->getActiveSheet()->getStyle('H' . $column1)->applyFromArray($styleArray1);
                     }else if(substr($datas['monitoring_month'],5,2) == '02'){
-                        $spreadsheet->getActiveSheet()->getStyle('I' . $column1)->applyFromArray($styleArray1);
+                        $spreadsheet->getActiveSheet()->getStyle('H' . $column1)->applyFromArray($styleArray1);
                     }else if(substr($datas['monitoring_month'],5,2) == '03'){
-                        $spreadsheet->getActiveSheet()->getStyle('J' . $column1)->applyFromArray($styleArray1);
+                        $spreadsheet->getActiveSheet()->getStyle('I' . $column1)->applyFromArray($styleArray1);
                     }else if(substr($datas['monitoring_month'],5,2) == '04'){
-                        $spreadsheet->getActiveSheet()->getStyle('K' . $column1)->applyFromArray($styleArray1);
+                        $spreadsheet->getActiveSheet()->getStyle('J' . $column1)->applyFromArray($styleArray1);
                     }else if(substr($datas['monitoring_month'],5,2) == '05'){
-                        $spreadsheet->getActiveSheet()->getStyle('L' . $column1)->applyFromArray($styleArray1);
+                        $spreadsheet->getActiveSheet()->getStyle('K' . $column1)->applyFromArray($styleArray1);
                     }else if(substr($datas['monitoring_month'],5,2) == '06'){
-                        $spreadsheet->getActiveSheet()->getStyle('M' . $column1)->applyFromArray($styleArray1);
+                        $spreadsheet->getActiveSheet()->getStyle('L' . $column1)->applyFromArray($styleArray1);
                     }else if(substr($datas['monitoring_month'],5,2) == '07'){
-                        $spreadsheet->getActiveSheet()->getStyle('N' . $column1)->applyFromArray($styleArray1);
+                        $spreadsheet->getActiveSheet()->getStyle('M' . $column1)->applyFromArray($styleArray1);
                     }else if(substr($datas['monitoring_month'],5,2) == '08'){
-                        $spreadsheet->getActiveSheet()->getStyle('O' . $column1)->applyFromArray($styleArray1);
+                        $spreadsheet->getActiveSheet()->getStyle('N' . $column1)->applyFromArray($styleArray1);
                     }else if(substr($datas['monitoring_month'],5,2) == '09'){
-                        $spreadsheet->getActiveSheet()->getStyle('P' . $column1)->applyFromArray($styleArray1);
+                        $spreadsheet->getActiveSheet()->getStyle('O' . $column1)->applyFromArray($styleArray1);
                     }else if(substr($datas['monitoring_month'],5,2) == '10'){
-                        $spreadsheet->getActiveSheet()->getStyle('Q' . $column1)->applyFromArray($styleArray1);
+                        $spreadsheet->getActiveSheet()->getStyle('P' . $column1)->applyFromArray($styleArray1);
                     }else if(substr($datas['monitoring_month'],5,2) == '11'){
-                        $spreadsheet->getActiveSheet()->getStyle('R' . $column1)->applyFromArray($styleArray1);
+                        $spreadsheet->getActiveSheet()->getStyle('Q' . $column1)->applyFromArray($styleArray1);
                     }else if(substr($datas['monitoring_month'],5,2) == '12'){
-
+                        $spreadsheet->getActiveSheet()->getStyle('R' . $column1)->applyFromArray($styleArray1);
                     }
                 }
             }
@@ -1339,6 +1336,50 @@ class RiskMonitoringController extends BaseController
             $column += 2; //target
             $column1 += 2; //monitoring
         }
+
+        //merge cell risk number and events
+        $count = 7;
+        $temp_count = 0;
+        foreach($data_risk_count as $data) {
+            $a = $temp_count + ($data['count']*2) + 6;
+            // echo 'A'.$count.':A'. $a;
+            // echo '<br/>';
+            $spreadsheet->getActiveSheet()->mergeCells('A'.$count.':A'. $a); 
+            $spreadsheet->getActiveSheet()->mergeCells('B'.$count.':B'. $a); 
+            
+            $count = $a+1;
+            $temp_count = $a - 6;
+        }
+
+        foreach($data_risk_count as $data) {
+            $a = $temp_count + ($data['count']*2) + 6;
+            $spreadsheet->getActiveSheet()->mergeCells('C'.$count.':C'. $a); 
+            
+            $count = $a+1;
+            $temp_count = $a - 6;
+        }
+
+        // merge cell risk mitigations
+        $count = 7;
+        $temp_count = 0;
+        $a = 0;
+        foreach($data_risk_mitigation_count as $data) {
+            // echo 'C'.$count.':C'. $a;
+            // echo '<br/>';
+            $a = $temp_count + ($data['count']*2) + 6;
+            $spreadsheet->getActiveSheet()->mergeCells('C'.$count.':C'. $a); 
+            $count = $a+1;
+            $temp_count = $a - 6;
+        }
+
+        $styleArray = [
+            'font' => [
+                'bold' => true,
+                'color' => array('rgb' => '000000'),
+                'size'  => 14 
+            ] 
+        ];
+        $spreadsheet->getActiveSheet()->getStyle('D2')->applyFromArray($styleArray); 
 
         $writer = new Xls($spreadsheet);
         $fileName = 'Data_Report_Gabungan';

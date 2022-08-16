@@ -51,8 +51,7 @@ class DashboardController extends BaseController
         for($i=0; $i<count($list_division); $i++){
             $temp_target = $this->RiskMitigationModel->get_count_target($list_division[$i]['id'], $year, $month);
             $temp_realisasi = $this->RiskMitigationModel->get_count_monitoring($list_division[$i]['id'], $year, $month);
-            echo $temp_target->target;
-            
+          
             if($temp_target->target != '0'){
                 $percent = $temp_realisasi->realisasi /$temp_target->target * 100;
             }else{

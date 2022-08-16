@@ -19,7 +19,6 @@
                     //risk map after mitigation
                     document.getElementById("target_"+ data[i]['target_td_id']).innerHTML += `<a href="<?=base_url()?>/admin/detail-risk-mitigations/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data[i]['risk_number_manual']}</b></a>` ;             
 
-                    console.log(data[i]['final_level_residual']);
                     //risk map progress mitigation
                     if(data[i]['final_level_residual'] != 0){
                         document.getElementById("residual_"+ data[i]['residual_td_id']).innerHTML += `<a href="<?=base_url()?>/admin/detail-risk-mitigations/${data[i]['id']}" class="badge rounded-pill bg-primary text-white"><b>R${data[i]['risk_number_manual']}</b></a>` ;             

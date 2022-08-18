@@ -843,6 +843,8 @@ class RiskMonitoringController extends BaseController
         $data_monitoring = $this->RiskEventModel->get_data_monitoring($year);
         $data_risk_count = $this->RiskEventModel->get_risk_number_count($year);
         $data_risk_mitigation_count = $this->RiskEventModel->get_risk_mitigation_count($year);
+        $data_output = $this->RiskEventModel->get_output_breakdown($year);
+    
         $spreadsheet = new Spreadsheet();
 
         //column header name
@@ -929,7 +931,6 @@ class RiskMonitoringController extends BaseController
                         ->setCellValue('C' . $column, $data['risk_mitigation'])
                         ->setCellValue('D' . $column, $data['risk_mitigation_detail'])
                         ->setCellValue('E' . $column, $data['name'])
-                        ->setCellValue('F' . $column, $data['output'])
                         ->setCellValue('S' . $column, $data['notes']);
             $spreadsheet->getActiveSheet()->mergeCells('D' . $column. ':D'. $column + 1); 
             $spreadsheet->getActiveSheet()->mergeCells('E' . $column. ':E'. $column + 1); 
@@ -987,6 +988,12 @@ class RiskMonitoringController extends BaseController
                 ]
             ];
 
+            foreach($data_output as $output) {
+                if($data['id_detail_mitigation'] == $output['id_detail_mitigation']){
+                    $spreadsheet->setActiveSheetIndex(0)->setCellValue('F' . $column, $output['output']);
+                }
+            }
+            
             //target
             foreach($data_target as $data1) {
                 if($data['id_detail_mitigation'] == $data1['id_detail_mitigation']){

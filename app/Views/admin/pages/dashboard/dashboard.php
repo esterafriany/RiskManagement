@@ -150,10 +150,6 @@
       </div>
    </div>
 
-   
-
-   
-
    <div class="col-md-12">
       <div class="overflow-hidden card" data-aos="fade-up" data-aos-delay="600">
       <div class="container">
@@ -182,7 +178,7 @@
    </div>
          <div class="card-body">
                <h6 class="mb-2 card-title"><br/>
-               <center>1. Sebelum Mitigasi - Inherent</center>
+               <center>1. Sebelum Mitigasi - Inherent</center><br/>
                </h6> 
 
                <table id="table" name="table" width="100%" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;border-bottom-width: 0px;" onload="insertContent();">
@@ -241,9 +237,10 @@
                      <td colspan="5">Tingkat Dampak</td>
                   </tr>
             </table>
-
+            <br/>
+            <br/> 
             <h6 class="mb-2 card-title">
-               <center>2. Progress Mitigasi</center>
+               <center>2. Progress Mitigasi</center><br/>
             </h6> 
 
             <table id="table" name="table" width="100%" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
@@ -302,9 +299,10 @@
                   <td colspan="5">Tingkat Dampak</td>
                </tr>
          </table>
-
+         <br/>
+         <br/>
             <h6 class="mb-2 card-title">
-               <center>3. Setelah Mitigasi - Residual Risk</center>
+               <center>3. Setelah Mitigasi - Residual Risk</center><br/>
             </h6> 
 
             <table id="table" name="table" width="100%" class="table table-sm" style="border-collapse: inherit;text-align:center;font-size: small;" onload="insertContent();">
@@ -368,7 +366,7 @@
       </div>
    </div>
 
-</div>
+   </div>
 </div>
 <style>
    .table tbody tr td{

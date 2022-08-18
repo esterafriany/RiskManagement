@@ -839,11 +839,11 @@ class RiskMonitoringController extends BaseController
 
     public function onDownloadReportExcelBreakdown($year){
         $datas = $this->RiskEventModel->get_data_report($year);
+        $data_output = $this->RiskEventModel->get_output_breakdown($year);
         $data_target = $this->RiskEventModel->get_data_target($year);
         $data_monitoring = $this->RiskEventModel->get_data_monitoring($year);
         $data_risk_count = $this->RiskEventModel->get_risk_number_count($year);
         $data_risk_mitigation_count = $this->RiskEventModel->get_risk_mitigation_count($year);
-        $data_output = $this->RiskEventModel->get_output_breakdown($year);
     
         $spreadsheet = new Spreadsheet();
 
@@ -1063,10 +1063,10 @@ class RiskMonitoringController extends BaseController
         //merge cell risk number and events
         $count = 7;
         $temp_count = 0;
+
         foreach($data_risk_count as $data) {
             $a = $temp_count + ($data['count']*2) + 6;
-            // echo 'A'.$count.':A'. $a;
-            // echo '<br/>';
+            
             $spreadsheet->getActiveSheet()->mergeCells('A'.$count.':A'. $a); 
             $spreadsheet->getActiveSheet()->mergeCells('B'.$count.':B'. $a); 
             
@@ -1086,6 +1086,7 @@ class RiskMonitoringController extends BaseController
         $count = 7;
         $temp_count = 0;
         $a = 0;
+
         foreach($data_risk_mitigation_count as $data) {
             $a = $temp_count + ($data['count']*2) + 6;
             $spreadsheet->getActiveSheet()->mergeCells('C'.$count.':C'. $a); 
@@ -1129,7 +1130,8 @@ class RiskMonitoringController extends BaseController
         $data2 = $this->RiskEventModel->get_data_report_gabungan_2($year);
         $data_risk_count = $this->RiskEventModel->get_risk_number_count_gabungan($year);
         $data_risk_mitigation_count = $this->RiskEventModel->get_risk_mitigation_count_gabungan($year);
-
+        $data_divisions = $this->RiskEventModel->get_division_gabungan($year);
+       
         $spreadsheet = new Spreadsheet();
         //column header name
         $spreadsheet->setActiveSheetIndex(0)
@@ -1274,15 +1276,20 @@ class RiskMonitoringController extends BaseController
                         ->setCellValue('B' . $column, $data['risk_event'])
                         ->setCellValue('C' . $column, $data['risk_mitigation'])
                         ->setCellValue('D' . $column, $data['risk_mitigation_detail'])
-                        ->setCellValue('E' . $column, $data['division'])
                         ->setCellValue('S' . $column, $data['notes']);
             $spreadsheet->getActiveSheet()->mergeCells('D' . $column. ':D'. $column + 1); 
             $spreadsheet->getActiveSheet()->mergeCells('E' . $column. ':E'. $column + 1); 
             $spreadsheet->getActiveSheet()->mergeCells('F' . $column. ':F'. $column + 1);
             
+            foreach($data_divisions as $division) {
+               
+                if($data['id_detail_mitigation'] == $division['id_detail_mitigation']){
+                    $spreadsheet->setActiveSheetIndex(0)->setCellValue('E' . $column, $division['division']);
+                }
+            }
+
             foreach($data1 as $datas) {
                 if($data['id_detail_mitigation'] == $datas['id_detail_mitigation']){
-
                     $spreadsheet->setActiveSheetIndex(0)->setCellValue('F' . $column, $datas['output']);
                     //set target color
                     if(substr($datas['target_month'],5,2) == '01'){
@@ -1347,20 +1354,12 @@ class RiskMonitoringController extends BaseController
         //merge cell risk number and events
         $count = 7;
         $temp_count = 0;
-        foreach($data_risk_count as $data) {
-            $a = $temp_count + ($data['count']*2) + 6;
-            // echo 'A'.$count.':A'. $a;
-            // echo '<br/>';
-            $spreadsheet->getActiveSheet()->mergeCells('A'.$count.':A'. $a); 
-            $spreadsheet->getActiveSheet()->mergeCells('B'.$count.':B'. $a); 
-            
-            $count = $a+1;
-            $temp_count = $a - 6;
-        }
 
         foreach($data_risk_count as $data) {
             $a = $temp_count + ($data['count']*2) + 6;
-            $spreadsheet->getActiveSheet()->mergeCells('C'.$count.':C'. $a); 
+            
+            $spreadsheet->getActiveSheet()->mergeCells('A'.$count.':A'. $a); 
+            $spreadsheet->getActiveSheet()->mergeCells('B'.$count.':B'. $a); 
             
             $count = $a+1;
             $temp_count = $a - 6;
@@ -1370,9 +1369,8 @@ class RiskMonitoringController extends BaseController
         $count = 7;
         $temp_count = 0;
         $a = 0;
+        //dd($data_risk_mitigation_count);
         foreach($data_risk_mitigation_count as $data) {
-            // echo 'C'.$count.':C'. $a;
-            // echo '<br/>';
             $a = $temp_count + ($data['count']*2) + 6;
             $spreadsheet->getActiveSheet()->mergeCells('C'.$count.':C'. $a); 
             $count = $a+1;

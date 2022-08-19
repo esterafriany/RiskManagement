@@ -10,10 +10,11 @@
                </div>
             </div>
             <?php
-                           $this->session = \Config\Services::session();
-                           $this->session->start(); 
-                        ?>
-                        <input type="hidden" id="id_division" name="id_division" value="<?=$this->session->get("id_division")?>">
+               $this->session = \Config\Services::session();
+               $this->session->start(); 
+            ?>
+
+            <input type="hidden" id="id_division" name="id_division" value="<?=$this->session->get("id_division")?>">
       </div>
    </div>
       <div class="iq-header-img">
@@ -83,44 +84,21 @@
          </div>
       </div>
    </div> -->
-
-   <div class="container">
-      <nav class="rounded nav navbar navbar-expand-lg navbar-light top-1">
-            <div class="container-fluid">
-               <h5><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/></svg>
-               &nbsp;Monitoring Risiko Bulan <?=$month_name?></h5>
-               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-2" aria-controls="navbar-2" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbar-2">
-                  <ul class="mb-2 navbar-nav ms-auto mb-lg-0 d-flex align-items-start">
-                        <li class="nav-item">
-                           <a class="nav-link" aria-current="page" target="_blank">Bulan</a>
-                        </li>
-                        <li class="nav-item">
-                        <select class="form-control form-select" id="month" name="month" onchange="update_matrix()">
-                           <option value="01">Januari</option>
-                           <option value="02">Februari</option>
-                           <option value="03">Maret</option>
-                           <option value="04">April</option>
-                           <option value="05">Mei</option>
-                           <option value="06" selected>Juni</option>
-                           <option value="07">Juli</option>
-                           <option value="08">Agustus</option>
-                           <option value="09">September</option>
-                           <option value="10">Oktober</option>
-                           <option value="11">November</option>
-                           <option value="12">Desember</option>
-                        </select>
-                        </li>
-                  </ul>
+   <div class="overflow-hidden d-slider">
+      <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
+         <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="700">
+            <div class="card-body">
+               <div class="progress-widget">
+               <h5><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/></svg>
+               <h4 class="counter">&nbsp;Monitoring Risiko Bulan <?=$month_name?></h4>
+               
                </div>
             </div>
-      </nav>
-   </div>
+         </li>
+      </ul>
    </div>
 
-   <br/></br>
+   </div>
 
    <div class="col-md-12 col-lg-12">
       <div class="row row-cols-1">
@@ -178,8 +156,19 @@
                         </li>
                         <li class="nav-item">
                         <select class="form-control form-select" id="year" name="year" onchange="update_matrix()">
-                           <option value="2021">2021</option>
-                           <option value="2022" selected>2022</option>
+                        <?php
+
+                        $current_year = (int)date('Y');
+
+                        for($i=2021;$i<=$current_year;$i++){ 
+                           if($i == $current_year){ ?>
+                              <option value="<?=$i?>" selected><?=$i?></option>
+                           <?php }else{ ?>
+                              <option value="<?=$i?>"><?=$i?></option>
+                           <?php }?>
+                        <?php } ?>   
+
+                       
                         </select>
                         </li>
                   </ul>

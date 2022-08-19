@@ -93,7 +93,7 @@
 	});
 
 	function update_risk_table(){
-        year_selected = document.getElementById('year_selected').value;
+        year = document.getElementById('year_selected').value;
         
 		if ( $.fn.dataTable.isDataTable('#riskEventsTable') ) {
 			$('#riskEventsTable').DataTable().destroy();
@@ -112,7 +112,7 @@
 				zeroRecords: "Tidak ada Data Risiko Utama ditemukan.",
 			},
 			'ajax': {
-				'url': "<?=site_url('RiskEventController/getRiskEvent/')?>" + year_selected,
+				'url': "<?=site_url('RiskEventController/getRiskEvent/')?>" + year,
 				'data': function(data) {
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
@@ -126,7 +126,6 @@
 				dataSrc: function(data) {
 					// Update token hash
 					$('.txt_csrfname').val(data.token);
-
 					// Datatable data
 					return data.aaData;
 				}

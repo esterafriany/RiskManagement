@@ -60,6 +60,7 @@ class RiskEventController extends BaseController
 
         ## Total number of records without filtering
         $totalRecords = $this->RiskEventModel->select('id')
+                ->where('year' , $year)
                 ->countAllResults();
 
         ## Total number of records with filtering
@@ -72,10 +73,18 @@ class RiskEventController extends BaseController
 
         $records = $this->RiskEventModel
                 ->join('kpis', 'kpis.id = risk_events.id_kpi')
-                ->select('risk_events.id as id, risk_events.objective, risk_events.risk_number_manual, kpis.name as kpi_name, risk_number,  risk_number_residual, risk_event, risk_events.is_active, risk_events.year')
+                ->select('risk_events.id as id
+                , risk_events.objective
+                , risk_events.risk_number_manual
+                , kpis.name as kpi_name
+                , risk_number
+                ,  risk_number_residual
+                , risk_event
+                , risk_events.is_active
+                , risk_events.year')
                 ->orLike('risk_events.risk_event', $searchValue)
-                ->orLike('risk_events.objective', $searchValue)
-                ->orLike('kpis.name', $searchValue)
+                // ->orLike('risk_events.objective', $searchValue)
+                // ->orLike('kpis.name', $searchValue)
                 ->where('risk_events.year' , $year)
                 //->orderBy('risk_events.risk_number_manual')
                 ->orderBy($columnName,$columnSortOrder)

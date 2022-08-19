@@ -151,26 +151,22 @@
                </button>
                <div class="collapse navbar-collapse" id="navbar-2">
                   <ul class="mb-2 navbar-nav ms-auto mb-lg-0 d-flex align-items-start">
-                        <li class="nav-item">
-                           <a class="nav-link" aria-current="page" target="_blank">Tahun</a>
-                        </li>
-                        <li class="nav-item">
+                     <li class="nav-item">
+                        <a class="nav-link" aria-current="page" target="_blank">Tahun</a>
+                     </li>
+                     <li class="nav-item">
                         <select class="form-control form-select" id="year" name="year" onchange="update_matrix()">
-                        <?php
-
-                        $current_year = (int)date('Y');
-
-                        for($i=2021;$i<=$current_year;$i++){ 
-                           if($i == $current_year){ ?>
-                              <option value="<?=$i?>" selected><?=$i?></option>
-                           <?php }else{ ?>
-                              <option value="<?=$i?>"><?=$i?></option>
-                           <?php }?>
-                        <?php } ?>   
-
-                       
+                           <?php
+                              $current_year = (int)date('Y');
+                              for($i=2021;$i<=$current_year;$i++){ 
+                                 if($i == $current_year){ ?>
+                                    <option value="<?=$i?>" selected><?=$i?></option>
+                                 <?php }else{ ?>
+                                    <option value="<?=$i?>"><?=$i?></option>
+                                 <?php }
+                           } ?> 
                         </select>
-                        </li>
+                     </li>
                   </ul>
                </div>
             </div>

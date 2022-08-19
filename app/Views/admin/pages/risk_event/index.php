@@ -11,8 +11,15 @@
                      &nbsp;
                      <div class="dropdown">
                         <select class="form-control form-select" id="year_selected" name="year_selected" onchange="update_risk_table()">
-                           <option value="2021">2021</option>
-                           <option value="2022" selected>2022</option>
+                        <?php
+                           $current_year = (int)date('Y');
+                           for($i=2021;$i<=$current_year;$i++){ 
+                              if($i == $current_year){ ?>
+                                 <option value="<?=$i?>" selected><?=$i?></option>
+                              <?php }else{ ?>
+                                 <option value="<?=$i?>"><?=$i?></option>
+                              <?php }?>
+                           <?php } ?> 
                         </select>
                      </div>
                      &nbsp;&nbsp;

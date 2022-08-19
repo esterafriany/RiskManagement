@@ -20,7 +20,6 @@
 			'ajax': {
 				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoring')?>/" + year,
 				'data': function(data) {
-					console.log(data);
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
 					var csrfHash = $('.txt_csrfname').val(); // CSRF hash
@@ -89,16 +88,15 @@
 	});
 
 	function update_risk_table(){
-        year_selected = document.getElementById('year_selected').value;
+        year = document.getElementById('year_selected').value;
         
 		if ( $.fn.dataTable.isDataTable('#riskMonitoringTable') ) {
 			$('#riskMonitoringTable').DataTable().destroy();
-			$('#riskMitigationTable').empty();
 		}
 		
 		$('#riskMonitoringTable').DataTable({
-			scrollX: 				true,
-			paging: 				true,
+			scrollX: true,
+			paging: true,
 			'processing': true,
 			'serverSide': true,
 			'serverMethod': 'post',
@@ -109,9 +107,8 @@
 				zeroRecords: "Tidak ada Data Risiko ditemukan.",
 			},
 			'ajax': {
-				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoring')?>/" + year_selected,
+				'url': "<?=site_url('RiskMonitoringController/getRiskMonitoring')?>/" + year,
 				'data': function(data) {
-					console.log(data);
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
 					var csrfHash = $('.txt_csrfname').val(); // CSRF hash
@@ -125,7 +122,7 @@
 
 					// Update token hash
 					$('.txt_csrfname').val(data.token);
-
+					console.log(data.aaData);
 					// Datatable data
 					return data.aaData;
 				}
@@ -136,20 +133,19 @@
 				},
 				{
 					data: 'risk_mitigation',
-					// render: function (data, type, item) {
-					// 	if(item.risk_mitigation != null){
-					// 		return item.risk_mitigation;
-					// 	}else{
-					// 		return '';
-					// 	}
-					// },
+					render: function (data, type, item) {
+						if(item.risk_mitigation != null){
+							return "<div class='text-wrap width-200'>" + item.risk_mitigation + "</div>";
+						}else{
+							return '';
+						}
+					},
 				},
 				{
 					data: 'risk_mitigation_detail',
 					render: function (data, type, item) {
 						if(item.risk_mitigation_detail != null){
-							return '<a href="<?=base_url()?>/admin/detail-risk-monitoring/'+item.id+'">'+item.risk_mitigation_detail+'</a>';
-
+							return '<a class="text-wrap width-200" href="<?=base_url()?>/admin/detail-risk-monitoring/'+item.id+'/'+item.id_risk_mitigation+'/'+item.id_risk_event+'">'+item.risk_mitigation_detail+'</a>';
 						}else{
 							return '-';
 						}
@@ -179,7 +175,14 @@
             ]
 		});
 
-
+		$('.toggle-vis').on( 'change', function (e) {
+			e.preventDefault();
+			// Get the column API object
+			var column = $('#riskMonitoringTable').DataTable().column( $(this).attr('data-column') );
+			//var column = table.column( $(this).attr('data-column') );
+			// Toggle the visibility
+			column.visible( ! column.visible() );
+		});
     }
 
 </script>

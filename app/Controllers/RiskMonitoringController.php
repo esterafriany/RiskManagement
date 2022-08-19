@@ -128,11 +128,10 @@ class RiskMonitoringController extends BaseController
                         , divisions.name as division_name
                         , progress_percentage')
                     ->orLike('risk_events.risk_event', $searchValue)
-                    ->orLike('risk_mitigations.risk_mitigation', $searchValue)
-                    ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
-                    ->orLike('divisions.name', $searchValue)
+                    // ->orLike('risk_mitigation', $searchValue)
+                    // ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
+                    // ->orLike('divisions.name', $searchValue)
                     ->where('risk_events.year' , $year)
-                    //->groupBy('risk_mitigation_details.risk_mitigation_detail, id_risk_mitigation')
                     ->orderBy($columnName,$columnSortOrder)
                     ->findAll($rowperpage, $start);
 

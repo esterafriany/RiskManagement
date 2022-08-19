@@ -206,28 +206,28 @@
 	}
 
 	function update_risk_table(){
-        year_selected = document.getElementById('year_selected').value;
+        year = document.getElementById('year_selected').value;
 		if ( $.fn.dataTable.isDataTable('#riskEventTable') ) {
 			$('#riskEventTable').DataTable().destroy();
-			$('#riskEventTable').empty();
 		}
-		
-		//table = $('#riskEventTable').DataTable({
+
 		$('#riskEventTable').DataTable({
-			'fixedColumns': true,
+			scrollX: 	true,
+			scrollCollapse: true,
+			scroller:       true,
 			'processing': true,
 			'serverSide': true,
 			'serverMethod': 'post',
 			lengthMenu: [5, 10, 20, 50, 100],
 			"iDisplayLength": 5,
+			order: [[2, 'asc']],
 			language: {
 				emptyTable: "Belum ada Risiko Utama.",
 				zeroRecords: "Tidak ada Data Risiko Utama ditemukan.",
 			},
 			'ajax': {
-				'url': "<?=site_url('RiskEventController/getRiskEvent/')?>" + year_selected,
+				'url': "<?=site_url('RiskEventController/getRiskEvent/')?>" + year,
 				'data': function(data) {
-					
 					// CSRF Hash
 					var csrfName = $('.txt_csrfname').attr('name'); // CSRF Token name
 					var csrfHash = $('.txt_csrfname').val(); // CSRF hash
@@ -240,39 +240,31 @@
 				dataSrc: function(data) {
 					// Update token hash
 					$('.txt_csrfname').val(data.token);
-
 					// Datatable data
 					return data.aaData;
 				}
 			},
 			'columns': [
 				{
-					title: "Sasaran",
 					data: 'objective'
 				},
 				{
-					title: "KPI",
 					data: 'kpi_name'
 				},
 				{
-					title: "Nomor Risiko",
 					data: 'risk_number_manual',
 					render: function (data, type, item) {
 						return 'R'+item.risk_number_manual;
 					},
-					
 				},
 				{
-					title: "Risiko Utama",
 					data: 'risk_event'
 				},
 				
 				{
-					title: "Tahun",
 					data: 'year'
 				},
 				{
-					title: "Aksi",
 					data: 'is_active',
 					render: function (data, type, item) {
 						return '<div class="flex align-items-center list-user-action">'+
@@ -295,7 +287,7 @@
 					},
 				},
 			],
-			columnDefs: [
+            columnDefs: [
                 {
                     render: function (data, type, full, meta) {
                         return "<div class='text-wrap width-200'>" + data + "</div>";
@@ -303,17 +295,20 @@
                     targets: [0,1,3]
                 }
             ]
+			
 		});
+
 
 
 		$('.toggle-vis').on( 'change', function (e) {
 			e.preventDefault();
 			// Get the column API object
 			var column = $('#riskEventTable').DataTable().column( $(this).attr('data-column') );
-			//var column = table.column( $(this).attr('data-column') );
+	
 			// Toggle the visibility
 			column.visible( ! column.visible() );
 		});
+
     }
 	
 </script>

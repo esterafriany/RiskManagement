@@ -8,21 +8,18 @@
                </div>
                <div class="d-flex align-items-center flex-wrap">
                   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><rect width="416" height="384" x="48" y="80" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" rx="48"/><circle cx="296" cy="232" r="24" fill="currentColor"/><circle cx="376" cy="232" r="24" fill="currentColor"/><circle cx="296" cy="312" r="24" fill="currentColor"/><circle cx="376" cy="312" r="24" fill="currentColor"/><circle cx="136" cy="312" r="24" fill="currentColor"/><circle cx="216" cy="312" r="24" fill="currentColor"/><circle cx="136" cy="392" r="24" fill="currentColor"/><circle cx="216" cy="392" r="24" fill="currentColor"/><circle cx="296" cy="392" r="24" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M128 48v32m256-32v32"/><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" d="M464 160H48"/></svg>
-                     &nbsp;
                   <div class="dropdown">
-                  
-                  <select class="form-control form-select" id="year_selected" name="year_selected" onchange="update_risk_table()">
-                     <?php
-                        $current_year = (int)date('Y');
-                        for($i=2021;$i<=$current_year;$i++){ 
-                           if($i == $current_year){ ?>
-                              <option value="<?=$i?>" selected><?=$i?></option>
-                           <?php }else{ ?>
-                              <option value="<?=$i?>"><?=$i?></option>
-                           <?php }?>
-                        <?php } ?> 
+                     <select class="form-control form-select" id="year_selected" name="year_selected" onchange="update_risk_table()">
+                        <?php
+                           $current_year = (int)date('Y');
+                           for($i=2021;$i<=$current_year;$i++){ 
+                              if($i == $current_year){ ?>
+                                 <option value="<?=$i?>" selected><?=$i?></option>
+                              <?php }else{ ?>
+                                 <option value="<?=$i?>"><?=$i?></option>
+                              <?php }?>
+                           <?php } ?> 
                      </select>
-
                   </div>
                </div>
 			   </div>

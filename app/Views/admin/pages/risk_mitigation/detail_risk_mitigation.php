@@ -37,7 +37,7 @@
                                             </tr>
                                         </thead> 
                                     </table>
-                                    </div>
+                                </div>
                             </div>
                         </li>
                     </ul>

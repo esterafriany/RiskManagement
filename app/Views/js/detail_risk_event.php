@@ -155,19 +155,28 @@
 
 		$("#add-more-cause").click(function () {
 			$("#riskCauseList").last().append(
-				`<table width="100%" id="riskCauseTable"><tr><tr><td>${cause_number}.</td><td><input type="text" name="risk_cause[]" value="" class="form-control" placeholder="Masukkan Penyebab Risiko">
-				</td><td><button type="button" name="remove" id="" class="btn btn-outline-primary btn-sm remove" ><i class="fas fa-trash-alt"></i></button></td></tr></table>`
+				
+				`
+				<table width="100%" id="riskCauseTable">
+			
+				<tr>
+					<td width="30px">${cause_number}.</td>
+						<td width="90%"><input type="text" name="risk_cause[]" value="" class="form-control" placeholder="Masukkan Penyebab Risiko">
+					</td>
+					<td><button type="button" name="remove" id="" class="btn btn-outline-primary btn-sm remove" ><i class="fas fa-trash-alt"></i></button>
+					</td>
+				</tr>
+				</table>`
 				
 			);
 			cause_number++;
 		});
 
 		$("#add-more-mitigation").click(function () {
-			
 			$("#riskMitigationList").last().append(
 				`<table width="100%">
 					<tr>
-						<td>${mitigation_number}.</td>
+						<td width="30px">${mitigation_number}.</td>
 						<td width="50%">
 							<input type="text" name="risk_mitigation[]" value="" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 							<input type="hidden" name="risk_mitigation_id[]" value="" class="form-control" >
@@ -176,6 +185,7 @@
 						<td>
 							<input type="hidden" id="selectedID-${y}" name="assignment_division[]">
 							<select onchange="show(${y})" id="division-${y}" multiple="multiple" name="assignment_division[]" class="form-control">
+							
 							</select>
 						</td>
 						<td>

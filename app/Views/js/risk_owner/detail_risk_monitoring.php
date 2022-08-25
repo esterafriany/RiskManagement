@@ -22,14 +22,15 @@
 				var count = result.length;
 				
 				for(i = 0; i < count; i++){
-					penampung += `<table width="100%"><tr>
-						<td width="30px">${cause_number}.</td>
-						</td>
-						<td width="95%">${result[i]['risk_cause']}
-							</td>
-						</tr></table>`;
-					
-						cause_number++;
+					penampung += `<table width="100%">
+										<tr>
+											<td width="2%" valign="top">${cause_number}.</td>
+											<td width="95%">
+												<div class='text-wrap width-200'>${result[i]['risk_cause']}</div>
+											</td>
+										</tr>
+									</table>`;
+					cause_number++;
 				}
 				
 				document.getElementById("riskCauseList").innerHTML = penampung;
@@ -57,7 +58,7 @@
 				for(i = 0; i < count1; i++){
 					penampung += `<table width="100%">
 						<tr>
-							<td width="30px" valign="top">${mitigation_number}.</td>
+							<td width="30px">${mitigation_number}.</td>
 							<td width="80%">
 								<div class='text-wrap width-200'>
 									${result['risk_mitigation_list'][i]['risk_mitigation']}
@@ -97,7 +98,6 @@
 				`<table width="100%">
 					<tr>
 						<td>${mitigation_number}.</td>
-
 						<td width="100%">
 							<input type="text" name="risk_mitigation[]" value="" class="form-control" placeholder="Masukkan Mitigasi Risiko">
 							<input type="hidden" name="risk_mitigation_division_id[]" value="" class="form-control" placeholder="Masukkan Mitigasi Risiko">

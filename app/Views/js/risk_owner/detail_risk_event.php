@@ -190,7 +190,7 @@
 										
 								</td>
 								<td>
-									<button type="button" id="" class="btn btn-outline-danger btn-sm remove1" name="remove1" ><i class="fas fa-trash-alt"></i></button>
+									<button type="button" id="" class="btn btn-outline-primary btn-sm remove1" name="remove1" ><i class="fas fa-trash-alt"></i></button>
 								</td>
 							</tr>
 						</table>`);

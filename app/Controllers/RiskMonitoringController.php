@@ -85,12 +85,11 @@ class RiskMonitoringController extends BaseController
                                     , risk_mitigation_details.risk_mitigation_detail
                                     , divisions.name as division_name
                                     , progress_percentage')
-                                ->orLike('risk_events.risk_event', $searchValue)
-                                ->orLike('risk_mitigations.risk_mitigation', $searchValue)
-                                ->orLike('divisions.name', $searchValue)
-                                ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
+                                // ->orLike('risk_events.risk_event', $searchValue)
+                                // ->orLike('risk_mitigations.risk_mitigation', $searchValue)
+                                // ->orLike('divisions.name', $searchValue)
+                                // ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
                                 ->where('risk_events.year' , $year)
-                                //->groupBy('risk_mitigation_details.risk_mitigation_detail')
                                 ->countAllResults();
 
         ## Total number of records with filtering
@@ -109,9 +108,7 @@ class RiskMonitoringController extends BaseController
                                 ->orLike('risk_events.risk_event', $searchValue)
                                 ->orLike('risk_mitigations.risk_mitigation', $searchValue)
                                 ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
-                                ->orLike('divisions.name', $searchValue)
                                 ->where('risk_events.year' , $year)
-                                //->groupBy('risk_mitigation_details.risk_mitigation_detail')
                                 ->countAllResults();
 
         ## Fetch records
@@ -128,9 +125,8 @@ class RiskMonitoringController extends BaseController
                         , divisions.name as division_name
                         , progress_percentage')
                     ->orLike('risk_events.risk_event', $searchValue)
-                    // ->orLike('risk_mitigation', $searchValue)
-                    // ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
-                    // ->orLike('divisions.name', $searchValue)
+                    ->orLike('risk_mitigation', $searchValue)
+                    ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
                     ->where('risk_events.year' , $year)
                     ->orderBy($columnName,$columnSortOrder)
                     ->findAll($rowperpage, $start);
@@ -164,7 +160,6 @@ class RiskMonitoringController extends BaseController
     }
 
     public function getRiskMonitoringByRiskOwner($year){
-        
         $request = service('request');
         $postData = $request->getPost();
         $dtpostData = $postData['data'];
@@ -179,6 +174,8 @@ class RiskMonitoringController extends BaseController
         $columnSortOrder = $dtpostData['order'][0]['dir']; // asc or desc
         $searchValue = $dtpostData['search']['value']; // Search value
 
+
+
         ## Total number of records without filtering
         $totalRecords = $this->RiskEventModel
                                 ->join('risk_mitigations', 'risk_events.id = risk_mitigations.id_risk_event')
@@ -192,12 +189,11 @@ class RiskMonitoringController extends BaseController
                                     , risk_mitigation_details.risk_mitigation_detail
                                     , divisions.name as division_name
                                     , progress_percentage')
-                                ->orLike('risk_events.risk_event', $searchValue)
-                                ->orLike('risk_mitigations.risk_mitigation', $searchValue)
-                                ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
-                                ->orLike('divisions.name', $searchValue)
+                                // ->orLike('risk_events.risk_event', $searchValue)
+                                // ->orLike('risk_mitigations.risk_mitigation', $searchValue)
+                                // ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
+                                // ->orLike('divisions.name', $searchValue)
                                 ->where('risk_events.year' , $year)
-                                //->groupBy('risk_mitigation_details.risk_mitigation_detail')
                                 ->countAllResults();
 
         ## Total number of records with filtering
@@ -218,7 +214,6 @@ class RiskMonitoringController extends BaseController
                                 ->orLike('divisions.name', $searchValue)
                                 ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
                                 ->where('risk_events.year' , $year)
-                                //->groupBy('risk_mitigation_details.risk_mitigation_detail')
                                 ->countAllResults();
 
         ## Fetch records
@@ -233,13 +228,13 @@ class RiskMonitoringController extends BaseController
                         , risk_mitigation_details.id
                         , risk_mitigation_details.risk_mitigation_detail
                         , divisions.name as division_name
+                        , divisions.id as id_division
                         , progress_percentage')
                     ->orLike('risk_events.risk_event', $searchValue)
                     ->orLike('risk_mitigations.risk_mitigation', $searchValue)
                     ->orLike('divisions.name', $searchValue)
                     ->orLike('risk_mitigation_details.risk_mitigation_detail', $searchValue)
                     ->where('risk_events.year' , $year)
-                    //->groupBy('risk_mitigation_details.risk_mitigation_detail')
                     ->orderBy($columnName,$columnSortOrder)
                     ->findAll($rowperpage, $start);
 
@@ -254,8 +249,8 @@ class RiskMonitoringController extends BaseController
                 "risk_mitigation"=>$record['risk_mitigation'],
                 "risk_mitigation_detail"=>$record['risk_mitigation_detail'],
                 "division_name"=>$record['division_name'],
+                "id_division"=>$record['id_division'],
                 "progress_percentage"=>$record['progress_percentage'],
-                
             ); 
         }
     

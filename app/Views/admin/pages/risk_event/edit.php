@@ -336,7 +336,6 @@
                                 </li>
                                 <li class="list-group-item">
                                     <div id="riskCauseList">
-                    
                                     </div><br/>
                                     <button type="button" class="btn btn-outline-primary btn-sm" id="add-more-cause"><i class="fas fa-plus-circle"></i> Tambah Risiko</button>
                                 

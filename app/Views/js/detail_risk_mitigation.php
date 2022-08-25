@@ -18,6 +18,9 @@
 		let y = 0;
 		
 		$('#riskDetailMitigationTable').DataTable({
+			scrollX: 	true,
+			scrollCollapse: true,
+			scroller:       true,
 			'processing': true,
 			'serverSide': true,
 			'serverMethod': 'post',

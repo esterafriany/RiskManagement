@@ -17,13 +17,11 @@
 			{
 				var penampung = "";
 				var count = result.length;
-				
 				for(i = 0; i < count; i++){
-					
 					penampung += `<table width="100%">
 						<tr>
-							<td width="30px">${cause_number}.</td>
-							<td width="95%">${result[i]['risk_cause']}
+							<td width="2%" valign="top">${cause_number}.</td>
+							<td width="95%"><div class='text-wrap width-200'>${result[i]['risk_cause']}</div>
 							</td>
 						</tr></table>`;
 						cause_number++;
@@ -52,24 +50,31 @@
 				var count = result.length;
 				
 				for(i = 0; i < count1; i++){
-					penampung += `<table width="100%" class="table">
+					penampung += `
+					
+					<table width="100%">
 						<tr>
-						<td width="30px">${mitigation_number}.</td>
-							<td style="white-space:normal;width:300px"  >
-								${result['risk_mitigation_list'][i]['risk_mitigation']}
-								<input type="hidden" name="risk_mitigation_id[]" value="${result['risk_mitigation_list'][i]['id']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
-							</td>
-							<td>Assign To: </td>
-							<td>
-							<input type="hidden" id="selectedID-${i}" name="assignment_division[]">
-								<select onChange="show(${i})" id="division-${i}" multiple="multiple" class="form-control">
-								</select>
-							</td>
-							<td>
-								<a href="<?=base_url()?>/admin/detail-risk-mitigation/${result['risk_mitigation_list'][i]['id']}/${id_risk_event}" type="button" id="" class="btn btn-outline-success btn-sm"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="currentColor" d="M64 384h384v-42.67H64Zm0-106.67h384v-42.66H64ZM64 128v42.67h384V128Z"/></svg> Detail Mitigasi</a>
-							</td>
+							<div class="col-md-12 col-lg-12">
+								<div class="row row-cols-1">
+									<td width="30px" valign="top">${mitigation_number}.</td>
+									<td style="white-space:normal;width:300px"  valign="top">
+										${result['risk_mitigation_list'][i]['risk_mitigation']}
+										<input type="hidden" name="risk_mitigation_id[]" value="${result['risk_mitigation_list'][i]['id']}" class="form-control" placeholder="Masukkan Mitigasi Risiko">
+									</td>
+									<td valign="top"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="currentColor" d="m190.06 414l163.12-139.78a24 24 0 0 0 0-36.44L190.06 98c-15.57-13.34-39.62-2.28-39.62 18.22v279.6c0 20.5 24.05 31.56 39.62 18.18Z"/></svg></td>
+									<td valign="top">
+									<input type="hidden" id="selectedID-${i}" name="assignment_division[]">
+										<select onChange="show(${i})" id="division-${i}" multiple="multiple" class="form-control">
+										</select>
+									</td>
+									<td valign="top">
+										<a href="<?=base_url()?>/admin/detail-risk-mitigation/${result['risk_mitigation_list'][i]['id']}/${id_risk_event}" type="button" id="" class="btn btn-outline-success btn-sm"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="currentColor" d="M64 384h384v-42.67H64Zm0-106.67h384v-42.66H64ZM64 128v42.67h384V128Z"/></svg> Detail Mitigasi</a>
+									</td>
+								</div>
+							</div>
 						</tr>
-						</table>`;
+						</table>
+						`;
 					id_risk_mitigation.push(result['risk_mitigation_list'][i]['id']);
 					mitigation_number++;
 				}

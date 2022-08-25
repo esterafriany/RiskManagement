@@ -57,6 +57,7 @@
                     
                 </div>
                 <br/>
+
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
@@ -66,14 +67,13 @@
                                 </li>
                                 <li class="list-group-item">
                                     <div id="riskCauseList">
-                    
-                                    </div><br/>
-                                  
+                                    </div>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col">
                         <div class="form-group">

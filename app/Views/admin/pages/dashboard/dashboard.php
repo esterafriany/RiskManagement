@@ -16,8 +16,7 @@
          <img src="../assets/images/dashboard/top-header1.png" alt="header" class="theme-color-purple-img img-fluid w-100 h-100 animated-scaleX">
          <img src="../assets/images/dashboard/top-header2.png" alt="header" class="theme-color-blue-img img-fluid w-100 h-100 animated-scaleX">
          </div>
-   </div>          <!-- Nav Header Component End -->
-<!--Nav End-->
+   </div>
 </div>
 
 <div class="conatiner-fluid content-inner mt-n5 py-0">

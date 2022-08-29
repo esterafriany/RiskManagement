@@ -22,6 +22,7 @@ use App\Models\KPIs;
 
 class RiskMonitoringController extends BaseController
 {
+
     function __construct(){
         helper(['form', 'url', 'filesystem','download']);
         $this->RiskEventModel = new RiskEvents();
@@ -335,7 +336,7 @@ class RiskMonitoringController extends BaseController
                     ];
                     $this->RiskMitigationDetailOutputModel->insert($data_output);
                 }
-            
+
                 $target = $this->request->getPost('target[]');
                 $notes = $this->request->getPost('notes[]');
                 
@@ -517,6 +518,12 @@ class RiskMonitoringController extends BaseController
                 //$this->RiskMitigationDetailMonitoringModel->delete_null_target_monitoring();
                 //delete data
 
+                //last update date
+                // $data=[
+                //     'updated_at' => date("Y-m-d"),
+                // ];
+                // $this->RiskMitigationDetailModel->update($id_detail_mitigation,$data);
+                
                 return redirect()->back()->with('state_message', 'success');
             }catch (\Exception $e) {
                 return redirect()->back()->with('state_message', 'error');
@@ -685,97 +692,15 @@ class RiskMonitoringController extends BaseController
                 $this->RiskMitigationDetailMonitoringModel->delete_null_target_monitoring();
             //delete data
 
+            //last update date
+            // $data=[
+            //     'updated_at' => date("Y-m-d"),
+            // ];
+            // $this->RiskMitigationDetailModel->update($id_detail_mitigation,$data);
+
             return redirect()->back()->with('state_message', 'success');
         }
     }
-
-    // public function onAddDetailMonitoring(){
-    //     helper(['form', 'url', 'filesystem']);
-    //     $id_detail_mitigation =  $this->request->getPost('id_detail_mitigation');
-        
-    //     try{
-    //         //update progress_percentage
-    //         $percentage['progress_percentage']=$this->request->getPost('progress_percentage');
-    //         $this->RiskMitigationDetailModel->update($id_detail_mitigation, $percentage);
-
-    //         //output
-    //         $outputs = $this->request->getPost('output');
-    //         //delete current output
-    //         $this->RiskMitigationDetailOutputModel->delete_by_detail_mitigation_id($id_detail_mitigation);
-    //         // re-add
-    //         foreach ($outputs as $key => $value){
-    //             $data_output = [
-    //                 'id_detail_mitigation' => $id_detail_mitigation,
-    //                 'output' => $outputs[$key],
-    //             ];
-    //             $this->RiskMitigationDetailOutputModel->insert($data_output);
-    //         }
-            
-    //         //target monitoring
-    //         //$this->RiskMitigationDetailMonitoringModel->delete_by_detail_mitigation_id($id_detail_mitigation);
-            
-    //         $target = $this->request->getPost('target[]');
-    //         $notes = $this->request->getPost('notes[]');
-
-    //         for($i = 0; $i < count($target); $i++){
-    //             $data=[
-    //                 'id_detail_mitigation' => $id_detail_mitigation,
-    //                 'target_month' => date("Y")."-".$target[$i]."-01",
-    //                 'monitoring_month' => "0000-00-00",
-    //                 'notes' => $notes[$i],
-    //             ];
-
-    //             $existing_data = $this->RiskMitigationDetailMonitoringModel->get_data_by_month_target($id_detail_mitigation, $target[$i]);
-    //             //dd($not_deleted->t_month == (int)$target[$i]);
-                
-    //             if(!empty($existing_data)){
-    //                  $this->RiskMitigationDetailMonitoringModel->update($existing_data->id,$data);
-    //             }else{
-    //                 $this->RiskMitigationDetailMonitoringModel->insert($data);
-    //             }         
-    //         }
-
-    //         if($this->request->getPost('monitoring[]')){
-    //             $monitoring = $this->request->getPost('monitoring[]');
-    //             //update monitoring month
-    //             for($i = 0; $i < count($monitoring); $i++){
-    //                 $this->RiskMitigationDetailMonitoringModel->update_data_monitoring($id_detail_mitigation, $monitoring[$i]);
-    //             }
-    //         }
-            
-    //         return redirect()->back()->with('state_message', 'success');
-
-    //     }catch (\Exception $e) {
-    //         return redirect()->back()->with('state_message', 'error');
-    //     }
-    // }
-
-    // public function onUploadEvidence(){
-    //     $id_detail_monitoring = $this->RiskMitigationDetailMonitoringModel->get_id_monitoring($this->request->getPost('month'),$this->request->getPost('id_detail_mitigation'));
-
-    //     if($id_detail_monitoring){
-    //         if($this->request->getFileMultiple('evidence')){
-    //             $i = 1;
-    //             foreach($this->request->getFileMultiple('evidence') as $file){
-                    
-    //                 $fileName = $file->getName();
-                    
-    //                 $file->move(FCPATH . 'uploads/'.$id_detail_monitoring->id.'/', $fileName);
-
-    //                 $data_evidence = [
-    //                     'id_detail_monitoring' => $id_detail_monitoring->id,
-    //                     'filename' => $fileName,
-    //                     'pathname' => FCPATH . "/uploads/".$id_detail_monitoring->id,
-                        
-    //                 ];
-                    
-    //                 $this->RiskMitigationDetailEvidenceModel->insert($data_evidence);
-    //                 $i++;
-    //             }
-    //         }
-    //     }
-    //     return redirect()->back()->with('state_message', 'file');
-    // }
 
     public function onUploadEvidence(){
         $id_detail_monitoring = $this->RiskMitigationDetailMonitoringModel->get_id_monitoring($this->request->getPost('month'),$this->request->getPost('id_detail_mitigation'));
@@ -800,6 +725,13 @@ class RiskMonitoringController extends BaseController
                 }
             }
         }
+
+        //last update date
+        // $data=[
+        //     'updated_at' => date("Y-m-d"),
+        // ];
+        // $this->RiskMitigationDetailModel->update($this->request->getPost('id_detail_mitigation'),$data);
+
         return redirect()->back()->with('state_message', 'file');
     }
 
@@ -811,11 +743,26 @@ class RiskMonitoringController extends BaseController
         $data["flags"] = '0'; 
         $this->RiskMitigationDetailEvidenceModel->update($id, $data);
 
+        //get id_detail_mitigation by id_evidence
+        // $id_detail_mitigation = $this->RiskMitigationDetailModel
+        //     ->join('risk_mitigation_detail_monitorings', 'risk_mitigation_detail_monitorings.id_detail_mitigation = risk_mitigation_details.id')
+        //     ->join('risk_mitigation_detail_evidences', 'risk_mitigation_detail_evidences.id_detail_monitoring = risk_mitigation_detail_monitorings.id')
+        //     ->select('risk_mitigation_details.id')
+        //     ->where('risk_mitigation_detail_evidences.id', $id)
+        //     ->first();
+
+
         // $filename = $this->RiskMitigationDetailEvidenceModel->find($id);
         
         // unlink (FCPATH .DIRECTORY_SEPARATOR. 'uploads'.DIRECTORY_SEPARATOR.$id_detail_monitoring.DIRECTORY_SEPARATOR.$filename['filename']);
         // $this->RiskMitigationDetailEvidenceModel->delete($id);
 
+        //last update date
+        // $data=[
+        //     'updated_at' => date("Y-m-d"),
+        // ];
+        // $this->RiskMitigationDetailMonitoringModel->update($id_detail_mitigation,$data);
+        
         echo json_encode(array("status" => TRUE));
     }
 
@@ -1392,7 +1339,6 @@ class RiskMonitoringController extends BaseController
     public function getListRiskEvent($risk_detail, $id_risk_event){
         $data = $this->RiskMitigationDetailModel->get_list_risk_event_by_risk_detail($risk_detail, $id_risk_event);
 		echo json_encode($data);
-
     }
 
     public function copyEvidence($risk_detail, $id_division, $month, $id_risk_event, $current_id_detail_monitoring){

@@ -70,10 +70,20 @@ class RiskMitigationDetailEvidences extends Model
     }
 
     public function get_evidence_status($id_detail_mitigation){
-      return $this->db->query("SELECT risk_mitigation_detail_monitorings.id
-                            FROM risk_mitigation_detail_monitorings LEFT JOIN risk_mitigation_detail_evidences
-                            ON risk_mitigation_detail_monitorings.id = risk_mitigation_detail_evidences.id_detail_monitoring
-                            WHERE (id_detail_mitigation = '".$id_detail_mitigation."' AND id_detail_monitoring IS NULL) AND monitoring_month NOT LIKE '0000-00-00'")->getResultArray();
+      return $this->db->query("SELECT _tb.*
+                                FROM (
+                                  SELECT risk_mitigation_detail_monitorings.id as id_detail_monitoring
+                                    , risk_mitigation_detail_evidences.id as id_evidence
+                                    , risk_mitigation_detail_evidences.filename
+                                    , flags
+                                  FROM risk_mitigation_detail_monitorings LEFT JOIN risk_mitigation_detail_evidences ON risk_mitigation_detail_evidences.id_detail_monitoring = risk_mitigation_detail_monitorings.id
+                                  WHERE (id_detail_mitigation = '".$id_detail_mitigation."')
+                                ) _tb WHERE _tb.id_detail_monitoring NOT IN
+                                (
+                                  SELECT risk_mitigation_detail_monitorings.id as id_detail_monitoring
+                                  FROM risk_mitigation_detail_monitorings LEFT JOIN risk_mitigation_detail_evidences ON risk_mitigation_detail_evidences.id_detail_monitoring = risk_mitigation_detail_monitorings.id
+                                  WHERE (id_detail_mitigation = '".$id_detail_mitigation."') AND flags = '1'
+                                ) AND flags ='0';")->getResultArray();
     }
 
     public function get_data_monitoring($id_detail_mitigation){

@@ -36,7 +36,6 @@ if($session->get('state_message')){
 	let y = 0;
 
 	$(document).ready(function() {
-		
 		$.ajax({
 			url : "<?=site_url('RiskMonitoringController/getOutputList')?>/" + id_detail_mitigation,
 			type: "GET",
@@ -120,7 +119,6 @@ if($session->get('state_message')){
 			dataType: "JSON",
 			success: function(result)
 			{
-				
 				if(result.monitoring_data.length == 0){
 					$('#btnAdd').prop('disabled', true);
 				}else{
@@ -179,6 +177,7 @@ if($session->get('state_message')){
 				dataType: "JSON",
 				success: function(data)
 				{
+					console.log(data);
 					swal({
 					  title: "Terhapus!",
 					  text: "Data berhasil dihapus!",
@@ -278,7 +277,7 @@ if($session->get('state_message')){
 		});
 	}
 	
-	function upload_evidence(target_month, id_detail_mitigation){
+	function upload_evidence(target_month, id_detail_mitigation, risk_detail){
 		var str_evidence = "";
 		$.ajax({
 			url : "<?=site_url('RiskMonitoringController/getEvidenceList')?>/" + target_month + "/" +id_detail_mitigation,
@@ -366,9 +365,9 @@ if($session->get('state_message')){
 				swal('Error get data from ajax');
 			}
 		});
-
+		
 		$.ajax({
-			url : "<?=site_url('RiskMonitoringController/getListRiskEvent')?>/" + document.getElementById("risk_detail").value + "/" + id_risk_event,
+			url : "<?=site_url('RiskMonitoringController/getListRiskEvent')?>/" + risk_detail + "/" + id_risk_event,
 			type: "GET",
 			dataType: "JSON",
 			success: function(result)
@@ -427,8 +426,6 @@ if($session->get('state_message')){
 			}
 		});
 	}
-
-	
 
 </script>
 

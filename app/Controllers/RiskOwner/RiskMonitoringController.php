@@ -186,6 +186,8 @@ class RiskMonitoringController extends BaseController
                 try{
                     //update progress_percentage
                     $percentage['progress_percentage']=$this->request->getPost('progress_percentage');
+                    $percentage['updated_at'] = date('Y-m-d H:i:s');
+            
                     $this->RiskMitigationDetailModel->update($id_detail_mitigation, $percentage);
 
                     //update output
@@ -569,26 +571,6 @@ class RiskMonitoringController extends BaseController
         }
     }
 
-    // public function onSubmitDetailMonitoring(){
-    //     helper(['form', 'url', 'filesystem']);
-    //     $id_detail_mitigation =  $this->request->getPost('id_detail_mitigation');
-
-    //     //check mandatory evidence based on realisasi month
-    //     //get list monitoring month
-    //     $monitoring_data = $this->RiskMitigationDetailMonitoringModel->select('*')
-    //                             ->where('id_detail_mitigation', $id_detail_mitigation)
-    //                             ->where('monitoring_month <>', '0000-00-00')
-    //                             ->findAll();
-        
-    //     for($i = 0 ; $i < count($monitoring_data); $i++){
-    //         $evidence_data = $this->RiskMitigationDetailEvidenceModel->select('*')
-    //                             ->where('id_detail_monitoring', $monitoring_data[$i]['id'])->countAllResults();
-    //         if($evidence_data == 0){
-    //             return redirect()->back()->with('state_message', 'error');
-    //         }
-    //     }
-    // }
-
     public function onUploadEvidence(){
         $id_detail_monitoring = $this->RiskMitigationDetailMonitoringModel->get_id_monitoring($this->request->getPost('month'),$this->request->getPost('id_detail_mitigation'));
        
@@ -613,6 +595,11 @@ class RiskMonitoringController extends BaseController
                 }
             }
         }
+
+        //last update date
+        $data['updated_at']= date("Y-m-d H:i:s");
+        $this->RiskMitigationDetailModel->update($this->request->getPost('id_detail_mitigation'), $data);
+
         return redirect()->back()->with('state_message', 'file');
     }
 
@@ -621,6 +608,9 @@ class RiskMonitoringController extends BaseController
        
         if($id_detail_monitoring){
             $this->RiskMitigationDetailMonitoringModel->update_notes($id_detail_monitoring->id, $this->request->getPost('notes'));
+            
+            $data['updated_at']= date("Y-m-d H:i:s");
+            $this->RiskMitigationDetailModel->update($this->request->getPost('id_detail_mitigation'), $data);
         }
 
         return redirect()->back()->with('state_message', 'success');
@@ -637,7 +627,17 @@ class RiskMonitoringController extends BaseController
         // $filename = $this->RiskMitigationDetailEvidenceModel->find($id);
         // unlink (FCPATH .DIRECTORY_SEPARATOR. 'uploads'.DIRECTORY_SEPARATOR.$id_detail_monitoring.DIRECTORY_SEPARATOR.$filename['filename']);
         // $this->RiskMitigationDetailEvidenceModel->delete($id);
-        
+
+        $id_detail_mitigation = $this->RiskMitigationDetailModel
+            ->join('risk_mitigation_detail_monitorings', 'risk_mitigation_detail_monitorings.id_detail_mitigation = risk_mitigation_details.id')
+            ->join('risk_mitigation_detail_evidences', 'risk_mitigation_detail_evidences.id_detail_monitoring = risk_mitigation_detail_monitorings.id')
+            ->select('risk_mitigation_details.id')
+            ->where('risk_mitigation_detail_evidences.id', $id)
+            ->first();
+
+        $data['updated_at']= date("Y-m-d H:i:s");
+        $this->RiskMitigationDetailModel->update($id_detail_mitigation, $data);
+
         echo json_encode(array("status" => TRUE));
     }
 

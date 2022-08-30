@@ -119,6 +119,7 @@ if($session->get('state_message')){
 			dataType: "JSON",
 			success: function(result)
 			{
+				
 				if(result.monitoring_data.length == 0){
 					$('#btnAdd').prop('disabled', true);
 				}else{
@@ -177,7 +178,6 @@ if($session->get('state_message')){
 				dataType: "JSON",
 				success: function(data)
 				{
-					console.log(data);
 					swal({
 					  title: "Terhapus!",
 					  text: "Data berhasil dihapus!",

@@ -613,6 +613,9 @@ class RiskMonitoringController extends BaseController
             $this->RiskMitigationDetailModel->update($this->request->getPost('id_detail_mitigation'), $data);
         }
 
+        $data['updated_at']= date("Y-m-d H:i:s");
+        $this->RiskMitigationDetailModel->update($this->request->getPost('id_detail_mitigation'), $data);
+
         return redirect()->back()->with('state_message', 'success');
     }
 

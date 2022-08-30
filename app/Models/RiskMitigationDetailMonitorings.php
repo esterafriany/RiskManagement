@@ -105,7 +105,6 @@ class RiskMitigationDetailMonitorings extends Model
 
     public function get_id_monitoring($month, $id_detail_mitigation){
         return $this->db->query("SELECT id FROM risk_mitigation_detail_monitorings 
-        
         WHERE (id_detail_mitigation ='".$id_detail_mitigation."' AND MONTH(target_month) = '".$month."')
         OR (id_detail_mitigation ='".$id_detail_mitigation."' AND MONTH(monitoring_month) = '".$month."')
         ")->getRow();

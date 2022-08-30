@@ -77,13 +77,13 @@ class RiskMitigationDetailEvidences extends Model
                                     , risk_mitigation_detail_evidences.filename
                                     , flags
                                   FROM risk_mitigation_detail_monitorings LEFT JOIN risk_mitigation_detail_evidences ON risk_mitigation_detail_evidences.id_detail_monitoring = risk_mitigation_detail_monitorings.id
-                                  WHERE (id_detail_mitigation = '".$id_detail_mitigation."')
+                                  WHERE (id_detail_mitigation = '".$id_detail_mitigation."') AND monitoring_month NOT LIKE '0000-00-00'
                                 ) _tb WHERE _tb.id_detail_monitoring NOT IN
                                 (
                                   SELECT risk_mitigation_detail_monitorings.id as id_detail_monitoring
                                   FROM risk_mitigation_detail_monitorings LEFT JOIN risk_mitigation_detail_evidences ON risk_mitigation_detail_evidences.id_detail_monitoring = risk_mitigation_detail_monitorings.id
-                                  WHERE (id_detail_mitigation = '".$id_detail_mitigation."') AND flags = '1'
-                                ) AND flags ='0';")->getResultArray();
+                                  WHERE (id_detail_mitigation = '".$id_detail_mitigation."') AND flags = '1' AND monitoring_month NOT LIKE '0000-00-00'
+                                ) AND flags ='0' OR flags IS NULL;")->getResultArray();
     }
 
     public function get_data_monitoring($id_detail_mitigation){

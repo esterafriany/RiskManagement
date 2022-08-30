@@ -82,8 +82,7 @@ if($session->get('state_message')){
 					
 					$("#t"+target_month).prop("checked", true );
 					$('#n'+target_month).val(result[i]['notes']);
-					$('#e'+target_month).prop('disabled', false);
-		
+					
 					var arr1 = result[i]['monitoring_month'].split("-");
         			var monitoring_month = arr1[arr1.length - 2];
 					$('#e'+monitoring_month).prop('disabled', false);
@@ -102,6 +101,8 @@ if($session->get('state_message')){
 				document.getElementById("progress-bar").style.width = percentage+"%";
 				document.getElementById("progress_percentage").value = percentage.toFixed(2);
 				document.getElementById("text-percentage").innerHTML = percentage.toFixed(2)+"%";
+
+			
 			},
 			error: function (jqXHR, textStatus, errorThrown)
 			{
@@ -116,9 +117,11 @@ if($session->get('state_message')){
 			dataType: "JSON",
 			success: function(result)
 			{
+				
 				if(result.monitoring_data.length == 0){
 					$('#btnAdd').prop('disabled', true);
 				}else{
+					
 					if(result.evidence_status.length > 0){
 						$('#btnAdd').prop('disabled', true);
 					}else{

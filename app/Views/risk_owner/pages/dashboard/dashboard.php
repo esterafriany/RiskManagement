@@ -106,7 +106,6 @@
             <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
                <?php for($x=0; $x<count($percentage);$x++){ ?>
                      <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="800">         
-                     
                         <div class="card-body">
                            <div class="d-flex justify-content-between">
                               <div>
@@ -137,6 +136,53 @@
          </div>
       </div>
    </div>
+
+   <!-- <div class="col-md-12 col-lg-12">
+      <div class="row-cols-1">
+         <div class="overflow-hidden d-slider1">
+            <ul  class="p-0 m-0 mb-2 swiper-wrapper">
+               <?php for($x=0; $x<count($percentage);$x++){ ?>
+                  <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="800">
+                  <div class="col-lg-3">
+                        <div class="card-body">
+                           <div class="d-flex justify-content-between mb-3">
+                              <div>
+                                 <span>Invoice Sent</span>
+                              </div>
+                              <div>
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                 </svg>
+                              </div>
+                           </div>
+                           <div class="d-flex justify-content-between">
+                              <div class="d-flex align-items-center">
+                                 <div class="border rounded p-3 bg-soft-primary me-3">
+                                 <svg xmlns="http://www.w3.org/2000/svg"  width="24px" height="24px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+                     </svg>
+                                 </div>
+                                 <h2 class="counter">352</h2>
+                              </div>
+                              <div class="pt-3">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"  viewBox="0 0 20 20" fill="#344ed1">
+                                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                                 </svg>
+                              </div>
+                           </div>
+                        </div>
+                  </div>
+                  </li>
+               <?php }?>
+            </ul>
+            <div class="swiper-button swiper-button-next"></div>
+            <div class="swiper-button swiper-button-prev"></div>
+         </div>
+      </div>
+   </div> -->
+
+   
 
    <div class="col-md-12">
    <div class="col-md-12">
